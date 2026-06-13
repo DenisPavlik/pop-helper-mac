@@ -5,6 +5,7 @@ enum SidebarItem: Hashable {
     case all
     case category(String)
     case cosmetics
+    case settings
 }
 
 struct ContentView: View {
@@ -19,7 +20,9 @@ struct ContentView: View {
                 .navigationSplitViewColumnWidth(min: 220, ideal: 240, max: 300)
         } detail: {
             Group {
-                if let error = app.loadError {
+                if selection == .settings {
+                    SettingsView()
+                } else if let error = app.loadError {
                     errorView(error)
                 } else if selection == .cosmetics {
                     CosmeticsView()
@@ -30,6 +33,7 @@ struct ContentView: View {
             .frame(minWidth: 520, minHeight: 480)
             .toolbar { toolbarContent }
         }
+        .dynamicTypeSize(app.textSize.dynamicTypeSize)
         .searchable(text: $searchText, placement: .toolbar, prompt: L10n.searchPlaceholder.text(for: app.language))
         .confirmationDialog(
             L10n.resetConfirmTitle.text(for: app.language),
@@ -90,6 +94,13 @@ struct ContentView: View {
                     Image(systemName: "paintbrush.pointed.fill").foregroundStyle(.pink)
                 }
                 .tag(SidebarItem.cosmetics)
+
+                Label {
+                    Text(L10n.settingsTitle.text(for: app.language))
+                } icon: {
+                    Image(systemName: "gearshape.fill").foregroundStyle(.secondary)
+                }
+                .tag(SidebarItem.settings)
             }
         }
         .safeAreaInset(edge: .bottom) { sidebarFooter }

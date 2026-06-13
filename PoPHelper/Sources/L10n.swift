@@ -73,6 +73,15 @@ enum L10n {
     static let summary = LocalizedText(en: "%d on · %d total", uk: "%d увімкнено · %d усього", ru: "%d включено · %d всего")
     static let pendingSummary = LocalizedText(en: "%d pending change(s)", uk: "очікує змін: %d", ru: "ожидает изменений: %d")
     static let noPending = LocalizedText(en: "No pending changes", uk: "Немає змін до застосування", ru: "Нет изменений к применению")
+    static let settingsTitle = LocalizedText(en: "Settings", uk: "Налаштування", ru: "Настройки")
+    static let appearance = LocalizedText(en: "Appearance", uk: "Вигляд", ru: "Вид")
+    static let textSize = LocalizedText(en: "Text size", uk: "Розмір тексту", ru: "Размер текста")
+    static let language = LocalizedText(en: "Language", uk: "Мова", ru: "Язык")
+    static let preview = LocalizedText(en: "Preview", uk: "Перегляд", ru: "Предпросмотр")
+    static let textSizePreview = LocalizedText(
+        en: "The quick brown fox — sample heading",
+        uk: "Зразок заголовка — як виглядає текст",
+        ru: "Образец заголовка — как выглядит текст")
 
     static func categoryName(_ category: String) -> LocalizedText {
         switch category {

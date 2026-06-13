@@ -37,6 +37,9 @@ final class AppState: ObservableObject {
     @Published var language: AppLanguage {
         didSet { UserDefaults.standard.set(language.rawValue, forKey: "appLanguage") }
     }
+    @Published var textSize: TextSize {
+        didSet { UserDefaults.standard.set(textSize.rawValue, forKey: "textSize") }
+    }
     @Published var states: [TweakViewState] = []
     @Published var loadError: String?
     @Published var lastActionMessage: String?
@@ -52,6 +55,7 @@ final class AppState: ObservableObject {
     init() {
         let stored = UserDefaults.standard.string(forKey: "appLanguage")
         language = AppLanguage(rawValue: stored ?? "uk") ?? .ukrainian
+        textSize = TextSize(rawValue: UserDefaults.standard.string(forKey: "textSize") ?? "") ?? .medium
         manager = ModManager()
         packManager = PackManager(modFolder: manager.modFolder)
         modFolderPath = manager.modFolder.path
