@@ -24,6 +24,21 @@ enum L10n {
     static let openBackupsFolder = LocalizedText(en: "Open backups folder", uk: "Відкрити папку бекапів")
     static let noBackups = LocalizedText(en: "No backups yet", uk: "Бекапів ще немає")
     static let restoredMessage = LocalizedText(en: "Restored backup %@", uk: "Відновлено бекап %@")
+    static let resetToDefaults = LocalizedText(en: "Reset to defaults", uk: "Скинути до дефолту")
+    static let resetConfirmTitle = LocalizedText(
+        en: "Reset all tweaks to vanilla 3.9.5?",
+        uk: "Скинути всі твіки до ванільної 3.9.5?")
+    static let resetConfirmMessage = LocalizedText(
+        en: "This restores every module file to the original, un-tweaked state — including tweaks you applied earlier. Your current files are backed up first, so this can be undone.",
+        uk: "Це відновить усі файли моду до оригінального, нетвікнутого стану — включно з твіками, які ти вмикав раніше. Поточні файли спершу зберігаються в бекап, тож дію можна відкотити.")
+    static let resetConfirmButton = LocalizedText(en: "Reset everything", uk: "Скинути все")
+    static let cancel = LocalizedText(en: "Cancel", uk: "Скасувати")
+    static let resetDoneMessage = LocalizedText(
+        en: "Reset %d files to vanilla. Backup: %@",
+        uk: "Скинуто файлів до ванілі: %d. Бекап: %@")
+    static let resetUnavailable = LocalizedText(
+        en: "No original files found to reset from. A fresh-install backup or PoP Helper's _backupHelper folder is required.",
+        uk: "Не знайдено оригінальних файлів для скидання. Потрібен бекап чистого встановлення або папка _backupHelper від PoP Helper.")
     static let conflictHelp = LocalizedText(
         en: "This file doesn't match the pristine 3.9.5 layout nor a known tweaked form — it was likely edited by another tool. The app won't touch it.",
         uk: "Файл не збігається ні з оригіналом 3.9.5, ні з відомою твікнутою формою — схоже, його змінила інша програма. Додаток його не чіпатиме.")

@@ -10,8 +10,11 @@ PoP tweaks are plain-text edits to the mod's module files (`menus.txt`, `scripts
   (e.g. unique spawns can't escape after battle, max Qualis Gem chance at
   Noldor tournaments, recruit Noldor troops, bigger tournament rewards)
 - Applies / reverts tweaks by patching the module files
-- Backs up module files and savegames automatically before any change
-- Restores from backup (including broken-save recovery)
+- **Reset to Defaults** — restores every module file to vanilla 3.9.5, undoing
+  all tweaks at once (known or not) for a clean slate
+- Backs up module files automatically: a full **initial snapshot** the first
+  time the app sees a mod folder, plus a safety backup before every change
+- Restores from any backup
 - Bilingual UI: Ukrainian / English
 
 ## Paths
@@ -56,6 +59,8 @@ python3 research/validate_tweaks.py # validate tweaks.json against pristine file
 - [x] Reverse-engineer previously applied tweaks — `research/applied-tweaks-analysis.md` (~60 identified)
 - [x] Design tweak database format — `docs/tweak-db-format.md`; 10-tweak starter DB validated
 - [x] Tweak engine (apply / revert / status) + backups; self-tests green; cross-checked against the live mod
-- [ ] SwiftUI UI: visually verify the window and apply a tweak end-to-end through the GUI
+- [x] Reset to Defaults + automatic initial/safety backups (pristine baseline imported from PoP Helper's pre-tweak backup)
+- [ ] Polished, category-organized SwiftUI UI (the current UI is functional but plain)
+- [ ] Visually verify the window and apply a tweak end-to-end through the GUI
 - [ ] Grow the DB beyond the 10 starter tweaks
-- [ ] Bundle as .app
+- [ ] Bundle as a downloadable `.app` (GitHub Release)

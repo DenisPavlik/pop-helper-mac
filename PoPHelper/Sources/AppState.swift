@@ -75,6 +75,8 @@ final class AppState: ObservableObject {
                 loadError = L10n.modFolderMissing.text(for: language) + "\n" + manager.modFolder.path
                 return
             }
+            // First time we see this folder, snapshot its full state as a safety net.
+            _ = try? manager.ensureInitialBackup()
             let fileNames = Set(db.tweaks.flatMap { $0.operations.map(\.file) })
             let files = try manager.readFiles(named: fileNames)
             states = db.tweaks.map { tweak in
@@ -126,5 +128,28 @@ final class AppState: ObservableObject {
 
     func discardChanges() {
         reload()
+    }
+
+    var canResetToDefaults: Bool {
+        manager.modFolderExists && manager.canResetToDefaults
+    }
+
+    /// Restores every module file to vanilla 3.9.5, undoing all tweaks (known or not).
+    func resetToDefaults() {
+        lastActionMessage = nil
+        do {
+            switch try manager.resetToDefaults() {
+            case .restored(let count, let safety):
+                lastActionMessage = String(
+                    format: L10n.resetDoneMessage.text(for: language),
+                    count, safety.lastPathComponent)
+            case .unavailable:
+                lastActionMessage = L10n.resetUnavailable.text(for: language)
+            }
+            reload()
+        } catch {
+            lastActionMessage = error.localizedDescription
+            reload()
+        }
     }
 }

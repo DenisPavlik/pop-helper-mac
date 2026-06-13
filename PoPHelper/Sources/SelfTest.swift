@@ -67,6 +67,7 @@ enum SelfTest {
         conflictDetection(r)
         applyGuards(r)
         occurrenceDecoding(r)
+        resetAndBackups(r)
         bundledDatabase(r)
 
         if r.failures.isEmpty {
@@ -194,6 +195,73 @@ enum SelfTest {
             let ops = try JSONDecoder().decode([TweakOperation].self, from: Data(json.utf8))
             r.expectEqual(ops[0].occurrence, .all, "occurrence all")
             r.expectEqual(ops[1].occurrence, .indices([1, 3]), "occurrence indices")
+        }
+    }
+
+    private static func resetAndBackups(_ r: Recorder) {
+        let fm = FileManager.default
+        let root = fm.temporaryDirectory.appendingPathComponent("pophelper-selftest-\(getpid())")
+        try? fm.removeItem(at: root)
+        defer { try? fm.removeItem(at: root) }
+
+        func makeDir(_ url: URL) throws { try fm.createDirectory(at: url, withIntermediateDirectories: true) }
+        func write(_ text: String, _ url: URL) throws { try Data(text.utf8).write(to: url) }
+        func read(_ url: URL) -> String { (try? String(contentsOf: url, encoding: .utf8)) ?? "<missing>" }
+
+        r.expectNoThrow("reset/backup scenario") {
+            let mod = root.appendingPathComponent("mod")
+            let backups = root.appendingPathComponent("backups")
+            let pristine = root.appendingPathComponent("pristine")
+            let vanillaSrc = root.appendingPathComponent("vanillaSrc")
+            try makeDir(mod); try makeDir(vanillaSrc)
+
+            // Live mod = tweaked; vanilla source = pristine values.
+            try write("menus TWEAKED 100", mod.appendingPathComponent("menus.txt"))
+            try write("ini TWEAKED", mod.appendingPathComponent("module.ini"))
+            try write("ignore me", mod.appendingPathComponent("notes.md"))
+            try write("menus VANILLA 20", vanillaSrc.appendingPathComponent("menus.txt"))
+            try write("ini VANILLA", vanillaSrc.appendingPathComponent("module.ini"))
+
+            let mgr = ModManager(modFolder: mod, backupsRoot: backups, pristineStore: pristine)
+            r.expect(!mgr.hasPristineBaseline, "no baseline before import")
+
+            let imported = try mgr.importPristineBaseline(from: vanillaSrc)
+            r.expectEqual(imported, 2, "imported file count")
+            r.expect(mgr.hasPristineBaseline, "baseline present after import")
+            r.expect(mgr.canResetToDefaults, "canResetToDefaults after import")
+
+            guard case .restored(let count, let safety) = try mgr.resetToDefaults() else {
+                r.failures.append("resetToDefaults returned unavailable"); r.checks += 1; return
+            }
+            r.expectEqual(count, 2, "reset restored file count")
+            // Live mod now holds vanilla content...
+            r.expectEqual(read(mod.appendingPathComponent("menus.txt")), "menus VANILLA 20", "menus reset to vanilla")
+            r.expectEqual(read(mod.appendingPathComponent("module.ini")), "ini VANILLA", "module.ini reset to vanilla")
+            // ...non-module files untouched...
+            r.expectEqual(read(mod.appendingPathComponent("notes.md")), "ignore me", "non-module file untouched")
+            // ...and the safety backup captured the pre-reset tweaked content.
+            r.expectEqual(read(safety.appendingPathComponent("menus.txt")), "menus TWEAKED 100", "safety backup has pre-reset content")
+        }
+
+        r.expectNoThrow("detect PoP Helper backup + ensure baseline") {
+            let mod = root.appendingPathComponent("mod2")
+            let phBackup = mod
+                .appendingPathComponent("_backupHelper")
+                .appendingPathComponent("Backup Your Files")
+                .appendingPathComponent("[Tweaks] 26.10.23 15-03-18")
+            try makeDir(mod); try makeDir(phBackup)
+            try write("menus VANILLA", phBackup.appendingPathComponent("menus.txt"))
+            try write("scripts VANILLA", phBackup.appendingPathComponent("scripts.txt"))
+            try write("tweaked", mod.appendingPathComponent("menus.txt"))
+
+            let mgr = ModManager(modFolder: mod,
+                                 backupsRoot: root.appendingPathComponent("b2"),
+                                 pristineStore: root.appendingPathComponent("p2"))
+            r.expect(mgr.detectPoPHelperPristineBackup() != nil, "detects PoP Helper backup")
+            r.expect(mgr.canResetToDefaults, "canReset via detected backup")
+            let ensured = try mgr.ensurePristineBaseline()
+            r.expect(ensured, "ensurePristineBaseline imports detected backup")
+            r.expect(mgr.hasPristineBaseline, "baseline present after ensure")
         }
     }
 

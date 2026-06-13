@@ -3,6 +3,7 @@ import AppKit
 
 struct ContentView: View {
     @EnvironmentObject var app: AppState
+    @State private var showResetConfirm = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -17,6 +18,18 @@ struct ContentView: View {
             footer
         }
         .frame(minWidth: 640, minHeight: 520)
+        .confirmationDialog(
+            L10n.resetConfirmTitle.text(for: app.language),
+            isPresented: $showResetConfirm,
+            titleVisibility: .visible
+        ) {
+            Button(L10n.resetConfirmButton.text(for: app.language), role: .destructive) {
+                app.resetToDefaults()
+            }
+            Button(L10n.cancel.text(for: app.language), role: .cancel) {}
+        } message: {
+            Text(L10n.resetConfirmMessage.text(for: app.language))
+        }
     }
 
     private var header: some View {
@@ -72,7 +85,7 @@ struct ContentView: View {
         HStack {
             Menu(L10n.backups.text(for: app.language)) {
                 Button(L10n.openBackupsFolder.text(for: app.language)) {
-                    NSWorkspace.shared.open(ModManager.backupsRoot)
+                    NSWorkspace.shared.open(app.manager.backupsRoot)
                 }
                 if let latest = app.manager.listBackups().first {
                     Button("\(L10n.restoreLatestBackup.text(for: app.language)) (\(latest.lastPathComponent))") {
@@ -89,6 +102,12 @@ struct ContentView: View {
                     .foregroundStyle(.secondary)
                     .lineLimit(2)
             }
+            Button(role: .destructive) {
+                showResetConfirm = true
+            } label: {
+                Text(L10n.resetToDefaults.text(for: app.language))
+            }
+            .disabled(!app.canResetToDefaults)
             Spacer()
             if app.dirtyCount > 0 {
                 Button(L10n.discard.text(for: app.language)) { app.discardChanges() }
