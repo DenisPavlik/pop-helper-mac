@@ -1,0 +1,408 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "Link to the Steam Homepage" [ref=e8] [cursor=pointer]:
+        - /url: https://store.steampowered.com/
+        - img "Link to the Steam Homepage" [ref=e9]
+      - navigation "Global Menu" [ref=e10]:
+        - link "STORE" [ref=e11] [cursor=pointer]:
+          - /url: https://store.steampowered.com/
+        - link "COMMUNITY" [ref=e12] [cursor=pointer]:
+          - /url: https://steamcommunity.com/
+        - link "About" [ref=e13] [cursor=pointer]:
+          - /url: https://store.steampowered.com/about/
+        - link "SUPPORT" [ref=e14] [cursor=pointer]:
+          - /url: https://help.steampowered.com/en/
+      - navigation "Account Menu" [ref=e16]:
+        - link "Install Steam" [ref=e17] [cursor=pointer]:
+          - /url: https://store.steampowered.com/about/
+          - generic [ref=e18]: Install Steam
+        - link "sign in" [ref=e19] [cursor=pointer]:
+          - /url: https://steamcommunity.com/login/home/?goto=sharedfiles%2Ffiledetails%2F%3Fid%3D908829523
+        - text: "| language"
+  - main [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e23]:
+        - link "Store Page" [ref=e25] [cursor=pointer]:
+          - /url: https://store.steampowered.com/app/48700?snr=2_100100_100101_100106_apphubheader
+          - generic [ref=e26]: Store Page
+        - generic [ref=e28]: "Mount & Blade: Warband"
+        - generic [ref=e29]:
+          - link "All" [ref=e30] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700
+          - link "Discussions" [ref=e31] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/discussions/
+          - link "Screenshots" [ref=e32] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/screenshots/
+          - link "Artwork" [ref=e33] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/images/
+          - link "Broadcasts" [ref=e34] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/broadcasts/
+          - link "Videos" [ref=e35] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/videos/
+          - link "Workshop" [ref=e36] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/workshop/
+          - link "News" [ref=e37] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/allnews/
+          - link "Guides" [ref=e38] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/guides/
+          - link "Reviews" [ref=e39] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/reviews/
+      - generic [ref=e41]:
+        - 'link "Mount & Blade: Warband" [ref=e42] [cursor=pointer]':
+          - /url: https://steamcommunity.com/app/48700
+        - text: ">"
+        - link "Guides" [ref=e43] [cursor=pointer]:
+          - /url: https://steamcommunity.com/app/48700/guides/
+        - text: ">"
+        - link "Godkitty's Guides" [ref=e44] [cursor=pointer]:
+          - /url: https://steamcommunity.com/id/The_Godkitty/myworkshopfiles/?section=guides&appid=48700
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - generic [ref=e48]:
+          - img [ref=e50]
+          - text: Not enough ratings
+        - generic [ref=e51]:
+          - img [ref=e53]
+          - generic [ref=e54]: Prophesy of Pendor Tweaking
+          - generic [ref=e55]: By Godkitty
+          - generic [ref=e57]: Learn how to tweak your Prophesy of Pendor experience using two main modding tools that are fast to download and VERY easy to use.
+        - generic [ref=e59]:
+          - generic [ref=e61]:
+            - button [ref=e62] [cursor=pointer]
+            - button [ref=e63] [cursor=pointer]
+          - button "Award" [ref=e64] [cursor=pointer]:
+            - generic [ref=e65]:
+              - img [ref=e66]
+              - text: Award
+          - generic [ref=e67]:
+            - button "Favorite" [ref=e68] [cursor=pointer]:
+              - generic [ref=e70]: Favorite
+            - button "Share" [ref=e71] [cursor=pointer]
+          - button [ref=e74] [cursor=pointer]
+      - generic [ref=e75]:
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - generic [ref=e79]: Created by
+            - generic [ref=e82]:
+              - link [ref=e83] [cursor=pointer]:
+                - /url: https://steamcommunity.com/id/The_Godkitty
+              - img [ref=e85]
+              - generic [ref=e86]:
+                - text: Godkitty
+                - text: Offline
+            - generic [ref=e88]:
+              - generic [ref=e89]:
+                - text: "Category:"
+                - link "Modding or Configuration" [ref=e90] [cursor=pointer]:
+                  - /url: https://steamcommunity.com/app/48700/guides/?browsesort=trend&filetype=11&requiredtags%5B%5D=Modding+or+Configuration
+              - generic [ref=e91]:
+                - text: "Languages:"
+                - link "English" [ref=e92] [cursor=pointer]:
+                  - /url: https://steamcommunity.com/app/48700/guides/?browsesort=trend&filetype=11&requiredtags%5B%5D=English
+            - generic [ref=e94]:
+              - generic [ref=e95]:
+                - generic [ref=e96]: Posted
+                - generic [ref=e97]: Updated
+              - generic [ref=e98]:
+                - generic [ref=e99]: Apr 19, 2017 @ 12:16pm
+                - generic [ref=e100]: Apr 19, 2017 @ 12:20pm
+          - table [ref=e102]:
+            - rowgroup [ref=e103]:
+              - row "3,131 Unique Visitors" [ref=e104]:
+                - cell "3,131" [ref=e105]
+                - cell "Unique Visitors" [ref=e106]
+              - row "10 Current Favorites" [ref=e107]:
+                - cell "10" [ref=e108]
+                - cell "Current Favorites" [ref=e109]
+          - generic [ref=e110]:
+            - generic [ref=e111]: Guide Index
+            - generic [ref=e115]: Overview
+            - generic [ref=e118] [cursor=pointer]: Making Undead Units/KHO units recruitable via being taken prisoner
+            - generic [ref=e121] [cursor=pointer]: Comments
+        - generic [ref=e122]:
+          - generic [ref=e124]:
+            - generic [ref=e125]: Making Undead Units/KHO units recruitable via being taken prisoner
+            - generic [ref=e126]:
+              - text: "--Intro--"
+              - text: So you want to make your game a lot easier to win, eh? You want to be able to get some of those Fallen Revenants or even Eyegrim to possibly join your side? Well look no further! This guide will cover how to make both undead and KHO (Knighthood Order Units) recruitable via being taken prisoner.
+              - text: "--Tools--"
+              - text: You will need only 1 main modding tool, the second being optional.
+              - text: (Required) - Morgh's M&B Editor -
+              - link "http://mountandblade.mircon.de/wp/morghs-mb-wbwfas-editor/morghs-mount-blade-wbwfas-editor-en/" [ref=e127] [cursor=pointer]:
+                - /url: https://steamcommunity.com/linkfilter/?u=http%3A%2F%2Fmountandblade.mircon.de%2Fwp%2Fmorghs-mb-wbwfas-editor%2Fmorghs-mount-blade-wbwfas-editor-en%2F
+              - text: (Optional) - TweakMB -
+              - link "https://forums.taleworlds.com/index.php?topic=101731.0" [ref=e128] [cursor=pointer]:
+                - /url: https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fforums.taleworlds.com%2Findex.php%3Ftopic%3D101731.0
+              - text: If you want recruiting prisoners to your party to have no negative effects, you will need TweakMB. Otherwise, you wont need it.
+              - text: "--Instructions--"
+              - text: Once you have finished downloading Morgh's editor you will need to do 2 main changes to every unit in the game.
+              - text: (1.) Open Morgh's editor to the main screen there will be a number of things to click.
+              - text: (2.) Click "Change Module Settings" at the bottom center of the page.
+              - text: (3.) Navigate through your files to your Prophesy of Pendor Folder, and select it
+              - link ".png]":
+                - /url: https://images.steamusercontent.com/ugc/88227027731825073/686833AF1AFE4D2BCA677622C30E40080FEF7D75/
+                - img ".png]" [ref=e129] [cursor=pointer]
+              - text: (4.) You will come to the page shown above. Select "Text compiled folders only" if it isnt already selected. Then, Click "browse" under "Text compiled files configuration"
+              - text: (5.) Navigate through your folders until you find your Prophesy of Pendor folder. If you already put it into your game previously, it will be under you Modules folder in Warband. Once you select the main folder, click ok.
+              - link ".png]":
+                - /url: https://images.steamusercontent.com/ugc/88227027731838739/911AACB3C719320CF7309FE5BECDB49F39E03DA7/
+                - img ".png]" [ref=e130] [cursor=pointer]
+              - text: (6.) Now that you have your PoP module selected, we can get into editing troops. Simply X out of the configuration window to get to the main screen. Once there, click "Troop Editor" and you will see a window like this one below.
+              - link ".png]":
+                - /url: https://images.steamusercontent.com/ugc/88227027731856499/C6E6C7B0A153ED279A0FD893BBCD7E7DE97602C2/
+                - img ".png]" [ref=e131] [cursor=pointer]
+              - text: (7.) I've highlighted the only things that will concern you. To make all units recruitable and be taken prisoner, simply go through each units one by one and look for troops that are over level 35+ or have the "Fall Dead" box checked.
+              - text: (8.) If a unit's level is 35+, drop it to a level below 35. If a unit has the fall dead box checked, un-check it.
+              - text: (9.) Once you've gone through ALL of the units in the game, click "Save Changes" at the very top right of the troop editor page. It will ask if you want a backup. This is totally optional, it just makes a copy of the original files you edited incase you screw up something big, which isnt really possible. I just hit NO all the time.
+              - text: (10.) Close out morgh's editor and you are DONE. Have fun recruiting demonic magni! :D
+              - text: "--Optional TweakMB Instructions--"
+              - text: (1.) Once you download TweakMB, open the main TweakMB.exe Application. You will see the window below.
+              - link ".png]":
+                - /url: https://images.steamusercontent.com/ugc/88227027731887302/3216DEBFD1CECCEBB2F320BDC340CB05FEA7F2BF/
+                - img ".png]" [ref=e132] [cursor=pointer]
+              - text: (2.) Click "Load Module (Warband)" as I've highlighted above, and select Prophesy of Pendor 3.611. Yes I know that's outdated, but it still works.
+              - text: (3.) Simply navigate to your PoP folder like you did with Morgh's and select it. TweakMB will open up this second windor of complete blubber that means nothing to you other than saying the module loading successfully. Once it loads successfully, click close. Now you are free to modify pendor using the categories to the left. You may change what you please, but we are concerned with the "Prisoners" section.
+              - text: (4.) Select "Recruiting Prisoners" under the Prisoners tab, and change the box for morale when recruiting prisoners and how often you can recruit them. (I.E. make it so you gain morale for recruiting prisoners.)
+              - text: (5.) Click Save changes on the top right of the window and you are DONE! Make sure the secondary blubber window finishes what it's doing. (TweakMB always makes backups so just click yes on the save window.)
+              - text: (6.) Close TweakMB and play PoP normally!
+          - generic [ref=e135]:
+            - generic [ref=e136]:
+              - generic [ref=e138]: 14 Comments
+              - generic [ref=e141]:
+                - link "<" [ref=e142]:
+                  - /url: javascript:void(0);
+                - generic [ref=e143]: 1 2
+                - link ">" [ref=e144] [cursor=pointer]:
+                  - /url: javascript:void(0);
+            - generic [ref=e146]:
+              - generic [ref=e148]:
+                - generic [ref=e149]:
+                  - generic [ref=e150]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e151] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198278713613
+                      - img [ref=e152]
+                  - generic [ref=e153]:
+                    - link "JustPeachy" [ref=e155] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198278713613
+                    - generic "July 15, 2019 @ 12:20:55 am EDT" [ref=e156]: Jul 15, 2019 @ 12:20am
+                - generic [ref=e158]: ok thanks ill add you
+              - generic [ref=e160]:
+                - generic [ref=e161]:
+                  - generic [ref=e162]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e163] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/The_Godkitty
+                      - img [ref=e164]
+                  - generic [ref=e165]:
+                    - generic [ref=e166]:
+                      - link "Godkitty" [ref=e167] [cursor=pointer]:
+                        - /url: https://steamcommunity.com/id/The_Godkitty
+                      - generic [ref=e168]: "[author]"
+                    - generic "July 14, 2019 @ 9:49:02 am EDT" [ref=e169]: Jul 14, 2019 @ 9:49am
+                - generic [ref=e171]: "@justpeachy12 add me on steam if you want help modding warband, Morgh's editor keeps changing so I cant find a solid link. That and this guide is pretty old lol."
+              - generic [ref=e173]:
+                - generic [ref=e174]:
+                  - generic [ref=e175]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e176] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198278713613
+                      - img [ref=e177]
+                  - generic [ref=e178]:
+                    - link "JustPeachy" [ref=e180] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198278713613
+                    - generic "July 14, 2019 @ 1:33:25 am EDT" [ref=e181]: Jul 14, 2019 @ 1:33am
+                - generic [ref=e183]: Wait how do you download Morgh's M&B editor?The link takes me to Micron.de and it just shows me a list of tax tips and stock trading websites.
+              - generic [ref=e185]:
+                - generic [ref=e186]:
+                  - generic [ref=e187]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e188] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/with_a_rebel_yell
+                      - img [ref=e189]
+                  - generic [ref=e190]:
+                    - link "Кажанна" [ref=e192] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/with_a_rebel_yell
+                    - generic "June 23, 2019 @ 10:00:28 am EDT" [ref=e193]: Jun 23, 2019 @ 10:00am
+                - generic [ref=e195]:
+                  - text: Гайды, советы, как пройти Prophesy Of Pendor? Все вы найдете в этом руководстве
+                  - link "https://steamcommunity.com/sharedfiles/filedetails/?id=1777812425" [ref=e196] [cursor=pointer]:
+                    - /url: https://steamcommunity.com/sharedfiles/filedetails/?id=1777812425
+              - generic [ref=e198]:
+                - generic [ref=e199]:
+                  - generic [ref=e200]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e201] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198011131828
+                      - img [ref=e202]
+                  - generic [ref=e203]:
+                    - link "Rupps" [ref=e205] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198011131828
+                    - generic "September 5, 2018 @ 9:01:25 pm EDT" [ref=e206]: Sep 5, 2018 @ 9:01pm
+                - generic [ref=e208]: In PoP you loose honor even when at war with them, thats why i was looking to change it. Thanks anyway.
+              - generic [ref=e210]:
+                - generic [ref=e211]:
+                  - generic [ref=e212]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e213] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/The_Godkitty
+                      - img [ref=e214]
+                  - generic [ref=e215]:
+                    - generic [ref=e216]:
+                      - link "Godkitty" [ref=e217] [cursor=pointer]:
+                        - /url: https://steamcommunity.com/id/The_Godkitty
+                      - generic [ref=e218]: "[author]"
+                    - generic "September 5, 2018 @ 9:00:07 pm EDT" [ref=e219]: Sep 5, 2018 @ 9:00pm
+                - generic [ref=e221]: Hard coded im pretty sure, only certain things can be easily modified when it comes to honor, sorry. Only during a war with a faction can you raid without losing honor.
+              - generic [ref=e223]:
+                - generic [ref=e224]:
+                  - generic [ref=e225]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e226] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198011131828
+                      - img [ref=e227]
+                  - generic [ref=e228]:
+                    - link "Rupps" [ref=e230] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198011131828
+                    - generic "September 5, 2018 @ 8:47:18 pm EDT" [ref=e231]: Sep 5, 2018 @ 8:47pm
+                - generic [ref=e233]: How so you remove the Honor penelty from raiding villages and attacking caravans in PoP?
+              - generic [ref=e235]:
+                - generic [ref=e236]:
+                  - generic [ref=e237]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e238] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/The_Godkitty
+                      - img [ref=e239]
+                  - generic [ref=e240]:
+                    - generic [ref=e241]:
+                      - link "Godkitty" [ref=e242] [cursor=pointer]:
+                        - /url: https://steamcommunity.com/id/The_Godkitty
+                      - generic [ref=e243]: "[author]"
+                    - generic "April 22, 2017 @ 11:48:01 pm EDT" [ref=e244]: Apr 22, 2017 @ 11:48pm
+                - generic [ref=e246]:
+                  - text: Yeah I looked into it, must have recently changed. Sorry, the only way to change it now is to edit the in-game code, which isn't too bad considering you find the right Taleworlds forum. May I ask why you want to be able to build improvements? They offer minimal benefit to be honest, and that's from the Pendor Wiki. See here>
+                  - link "http://pop3.wikia.com/wiki/Fief_Improvements" [ref=e247] [cursor=pointer]:
+                    - /url: https://steamcommunity.com/linkfilter/?u=http%3A%2F%2Fpop3.wikia.com%2Fwiki%2FFief_Improvements
+                  - text: And yes, the income is in exact money, so your monthy income would only increase by that much, which is really nothing in pendor, as you probably know. Unless you want to edit that too, but you could just easily change the fief income to a much larger amount instead of worrying about fief improvements. The only one I've ever used is the Sheriff since you can dump a ton of units onto the sheriff militia patrol to make your own private armies. (It's pretty legit)
+              - generic [ref=e249]:
+                - generic [ref=e250]:
+                  - generic [ref=e251]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e252] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/PunnyTheBunny
+                      - img [ref=e253]
+                  - generic [ref=e254]:
+                    - link "Nox" [ref=e256] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/PunnyTheBunny
+                    - generic "April 22, 2017 @ 2:20:43 am EDT" [ref=e257]: Apr 22, 2017 @ 2:20am
+                - generic [ref=e259]: Ok, so I tried TweakMB and Companion Complaints as well as fief building times were disabled.
+              - generic [ref=e261]:
+                - generic [ref=e262]:
+                  - generic [ref=e263]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e264] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/The_Godkitty
+                      - img [ref=e265]
+                  - generic [ref=e266]:
+                    - generic [ref=e267]:
+                      - link "Godkitty" [ref=e268] [cursor=pointer]:
+                        - /url: https://steamcommunity.com/id/The_Godkitty
+                      - generic [ref=e269]: "[author]"
+                    - generic "April 21, 2017 @ 8:05:35 pm EDT" [ref=e270]: Apr 21, 2017 @ 8:05pm
+                - generic [ref=e272]: TweakMB has disabled some options for 3.8, but not all.
+            - generic [ref=e274]:
+              - link "<" [ref=e275]:
+                - /url: javascript:void(0);
+              - generic [ref=e276]: 1 2
+              - link ">" [ref=e277] [cursor=pointer]:
+                - /url: javascript:void(0);
+  - contentinfo [ref=e282]:
+    - generic [ref=e283]:
+      - generic [ref=e284]:
+        - link [ref=e285] [cursor=pointer]:
+          - /url: https://store.steampowered.com/?snr=2_44_44_
+          - img [ref=e286]
+        - link [ref=e296] [cursor=pointer]:
+          - /url: https://valvesoftware.com
+          - img [ref=e297]
+      - paragraph [ref=e302]:
+        - text: © 2026 Valve Corporation. All rights reserved. All trademarks are property of their respective owners in the US and other countries.
+        - text: VAT included in all prices where applicable.
+      - generic [ref=e303]:
+        - link [ref=e304] [cursor=pointer]:
+          - /url: https://www.youtube.com/@Steam
+          - img [ref=e305]
+        - link [ref=e307] [cursor=pointer]:
+          - /url: https://bsky.app/profile/steampowered.com
+          - img [ref=e308]
+        - link [ref=e310] [cursor=pointer]:
+          - /url: https://facebook.com/steam
+          - img [ref=e311]
+        - link [ref=e313] [cursor=pointer]:
+          - /url: https://twitter.com/steam
+          - img [ref=e314]
+    - generic [ref=e316]:
+      - heading "STEAM" [level=3] [ref=e317]
+      - link "About Steam" [ref=e318] [cursor=pointer]:
+        - /url: https://store.steampowered.com/about/?snr=2_44_44_
+      - link "Steam SSA" [ref=e319] [cursor=pointer]:
+        - /url: https://store.steampowered.com/subscriber_agreement/?snr=2_44_44_
+      - link "Steamworks" [ref=e320] [cursor=pointer]:
+        - /url: https://partner.steamgames.com/
+      - link "Steam Distribution" [ref=e321] [cursor=pointer]:
+        - /url: https://partner.steamgames.com/steamdirect
+      - link "Gift Cards" [ref=e322] [cursor=pointer]:
+        - /url: https://store.steampowered.com/digitalgiftcards/?snr=2_44_44_
+    - generic [ref=e323]:
+      - heading "VALVE" [level=3] [ref=e324]
+      - link "About Valve" [ref=e325] [cursor=pointer]:
+        - /url: https://valvesoftware.com/about
+      - link "Jobs" [ref=e326] [cursor=pointer]:
+        - /url: https://valvesoftware.com/
+      - link "Hardware" [ref=e327] [cursor=pointer]:
+        - /url: https://store.steampowered.com/hardware/?snr=2_44_44_
+      - link "Recycling" [ref=e328] [cursor=pointer]:
+        - /url: https://store.steampowered.com/hardware_recycling/?snr=2_44_44_
+    - generic [ref=e329]:
+      - heading "LEGAL" [level=3] [ref=e330]
+      - link "Privacy" [ref=e331] [cursor=pointer]:
+        - /url: https://store.steampowered.com/privacy_agreement/?snr=2_44_44_
+      - link "Accessibility" [ref=e332] [cursor=pointer]:
+        - /url: https://help.steampowered.com/faqs/view/10BB-D27A-6378-4436
+      - link "Notices & Policies" [ref=e333] [cursor=pointer]:
+        - /url: https://store.steampowered.com/legal/?snr=2_44_44_
+      - link "Cookies" [ref=e334] [cursor=pointer]:
+        - /url: https://store.steampowered.com/account/cookiepreferences/?snr=2_44_44_
+      - link "Refunds" [ref=e335] [cursor=pointer]:
+        - /url: https://store.steampowered.com/steam_refunds/?snr=2_44_44_
+    - generic [ref=e336]:
+      - heading "MORE" [level=3] [ref=e337]
+      - link "Get Steam" [ref=e338] [cursor=pointer]:
+        - /url: https://store.steampowered.com/about/?snr=2_44_44_
+      - link "Get Mobile Apps" [ref=e339] [cursor=pointer]:
+        - /url: https://store.steampowered.com/mobile/?snr=2_44_44_
+      - link "Get Support" [ref=e340] [cursor=pointer]:
+        - /url: https://help.steampowered.com/
+      - link "My Account" [ref=e341] [cursor=pointer]:
+        - /url: https://store.steampowered.com/account/?snr=2_44_44_

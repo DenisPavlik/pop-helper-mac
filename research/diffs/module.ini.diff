@@ -1,0 +1,12 @@
+63,65c63,65
+< player_xp_multiplier   = 1.5
+< hero_xp_multiplier     = 1.5
+< regulars_xp_multiplier = 1
+---
+> player_xp_multiplier   = 4.0
+> hero_xp_multiplier     = 4.0
+> regulars_xp_multiplier = 3.0
+145c145
+< can_crouch = 0
+---
+> can_crouch = 1

@@ -1,0 +1,34 @@
+Making Undead Units/KHO units recruitable via being taken prisoner
+--Intro--
+So you want to make your game a lot easier to win, eh? You want to be able to get some of those Fallen Revenants or even Eyegrim to possibly join your side? Well look no further! This guide will cover how to make both undead and KHO (Knighthood Order Units) recruitable via being taken prisoner.
+
+--Tools--
+You will need only 1 main modding tool, the second being optional.
+
+(Required) - Morgh's M&B Editor - http://mountandblade.mircon.de/wp/morghs-mb-wbwfas-editor/morghs-mount-blade-wbwfas-editor-en/
+
+(Optional) - TweakMB - https://forums.taleworlds.com/index.php?topic=101731.0
+
+If you want recruiting prisoners to your party to have no negative effects, you will need TweakMB. Otherwise, you wont need it.
+
+--Instructions--
+Once you have finished downloading Morgh's editor you will need to do 2 main changes to every unit in the game.
+(1.) Open Morgh's editor to the main screen there will be a number of things to click.
+(2.) Click "Change Module Settings" at the bottom center of the page.
+(3.) Navigate through your files to your Prophesy of Pendor Folder, and select it 
+(4.) You will come to the page shown above. Select "Text compiled folders only" if it isnt already selected. Then, Click "browse" under "Text compiled files configuration"
+(5.) Navigate through your folders until you find your Prophesy of Pendor folder. If you already put it into your game previously, it will be under you Modules folder in Warband. Once you select the main folder, click ok.
+(6.) Now that you have your PoP module selected, we can get into editing troops. Simply X out of the configuration window to get to the main screen. Once there, click "Troop Editor" and you will see a window like this one below. 
+(7.) I've highlighted the only things that will concern you. To make all units recruitable and be taken prisoner, simply go through each units one by one and look for troops that are over level 35+ or have the "Fall Dead" box checked.
+(8.) If a unit's level is 35+, drop it to a level below 35. If a unit has the fall dead box checked, un-check it.
+(9.) Once you've gone through ALL of the units in the game, click "Save Changes" at the very top right of the troop editor page. It will ask if you want a backup. This is totally optional, it just makes a copy of the original files you edited incase you screw up something big, which isnt really possible. I just hit NO all the time.
+(10.) Close out morgh's editor and you are DONE. Have fun recruiting demonic magni! :D
+
+--Optional TweakMB Instructions--
+(1.) Once you download TweakMB, open the main TweakMB.exe Application. You will see the window below.
+
+(2.) Click "Load Module (Warband)" as I've highlighted above, and select Prophesy of Pendor 3.611. Yes I know that's outdated, but it still works.
+(3.) Simply navigate to your PoP folder like you did with Morgh's and select it. TweakMB will open up this second windor of complete blubber that means nothing to you other than saying the module loading successfully. Once it loads successfully, click close. Now you are free to modify pendor using the categories to the left. You may change what you please, but we are concerned with the "Prisoners" section.
+(4.) Select "Recruiting Prisoners" under the Prisoners tab, and change the box for morale when recruiting prisoners and how often you can recruit them. (I.E. make it so you gain morale for recruiting prisoners.)
+(5.) Click Save changes on the top right of the window and you are DONE! Make sure the secondary blubber window finishes what it's doing. (TweakMB always makes backups so just click yes on the save window.)
+(6.) Close TweakMB and play PoP normally!

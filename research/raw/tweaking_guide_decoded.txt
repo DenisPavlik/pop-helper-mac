@@ -1,0 +1,84 @@
+Introduction
+
+I won’t be teaching you the scripting language of Warband here, this is a guide to help with your understanding of compiled module because unfortunately, Pendor devs won’t provide us with source files of module system and known decompilers don’t decompile the module into compilable form so we have to make do with .txt files. You can still use decompiled pendor files for reference though.
+
+The tweaking is done through editing .txt files that are located at …/MountBlade Warband/Modules/*ModName*. Obviously you need a txt files editor, Notepad++ is really great and recommended.
+
+If you need help understanding the module system, try here: https://forums.taleworlds.com/index.php/board,171.0.html
+
+Module System and .txt files
+
+All .txt files you see in the main folder (module) of mods are compiled from the Module System's .py files, which contain the source code. The majority of .py files share the same name with that of .txt files, extended with a "module_" prefix. Except for these 4:
+
+item_kinds1.txt is compiled from module_items.py
+menus.txt is compiled from module_game_menus
+conversation.txt is compiled from module_dialogs
+dialog_states.txt is compiled from module_dialogs
+
+You can download all Module System (MS) header files from here (courtesy of Dalion): https://www.dropbox.com/s/v99swtb1s0ld70u/MS%20header%20files.rar?dl=0 These are not to be confused with the module files, as they do not contain any source code. But they enlist all the possible compiled codes you can see in the respective .txt files (in decimal format), with explanations on what they do and how to use them. As such, they all have a "header_" prefix.
+
+General numbers
+
+Once you open some .txt files, you will mostly see numbers inside. Every number has its meaning and here I will describe the types of numbers that are applicable to every .txt file that we will be working with. They are:
+
+Counters
+Operation codes - they are given constants, and each of these numbers mean a certain operation. You can look them up in header_operations.py: https://www.dropbox.com/s/hegpny2ek8eieog/header_operations.py?dl=0. The most important ones are:
+neg (negate) - 2147483648
+this_or_next - 1073741824
+le (less than or equal to) - 2147483680 (neg + gt = 2147483648 + 32)
+lt (less than) - 2147483678 (neg + ge = 2147483648 + 30)
+neq (not equal) - 2147483679 (neg + eq = 2147483648 + 31)
+Operands - there are many types of them:
+Global Variables – 144115188075855871 + № of variable from variables.txt (line number in Notepad++)
+Local Variables – 1224979098644774912, 1224979098644774913, etc, etc.
+Registers – 72057594037927936 (reg0), 72057594037927937 (reg1), etc, etc.
+Scripts – 936748722493063168 + № of a script from scripts.txt (script number = (line-3)/2 in Notepad++)
+Menus - 864691128455135232 + № of a menu from menus.txt (menu number = (line-3)/2 in Notepad++)
+Skills - 1369094286720630784 + № of a skill from skills.txt (line-2 in Notepad++)
+Items - 288230376151711744 + № of an item from item_kinds1.txt (entry number in Morgh's Editor)
+Troops – 360287970189639680 + № of a troop from troops.txt (entry number in Morgh's Editor)
+Factions – 432345564227567616 + № of a faction from factions.txt (entry number in Morgh's Editor)
+Parties – 648518346341351424 + № of a party from parties.txt (entry number in Morgh's Editor)
+Party templates - 576460752303423488 + № of a template from party_templates.txt (entry number in Morgh's Editor)
+Strings - 216172782113783808 + № of a string from strings.txt (line-3 in Notepad++)
+Quick strings - 1585267068834414592 + № of a string from quick_strings.txt (line-2 in Notepad++)
+Quests - 504403158265495552 + № of a quest from quests.txt (line-3 in Notepad++)
+Dialogue state ID numbers - № of a dialogue ID from dialog_states.txt (line-1 in Notepad++), used in conversation.txt (the numbers before 2 space characters)
+Conversation operands - № of an operand from conversation.txt (the first number after "dlga_..." strings). They either represent troops (mostly NPCs until ~1200) or actual conversation operands like 4095 (anyone else) and 69631 (the player), deciding which side is currently speaking. When updating a conversation tweak to a newer mod version, the offset of the last troop in troops.txt has to be applied to these operands as well, except for 4095 and 69631 (as those are static).
+Sounds - 1152921504606846976 + № of a sound from sounds.txt (line - counter_in_2nd_line_of_the_file - 4 in Notepad++)
+Scene props - 1080863910568919040 (cannot be specified with one formula!)
+Particles - 1008806316530991104 + № of a particle from particle_systems.txt (particle number = (line-3)/8 in Notepad++)
+Presentations - 1513209474796486655 + sequence № of given prsnt_... in presentations.txt, counting the 1st "prsnt_" as #1
+Music - 1657324662872342528 + № of a music from music.txt (line-2 in Notepad++)
+Animations (actions.txt) - 1801439850948198400 (cannot be specified with one formula!)
+Mission templates - 792633534417207295 + sequence № of given mst_... in mission_templates.txt, counting the 1st "mst_" as #1
+Scenes - 720575940379279360 + № of a scene from scenes.txt (scene number = (line-3)/4 in Notepad++)
+Meshes - 1441151880758558720 + № of a mesh from meshes.txt (line-2 in Notepad++)
+Tableau materials - 1729382256910270467 + № of a tableau material from tableau_materials.txt (line-2 in Notepad++)
+General structure of codes in .txt files
+
+The first number is always a counter for the amount of operations done inside a script, after it the operations themselves begin, which repeatedly consist of:
+
+An operation code
+A number that describes the amount of operands in that specific operation. Can be 0 as well, which means that no operands will follow and the next number will be an operation code again
+Operands
+
+Single whitespace characters are used to separate each number, and double whitespace characters are used to separate two different code blocks.
+
+Simple_triggers tweaks
+
+At the very top of simple_triggers file is a number that describes an amount of simple triggers in it. They consist of a period in hours which describes how often they are triggered. After it begins a script.
+
+Dialogue tweaks
+
+In dialog_states.txt listed all states of dialogs. To add a new one you need to do it at the bottom of it. In conversations.txt the lines consist of:
+
+Current dialogue state
+Next dialogue state
+Number that describes who is talking, most common ones are 69631 for MC and 4095 for anyone else.
+№ of current dialogue from dialog_states.txt
+Script that acts as availability check for dialogue option. 0 if it’s always available.
+Dialogue text
+№ of next dialogue from dialog_states.txt
+Script for consequences of choosing this option
+String that describes sound file playing during conversation, NO_VOICEOVER for nothing.

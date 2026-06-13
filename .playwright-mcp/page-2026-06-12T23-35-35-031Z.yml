@@ -1,0 +1,757 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - button [ref=e2]:
+            - img [ref=e4]
+          - generic [ref=e6]:
+            - img "research" [ref=e8]
+            - generic [ref=e9]:
+              - paragraph [ref=e10]: We'd love your input around how Fandom can help you connect with your kid(s)!
+              - link "Are you a parent?" [ref=e11] [cursor=pointer]:
+                - /url: https://sw2.decipherinc.com/survey/selfserve/419f/260600
+            - button "Close" [ref=e12] [cursor=pointer]
+  - navigation "Fandom top navigation" [ref=e13]:
+    - link "Sponsored Logo" [ref=e15] [cursor=pointer]:
+      - /url: https://pluto.tv/us/on-demand/series/69cd8fc0a5502149b7cba7fd?utm_source=fandom&utm_medium=undefined&utm_campaign=70000465
+      - img "Sponsored Logo" [ref=e16]
+    - generic [ref=e18]:
+      - textbox "Search" [ref=e19]
+      - img [ref=e20]
+    - generic [ref=e22]:
+      - link "Sign In" [ref=e24] [cursor=pointer]:
+        - /url: https://auth.fandom.com/signin?source=mw&redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaks&metadata=header-signin-button
+      - link "Create a Free Account" [ref=e26] [cursor=pointer]:
+        - /url: https://auth.fandom.com/register?source=mw&redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaks&metadata=header-registration-button
+  - generic "Community navigation" [ref=e27]:
+    - link "Fandom homepage" [ref=e29] [cursor=pointer]:
+      - /url: https://www.fandom.com/
+      - img [ref=e30]
+    - navigation [ref=e32]:
+      - list [ref=e33]:
+        - listitem [ref=e34]:
+          - generic [ref=e35]:
+            - generic [ref=e36] [cursor=pointer]:
+              - img [ref=e37]
+              - generic [ref=e39]: Explore
+            - img "Expand" [ref=e40]
+        - listitem [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e45] [cursor=pointer]: Big Pages
+            - img "Expand" [ref=e46]
+        - listitem [ref=e48]:
+          - generic [ref=e49]:
+            - generic [ref=e51] [cursor=pointer]: Major Kingdoms
+            - img "Expand" [ref=e52]
+        - listitem [ref=e54]:
+          - generic [ref=e55]:
+            - generic [ref=e57] [cursor=pointer]: Minor factions
+            - img "Expand" [ref=e58]
+        - listitem [ref=e60]:
+          - generic [ref=e61]:
+            - generic [ref=e63] [cursor=pointer]: 3.9 featured
+            - img "Expand" [ref=e64]
+    - button "Open searchbar" [ref=e67] [cursor=pointer]:
+      - img [ref=e68]
+    - link "Switch to Light Theme" [ref=e71] [cursor=pointer]:
+      - /url: "#"
+      - img
+    - link "Sign In" [ref=e74] [cursor=pointer]:
+      - /url: https://auth.fandom.com/signin?source=mw&redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaks&metadata=header-signin-button
+      - generic [ref=e75]:
+        - img
+        - text: Sign In
+  - generic [ref=e76]:
+    - navigation "Fandom navigation" [ref=e78]:
+      - generic [ref=e79]:
+        - link "Home" [ref=e82] [cursor=pointer]:
+          - /url: https://www.fandom.com/
+          - generic [ref=e83]:
+            - img [ref=e85]
+            - generic [ref=e87]: Home
+        - generic [ref=e89]:
+          - link "Sponsored Logo" [ref=e92] [cursor=pointer]:
+            - /url: https://pluto.tv/us/on-demand/series/69cd8fc0a5502149b7cba7fd?utm_source=fandom&utm_medium=undefined&utm_campaign=70000465
+            - img "Sponsored Logo" [ref=e93]
+          - generic [ref=e94]: PlutoTV
+        - button "Explore" [ref=e96] [cursor=pointer]:
+          - generic [ref=e97]:
+            - img [ref=e99]
+            - generic [ref=e102]: Explore
+        - link "Saved" [ref=e105] [cursor=pointer]:
+          - /url: https://www.fandom.com/saved
+          - generic [ref=e106]:
+            - img [ref=e108]
+            - generic [ref=e110]: Saved
+        - link "Progress" [ref=e113] [cursor=pointer]:
+          - /url: https://www.fandom.com/progress
+          - generic [ref=e114]:
+            - img [ref=e116]
+            - generic [ref=e118]: Progress
+        - button "History" [ref=e120] [cursor=pointer]:
+          - generic [ref=e121]:
+            - img [ref=e123]
+            - generic [ref=e125]: History
+    - navigation "Fandom navigation" [ref=e127]:
+      - button "More" [ref=e129] [cursor=pointer]:
+        - generic [ref=e130]:
+          - img [ref=e132]
+          - generic [ref=e134]: More
+  - generic [ref=e137]:
+    - link "Skip to content" [ref=e138] [cursor=pointer]:
+      - /url: "#page-header"
+    - banner [ref=e140]:
+      - generic [ref=e141]:
+        - link "Prophesy of Pendor Wiki" [ref=e143] [cursor=pointer]:
+          - /url: https://pop3.fandom.com/wiki/Prophesy_of_Pendor_3_Wiki
+        - generic [ref=e144]:
+          - generic [ref=e145]: 1,631
+          - generic [ref=e146]: pages
+        - link "Switch to Light Theme" [ref=e148] [cursor=pointer]:
+          - /url: "#"
+          - img
+      - navigation [ref=e149]:
+        - list [ref=e150]:
+          - listitem [ref=e151]:
+            - generic [ref=e152]:
+              - generic [ref=e153] [cursor=pointer]:
+                - img [ref=e154]
+                - generic [ref=e156]: Explore
+              - img "Expand" [ref=e157]
+          - listitem [ref=e159]:
+            - generic [ref=e160]:
+              - generic [ref=e162] [cursor=pointer]: Big Pages
+              - img "Expand" [ref=e163]
+          - listitem [ref=e165]:
+            - generic [ref=e166]:
+              - generic [ref=e168] [cursor=pointer]: Major Kingdoms
+              - img "Expand" [ref=e169]
+          - listitem [ref=e171]:
+            - generic [ref=e172]:
+              - generic [ref=e174] [cursor=pointer]: Minor factions
+              - img "Expand" [ref=e175]
+          - listitem [ref=e177]:
+            - generic [ref=e178]:
+              - generic [ref=e180] [cursor=pointer]: 3.9 featured
+              - img "Expand" [ref=e181]
+    - generic [ref=e183]:
+      - main [ref=e184]:
+        - generic [ref=e186]:
+          - link "Edit" [ref=e187] [cursor=pointer]:
+            - /url: https://auth.fandom.com/signin?redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaks%3Fveaction%3Dedit&uselang=en&metadata=article-registration-edit-article
+            - img [ref=e188]
+          - link "Sign In to Save" [ref=e190] [cursor=pointer]:
+            - /url: https://auth.fandom.com/signin?redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaks%3Fcollections%3Dsave&uselang=en&metadata=collections-save-button
+            - img [ref=e191]
+        - generic [ref=e194]:
+          - heading "Tweaks" [level=1] [ref=e196]
+          - generic [ref=e197]:
+            - link "Comments" [ref=e198] [cursor=pointer]:
+              - /url: "#articleComments"
+              - generic [ref=e199]: "658"
+              - img
+            - link "Sign In to Save" [ref=e200] [cursor=pointer]:
+              - /url: https://auth.fandom.com/signin?redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaks%3Fcollections%3Dsave&uselang=en&metadata=collections-save-button
+              - img
+              - generic [ref=e201]: Save
+            - link "Edit" [ref=e202] [cursor=pointer]:
+              - /url: https://auth.fandom.com/signin?redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaks%3Fveaction%3Dedit&uselang=en&metadata=article-registration-edit-article
+              - img
+              - text: Edit
+            - button "Page Tools" [ref=e204]:
+              - img
+        - generic [ref=e207]:
+          - paragraph [ref=e208]:
+            - text: General info about tweaking can be found on the
+            - link "Tweaking guide" [ref=e209] [cursor=pointer]:
+              - /url: /wiki/Tweaking_guide
+            - text: "page, and on this page's first post (use a translator):"
+            - link "http://rusmnb.ru/index.php?PHPSESSID=op134t10tqjoh15rtu1tdao4g5&topic=20941.0" [ref=e210] [cursor=pointer]:
+              - /url: //rusmnb.ru/index.php?PHPSESSID=op134t10tqjoh15rtu1tdao4g5&topic=20941.0
+          - heading "Submods/addons for Prophesy of Pendor" [level=2] [ref=e211]:
+            - generic [ref=e212]: Submods/addons for Prophesy of Pendor
+          - button "[Expand]" [ref=e213] [cursor=pointer]
+          - paragraph
+          - heading "Tweak Compilations" [level=2] [ref=e214]:
+            - generic [ref=e215]: Tweak Compilations
+          - button "[Expand]" [ref=e216] [cursor=pointer]
+          - paragraph
+          - heading "Tweak Requests (please help if you can)" [level=2] [ref=e217]:
+            - generic [ref=e219]: Tweak Requests (please help if you can)
+          - button "[Expand]" [ref=e220] [cursor=pointer]
+          - paragraph
+          - heading "Editing Tools" [level=2] [ref=e221]:
+            - generic [ref=e222]: Editing Tools
+          - button "[Expand]" [ref=e223] [cursor=pointer]
+          - paragraph
+          - heading "Important Notes" [level=2] [ref=e224]:
+            - generic [ref=e226]: Important Notes
+          - list [ref=e227]:
+            - listitem [ref=e228]:
+              - generic [ref=e229]: All of the following tweaks were made for or updated to v3.9.5.1 (same version as the v3.9.5.6.zip downloaded from ModDB). Some might be compatible with previous versions too, but the majority are not, so proceed with caution! Those that work with other mods as is, or can be adjusted so relatively easily will be marked with green and blue respectively
+            - listitem [ref=e230]: It is mandatory to use Notepad++ for editing .txt and .csv files, as some tweaks will not apply properly with regular Notepad or MS Office and such! Also, Notepad++ has many QoL features that make it much easier to apply tweaks, such as the number of the line being displayed on the left for instance.
+            - listitem [ref=e231]: Make sure that you create regular backups of your tweaked files in case you screw something up, so that you won't have to revert all of your tweaks by copying back the original files. Furthermore, it may be possible that your tweaked savegame file won't be compatible with the original version of the mod anymore, which is another good reason for creating regular backups.
+            - listitem [ref=e232]: Beware that in case of certain tweaks, the piece of code to be searched for (to replace, delete, etc.) might be too long to fit into the search bar, resulting in the remaining part getting cut out. So proceed with caution and always make sure that everything is selected that needs to be!
+            - listitem [ref=e233]: The parts copy-pasted from this page might add an unwanted new line ('enter') if you have the extra gap/space selected in the end, splitting the given game code in two upon insertion. This creates unfunctional tweaks and severe bugs. To avoid this, when you select the whole piece to be copied, make sure you do so by having the highlight stop at the last number. Or, remove the extra 'enter' character after the insertion.
+          - separator [ref=e234]
+          - paragraph [ref=e235]:
+            - generic [ref=e236]: "Current number of tweaks: 292 (check TweakMB for more!)"
+          - paragraph [ref=e237]
+          - heading "1. Spawns and Parties (23)" [level=2] [ref=e238]: 1. Spawns and Parties (23)
+          - button "[Expand]" [ref=e239] [cursor=pointer]
+          - paragraph
+          - heading "2. Knighthood Orders (21)" [level=2] [ref=e240]: 2. Knighthood Orders (21)
+          - button "[Expand]" [ref=e241] [cursor=pointer]
+          - paragraph
+          - heading "3. Custom Knighthood Order (10)" [level=2] [ref=e242]: 3. Custom Knighthood Order (10)
+          - button "[Expand]" [ref=e243] [cursor=pointer]
+          - paragraph
+          - heading "4. Honor and Renown (6)" [level=2] [ref=e244]: 4. Honor and Renown (6)
+          - button "[Expand]" [ref=e245] [cursor=pointer]
+          - paragraph
+          - heading "5. Relations (11)" [level=2] [ref=e246]: 5. Relations (11)
+          - button "[Expand]" [ref=e247] [cursor=pointer]
+          - paragraph
+          - heading "6. Morale (2)" [level=2] [ref=e248]: 6. Morale (2)
+          - button "[Expand]" [ref=e249] [cursor=pointer]
+          - paragraph
+          - heading "7. Tournaments and Arenas (10)" [level=2] [ref=e250]: 7. Tournaments and Arenas (10)
+          - button "[Expand]" [ref=e251] [cursor=pointer]
+          - paragraph
+          - heading "8. Field and Village Battles (12)" [level=2] [ref=e252]: 8. Field and Village Battles (12)
+          - button "[Expand]" [ref=e253] [cursor=pointer]
+          - paragraph
+          - heading "9. Sieges (9)" [level=2] [ref=e254]: 9. Sieges (9)
+          - button "[Expand]" [ref=e255] [cursor=pointer]
+          - paragraph
+          - heading "10. Battles and Fights in General (26)" [level=2] [ref=e256]: 10. Battles and Fights in General (26)
+          - button "[Expand]" [ref=e257] [cursor=pointer]
+          - paragraph
+          - heading "11. Loot (3)" [level=2] [ref=e258]: 11. Loot (3)
+          - button "[Expand]" [ref=e259] [cursor=pointer]
+          - paragraph
+          - heading "12. Economy and Prosperity (17)" [level=2] [ref=e260]: 12. Economy and Prosperity (17)
+          - button "[Expand]" [ref=e261] [cursor=pointer]
+          - paragraph
+          - heading "13. Kingdom and Fief Management (25)" [level=2] [ref=e262]: 13. Kingdom and Fief Management (25)
+          - button "[Expand]" [ref=e263] [cursor=pointer]
+          - paragraph
+          - heading "14. Quests (7)" [level=2] [ref=e264]: 14. Quests (7)
+          - button "[Expand]" [ref=e265] [cursor=pointer]
+          - paragraph
+          - heading "15. Vassals, Lords and Ladies (21)" [level=2] [ref=e266]: 15. Vassals, Lords and Ladies (21)
+          - button "[Expand]" [ref=e267] [cursor=pointer]
+          - paragraph
+          - heading "16. Companions (17)" [level=2] [ref=e268]: 16. Companions (17)
+          - generic:
+            - button "[Expand]" [ref=e269] [cursor=pointer]
+            - text: "[]"
+          - paragraph
+          - heading "17. Troops and NPCs (26)" [level=2] [ref=e270]: 17. Troops and NPCs (26)
+          - button "[Expand]" [ref=e271] [cursor=pointer]
+          - paragraph
+          - heading "18. Items (21)" [level=2] [ref=e272]: 18. Items (21)
+          - generic:
+            - button "[Expand]" [ref=e273] [cursor=pointer]
+            - text: "[]"
+          - paragraph
+          - heading "19. Skills (5)" [level=2] [ref=e274]: 19. Skills (5)
+          - button "[Expand]" [ref=e275] [cursor=pointer]
+          - paragraph
+          - heading "20. Cheats (7)" [level=2] [ref=e276]: 20. Cheats (7)
+          - button "[Expand]" [ref=e277] [cursor=pointer]
+          - paragraph
+          - heading "21. Miscellaneous (13)" [level=2] [ref=e278]: 21. Miscellaneous (13)
+          - button "[Expand]" [ref=e279] [cursor=pointer]
+          - paragraph
+        - generic [ref=e280]:
+          - generic [ref=e281]:
+            - text: Community content is available under
+            - link "CC-BY-SA" [ref=e282] [cursor=pointer]:
+              - /url: https://www.fandom.com/licensing
+            - text: unless otherwise noted.
+          - generic [ref=e283]:
+            - generic [ref=e284]:
+              - generic [ref=e285]: More Fandoms
+              - list [ref=e287]:
+                - listitem [ref=e288]:
+                  - link "Fantasy" [ref=e289] [cursor=pointer]:
+                    - /url: https://www.fandom.com/fancentral/fantasy
+                - listitem [ref=e290]:
+                  - link "Sci-fi" [ref=e291] [cursor=pointer]:
+                    - /url: https://www.fandom.com/fancentral/sci-fi
+            - generic:
+              - generic:
+                - button "Open comments panel" [ref=e292] [cursor=pointer]:
+                  - img [ref=e293]
+                  - generic [ref=e295]: "658"
+                - dialog [ref=e296]:
+                  - generic [ref=e297]:
+                    - generic [ref=e298]: Comments (658)
+                    - button "Close comments panel" [ref=e299] [cursor=pointer]: ✕
+                  - link "JOIN THE CONVERSATION" [ref=e301] [cursor=pointer]:
+                    - /url: /login?metadata=social-drawer-auth-success&redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaks%3Farticle-comments-panel%3Dopen
+                  - generic [ref=e304]:
+                    - generic [ref=e307]:
+                      - button "More" [ref=e308]:
+                        - generic "More" [ref=e309]:
+                          - img [ref=e310]
+                      - generic [ref=e313]:
+                        - link [ref=e315] [cursor=pointer]:
+                          - /url: /wiki/User:YangXiaoLoong
+                          - img [ref=e316]
+                        - link "YangXiaoLoong" [ref=e318] [cursor=pointer]:
+                          - /url: /wiki/User:YangXiaoLoong
+                        - generic [ref=e319]: ·
+                        - time [ref=e321]: 16/05/2026
+                      - paragraph [ref=e324]: A question regarding The Complete Arsenal of Al-Aziz mixed with the Order Stronghold upgrades. I've tested that the weapons and armors can get upgraded, but Quartermaster Kailin refuses to upgrade the rune horses. Is there something I'm missing or would it be too complicated to get it to work? I made sure they had all the required modifiers on Morgh's Editor... if anyone has ideas I thank you in advance.
+                      - generic [ref=e325]:
+                        - button "1" [ref=e326] [cursor=pointer]:
+                          - img [ref=e327]
+                          - generic [ref=e329]: "1"
+                        - button "Reply" [ref=e330] [cursor=pointer]:
+                          - img [ref=e331]
+                          - generic [ref=e333]: Reply
+                    - generic [ref=e336]:
+                      - button "More" [ref=e337]:
+                        - generic "More" [ref=e338]:
+                          - img [ref=e339]
+                      - generic [ref=e342]:
+                        - link [ref=e344] [cursor=pointer]:
+                          - /url: /wiki/User:JimBobTheBob
+                          - img [ref=e345]
+                        - link "JimBobTheBob" [ref=e347] [cursor=pointer]:
+                          - /url: /wiki/User:JimBobTheBob
+                        - generic [ref=e348]: ·
+                        - time [ref=e350]: 04/05/2026
+                      - paragraph [ref=e353]: Does anybody know a tweak where it allows you to send more than 3 stronghold patrols?
+                      - generic [ref=e354]:
+                        - button "1" [ref=e355] [cursor=pointer]:
+                          - img [ref=e356]
+                          - generic [ref=e358]: "1"
+                        - button "Reply" [ref=e359] [cursor=pointer]:
+                          - img [ref=e360]
+                          - generic [ref=e362]: Reply
+                    - generic [ref=e365]:
+                      - button "More" [ref=e366]:
+                        - generic "More" [ref=e367]:
+                          - img [ref=e368]
+                      - generic [ref=e371]:
+                        - link [ref=e373] [cursor=pointer]:
+                          - /url: /wiki/User:Jankaas
+                          - img [ref=e374]
+                        - link "Jankaas" [ref=e376] [cursor=pointer]:
+                          - /url: /wiki/User:Jankaas
+                        - generic [ref=e377]: ·
+                        - time [ref=e379]: 26/12/2025
+                      - generic [ref=e380]:
+                        - generic [ref=e381]:
+                          - paragraph [ref=e382]: Does anybody know why all Faction units are assigned to the "Neutral" Faction instead to "Sarleon", "Ravenstern" etc etc - what happens if I change it?
+                          - paragraph [ref=e383]: I did notice many non-Faction units seems to have inconsistencies to what faction they are assigned.
+                          - paragraph [ref=e385]
+                        - generic [ref=e386]: (Edited by Jankaas)
+                      - generic [ref=e387]:
+                        - button "1" [ref=e388] [cursor=pointer]:
+                          - img [ref=e389]
+                          - generic [ref=e391]: "1"
+                        - button "Reply" [ref=e392] [cursor=pointer]:
+                          - img [ref=e393]
+                          - generic [ref=e395]: Reply
+                    - generic [ref=e398]:
+                      - button "More" [ref=e399]:
+                        - generic "More" [ref=e400]:
+                          - img [ref=e401]
+                      - generic [ref=e404]:
+                        - link "User avatar" [ref=e406] [cursor=pointer]:
+                          - /url: /wiki/User:AxielDole
+                          - img "User avatar" [ref=e407]
+                        - link "AxielDole" [ref=e408] [cursor=pointer]:
+                          - /url: /wiki/User:AxielDole
+                        - generic [ref=e409]: ·
+                        - time [ref=e411]: 08/09/2025
+                      - paragraph [ref=e414]: Is it possible to make wandering refugees recruitable when you talk to them?
+                      - button "Reply" [ref=e416] [cursor=pointer]:
+                        - img [ref=e417]
+                        - generic [ref=e419]: Reply
+                    - generic [ref=e422]:
+                      - button "More" [ref=e423]:
+                        - generic "More" [ref=e424]:
+                          - img [ref=e425]
+                      - generic [ref=e428]:
+                        - link "User avatar" [ref=e430] [cursor=pointer]:
+                          - /url: /wiki/User:Lightmoon52
+                          - img "User avatar" [ref=e431]
+                        - link "Lightmoon52" [ref=e432] [cursor=pointer]:
+                          - /url: /wiki/User:Lightmoon52
+                        - generic [ref=e433]: ·
+                        - time [ref=e435]: 20/07/2025
+                      - paragraph [ref=e438]: Is there a way to turn companion into a noble?
+                      - button "Reply" [ref=e440] [cursor=pointer]:
+                        - img [ref=e441]
+                        - generic [ref=e443]: Reply
+                    - generic [ref=e446]:
+                      - button "More" [ref=e447]:
+                        - generic "More" [ref=e448]:
+                          - img [ref=e449]
+                      - generic [ref=e452]:
+                        - link "User avatar" [ref=e454] [cursor=pointer]:
+                          - /url: /wiki/User:T%26TSTEROIDS
+                          - img "User avatar" [ref=e455]
+                        - link "T&TSTEROIDS" [ref=e456] [cursor=pointer]:
+                          - /url: /wiki/User:T%26TSTEROIDS
+                        - generic [ref=e457]: ·
+                        - time [ref=e459]: 03/07/2025
+                      - paragraph [ref=e462]: I don't know if I'm just not getting it but I follow all of the steps for Tweak 3H and cant get it to work. Do I need to flag items as merchandise in morghs editor and also do the tweak or should just the tweak work and it's my fault?
+                      - button "Reply" [ref=e464] [cursor=pointer]:
+                        - img [ref=e465]
+                        - generic [ref=e467]: Reply
+                    - generic [ref=e470]:
+                      - button "More" [ref=e471]:
+                        - generic "More" [ref=e472]:
+                          - img [ref=e473]
+                      - generic [ref=e476]:
+                        - link [ref=e478] [cursor=pointer]:
+                          - /url: /wiki/User:Asmoore3
+                          - img [ref=e479]
+                        - link "Asmoore3" [ref=e481] [cursor=pointer]:
+                          - /url: /wiki/User:Asmoore3
+                        - generic [ref=e482]: ·
+                        - time [ref=e484]: 12/06/2025
+                      - paragraph [ref=e487]: Does anyone know of a way to sort player and npc parties? so that higher level troops like order knights are at the top? i don't see a tweak here for it but is there another way? I keep getting into battles with my allied lords and they will have all their weak troops in the first waves :( .
+                      - button "Reply" [ref=e489] [cursor=pointer]:
+                        - img [ref=e490]
+                        - generic [ref=e492]: Reply
+                    - generic [ref=e495]:
+                      - button "More" [ref=e496]:
+                        - generic "More" [ref=e497]:
+                          - img [ref=e498]
+                      - generic [ref=e501]:
+                        - link "User avatar" [ref=e503] [cursor=pointer]:
+                          - /url: /wiki/User:Ballent
+                          - img "User avatar" [ref=e504]
+                        - link "Ballent" [ref=e505] [cursor=pointer]:
+                          - /url: /wiki/User:Ballent
+                        - generic [ref=e506]: ·
+                        - time [ref=e508]: 05/03/2025
+                      - paragraph [ref=e511]: Is there a tweak that Vassals used to recruit Captive Warriors only from their own faction? I am talking about soldiers who were captured and then released. For example, the ruler of the kingdom of Sarleon defeated the bandits who were holding captive the troops of the empire of Bacchus and the kingdom of Sarleon, and I want the lord of Sarleon to take only the warriors of Sarleon into his detachment and not touch the warriors of the Bacchus empire.
+                      - button "Reply" [ref=e513] [cursor=pointer]:
+                        - img [ref=e514]
+                        - generic [ref=e516]: Reply
+                    - generic [ref=e519]:
+                      - button "More" [ref=e520]:
+                        - generic "More" [ref=e521]:
+                          - img [ref=e522]
+                      - generic [ref=e525]:
+                        - link "User avatar" [ref=e527] [cursor=pointer]:
+                          - /url: /wiki/User:Ballent
+                          - img "User avatar" [ref=e528]
+                        - link "Ballent" [ref=e529] [cursor=pointer]:
+                          - /url: /wiki/User:Ballent
+                        - generic [ref=e530]: ·
+                        - time [ref=e532]: 04/03/2025
+                      - paragraph [ref=e535]:
+                        - strong [ref=e536]: Hey guys, I need some help.
+                        - text: I installed the tweak
+                        - emphasis [ref=e537]: "\"21 i) To change your skin and fix some conversations addressing your gender wrongly\""
+                        - text: ", but when I choose a skin, like Noldor, it uses female voices instead of male ones (F1, F2, F3..). How do I fix this? I followed all the instructions."
+                      - button "Reply" [ref=e539] [cursor=pointer]:
+                        - img [ref=e540]
+                        - generic [ref=e542]: Reply
+                    - generic [ref=e545]:
+                      - button "More" [ref=e546]:
+                        - generic "More" [ref=e547]:
+                          - img [ref=e548]
+                      - generic [ref=e551]:
+                        - link [ref=e553] [cursor=pointer]:
+                          - /url: /wiki/User:RealHornblower
+                          - img [ref=e554]
+                        - link "RealHornblower" [ref=e556] [cursor=pointer]:
+                          - /url: /wiki/User:RealHornblower
+                        - generic [ref=e557]: ·
+                        - time [ref=e559]: 17/01/2025
+                      - generic [ref=e561]:
+                        - paragraph [ref=e562]: "Know this is a long shot but I can see that there are requests similar to what I'm trying to do:"
+                        - listitem [ref=e563]:
+                          - paragraph [ref=e564]: Increase the starting strength of the 4 minor factions to be destroyed (Snake Cult, Heretics, Jatu, Mystmountains) or decrease the strength reduction factors for defeating their spawns
+                        - listitem [ref=e565]:
+                          - paragraph [ref=e566]: Increase the faction strength recovery rate of Snake Cult, Heretics, Jatu and Mystmountain Tribes
+                        - paragraph [ref=e567]
+                        - paragraph [ref=e568]: With the penalty for losing a spawn being higher than the gain for getting a spawn, the factions eventually get down to low strength in long games. If there was a way to decrease the strength penalty of say, an NPC destroying a minor faction spawn, the minor factions could be stronger for longer.
+                      - generic [ref=e569]:
+                        - button "1" [ref=e570] [cursor=pointer]:
+                          - img [ref=e571]
+                          - generic [ref=e573]: "1"
+                        - button "Reply" [ref=e574] [cursor=pointer]:
+                          - img [ref=e575]
+                          - generic [ref=e577]: Reply
+                    - generic [ref=e580]:
+                      - button "More" [ref=e581]:
+                        - generic "More" [ref=e582]:
+                          - img [ref=e583]
+                      - generic [ref=e586]:
+                        - link [ref=e588] [cursor=pointer]:
+                          - /url: /wiki/User:RealHornblower
+                          - img [ref=e589]
+                        - link "RealHornblower" [ref=e591] [cursor=pointer]:
+                          - /url: /wiki/User:RealHornblower
+                        - generic [ref=e592]: ·
+                        - time [ref=e594]: 17/01/2025
+                      - generic [ref=e596]:
+                        - paragraph [ref=e597]: Does anyone have any idea how to tweak the spawning chances for the Big 4 Minor Factions (Jatu, Mystmountains, Heretics, Snake Cult)? The Spawning mechanics description on the spawns page says the faction STR is checked against a random number 0-100. It seems like logically you could change that 0-100 range to something like 0-50 and double the spawning chances? Or alternatively increase the maximum number of spawns?
+                        - paragraph [ref=e598]
+                        - paragraph [ref=e599]: I've got a game where spamming rumors with rumor interval 4 for probably 2 years in-game has not brought the Snake Cult and Heretics back from "Obliterated". Really, it's like a 1,500 day game and for most of that time they have been Obliterated. Mystmountains and Jatu have almost all their spawns out but are barely at "Fading", if I fight them at all they'll crash down to Obliterated as well.
+                      - button "Reply" [ref=e601] [cursor=pointer]:
+                        - img [ref=e602]
+                        - generic [ref=e604]: Reply
+                    - generic [ref=e607]:
+                      - button "More" [ref=e608]:
+                        - generic "More" [ref=e609]:
+                          - img [ref=e610]
+                      - generic [ref=e613]:
+                        - link [ref=e615] [cursor=pointer]:
+                          - /url: /wiki/User:Acurapassion
+                          - img [ref=e616]
+                        - link "Acurapassion" [ref=e618] [cursor=pointer]:
+                          - /url: /wiki/User:Acurapassion
+                        - generic [ref=e619]: ·
+                        - time [ref=e621]: 19/04/2024
+                      - paragraph [ref=e624]: I'm trying to add the to add the two noldor ladies to elcrai. But what I have under dlga_minister_talk:combined_political_quests does not match what they say to replace
+                      - generic [ref=e625]:
+                        - button "1" [ref=e626] [cursor=pointer]:
+                          - img [ref=e627]
+                          - generic [ref=e629]: "1"
+                        - button "Reply" [ref=e630] [cursor=pointer]:
+                          - img [ref=e631]
+                          - generic [ref=e633]: Reply
+                    - generic [ref=e636]:
+                      - button "More" [ref=e637]:
+                        - generic "More" [ref=e638]:
+                          - img [ref=e639]
+                      - generic [ref=e642]:
+                        - link [ref=e644] [cursor=pointer]:
+                          - /url: /wiki/User:Rusichl88
+                          - img [ref=e645]
+                        - link "Rusichl88" [ref=e647] [cursor=pointer]:
+                          - /url: /wiki/User:Rusichl88
+                        - generic [ref=e648]: ·
+                        - time [ref=e650]: 06/04/2024
+                      - generic [ref=e652]:
+                        - paragraph [ref=e653]: Friends, I need help. I made a tweak with which I can spawn specific warriors through the dialogue menu of companions. The code is in the screenshot.
+                        - paragraph [ref=e654]: After I click on the button, “give me 10 warriors,” the dialogue window with the companion closes.
+                        - paragraph [ref=e655]: "Question: How can I prevent the dialogue with my companion from being closed?"
+                        - paragraph [ref=e657]
+                        - paragraph [ref=e658]
+                      - generic [ref=e659]:
+                        - button "1" [ref=e660] [cursor=pointer]:
+                          - img [ref=e661]
+                          - generic [ref=e663]: "1"
+                        - button "Reply" [ref=e664] [cursor=pointer]:
+                          - img [ref=e665]
+                          - generic [ref=e667]: Reply
+                    - generic [ref=e670]:
+                      - button "More" [ref=e671]:
+                        - generic "More" [ref=e672]:
+                          - img [ref=e673]
+                      - generic [ref=e676]:
+                        - link [ref=e678] [cursor=pointer]:
+                          - /url: /wiki/User:BillinJax
+                          - img [ref=e679]
+                        - link "BillinJax" [ref=e681] [cursor=pointer]:
+                          - /url: /wiki/User:BillinJax
+                        - generic [ref=e682]: ·
+                        - time [ref=e684]: 15/02/2024
+                      - paragraph [ref=e687]: In Tweak 13b, allowing prominent citizens to be full fledged minister, is there any way to swap out your companion to a prominent citizen? I didn't know this tweak was here and always end up using a companion before, When I choose for them to return I'm only given the option of selecting another companion to replace. I'm already well into my current campaign and would like to bring back my companion now that I know I can tweak the prominent citizen to be able to do all actions.
+                      - generic [ref=e688]:
+                        - button "1" [ref=e689] [cursor=pointer]:
+                          - img [ref=e690]
+                          - generic [ref=e692]: "1"
+                        - button "Reply" [ref=e693] [cursor=pointer]:
+                          - img [ref=e694]
+                          - generic [ref=e696]: Reply
+                    - generic [ref=e699]:
+                      - button "More" [ref=e700]:
+                        - generic "More" [ref=e701]:
+                          - img [ref=e702]
+                      - generic [ref=e705]:
+                        - link [ref=e707] [cursor=pointer]:
+                          - /url: /wiki/User:Zhecka%20U
+                          - img [ref=e708]
+                        - link "Zhecka U" [ref=e710] [cursor=pointer]:
+                          - /url: /wiki/User:Zhecka%20U
+                        - generic [ref=e711]: ·
+                        - time [ref=e713]: 04/01/2024
+                      - generic [ref=e715]:
+                        - paragraph [ref=e716]: I've found a bug.
+                        - paragraph [ref=e717]: "Tweak 13b point 3: after adding a new line we'll need to increase the counter in the 2nd line of \"conversation.txt\" by 1. Please add this to the manual."
+                      - button "Reply" [ref=e719] [cursor=pointer]:
+                        - img [ref=e720]
+                        - generic [ref=e722]: Reply
+                    - generic [ref=e725]:
+                      - button "More" [ref=e726]:
+                        - generic "More" [ref=e727]:
+                          - img [ref=e728]
+                      - generic [ref=e731]:
+                        - link "User avatar" [ref=e733] [cursor=pointer]:
+                          - /url: /wiki/User:Vetrogor
+                          - img "User avatar" [ref=e734]
+                        - link "Vetrogor" [ref=e735] [cursor=pointer]:
+                          - /url: /wiki/User:Vetrogor
+                        - generic [ref=e736]: ·
+                        - time [ref=e738]: 31/12/2023
+                      - generic [ref=e740]:
+                        - paragraph [ref=e741]: Don't know if it is already known - to limit number of pop-up messages.
+                        - paragraph [ref=e742]: "Add this line to module.ini file:"
+                        - code [ref=e744]: "maximum_number_of_notification_messages = 4 #msg in battle. Common 10"
+                        - paragraph [ref=e745]
+                      - button "Reply" [ref=e747] [cursor=pointer]:
+                        - img [ref=e748]
+                        - generic [ref=e750]: Reply
+                    - generic [ref=e753]:
+                      - button "More" [ref=e754]:
+                        - generic "More" [ref=e755]:
+                          - img [ref=e756]
+                      - generic [ref=e759]:
+                        - link [ref=e761] [cursor=pointer]:
+                          - /url: /wiki/User:HellsChariot
+                          - img [ref=e762]
+                        - link "HellsChariot" [ref=e764] [cursor=pointer]:
+                          - /url: /wiki/User:HellsChariot
+                        - generic [ref=e765]: ·
+                        - time [ref=e767]: 09/12/2023
+                      - paragraph [ref=e770]: I really wish there was a tweak that allowed you to create custom knight orders while not owning any fiefs
+                      - generic [ref=e771]:
+                        - button "1" [ref=e772] [cursor=pointer]:
+                          - img [ref=e773]
+                          - generic [ref=e775]: "1"
+                        - button "Reply" [ref=e776] [cursor=pointer]:
+                          - img [ref=e777]
+                          - generic [ref=e779]: Reply
+                    - generic [ref=e782]:
+                      - button "More" [ref=e783]:
+                        - generic "More" [ref=e784]:
+                          - img [ref=e785]
+                      - generic [ref=e788]:
+                        - link [ref=e790] [cursor=pointer]:
+                          - /url: /wiki/User:MythAnon
+                          - img [ref=e791]
+                        - link "MythAnon" [ref=e793] [cursor=pointer]:
+                          - /url: /wiki/User:MythAnon
+                        - generic [ref=e794]: ·
+                        - time [ref=e796]: 22/11/2023
+                      - paragraph [ref=e799]: I would not recommend either tweak that allows for recruiting noldor prisoners, or the overhaul of prisoner recruitment. They're totally broken and don't work properly. I'll constantly find armies with noldor units, even heretics manage to recruit them somehow.
+                      - generic [ref=e800]:
+                        - button "1" [ref=e801] [cursor=pointer]:
+                          - img [ref=e802]
+                          - generic [ref=e804]: "1"
+                        - button "Reply" [ref=e805] [cursor=pointer]:
+                          - img [ref=e806]
+                          - generic [ref=e808]: Reply
+                    - generic [ref=e811]:
+                      - button "More" [ref=e812]:
+                        - generic "More" [ref=e813]:
+                          - img [ref=e814]
+                      - generic [ref=e817]:
+                        - link [ref=e819] [cursor=pointer]:
+                          - /url: /wiki/User:XenoHaze
+                          - img [ref=e820]
+                        - link "XenoHaze" [ref=e822] [cursor=pointer]:
+                          - /url: /wiki/User:XenoHaze
+                        - generic [ref=e823]: ·
+                        - time [ref=e825]: 26/08/2023
+                      - generic [ref=e826]:
+                        - generic [ref=e827]:
+                          - paragraph [ref=e828]: Hi all!! Gorvex i got a problem.
+                          - paragraph [ref=e829]
+                          - paragraph [ref=e830]:
+                            - strong [ref=e831]: Tweak 17 y)
+                          - paragraph [ref=e832]:
+                            - strong [ref=e833]: To add 2 eligible-to-wed Noldor ladies to Elacrai
+                            - text: "- credits to Countyboar"
+                          - paragraph [ref=e834]
+                          - paragraph [ref=e835]: I got everything to work but one thing, when asking for units from wife, it just stay at that screen and cant press anything. I checked 4 times, if the numbers are correct.
+                          - paragraph [ref=e836]
+                          - paragraph [ref=e838]
+                          - paragraph [ref=e839]
+                          - listitem [ref=e840]:
+                            - paragraph [ref=e841]:
+                              - strong [ref=e842]: "1874"
+                              - text: (point 15); point 16); point 18), line 1 & 2) with the number you got for
+                              - emphasis [ref=e843]: noldor_grant_marriage_permission
+                          - listitem [ref=e844]:
+                            - paragraph [ref=e845]:
+                              - strong [ref=e846]: "1875"
+                              - text: (point 18), line 2 & 3) with the number you got for
+                              - emphasis [ref=e847]: noldor_wedding_start
+                          - listitem [ref=e848]:
+                            - paragraph [ref=e849]:
+                              - strong [ref=e850]: "1876"
+                              - text: (point 17); point 18), line 4) with the number you got for
+                              - emphasis [ref=e851]: noldor_wife_reinforcements_send
+                          - listitem [ref=e852]:
+                            - paragraph [ref=e853]:
+                              - strong [ref=e854]: "1877"
+                              - text: (point 18), line 4, 5 & 6) with the number you got for
+                              - emphasis [ref=e855]: noldor_wife_reinforcements_confirm
+                          - paragraph [ref=e856]
+                          - paragraph [ref=e857]: My numbers is +1 on all. (due to other tweaks)
+                          - paragraph [ref=e858]
+                          - paragraph [ref=e859]: 360287970189640883 Same
+                          - paragraph [ref=e860]: 360287970189639680 + № of trp_noldor_lady_1 (Iranith) in troops.txt (entry number in Morgh's Editor) = 1203+360287970189639680=360287970189640883
+                          - paragraph [ref=e861]
+                          - paragraph [ref=e862]: 360287970189640884 Same
+                          - paragraph [ref=e863]: 360287970189639680 + № of trp_noldor_lady_2 (Elasai) in troops.txt (entry number in Morgh's Editor) = 1204+360287970189639680=360287970189640884
+                          - paragraph [ref=e864]
+                          - paragraph [ref=e865]: 864691128455135551 (+1)
+                          - paragraph [ref=e866]: 864691128455135232 + № of menu_noldor_lady_visit menu from point 10 (menu number = (line-3)/2 in Notepad++) 643 - 3 / 2 = 320+864691128455135232=864691128455135552
+                          - paragraph [ref=e867]
+                          - paragraph [ref=e868]: 864691128455135552 (+1)
+                          - paragraph [ref=e869]: 864691128455135232 + № of menu_noldor_garden menu from point 10 (menu number = (line-3)/2 in Notepad++) 645-3/2=321+864691128455135232=864691128455135553
+                          - paragraph [ref=e870]
+                          - paragraph [ref=e871]: 936748722493063922 (+3)
+                          - paragraph [ref=e872]: 936748722493063168 + № of noldor_setup_meet_lady script from point 6 (script number = (line-3)/2 in Notepad++)1517-3/2=757+936748722493063168=936748722493063925
+                          - paragraph [ref=e873]
+                          - paragraph [ref=e874]: 144115188075857320 (+3)
+                          - paragraph [ref=e875]: 144115188075855871 + № of noldor_wife_reinforcements in variables.txt from point 20 (line number in Notepad++) 1452+144115188075855871 = 144115188075857323
+                          - paragraph [ref=e876]
+                          - paragraph [ref=e877]
+                          - paragraph [ref=e878]: Any ideas?
+                          - button "Read more" [ref=e879] [cursor=pointer]:
+                            - text: Read more
+                            - img [ref=e880]
+                        - generic [ref=e882]: (Edited by XenoHaze)
+                      - generic [ref=e883]:
+                        - button "1" [ref=e884] [cursor=pointer]:
+                          - img [ref=e885]
+                          - generic [ref=e887]: "1"
+                        - button "Reply" [ref=e888] [cursor=pointer]:
+                          - img [ref=e889]
+                          - generic [ref=e891]: Reply
+                    - generic [ref=e894]:
+                      - button "More" [ref=e895]:
+                        - generic "More" [ref=e896]:
+                          - img [ref=e897]
+                      - generic [ref=e900]:
+                        - link "User avatar" [ref=e902] [cursor=pointer]:
+                          - /url: /wiki/User:Sarissofoi
+                          - img "User avatar" [ref=e903]
+                        - link "Sarissofoi" [ref=e904] [cursor=pointer]:
+                          - /url: /wiki/User:Sarissofoi
+                        - generic [ref=e905]: ·
+                        - time [ref=e907]: 29/04/2023
+                      - generic [ref=e909]:
+                        - paragraph [ref=e910]: Hello
+                        - paragraph [ref=e911]: I know that there is tweak that allow you make your troops mix of both men and women but is there a tweak that allow you reverse this for Fierdstain troops?
+                        - paragraph [ref=e912]: I want make Fierdstain Nobles female only and commoner troops male only.
+                        - paragraph [ref=e913]: Anyone can help?
+                        - paragraph [ref=e914]
+                      - generic [ref=e915]:
+                        - button "1" [ref=e916] [cursor=pointer]:
+                          - img [ref=e917]
+                          - generic [ref=e919]: "1"
+                        - button "Reply" [ref=e920] [cursor=pointer]:
+                          - img [ref=e921]
+                          - generic [ref=e923]: Reply
+                    - button "Load more comments" [ref=e924] [cursor=pointer]
+      - complementary [ref=e925]
+  - iframe

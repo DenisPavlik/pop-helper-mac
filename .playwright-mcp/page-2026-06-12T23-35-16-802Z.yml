@@ -1,0 +1,318 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - button [ref=e2]:
+            - img [ref=e4]
+          - generic [ref=e6]:
+            - img "research" [ref=e8]
+            - generic [ref=e9]:
+              - paragraph [ref=e10]: We'd love your input around how Fandom can help you connect with your kid(s)!
+              - link "Are you a parent?" [ref=e11] [cursor=pointer]:
+                - /url: https://sw2.decipherinc.com/survey/selfserve/419f/260600
+            - button "Close" [ref=e12] [cursor=pointer]
+  - navigation "Fandom top navigation" [ref=e13]:
+    - link "Sponsored Logo" [ref=e15] [cursor=pointer]:
+      - /url: https://pluto.tv/us/on-demand/series/69cd8fc0a5502149b7cba7fd?utm_source=fandom&utm_medium=undefined&utm_campaign=70000465
+      - img "Sponsored Logo" [ref=e16]
+    - generic [ref=e18]:
+      - textbox "Search" [ref=e19]
+      - img [ref=e20]
+    - generic [ref=e22]:
+      - link "Sign In" [ref=e24] [cursor=pointer]:
+        - /url: https://auth.fandom.com/signin?source=mw&redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaking_guide&metadata=header-signin-button
+      - link "Create a Free Account" [ref=e26] [cursor=pointer]:
+        - /url: https://auth.fandom.com/register?source=mw&redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaking_guide&metadata=header-registration-button
+  - generic "Community navigation" [ref=e27]:
+    - link "Fandom homepage" [ref=e29] [cursor=pointer]:
+      - /url: https://www.fandom.com/
+      - img [ref=e30]
+    - navigation [ref=e32]:
+      - list [ref=e33]:
+        - listitem [ref=e34]:
+          - generic [ref=e35]:
+            - generic [ref=e36] [cursor=pointer]:
+              - img [ref=e37]
+              - generic [ref=e39]: Explore
+            - img "Expand" [ref=e40]
+        - listitem [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e45] [cursor=pointer]: Big Pages
+            - img "Expand" [ref=e46]
+        - listitem [ref=e48]:
+          - generic [ref=e49]:
+            - generic [ref=e51] [cursor=pointer]: Major Kingdoms
+            - img "Expand" [ref=e52]
+        - listitem [ref=e54]:
+          - generic [ref=e55]:
+            - generic [ref=e57] [cursor=pointer]: Minor factions
+            - img "Expand" [ref=e58]
+        - listitem [ref=e60]:
+          - generic [ref=e61]:
+            - generic [ref=e63] [cursor=pointer]: 3.9 featured
+            - img "Expand" [ref=e64]
+    - button "Open searchbar" [ref=e67] [cursor=pointer]:
+      - img [ref=e68]
+    - link "Switch to Light Theme" [ref=e71] [cursor=pointer]:
+      - /url: "#"
+      - img
+    - link "Sign In" [ref=e74] [cursor=pointer]:
+      - /url: https://auth.fandom.com/signin?source=mw&redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaking_guide&metadata=header-signin-button
+      - generic [ref=e75]:
+        - img
+        - text: Sign In
+  - generic [ref=e76]:
+    - navigation "Fandom navigation" [ref=e78]:
+      - generic [ref=e79]:
+        - link "Home" [ref=e82] [cursor=pointer]:
+          - /url: https://www.fandom.com/
+          - generic [ref=e83]:
+            - img [ref=e85]
+            - generic [ref=e87]: Home
+        - generic [ref=e89]:
+          - link "Sponsored Logo" [ref=e92] [cursor=pointer]:
+            - /url: https://pluto.tv/us/on-demand/series/69cd8fc0a5502149b7cba7fd?utm_source=fandom&utm_medium=undefined&utm_campaign=70000465
+            - img "Sponsored Logo" [ref=e93]
+          - generic [ref=e94]: PlutoTV
+        - button "Explore" [ref=e96] [cursor=pointer]:
+          - generic [ref=e97]:
+            - img [ref=e99]
+            - generic [ref=e102]: Explore
+        - link "Saved" [ref=e105] [cursor=pointer]:
+          - /url: https://www.fandom.com/saved
+          - generic [ref=e106]:
+            - img [ref=e108]
+            - generic [ref=e110]: Saved
+        - link "Progress" [ref=e113] [cursor=pointer]:
+          - /url: https://www.fandom.com/progress
+          - generic [ref=e114]:
+            - img [ref=e116]
+            - generic [ref=e118]: Progress
+        - button "History" [ref=e120] [cursor=pointer]:
+          - generic [ref=e121]:
+            - img [ref=e123]
+            - generic [ref=e125]: History
+    - navigation "Fandom navigation" [ref=e127]:
+      - button "More" [ref=e129] [cursor=pointer]:
+        - generic [ref=e130]:
+          - img [ref=e132]
+          - generic [ref=e134]: More
+  - generic [ref=e137]:
+    - link "Skip to content" [ref=e138] [cursor=pointer]:
+      - /url: "#page-header"
+    - banner [ref=e140]:
+      - generic [ref=e141]:
+        - link "Prophesy of Pendor Wiki" [ref=e143] [cursor=pointer]:
+          - /url: https://pop3.fandom.com/wiki/Prophesy_of_Pendor_3_Wiki
+        - generic [ref=e144]:
+          - generic [ref=e145]: 1,631
+          - generic [ref=e146]: pages
+        - link "Switch to Light Theme" [ref=e148] [cursor=pointer]:
+          - /url: "#"
+          - img
+      - navigation [ref=e149]:
+        - list [ref=e150]:
+          - listitem [ref=e151]:
+            - generic [ref=e152]:
+              - generic [ref=e153] [cursor=pointer]:
+                - img [ref=e154]
+                - generic [ref=e156]: Explore
+              - img "Expand" [ref=e157]
+          - listitem [ref=e159]:
+            - generic [ref=e160]:
+              - generic [ref=e162] [cursor=pointer]: Big Pages
+              - img "Expand" [ref=e163]
+          - listitem [ref=e165]:
+            - generic [ref=e166]:
+              - generic [ref=e168] [cursor=pointer]: Major Kingdoms
+              - img "Expand" [ref=e169]
+          - listitem [ref=e171]:
+            - generic [ref=e172]:
+              - generic [ref=e174] [cursor=pointer]: Minor factions
+              - img "Expand" [ref=e175]
+          - listitem [ref=e177]:
+            - generic [ref=e178]:
+              - generic [ref=e180] [cursor=pointer]: 3.9 featured
+              - img "Expand" [ref=e181]
+    - generic [ref=e183]:
+      - main [ref=e184]:
+        - generic [ref=e186]:
+          - link "Edit" [ref=e187] [cursor=pointer]:
+            - /url: https://auth.fandom.com/signin?redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaking_guide%3Fveaction%3Dedit&uselang=en&metadata=article-registration-edit-article
+            - img [ref=e188]
+          - link "Sign In to Save" [ref=e190] [cursor=pointer]:
+            - /url: https://auth.fandom.com/signin?redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaking_guide%3Fcollections%3Dsave&uselang=en&metadata=collections-save-button
+            - img [ref=e191]
+        - generic [ref=e193]:
+          - generic [ref=e196]:
+            - text: "in:"
+            - link "Tweaking" [ref=e197] [cursor=pointer]:
+              - /url: /wiki/Category:Tweaking
+          - generic [ref=e198]:
+            - heading "Tweaking guide" [level=1] [ref=e200]
+            - generic [ref=e201]:
+              - link "Comments" [ref=e202] [cursor=pointer]:
+                - /url: "#articleComments"
+                - generic [ref=e203]: "1"
+                - img
+              - link "Sign In to Save" [ref=e204] [cursor=pointer]:
+                - /url: https://auth.fandom.com/signin?redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaking_guide%3Fcollections%3Dsave&uselang=en&metadata=collections-save-button
+                - img
+                - generic [ref=e205]: Save
+              - link "Edit" [ref=e206] [cursor=pointer]:
+                - /url: https://auth.fandom.com/signin?redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaking_guide%3Fveaction%3Dedit&uselang=en&metadata=article-registration-edit-article
+                - img
+                - text: Edit
+              - button "Page Tools" [ref=e208]:
+                - img
+        - generic [ref=e209]:
+          - application "Video Player" [ref=e213]:
+            - iframe [ref=e222]:
+              
+            - img [ref=e226] [cursor=pointer]
+          - generic [ref=e229]:
+            - heading "Introduction" [level=2] [ref=e230]
+            - paragraph [ref=e231]: I won’t be teaching you the scripting language of Warband here, this is a guide to help with your understanding of compiled module because unfortunately, Pendor devs won’t provide us with source files of module system and known decompilers don’t decompile the module into compilable form so we have to make do with .txt files. You can still use decompiled pendor files for reference though.
+            - paragraph [ref=e232]: The tweaking is done through editing .txt files that are located at …/MountBlade Warband/Modules/*ModName*. Obviously you need a txt files editor, Notepad++ is really great and recommended.
+            - paragraph [ref=e233]:
+              - text: "If you need help understanding the module system, try here:"
+              - link "https://forums.taleworlds.com/index.php/board,171.0.html" [ref=e234] [cursor=pointer]:
+                - /url: //forums.taleworlds.com/index.php/board,171.0.html
+            - heading "Module System and .txt files" [level=2] [ref=e235]
+            - paragraph [ref=e236]: "All .txt files you see in the main folder (module) of mods are compiled from the Module System's .py files, which contain the source code. The majority of .py files share the same name with that of .txt files, extended with a \"module_\" prefix. Except for these 4:"
+            - list [ref=e237]:
+              - listitem [ref=e238]: item_kinds1.txt is compiled from module_items.py
+              - listitem [ref=e239]: menus.txt is compiled from module_game_menus
+              - listitem [ref=e240]: conversation.txt is compiled from module_dialogs
+              - listitem [ref=e241]: dialog_states.txt is compiled from module_dialogs
+            - paragraph [ref=e242]:
+              - text: "You can download all Module System (MS) header files from here (courtesy of Dalion):"
+              - link "https://www.dropbox.com/s/v99swtb1s0ld70u/MS%20header%20files.rar?dl=0" [ref=e243] [cursor=pointer]:
+                - /url: https://www.dropbox.com/s/v99swtb1s0ld70u/MS%20header%20files.rar?dl=0
+              - text: These are not to be confused with the module files, as they do not contain any source code. But they enlist all the possible compiled codes you can see in the respective .txt files (in decimal format), with explanations on what they do and how to use them. As such, they all have a "header_" prefix.
+            - heading "General numbers" [level=2] [ref=e245]
+            - paragraph [ref=e246]: "Once you open some .txt files, you will mostly see numbers inside. Every number has its meaning and here I will describe the types of numbers that are applicable to every .txt file that we will be working with. They are:"
+            - list [ref=e247]:
+              - listitem [ref=e248]: Counters
+              - listitem [ref=e249]:
+                - text: "Operation codes - they are given constants, and each of these numbers mean a certain operation. You can look them up in header_operations.py:"
+                - link "https://www.dropbox.com/s/hegpny2ek8eieog/header_operations.py?dl=0" [ref=e250] [cursor=pointer]:
+                  - /url: https://www.dropbox.com/s/hegpny2ek8eieog/header_operations.py?dl=0
+                - text: ". The most important ones are:"
+                - list [ref=e251]:
+                  - listitem [ref=e252]: neg (negate) - 2147483648
+                  - listitem [ref=e253]: this_or_next - 1073741824
+                  - listitem [ref=e254]: le (less than or equal to) - 2147483680 (neg + gt = 2147483648 + 32)
+                  - listitem [ref=e255]: lt (less than) - 2147483678 (neg + ge = 2147483648 + 30)
+                  - listitem [ref=e256]: neq (not equal) - 2147483679 (neg + eq = 2147483648 + 31)
+              - listitem [ref=e257]:
+                - text: "Operands - there are many types of them:"
+                - list [ref=e258]:
+                  - listitem [ref=e259]: Global Variables – 144115188075855871 + № of variable from variables.txt (line number in Notepad++)
+                  - listitem [ref=e260]: Local Variables – 1224979098644774912, 1224979098644774913, etc, etc.
+                  - listitem [ref=e261]: Registers – 72057594037927936 (reg0), 72057594037927937 (reg1), etc, etc.
+                  - listitem [ref=e262]: Scripts – 936748722493063168 + № of a script from scripts.txt (script number = (line-3)/2 in Notepad++)
+                  - listitem [ref=e263]: Menus - 864691128455135232 + № of a menu from menus.txt (menu number = (line-3)/2 in Notepad++)
+                  - listitem [ref=e264]:
+                    - link "Skills" [ref=e265] [cursor=pointer]:
+                      - /url: /wiki/Skills
+                    - text: "- 1369094286720630784 + № of a skill from skills.txt (line-2 in Notepad++)"
+                  - listitem [ref=e266]: Items - 288230376151711744 + № of an item from item_kinds1.txt (entry number in Morgh's Editor)
+                  - listitem [ref=e267]:
+                    - link "Troops" [ref=e268] [cursor=pointer]:
+                      - /url: /wiki/Troops
+                    - text: – 360287970189639680 + № of a troop from troops.txt (entry number in Morgh's Editor)
+                  - listitem [ref=e269]: Factions – 432345564227567616 + № of a faction from factions.txt (entry number in Morgh's Editor)
+                  - listitem [ref=e270]: Parties – 648518346341351424 + № of a party from parties.txt (entry number in Morgh's Editor)
+                  - listitem [ref=e271]: Party templates - 576460752303423488 + № of a template from party_templates.txt (entry number in Morgh's Editor)
+                  - listitem [ref=e272]: Strings - 216172782113783808 + № of a string from strings.txt (line-3 in Notepad++)
+                  - listitem [ref=e273]: Quick strings - 1585267068834414592 + № of a string from quick_strings.txt (line-2 in Notepad++)
+                  - listitem [ref=e274]: Quests - 504403158265495552 + № of a quest from quests.txt (line-3 in Notepad++)
+                  - listitem [ref=e275]: Dialogue state ID numbers - № of a dialogue ID from dialog_states.txt (line-1 in Notepad++), used in conversation.txt (the numbers before 2 space characters)
+                  - listitem [ref=e276]: Conversation operands - № of an operand from conversation.txt (the first number after "dlga_..." strings). They either represent troops (mostly NPCs until ~1200) or actual conversation operands like 4095 (anyone else) and 69631 (the player), deciding which side is currently speaking. When updating a conversation tweak to a newer mod version, the offset of the last troop in troops.txt has to be applied to these operands as well, except for 4095 and 69631 (as those are static).
+                  - listitem [ref=e277]: Sounds - 1152921504606846976 + № of a sound from sounds.txt (line - counter_in_2nd_line_of_the_file - 4 in Notepad++)
+                  - listitem [ref=e278]: Scene props - 1080863910568919040 (cannot be specified with one formula!)
+                  - listitem [ref=e279]: Particles - 1008806316530991104 + № of a particle from particle_systems.txt (particle number = (line-3)/8 in Notepad++)
+                  - listitem [ref=e280]: "Presentations - 1513209474796486655 + sequence № of given prsnt_... in presentations.txt, counting the 1st \"prsnt_\" as #1"
+                  - listitem [ref=e281]: Music - 1657324662872342528 + № of a music from music.txt (line-2 in Notepad++)
+                  - listitem [ref=e282]: Animations (actions.txt) - 1801439850948198400 (cannot be specified with one formula!)
+                  - listitem [ref=e283]: "Mission templates - 792633534417207295 + sequence № of given mst_... in mission_templates.txt, counting the 1st \"mst_\" as #1"
+                  - listitem [ref=e284]: Scenes - 720575940379279360 + № of a scene from scenes.txt (scene number = (line-3)/4 in Notepad++)
+                  - listitem [ref=e285]: Meshes - 1441151880758558720 + № of a mesh from meshes.txt (line-2 in Notepad++)
+                  - listitem [ref=e286]: Tableau materials - 1729382256910270467 + № of a tableau material from tableau_materials.txt (line-2 in Notepad++)
+            - heading "General structure of codes in .txt files" [level=2] [ref=e288]
+            - paragraph [ref=e289]: "The first number is always a counter for the amount of operations done inside a script, after it the operations themselves begin, which repeatedly consist of:"
+            - list [ref=e290]:
+              - listitem [ref=e291]: An operation code
+              - listitem [ref=e292]: A number that describes the amount of operands in that specific operation. Can be 0 as well, which means that no operands will follow and the next number will be an operation code again
+              - listitem [ref=e293]: Operands
+            - paragraph [ref=e294]: Single whitespace characters are used to separate each number, and double whitespace characters are used to separate two different code blocks.
+            - heading "Simple_triggers tweaks" [level=2] [ref=e295]
+            - paragraph [ref=e296]: At the very top of simple_triggers file is a number that describes an amount of simple triggers in it. They consist of a period in hours which describes how often they are triggered. After it begins a script.
+            - heading "Dialogue tweaks" [level=2] [ref=e297]
+            - paragraph [ref=e298]: "In dialog_states.txt listed all states of dialogs. To add a new one you need to do it at the bottom of it. In conversations.txt the lines consist of:"
+            - list [ref=e299]:
+              - listitem [ref=e300]: Current dialogue state
+              - listitem [ref=e301]: Next dialogue state
+              - listitem [ref=e302]: Number that describes who is talking, most common ones are 69631 for MC and 4095 for anyone else.
+              - listitem [ref=e303]: № of current dialogue from dialog_states.txt
+              - listitem [ref=e304]: Script that acts as availability check for dialogue option. 0 if it’s always available.
+              - listitem [ref=e305]: Dialogue text
+              - listitem [ref=e306]: № of next dialogue from dialog_states.txt
+              - listitem [ref=e307]: Script for consequences of choosing this option
+              - listitem [ref=e308]: String that describes sound file playing during conversation, NO_VOICEOVER for nothing.
+        - generic [ref=e309]:
+          - generic "Toggle Categories" [ref=e310]:
+            - generic [ref=e311] [cursor=pointer]:
+              - text: Categories
+              - img [ref=e312]
+          - generic [ref=e314]:
+            - text: Community content is available under
+            - link "CC-BY-SA" [ref=e315] [cursor=pointer]:
+              - /url: https://www.fandom.com/licensing
+            - text: unless otherwise noted.
+          - generic [ref=e316]:
+            - generic [ref=e317]:
+              - generic [ref=e318]: More Fandoms
+              - list [ref=e320]:
+                - listitem [ref=e321]:
+                  - link "Fantasy" [ref=e322] [cursor=pointer]:
+                    - /url: https://www.fandom.com/fancentral/fantasy
+                - listitem [ref=e323]:
+                  - link "Sci-fi" [ref=e324] [cursor=pointer]:
+                    - /url: https://www.fandom.com/fancentral/sci-fi
+            - generic:
+              - generic:
+                - button "Open comments panel" [ref=e325] [cursor=pointer]:
+                  - img [ref=e326]
+                  - generic [ref=e328]: "1"
+                - dialog [ref=e329]:
+                  - generic [ref=e330]:
+                    - generic [ref=e331]: Comments (1)
+                    - button "Close comments panel" [ref=e332] [cursor=pointer]: ✕
+                  - link "JOIN THE CONVERSATION" [ref=e334] [cursor=pointer]:
+                    - /url: /login?metadata=social-drawer-auth-success&redirect=https%3A%2F%2Fpop3.fandom.com%2Fwiki%2FTweaking_guide%3Farticle-comments-panel%3Dopen
+      - complementary [ref=e335]:
+        - generic [ref=e336]:
+          - generic [ref=e338]:
+            - iframe [ref=e341]:
+              - generic [active] [ref=f22e1]:
+                - insertion [ref=f22e4]:
+                  - iframe [ref=f22e5]:
+                    - link "Advertisement" [ref=f45e4] [cursor=pointer]:
+                      - /url: https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjsuTxqVHwCx3F58D51muUuUUk21WNHANlCgYDw2Q2BFjfH6yvpqXQgZvoGaxwHoSeIrvAiE1-F5Cj9TkcQSlfjZNIKli6EbTfgXAt18rtXHQvacxEjDVUbMDhbUXDpOlROAxYrMGck12R2dpqMGBcy8Q8Gmkd8R3HF9x_VgB62rkQFq4B9AyQlKyj0j7BVG3jGJWbtNYO3J5_FPeD95v87YOALhGwuRc3ix8HuwK5kp_MRIQwRK69eICeupEU-bCbbl3-UgGxjgUj4GzKRocG8Z-Y5MZMtzoqpedNbGXEO4xAiHT4hd8QlLkOpK7JPDuYgnXT8HE7MFztJir8WSytifEuDw4HYn7PpwHTo5A3Tmi9nx25LuVgq7T6-erMdWFh262CUccazqpctVt807X_qFpn04F8G6QGwJYelVyUAIQtJWbh4kTNmiu5TqdlbRTqSrCV6gkoY9ec6HM6KI&sai=AMfl-YQ6E2uTv-y0mn5Rx7KkHELargjTLpDeLLxa7czntVULjRX7HnVZHwhKscvF9TVdPpiLh3dLJB45YNHgcx356uLT1fnuCVICTF_7UvbtebfELxiVbKWo3FQoMVhm_N2O7wbZGzRYQiv3Z0k1K7MMRo613KNFbmmrQ2dQV6txFTg1fwDy5QhrjP88qvGBO5zJqxy44lGQxRwYqYCUj6EWsdBJjFSGnTw-848Q9hYXHdLvAVo9av8aYXB-ANRanlNwV1oaPhl6wh6UcumK8u7jnjcfWrrsUL2bqHcLSNVawt0q8c1TIREUbpJLsjOkVhPBNNNCnXa0FWerA8FMHiOsWB-ijGxK-bI&sig=Cg0ArKJSzNmMBLz7-bAn&cry=1&fbs_aeid=%5Bgw_fbsaeid%5D&urlfix=1&adurl=https://adclick.g.doubleclick.net/pcs/click%3Fxai%3DAKAOjss1PGHVrIH_O-OtyMdwS9sKLofq8xam2sqQvilvLw1W-yHhkC9ejG1trhxojehbwlJn2r_yQQD_BF2X0gBFVXeH2c-j5-QaeUCf5IvotEI3cEb_TxnS_PpkPYfhC79IYV_XB-_vfhvGmL3u09Jdyofr8_W2cgDwbIbGIsVmVTgqXEAPDjaZ42wyz-MqifAskD3xv85GcvE-hZaAVXE8pdJdwSX92KbNukO51E1xoDhQrS9Ivb272Dsh0Y8_f5nh3gLLR2O77R0YTlF-pFx-cULsOngGO2GqZW-HcP02LlMIeW_56WwTHg9kXnVbnMKC7prm9yH60U34YKhkXFxD9sMucoWmVaXfbncHIzTozc__130mpHMV3hV9hQ4sgEbqhYfSyIysw2aymBYs2Gi0lmqv4pcQP_j1mb75YYadpkPdaPwhcDqaQH8JjMCerAbt5bf_0dNTpE3U8GYx7aNuNOw39HmWVw%26sai%3DAMfl-YR015yYIREL25lBS92RnuAuLfdUwCm9qmC0UquWovVE_CXMEzaj2z3NcW4XXO86-RLTxtE4vZLZo4OM9oZtMF4cGyyfYZa_WUWFsIy3jVVQLUPFGPGBx2XqNUtS-_q2u4Gf_e9-kB4jcEdYX3eiwkrUVtnAcyLWvs0pfwT2k5qHq-apy8x0_X4ZahManjFfUSTznU7XCmKtYWuuvacVSxPzJ9Xi7oQDR8vcKDySreH_6Jdonqk4qTx6sMw7T-h0HAtasryWyYPKtMdFfiT3S6X6FEr933_-XRJ8NAo0W8_vRlJkWImpGXe6XyqJbSsjUzKfbc5D-El7MbahnSBPYPTSDj5yJIQcmi-wEKeTfWodsTkfSh177X65AIhHi2O3zAn_qADHqPBoxYenr9PXeCSv7nmlj5zNM93WGQ0KrytKTCg%26sig%3DCg0ArKJSzM8T6lFN-kklEAE%26fbs_aeid%3D%255Bgw_fbsaeid%255D%26urlfix%3D1%26adurl%3Dhttps://pluto.tv/us/on-demand/series/69cd8fc0a5502149b7cba7fd%253Futm_source%253Dfandom%2526utm_medium%253Dundefined%2526utm_campaign%253D70000465%2526dclid%253D%2525edclid!%2526gad_source%253D7%2526gad_campaignid%253D23797691171
+                      - img "Advertisement" [ref=f45e5]
+                - iframe
+            - generic [ref=e342]: Advertisement
+          - generic [ref=e345]:
+            - iframe [ref=e348]:
+              - generic [active] [ref=f53e1]:
+                - insertion [ref=f53e4]:
+                  - iframe [ref=f53e5]:
+                    - link "Advertisement" [ref=f55e4] [cursor=pointer]:
+                      - /url: https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjstjuwQazDSYAOQ3eRNP8uGZQN_W-CMgEs3Pq-L9c4GNW3D8ITHxgphdnZCa4HQXRWsiCs__dH9ldl2w-wngvdZkC5OcA8G4q7NVV5IGlbK9PEAyDnNEvtZ9TA5j6nz2Yyt-Io8sPzhg4QPo6GNRDIkxsQ_Y4qPiduD2U1IOiVEOHv-tz7FC_wroZQtY3CVhq7cjfAhka2fzI0gAU5u3Tz6afcW_sPl0g4G4yVZWoZRfQvj_ufl3-G1cVSLR8rQHaFaUY39on5Z18kVHHWPlXZnGZv89dz_yGADBBNmSuOO_0zRnGEXGxec_OOID7HwmkSxfOnj6pvmW6zN0QTnMAIlfyoKsw1Kj3TG9N8YTs6A8f-L4OQZmgubD-pICf1nxSO-H10Qq01WC9BI--rk1qBAbGTropXc6W5BR23GmgW5B-BRWcD9CQUp_3feJA-6i3VVwucHxXyFiXQQAh_Q&sai=AMfl-YRh5X58Xoe1-mzN2mbyy0SMq0i-pOq0TEEli5HB8BHdlk1Zm4SrkeRkbAEXBtRN1VOQ3q-xLMigQuY-i_2OsDmfZqd3XQ7Qd7v9to-iNRB8wkptmDUF-T2eUfdfovpRQsZNUqAmbTx3h2V0g3Y0T2d3Xec1L2XUkjS1jDhLF6nd5JRNFLh3lMyZp7Ytpg-EfkV0n7VvVzWkq90xo_58PSweE8RWlMbI8reIYMzhqyPgx6MiQEghYoNOmcQdJ6IWJ13oi1uF6b4lQDGQtVCEu6kByA2DMZQejEX4XGvig8j6qeB4DkJ2ndBQRUVXnPLpbWO-P-0iDQkUpjcbL1PMduq7CQqV-zU&sig=Cg0ArKJSzIRXW3fIb7TF&cry=1&fbs_aeid=%5Bgw_fbsaeid%5D&urlfix=1&adurl=https://adclick.g.doubleclick.net/pcs/click%3Fxai%3DAKAOjsvgb_TqSV03vUJD5fiWo1GrYhx7mG0XulKviFeEC9B-yBSNN7N47ohglHmOvNPlnDhrcUxwPbFKyxZ3L0R0q70p-j4JUBiWa3qM-91GJUHxtPEwksnUZpl_T-mg8wPYIhxma2Q7FAMxC5gPTecckkyS2sGdJ9o7ZUYVE2LIpGQg8STjF735DNSM3SAz-fTyGZ0ROeauBtnAWqwO2XVFyCN-bGfotyertXbrfwamEaoCe3ri-3aEzC49wXuuZecaC0ygt5NngwcPb11tFVRfr8CgiVo9I4l56IBHk7Do6EKLNkHdw81GR59gDB2Tp0AsHu5C-N9xf9EygrimXgOeijaNhqYLygXEu2Uy5LHbMe_U1JX4TVq_NsjzCeqZoeZFnsgONonb76PS2aw0VDFHf1Io_mxKi3UtTJu49m2nooVHeGsr204JdbstUYzwERs_5Zcy_O2wDbC4LjxPbW2nfkdiGOFeKIWYyEX2__De%26sai%3DAMfl-YTW88PyebwUsy0H6dl9hOc-R0JJTs1Ktg8pBtVWhr4kgAtFaMsuym2AOenC8pVLmxzgPtdLsNcb6gkyArVwwOP8yZBcS__vcO_cVcm6NTpwKQZyn-B30fZfM-dNDpF2hBM2oaSZvM5otY55rFqUUjUPDBKdzVEx3ueNxH-JNjD8rCvTT_HEBKQfjZHPxUGcq-L3YKtHEuFRzH3s8MFmdaKJJ5CVuM5T4BVo-zVmy_OAmzLQv1YEOBLcmCUhFk8sgqwNNi4084EPq9XZE8MrB42o1I6k0b3CUjvM4fcqvwWC09HX0II_d0rbYspTW7JJQ2FWi5gj9rOoFqS2OfKu41ctzJDmv7SrdBoniFl9CbFdTCaER0wawKd4yszmjkkiDdry9hIEK6oU1v95cJaIXwN_501JOS3mUr6hLBGZU_6iBy4%26sig%3DCg0ArKJSzJf5uHKtvsbNEAE%26fbs_aeid%3D%255Bgw_fbsaeid%255D%26urlfix%3D1%26adurl%3Dhttps://pluto.tv/us/on-demand/series/69cd8fc0a5502149b7cba7fd%253Futm_source%253Dfandom%2526utm_medium%253Dundefined%2526utm_campaign%253D70000465%2526dclid%253D%2525edclid!%2526gad_source%253D7%2526gad_campaignid%253D23797691171
+                      - img "Advertisement" [ref=f55e5]
+                - iframe
+            - generic [ref=e349]: Advertisement
+  - iframe

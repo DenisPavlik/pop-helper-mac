@@ -1,0 +1,518 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "Link to the Steam Homepage" [ref=e8] [cursor=pointer]:
+        - /url: https://store.steampowered.com/
+        - img "Link to the Steam Homepage" [ref=e9]
+      - navigation "Global Menu" [ref=e10]:
+        - link "STORE" [ref=e11] [cursor=pointer]:
+          - /url: https://store.steampowered.com/
+        - link "COMMUNITY" [ref=e12] [cursor=pointer]:
+          - /url: https://steamcommunity.com/
+        - link "About" [ref=e13] [cursor=pointer]:
+          - /url: https://store.steampowered.com/about/
+        - link "SUPPORT" [ref=e14] [cursor=pointer]:
+          - /url: https://help.steampowered.com/en/
+      - navigation "Account Menu" [ref=e16]:
+        - link "Install Steam" [ref=e17] [cursor=pointer]:
+          - /url: https://store.steampowered.com/about/
+          - generic [ref=e18]: Install Steam
+        - link "sign in" [ref=e19] [cursor=pointer]:
+          - /url: https://steamcommunity.com/login/home/?goto=sharedfiles%2Ffiledetails%2F%3Fid%3D1529221584
+        - text: "| language"
+  - main [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e23]:
+        - link "Store Page" [ref=e25] [cursor=pointer]:
+          - /url: https://store.steampowered.com/app/48700?snr=2_100100_100101_100106_apphubheader
+          - generic [ref=e26]: Store Page
+        - generic [ref=e28]: "Mount & Blade: Warband"
+        - generic [ref=e29]:
+          - link "All" [ref=e30] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700
+          - link "Discussions" [ref=e31] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/discussions/
+          - link "Screenshots" [ref=e32] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/screenshots/
+          - link "Artwork" [ref=e33] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/images/
+          - link "Broadcasts" [ref=e34] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/broadcasts/
+          - link "Videos" [ref=e35] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/videos/
+          - link "Workshop" [ref=e36] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/workshop/
+          - link "News" [ref=e37] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/allnews/
+          - link "Guides" [ref=e38] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/guides/
+          - link "Reviews" [ref=e39] [cursor=pointer]:
+            - /url: https://steamcommunity.com/app/48700/reviews/
+      - generic [ref=e41]:
+        - 'link "Mount & Blade: Warband" [ref=e42] [cursor=pointer]':
+          - /url: https://steamcommunity.com/app/48700
+        - text: ">"
+        - link "Guides" [ref=e43] [cursor=pointer]:
+          - /url: https://steamcommunity.com/app/48700/guides/
+        - text: ">"
+        - link "Rumata's Guides" [ref=e44] [cursor=pointer]:
+          - /url: https://steamcommunity.com/id/Rumata723/myworkshopfiles/?section=guides&appid=48700
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - generic [ref=e48]:
+          - img [ref=e50]
+          - generic [ref=e51]: 50 ratings
+        - generic [ref=e52]:
+          - img [ref=e54]
+          - generic [ref=e55]: PoP Helper [3.9.1]
+          - generic [ref=e56]: By Rumata
+          - generic [ref=e58]:
+            - text: "!!! ПРОГРАММА БОЛЬШЕ НЕ ДОРАБАТЫВАЕТСЯ, ЭТО ПОСЛЕДНЯЯ ВЕРСИЯ !!!"
+            - text: Это программа, которая автоматизирует установку/удаление различных модификаций/твиков, взятых из открытых источников, и позволяет выбирать что установить.
+            - text: С ней у вас гораздо меньше шансов сломать игру при попытке установить твики или какую-либо модификацию.
+            - text: Данная программа не пропагандирует/навязывает какой-либо стиль игры, а лишь является сборником изменений и модификаций, созданных другими людьми.
+        - generic [ref=e60]:
+          - button "2" [ref=e63] [cursor=pointer]:
+            - img [ref=e64]
+            - text: "2"
+          - generic [ref=e65]:
+            - button [ref=e66] [cursor=pointer]
+            - button [ref=e67] [cursor=pointer]
+          - button "Award" [ref=e68] [cursor=pointer]:
+            - generic [ref=e69]:
+              - img [ref=e70]
+              - text: Award
+          - generic [ref=e71]:
+            - button "Favorite" [ref=e72] [cursor=pointer]:
+              - generic [ref=e74]: Favorite
+            - button "Share" [ref=e75] [cursor=pointer]
+          - button [ref=e78] [cursor=pointer]
+      - generic [ref=e79]:
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - generic [ref=e83]: Created by
+            - generic [ref=e86]:
+              - link [ref=e87] [cursor=pointer]:
+                - /url: https://steamcommunity.com/id/Rumata723
+              - img [ref=e89]
+              - generic [ref=e90]:
+                - text: Rumata
+                - text: Offline
+            - generic [ref=e92]:
+              - generic [ref=e93]:
+                - generic [ref=e94]: Posted
+                - generic [ref=e95]: Updated
+              - generic [ref=e96]:
+                - generic [ref=e97]: Oct 3, 2018 @ 5:23am
+                - generic [ref=e98]: Mar 1, 2025 @ 7:26pm
+          - table [ref=e100]:
+            - rowgroup [ref=e101]:
+              - row "3,608 Unique Visitors" [ref=e102]:
+                - cell "3,608" [ref=e103]
+                - cell "Unique Visitors" [ref=e104]
+              - row "98 Current Favorites" [ref=e105]:
+                - cell "98" [ref=e106]
+                - cell "Current Favorites" [ref=e107]
+          - generic [ref=e108]:
+            - generic [ref=e109]: Guide Index
+            - generic [ref=e113]: Overview
+            - generic [ref=e116] [cursor=pointer]: 1. Информация
+            - generic [ref=e118] [cursor=pointer]: 2. Последнее обновление
+            - generic [ref=e120] [cursor=pointer]: 3. Скриншоты
+            - generic [ref=e122] [cursor=pointer]: 4. Ссылки
+            - generic [ref=e125] [cursor=pointer]: Comments
+        - generic [ref=e126]:
+          - generic [ref=e127]:
+            - generic [ref=e128]:
+              - generic [ref=e129]: 1. Информация
+              - generic [ref=e130]:
+                - generic [ref=e131]: "Функционал программы:"
+                - text: 1. Установка выбранных твиков (Некоторые твики можно настроить под себя);
+                - text: 2. Установка русификатора для 3.9.5
+                - text: 3. Автоматический бэкап сохранений игры;
+                - text: 4. Автоматический бэкап изменяемых файлов игры при установке твиков.
+                - text: 5. Починка сломанного сохранения с помощью последнего бэкапа;
+                - text: 6. Проверка обновлений - программа уведомит вас, если вышла новая версия;
+                - text: "7. Модификации:"
+                - text: — Delzaros UI Pack
+                - text: — Cursor Changer
+                - text: — Economics of Pendor
+                - text: — Другие женские лица
+                - text: — Сжатые текстуры
+                - text: — Music Pack
+                - text: — Arena Overhaul Mod
+                - text: — Polished Landscape
+                - text: — Фикс коллизий
+                - text: — Фикс "коров на воде"
+                - text: — Old Qualis Gem
+                - text: — No Dot Main Menu
+                - text: "8. Шрифты:"
+                - text: — Оригинал
+                - text: — 1С
+                - text: — Migel
+                - text: — Русь 13
+                - text: — Hammer
+                - text: — Segoe Print
+                - text: — WebeR
+                - text: — ItalyA
+                - text: — Medieval
+                - text: — Theater
+                - text: — Villa Avgustina
+                - text: — Arial
+                - text: — Calibri
+                - text: 9. Собственный downloader (позволяет обновлять программу и скачивать модификации силами программы);
+                - text: 10. Вкладка "Создание персонажа";
+                - text: 11. Сбор логов. Если у вас произошла ошибка, вы можете воспользоваться системой сбора логов и связаться с нами для выяснения проблемы;
+                - text: 12. Локальное сохранение конфигурации программы (PH_config.ini) - вы всегда можете восстановить настройки программы на любом компьютере, а также поделиться ими с кем-либо;
+                - text: 13. Информационное онлайн-сообщение, которое появляется и обновляется при каждом запуске программы. В нём отражена информация по всем проблемам, если они будут обнаружены после публикации последней доступной версии.
+                - text: 14. Настройка файла module.ini - позволяет настроить многие параметры модификации, которые не нашли свою реализацию в разделе "Твики".
+                - text: 15. Вкладка "Редактирование файлов импорта/экспорта".
+                - text: Твики со знаком звездочки (*) требуют начала новой игры для того, что бы они работали. Если их установить а потом деактивировать после последнего сейва - без них сейв не запустится.
+                - generic [ref=e132]: "Известные проблемы:"
+                - text: 1) Если загрузка модификаций/обновления производится за 1 секунду - включите альтернативные ссылки в настройках.
+                - generic [ref=e133]: "Системные требования:"
+                - text: "OS: Windows"
+                - text: MS Visual C++ -
+                - link "https://dl.repack.me/s/KEyzYbnKoiaGt23/download" [ref=e134] [cursor=pointer]:
+                  - /url: https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fdl.repack.me%2Fs%2FKEyzYbnKoiaGt23%2Fdownload
+                - text: У некоторых юзеров Win7 может появиться ошибка "Отсутствует api-ms-win-runtime-l1-1-0.dll".
+                - text: "Подробное описание ошибки и методы её решения:"
+                - link "https://vk" [ref=e135] [cursor=pointer]:
+                  - /url: https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fvk
+                - text: .cc/6lAmwr
+                - text: Автор программы - не создатель этих твиков, и не создает их. Большая часть реализованных твиков и модификаций взята с форума rusmnb.ru
+                - text: Если у вас возникает вопрос "Почему мой антивирус находит троян?"(или любую другую сигнатуру) - задайте его тем людям, которые называют свой софт антивирусами. Да и самого себя спросите - много ли Вы в этом понимаете. Программа не содержит вредоносного кода и не собирает какую-либо информацию, не относящуюся к самой программе или игре.
+                - text: Как я могу это доказать? — Никак. Вам придется поверить мне на слово.
+                - text: Вопросы "Почему не принимается стартовая информация; как принять; не нажимается кнопка принять" - будут игнорироваться! За любые оскорбления вы будете сидеть в чс(да, нам за это прилетают оскорбления). Там все написано на русском, читайте. Спасибо за понимание.
+                - text: Программа полностью портативна и не нуждается в установке (исключение - не запускайте программу из архива).
+            - generic [ref=e136]:
+              - generic [ref=e137]: 2. Последнее обновление
+              - generic [ref=e138]:
+                - text: v. 3.9.1 (12.09.2020)
+                - text: "- Исправлен некорректный бэкап модов, который приводил к крашам игры после их деактивации. Если у вас возникла подобная проблема, в служебных ключах введите \"/fix39\" - запустится процесс сброса конфликтных модов и исправление ошибки."
+                - text: "- Исправлены стандартные значения для некоторых настроек (например для настройки автоматического обновления)."
+                - text: "- Для стартовых сообщений при ошибке подключения к серверу изменён тип окна на \"информационный\", чтобы лишний раз не пугать \"ошибкой\"."
+                - text: v. 3.9 (12.09.2020)
+                - text: "ВНИМАНИЕ: Если по какой-либо причине в вашей папке с PoP 3.9.5 есть папки \"_backupHelper\" и \"_PoP Helper Cache\" (например, если вы обновили 3.9.5 в ту же папку, или играете через Steam) - удалите их перед первым использованием версии для 3.9.5. Либо в дополнительных функциях используйте функцию \"Служебные ключи\" и введите ключ \"/to39\"."
+                - text: "- Твики адаптированы для PoP 3.9.5.1 (3.9.5 с хотфиксом). Некоторые твики могут содержать ошибки - нет возможности протестировать все возможности игры для всех твиков."
+                - text: "- Новые твики:"
+                - text: 1) [Честь] Отключить потерю чести при требовании дани с караванов.
+                - text: 2) [Города/замки/деревни] Узнаём гарнизон через спутников.
+                - text: 3) [Города/замки/деревни] Удалить "неэффективный сбор налогов".
+                - text: 4) [Отряд] Добавление кнопки "Troop Tree" на экран отряда как в Viking Conquest.
+                - text: 5) [Разное] Исправление зацикленных звуков таверны и арены.
+                - text: 6) [Разное] Отключение функции "удача игрока".
+                - text: 7) [Разное] Отказываемся от клятвы и оставляем владения.
+                - text: "- Для твика \"Добавление предметов для СКО\" добавлена поисковая строка."
+                - text: "- Айтем-лист для твика \"Добавление предметов для СКО\" адаптирован для версии 3.9.5."
+                - text: "- Твик \"Улучшенная переклассификация войск в бою\" теперь является полноценной модификацией \"Динамическое переназначение дивизий и перевооружение\" (но всё ещё реализован в программе как твик). Ссылка:"
+                - link "https://www.nexusmods.com/mbwarband/mods/6347" [ref=e139] [cursor=pointer]:
+                  - /url: https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fwww.nexusmods.com%2Fmbwarband%2Fmods%2F6347
+                - text: "- Убраны следующие твики:"
+                - text: 1) Возможность управлять гарнизоном своих деревень
+                - text: 2) Изменение времени улучшения всех вещей кузнецом из СКО
+                - text: 3) Добавить автосохранение
+                - text: "- Обновлён мод \"Сжатые текстуры\"."
+                - text: "- Обновлён мод \"Polished Landscapes\"."
+                - text: "- Обновлён мод \"Economics of Pendor\"."
+                - text: "- Обновлён русификатор на самый актуальный на дату релиза."
+                - text: "- Добавлен ключ \"+anyver\" который убирает проверку версии мода (позволяет использовать программу для любой указанной папки, на свой страх и риск)."
+                - text: "- Добавлена опция \"Предложить функционал\" - открывает форму где вы можете высказать свою идею/предложение касательно контента и функционала программы."
+                - text: "- Добавлена система актуализации кода твиков и модов при старте программы."
+                - text: "- Добавлена функция \"Обновить пакет ресурсов\" (в \"Меню программы\"). Позволяет обновить все файлы-ресурсы программы, которые используются для установки модов и находятся в папке \"data\" программы."
+                - text: "- Добавлен функционал обновления различных ссылок используемых в программе."
+                - text: "- Добавлена возможность поддержать разработчиков через Qiwi (в разделе \"О программе\")."
+                - text: "- Добавлен таймер подключения к фтп-серверу, теперь программа не зависает при запуске в случае временной недоступности сервера."
+                - text: "- Исправлено создание мусорной папки при первом запуске программы."
+                - text: "- Исправлено отсутствие обновления основных путей программы при измененни рабочей папки."
+                - text: "- Полностью переписана система установки твиков. Теперь исправление кода твиков (и модов) не требуют новой версии программы. Новые твики - только с новыми версиями."
+                - text: "- Полностью переписана система сканирования твиков."
+                - text: "- Загружаемые настройки теперь сохраняются на случай отсутствия возможности загрузить их при следующем запуске программы."
+                - text: "- Возвращена функция \"Не делать сброс файлов мода перед установкой твиков и модификаций\"."
+                - text: "- Теперь программа не разделяется на x32/x64 бит. Эта и все последующие версии - x32."
+                - text: "- Downloader интегрирован в сам PoP Helper."
+                - text: "- Удален функционал бета-версий."
+                - text: "- Удалена вариативность в установке русификатора."
+                - text: "- Удалено старое стартовое предупредение о запуске программы и игры одновременно."
+                - text: "- Удалено стартовое сообщение от разработчиков."
+                - text: "- Удален ключ для отключения автоматической установки русификатора, теперь это настройка в окне \"Настройки\"."
+                - text: "- Удалена ссылка \"[Dropbox] Скачать полную версию\"."
+                - text: "- Оптимизация кода."
+                - text: Полный список изменений за все время существования программы можно посмотреть в самой программе.
+            - generic [ref=e140]:
+              - generic [ref=e141]: 3. Скриншоты
+              - generic [ref=e142]:
+                - link [ref=e143] [cursor=pointer]:
+                  - /url: https://images.steamusercontent.com/ugc/1618437587316947082/D6FC9412E07195EAB726B64C2207E3C47B9E33C0/
+                - link [ref=e144] [cursor=pointer]:
+                  - /url: https://images.steamusercontent.com/ugc/1618437587316947468/E53E893C6730472E3F0FDD2A543E2F618126F48D/
+                - link [ref=e145] [cursor=pointer]:
+                  - /url: https://images.steamusercontent.com/ugc/1618437587316948595/E2F373A02EFA5D9673027B911F172D225DEDC40A/
+                - link [ref=e146] [cursor=pointer]:
+                  - /url: https://images.steamusercontent.com/ugc/1618437587316949359/74AF258D8D620D7BEE32DF7384944938BED7EC61/
+                - link [ref=e147] [cursor=pointer]:
+                  - /url: https://images.steamusercontent.com/ugc/1618437587316953359/51E4926D270C47B2DC3443DF5A42F765ED03CE2F/
+            - generic [ref=e148]:
+              - generic [ref=e149]: 4. Ссылки
+              - generic [ref=e150]:
+                - generic [ref=e151]: "Ссылки на скачивание:"
+                - text: "[Dropbox] PoP Helper -"
+                - link "Скачать" [ref=e152] [cursor=pointer]:
+                  - /url: https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fwww.dropbox.com%2Fs%2Fbqakwkgryvp60ni%2FPoP%2520Helper.7z%3Fdl%3D1
+                - text: "[www.dropbox.com]"
+                - text: "[Google] Библиотека всех (почти) имеющихся версий -"
+                - link "Google Disk" [ref=e153] [cursor=pointer]:
+                  - /url: https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fdrive.google.com%2Fopen%3Fid%3D1ORNJxQXd7fyhZKAACFhy9au06D29LMxz
+                - text: "[drive.google.com]"
+                - generic [ref=e154]: "Другие ссылки:"
+                - text: "Обсуждение в VK:"
+                - link "https://vk" [ref=e155] [cursor=pointer]:
+                  - /url: https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fvk
+                - text: .cc/8d2XUN
+                - text: "Тема на rusmnb.ru:"
+                - link "http://rusmnb.ru/index.php?topic=22359.0" [ref=e156] [cursor=pointer]:
+                  - /url: https://steamcommunity.com/linkfilter/?u=http%3A%2F%2Frusmnb.ru%2Findex.php%3Ftopic%3D22359.0
+          - generic [ref=e159]:
+            - generic [ref=e160]:
+              - generic [ref=e162]: 60 Comments
+              - generic [ref=e165]:
+                - link "<" [ref=e166]:
+                  - /url: javascript:void(0);
+                - generic [ref=e167]: 1 2 3 4 5 6
+                - link ">" [ref=e168] [cursor=pointer]:
+                  - /url: javascript:void(0);
+            - generic [ref=e170]:
+              - generic [ref=e172]:
+                - generic [ref=e173]:
+                  - generic [ref=e174]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e175] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/barashekzbs
+                      - img [ref=e176]
+                  - generic [ref=e177]:
+                    - link "meow" [ref=e179] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/barashekzbs
+                    - generic "January 1, 2023 @ 5:28:41 am PDT" [ref=e180]: Jan 1, 2023 @ 5:28am
+                - generic [ref=e182]:
+                  - text: "При запуске pop ошибка:"
+                  - text: "\"Не удалось соедениться с сервером."
+                  - text: Будет считана последняя сохранённая версия базы твиков."
+                  - text: Так же не идёт установка Polished Landscapes и music pach
+              - generic [ref=e184]:
+                - generic [ref=e185]:
+                  - generic [ref=e186]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e187] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198868986258
+                      - img [ref=e188]
+                  - generic [ref=e189]:
+                    - link "kabanelo" [ref=e191] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198868986258
+                    - generic "May 30, 2022 @ 12:34:37 pm PDT" [ref=e192]: May 30, 2022 @ 12:34pm
+                - generic [ref=e194]: большое спасибо
+              - generic [ref=e196]:
+                - generic [ref=e197]:
+                  - generic [ref=e198]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e199] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/Rumata723
+                      - img [ref=e200]
+                  - generic [ref=e201]:
+                    - generic [ref=e202]:
+                      - link "Rumata" [ref=e203] [cursor=pointer]:
+                        - /url: https://steamcommunity.com/id/Rumata723
+                      - generic [ref=e204]: "[author]"
+                    - generic "May 29, 2022 @ 11:25:56 am PDT" [ref=e205]: May 29, 2022 @ 11:25am
+                - generic [ref=e207]:
+                  - text: "@kabanelo"
+                  - text: Не помню уже. Мб косяк в скрипте.
+                  - text: В любом случае, программа больше не дорабатывается. Если что-то не работает - фикса не будет.
+              - generic [ref=e209]:
+                - generic [ref=e210]:
+                  - generic [ref=e211]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e212] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198868986258
+                      - img [ref=e213]
+                  - generic [ref=e214]:
+                    - link "kabanelo" [ref=e216] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198868986258
+                    - generic "May 29, 2022 @ 10:41:58 am PDT" [ref=e217]: May 29, 2022 @ 10:41am
+                - generic [ref=e219]: Друг, спасибо на помощь, а не подскажешь почему не работает твик на платное обучение войск в лагере?
+              - generic [ref=e221]:
+                - generic [ref=e222]:
+                  - generic [ref=e223]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e224] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/Rumata723
+                      - img [ref=e225]
+                  - generic [ref=e226]:
+                    - generic [ref=e227]:
+                      - link "Rumata" [ref=e228] [cursor=pointer]:
+                        - /url: https://steamcommunity.com/id/Rumata723
+                      - generic [ref=e229]: "[author]"
+                    - generic "May 27, 2022 @ 2:37:50 am PDT" [ref=e230]: May 27, 2022 @ 2:37am
+                - generic [ref=e232]:
+                  - text: "@kabanelo"
+                  - text: Не обращать внимания.
+              - generic [ref=e234]:
+                - generic [ref=e235]:
+                  - generic [ref=e236]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e237] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198868986258
+                      - img [ref=e238]
+                  - generic [ref=e239]:
+                    - link "kabanelo" [ref=e241] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198868986258
+                    - generic "May 26, 2022 @ 5:33:40 am PDT" [ref=e242]: May 26, 2022 @ 5:33am
+                - generic [ref=e244]:
+                  - text: "\"Произошла ошибка загрузки файла конфигурации (код:204) Проверьте подключение к интернету. Будет считана последняя сохранённая версия настроек\""
+                  - text: Что делать с этим пиздецом?
+              - generic [ref=e246]:
+                - generic [ref=e247]:
+                  - generic [ref=e248]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e249] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/Rumata723
+                      - img [ref=e250]
+                  - generic [ref=e251]:
+                    - generic [ref=e252]:
+                      - link "Rumata" [ref=e253] [cursor=pointer]:
+                        - /url: https://steamcommunity.com/id/Rumata723
+                      - generic [ref=e254]: "[author]"
+                    - generic "September 28, 2021 @ 3:12:08 pm PDT" [ref=e255]: Sep 28, 2021 @ 3:12pm
+                - generic [ref=e257]:
+                  - text: Баг в программе.
+                  - text: Программа больше не поддерживается, исправления не будет.
+              - generic [ref=e259]:
+                - generic [ref=e260]:
+                  - generic [ref=e261]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e262] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561199027410011
+                      - img [ref=e263]
+                  - generic [ref=e264]:
+                    - link "XxKotofeJxX" [ref=e266] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561199027410011
+                    - generic "September 28, 2021 @ 8:14:19 am PDT" [ref=e267]: Sep 28, 2021 @ 8:14am
+                - generic [ref=e269]: почему прога не открывается?Пишет :the application was unable to start correctly (0xc000007b)
+              - generic [ref=e271]:
+                - generic [ref=e272]:
+                  - generic [ref=e273]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e274] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198344384550
+                      - img [ref=e275]
+                  - generic [ref=e276]:
+                    - link "Godkyl" [ref=e278] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/profiles/76561198344384550
+                    - generic "February 23, 2021 @ 6:04:02 am PDT" [ref=e279]: Feb 23, 2021 @ 6:04am
+                - generic [ref=e281]: Что делать если появляется такая ошибка:"Произошла ошибка загрузки файла конфигурации (код:204) Проверьте подключение к интернету. Будет считана последняя сохранённая версия настроек"
+              - generic [ref=e283]:
+                - generic [ref=e284]:
+                  - generic [ref=e285]:
+                    - generic:
+                      - generic:
+                        - img
+                    - link [ref=e286] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/13371797
+                      - img [ref=e287]
+                  - generic [ref=e288]:
+                    - link "S̷̳̎Ki̊̽D͂R͕̘͙O̭͝Ẁ" [ref=e290] [cursor=pointer]:
+                      - /url: https://steamcommunity.com/id/13371797
+                    - generic "September 20, 2020 @ 5:01:27 am PDT" [ref=e291]: Sep 20, 2020 @ 5:01am
+                - generic [ref=e293]: Включил твик на сохранение чести при грабеже караванов, в итоге не работает
+            - generic [ref=e295]:
+              - link "<" [ref=e296]:
+                - /url: javascript:void(0);
+              - generic [ref=e297]: 1 2 3 4 5 6
+              - link ">" [ref=e298] [cursor=pointer]:
+                - /url: javascript:void(0);
+  - contentinfo [ref=e303]:
+    - generic [ref=e304]:
+      - generic [ref=e305]:
+        - link [ref=e306] [cursor=pointer]:
+          - /url: https://store.steampowered.com/?snr=2_44_44_
+          - img [ref=e307]
+        - link [ref=e317] [cursor=pointer]:
+          - /url: https://valvesoftware.com
+          - img [ref=e318]
+      - paragraph [ref=e323]:
+        - text: © 2026 Valve Corporation. All rights reserved. All trademarks are property of their respective owners in the US and other countries.
+        - text: VAT included in all prices where applicable.
+      - generic [ref=e324]:
+        - link [ref=e325] [cursor=pointer]:
+          - /url: https://www.youtube.com/@Steam
+          - img [ref=e326]
+        - link [ref=e328] [cursor=pointer]:
+          - /url: https://bsky.app/profile/steampowered.com
+          - img [ref=e329]
+        - link [ref=e331] [cursor=pointer]:
+          - /url: https://facebook.com/steam
+          - img [ref=e332]
+        - link [ref=e334] [cursor=pointer]:
+          - /url: https://twitter.com/steam
+          - img [ref=e335]
+    - generic [ref=e337]:
+      - heading "STEAM" [level=3] [ref=e338]
+      - link "About Steam" [ref=e339] [cursor=pointer]:
+        - /url: https://store.steampowered.com/about/?snr=2_44_44_
+      - link "Steam SSA" [ref=e340] [cursor=pointer]:
+        - /url: https://store.steampowered.com/subscriber_agreement/?snr=2_44_44_
+      - link "Steamworks" [ref=e341] [cursor=pointer]:
+        - /url: https://partner.steamgames.com/
+      - link "Steam Distribution" [ref=e342] [cursor=pointer]:
+        - /url: https://partner.steamgames.com/steamdirect
+      - link "Gift Cards" [ref=e343] [cursor=pointer]:
+        - /url: https://store.steampowered.com/digitalgiftcards/?snr=2_44_44_
+    - generic [ref=e344]:
+      - heading "VALVE" [level=3] [ref=e345]
+      - link "About Valve" [ref=e346] [cursor=pointer]:
+        - /url: https://valvesoftware.com/about
+      - link "Jobs" [ref=e347] [cursor=pointer]:
+        - /url: https://valvesoftware.com/
+      - link "Hardware" [ref=e348] [cursor=pointer]:
+        - /url: https://store.steampowered.com/hardware/?snr=2_44_44_
+      - link "Recycling" [ref=e349] [cursor=pointer]:
+        - /url: https://store.steampowered.com/hardware_recycling/?snr=2_44_44_
+    - generic [ref=e350]:
+      - heading "LEGAL" [level=3] [ref=e351]
+      - link "Privacy" [ref=e352] [cursor=pointer]:
+        - /url: https://store.steampowered.com/privacy_agreement/?snr=2_44_44_
+      - link "Accessibility" [ref=e353] [cursor=pointer]:
+        - /url: https://help.steampowered.com/faqs/view/10BB-D27A-6378-4436
+      - link "Notices & Policies" [ref=e354] [cursor=pointer]:
+        - /url: https://store.steampowered.com/legal/?snr=2_44_44_
+      - link "Cookies" [ref=e355] [cursor=pointer]:
+        - /url: https://store.steampowered.com/account/cookiepreferences/?snr=2_44_44_
+      - link "Refunds" [ref=e356] [cursor=pointer]:
+        - /url: https://store.steampowered.com/steam_refunds/?snr=2_44_44_
+    - generic [ref=e357]:
+      - heading "MORE" [level=3] [ref=e358]
+      - link "Get Steam" [ref=e359] [cursor=pointer]:
+        - /url: https://store.steampowered.com/about/?snr=2_44_44_
+      - link "Get Mobile Apps" [ref=e360] [cursor=pointer]:
+        - /url: https://store.steampowered.com/mobile/?snr=2_44_44_
+      - link "Get Support" [ref=e361] [cursor=pointer]:
+        - /url: https://help.steampowered.com/
+      - link "My Account" [ref=e362] [cursor=pointer]:
+        - /url: https://store.steampowered.com/account/?snr=2_44_44_
