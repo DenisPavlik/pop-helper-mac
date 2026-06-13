@@ -11,17 +11,26 @@ struct TweakDatabase: Codable {
 struct LocalizedText: Codable, Hashable {
     let en: String
     let uk: String
+    var ru: String?
+
+    init(en: String, uk: String, ru: String? = nil) {
+        self.en = en
+        self.uk = uk
+        self.ru = ru
+    }
 
     func text(for language: AppLanguage) -> String {
         switch language {
         case .english: return en
         case .ukrainian: return uk
+        case .russian: return ru ?? uk   // fall back to Ukrainian until ru is filled in
         }
     }
 }
 
 enum AppLanguage: String, CaseIterable, Identifiable {
     case ukrainian = "uk"
+    case russian = "ru"
     case english = "en"
     var id: String { rawValue }
 }

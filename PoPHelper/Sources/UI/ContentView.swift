@@ -252,10 +252,11 @@ struct ContentView: View {
         ToolbarItemGroup(placement: .primaryAction) {
             Picker("", selection: $app.language) {
                 Text("Укр").tag(AppLanguage.ukrainian)
+                Text("Рус").tag(AppLanguage.russian)
                 Text("Eng").tag(AppLanguage.english)
             }
             .pickerStyle(.segmented)
-            .frame(width: 104)
+            .frame(width: 150)
 
             Menu {
                 Button(L10n.chooseFolder.text(for: app.language)) { chooseFolder() }
