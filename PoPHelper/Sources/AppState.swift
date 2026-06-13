@@ -52,6 +52,10 @@ final class AppState: ObservableObject {
     private(set) var packManager: PackManager
     private var packDB: PackDatabase?
 
+    let gameConfig = GameConfigManager()
+    /// Whether the live rgl_config already matches the curated Mac profile.
+    @Published var gameOptimized = false
+
     init() {
         let stored = UserDefaults.standard.string(forKey: "appLanguage")
         language = AppLanguage(rawValue: stored ?? "uk") ?? .ukrainian
@@ -60,6 +64,7 @@ final class AppState: ObservableObject {
         packManager = PackManager(modFolder: manager.modFolder)
         modFolderPath = manager.modFolder.path
         reload()
+        refreshGameConfig()
     }
 
     var categories: [String] {
@@ -157,6 +162,45 @@ final class AppState: ObservableObject {
             lastActionMessage = error.localizedDescription
         }
         reloadPacks()
+    }
+
+    // MARK: Game performance (rgl_config.txt)
+
+    var gameConfigExists: Bool { gameConfig.exists }
+
+    /// This Mac's chip/CPU name, e.g. "Apple M2 Pro".
+    var macModelName: String {
+        var size = 0
+        sysctlbyname("machdep.cpu.brand_string", nil, &size, nil, 0)
+        guard size > 0 else { return "Mac" }
+        var brand = [CChar](repeating: 0, count: size)
+        sysctlbyname("machdep.cpu.brand_string", &brand, &size, nil, 0)
+        let name = String(cString: brand)
+        return name.isEmpty ? "Mac" : name
+    }
+
+    func refreshGameConfig() {
+        gameOptimized = (try? gameConfig.read()).map(GamePerformance.isOptimal) ?? false
+    }
+
+    /// One-click: backs up rgl_config.txt, then writes the curated Mac profile
+    /// (max battle size, heavy shadows off, grass 25). Everything else is left as
+    /// the in-game Video menu set it.
+    func optimizeGameForMac() {
+        lastActionMessage = nil
+        guard gameConfig.exists else {
+            lastActionMessage = L10n.gameConfigMissing.text(for: language)
+            return
+        }
+        do {
+            let backup = try gameConfig.backup()
+            try gameConfig.write(GamePerformance.formattedProfile)
+            lastActionMessage = String(
+                format: L10n.gameOptimizedMessage.text(for: language), backup.lastPathComponent)
+            refreshGameConfig()
+        } catch {
+            lastActionMessage = error.localizedDescription
+        }
     }
 
     // MARK: Font scaling (explicit — reliable on macOS, unlike dynamicTypeSize)

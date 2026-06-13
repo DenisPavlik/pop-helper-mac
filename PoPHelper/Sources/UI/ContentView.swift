@@ -5,6 +5,7 @@ enum SidebarItem: Hashable {
     case all
     case category(String)
     case cosmetics
+    case performance
     case settings
 }
 
@@ -22,6 +23,8 @@ struct ContentView: View {
             Group {
                 if selection == .settings {
                     SettingsView()
+                } else if selection == .performance {
+                    PerformanceView()
                 } else if let error = app.loadError {
                     errorView(error)
                 } else if selection == .cosmetics {
@@ -94,6 +97,21 @@ struct ContentView: View {
                     Image(systemName: "paintbrush.pointed.fill").foregroundStyle(.pink)
                 }
                 .tag(SidebarItem.cosmetics)
+
+                Label {
+                    HStack {
+                        Text(L10n.performanceTitle.text(for: app.language))
+                        Spacer()
+                        if app.gameOptimized {
+                            Image(systemName: "checkmark.seal.fill")
+                                .font(app.font(.caption2))
+                                .foregroundStyle(.green)
+                        }
+                    }
+                } icon: {
+                    Image(systemName: "speedometer").foregroundStyle(.orange)
+                }
+                .tag(SidebarItem.performance)
 
                 Label {
                     Text(L10n.settingsTitle.text(for: app.language))

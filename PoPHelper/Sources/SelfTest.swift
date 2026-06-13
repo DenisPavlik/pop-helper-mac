@@ -69,6 +69,7 @@ enum SelfTest {
         occurrenceDecoding(r)
         resetAndBackups(r)
         packManager(r)
+        gameConfig(r)
         bundledDatabase(r)
         bundledPackDatabase(r)
 
@@ -338,6 +339,73 @@ enum SelfTest {
                      "ColFix removed (was absent before)")
             r.expect(read(mod.appendingPathComponent("module.ini"))?.contains("ColFix") != true,
                      "module.ini resource line removed")
+        }
+    }
+
+    private static func gameConfig(_ r: Recorder) {
+        // Parsing edge cases.
+        r.expectEqual(GameConfigManager.parseLine("battle_size = 1.0000")?.key, "battle_size", "parse key")
+        r.expectEqual(GameConfigManager.parseLine("battle_size = 1.0000")?.value, "1.0000", "parse value")
+        r.expect(GameConfigManager.parseLine("") == nil, "blank line not parsed")
+        r.expect(GameConfigManager.parseLine("# comment") == nil, "comment not parsed")
+        r.expect(GameConfigManager.parseLine("key_only =") == nil, "empty value not parsed")
+
+        let fm = FileManager.default
+        let root = fm.temporaryDirectory.appendingPathComponent("pophelper-gctest-\(getpid())")
+        try? fm.removeItem(at: root)
+        defer { try? fm.removeItem(at: root) }
+
+        r.expectNoThrow("rgl_config round trip") {
+            try fm.createDirectory(at: root, withIntermediateDirectories: true)
+            let cfg = root.appendingPathComponent("rgl_config.txt")
+            // All profile keys present (deliberately non-optimal) + an unknown key,
+            // an unmanaged key, and a trailing blank line — write must edit in place.
+            let original = """
+            first_time = 1
+
+            battle_size = 0.1200
+
+            grass_density = 50
+
+            unknown_key = hello
+
+            enable_accurate_shadows = 1
+
+            enable_environment_shadows = 1
+
+            realistic_shadows_on_plants = 1
+
+            """
+            try Data(original.utf8).write(to: cfg)
+
+            let mgr = GameConfigManager(configURL: cfg, backupsRoot: root.appendingPathComponent("bk"))
+            r.expect(mgr.exists, "config exists")
+
+            let read = try mgr.read()
+            r.expect((read["battle_size"].map { abs($0 - 0.12) < 1e-9 }) == true, "read battle_size")
+            r.expectEqual(read["grass_density"], 50, "read grass_density")
+            r.expect(read["unknown_key"] == nil, "non-numeric value ignored")
+
+            // Not yet optimal (battle_size broken, shadows on, grass 50).
+            r.expect(!GamePerformance.isOptimal(read), "fixture not optimal")
+
+            let backup = try mgr.backup()
+            r.expect(fm.fileExists(atPath: backup.path), "backup created")
+
+            // Apply the curated Mac profile.
+            try mgr.write(GamePerformance.formattedProfile)
+            let after = try String(contentsOf: cfg, encoding: .utf8)
+            r.expect(after.contains("battle_size = 1.0000"), "battle_size set to max")
+            r.expect(after.contains("grass_density = 25"), "grass lowered to 25")
+            r.expect(after.contains("enable_accurate_shadows = 0"), "accurate shadows off")
+            r.expect(after.contains("unknown_key = hello"), "unknown key preserved")
+            r.expect(after.contains("first_time = 1"), "unmanaged key preserved")
+            r.expectEqual(after.components(separatedBy: "\n").count,
+                          original.components(separatedBy: "\n").count, "line/blank structure preserved")
+
+            // Reading back now reports optimal.
+            let reread = try mgr.read()
+            r.expect(GamePerformance.isOptimal(reread), "optimal after applying profile")
         }
     }
 

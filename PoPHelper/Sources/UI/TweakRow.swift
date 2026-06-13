@@ -39,9 +39,22 @@ struct TweakRow: View {
                     .lineLimit(2)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.leading, 26)
-            } else if state.desiredEnabled && !state.tweak.params.isEmpty {
-                paramEditors
+            } else if state.desiredEnabled {
+                if !state.tweak.params.isEmpty {
+                    paramEditors
+                        .padding(.leading, 26)
+                }
+                if let tip = state.tweak.recommendation {
+                    Label {
+                        Text(tip.text(for: app.language))
+                            .fixedSize(horizontal: false, vertical: true)
+                    } icon: {
+                        Image(systemName: "lightbulb")
+                    }
+                    .font(app.font(.caption2))
+                    .foregroundStyle(.secondary)
                     .padding(.leading, 26)
+                }
             }
         }
         .padding(.vertical, 5)
@@ -103,9 +116,18 @@ struct TweakRow: View {
                             .labelsHidden()
                             .controlSize(.small)
                     }
-                    Text("\(L10n.original.text(for: app.language)): \(param.originalValue)")
-                        .font(app.font(.caption2))
-                        .foregroundStyle(.tertiary)
+                    HStack(spacing: 5) {
+                        Text("\(L10n.original.text(for: app.language)): \(param.originalValue)")
+                        // Our pre-filled default is the value we recommend; show it as an
+                        // orientation for players unfamiliar with the mechanic.
+                        if param.defaultValue != param.originalValue {
+                            Text("·")
+                            Text("\(L10n.recommended.text(for: app.language)) \(param.defaultValue)")
+                                .help(L10n.recommendedFull.text(for: app.language))
+                        }
+                    }
+                    .font(app.font(.caption2))
+                    .foregroundStyle(.tertiary)
                 }
             }
         }

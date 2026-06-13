@@ -44,9 +44,9 @@ CURRENT_DIR = (
     "MountBlade Warband/Modules/Prophesy of Pendor V3.9.5"
 )
 
-CATEGORIES = {"spawns", "parties", "world", "battle", "troops", "tournaments",
-              "noldor", "companions", "prisoners", "kingdom", "economy", "items",
-              "quests", "cheats", "other"}
+# Categories mirror the original PoP Helper's tweak tabs (Rumata's app).
+CATEGORIES = {"party", "tournaments", "towns", "prisoners", "battle",
+              "orders", "lords", "honor", "misc", "spawns", "other"}
 PLACEHOLDER_RE = re.compile(r"\{([A-Za-z_][A-Za-z0-9_]*)\}")
 
 failures = []

@@ -21,6 +21,11 @@ enum L10n {
     static let statusConflict = LocalizedText(en: "Conflict", uk: "Конфлікт", ru: "Конфликт")
     static let statusModified = LocalizedText(en: "Pending", uk: "Очікує", ru: "Ожидает")
     static let original = LocalizedText(en: "vanilla", uk: "стандартно", ru: "стандартно")
+    static let recommended = LocalizedText(en: "rec.", uk: "рек.", ru: "рек.")
+    static let recommendedFull = LocalizedText(
+        en: "Suggested value — a safe orientation if you don't know the mechanic.",
+        uk: "Рекомендоване значення — безпечний орієнтир, якщо не знаєш механіку.",
+        ru: "Рекомендуемое значение — безопасный ориентир, если не знаешь механику.")
     static let backups = LocalizedText(en: "Backups", uk: "Бекапи", ru: "Бэкапы")
     static let restoreLatestBackup = LocalizedText(en: "Restore latest backup", uk: "Відновити останній бекап", ru: "Восстановить последний бэкап")
     static let openBackupsFolder = LocalizedText(en: "Open backups folder", uk: "Відкрити папку бекапів", ru: "Открыть папку бэкапов")
@@ -83,22 +88,57 @@ enum L10n {
         uk: "Зразок заголовка — як виглядає текст",
         ru: "Образец заголовка — как выглядит текст")
 
+    // MARK: Performance (rgl_config.txt)
+    static let performanceTitle = LocalizedText(en: "Performance", uk: "Продуктивність", ru: "Производительность")
+    static let performanceDesc = LocalizedText(
+        en: "These graphics options also live in the game's own Video menu. Here PoP Helper just sets the values that work best on your Mac — in one click.",
+        uk: "Ці налаштування графіки є і в самій грі (Options → Video). Тут PoP Helper лише виставляє значення, які найкраще працюють на твоєму Mac — одним кліком.",
+        ru: "Эти настройки графики есть и в самой игре (Options → Video). Здесь PoP Helper просто выставляет значения, которые лучше всего работают на твоём Mac — одним кликом.")
+    static let yourMac = LocalizedText(en: "Your Mac", uk: "Твій Mac", ru: "Твой Mac")
+    static let optimizeButton = LocalizedText(
+        en: "Optimize for my Mac", uk: "Оптимізувати під мій Mac", ru: "Оптимизировать под мой Mac")
+    static let gameOptimized = LocalizedText(
+        en: "Already optimized for your Mac", uk: "Уже оптимізовано під твій Mac", ru: "Уже оптимизировано под твой Mac")
+    static let gameConfigMissing = LocalizedText(
+        en: "rgl_config.txt not found. Launch Warband once so the game creates it, then come back.",
+        uk: "Файл rgl_config.txt не знайдено. Запусти Warband хоча б раз, щоб гра його створила, і повернись.",
+        ru: "Файл rgl_config.txt не найден. Запусти Warband хотя бы раз, чтобы игра его создала, и вернись.")
+    static let gameOptimizedMessage = LocalizedText(
+        en: "Optimized for your Mac. Backup: %@",
+        uk: "Оптимізовано під твій Mac. Бекап: %@",
+        ru: "Оптимизировано под твой Mac. Бэкап: %@")
+    static let whatItChanges = LocalizedText(en: "What it changes", uk: "Що змінює", ru: "Что меняет")
+    static let optBattleSize = LocalizedText(
+        en: "Battle size → maximum (≈150 soldiers) — fixes the “too few archers” problem.",
+        uk: "Розмір битви → максимум (≈150 бійців) — лагодить «мало лучників».",
+        ru: "Размер битвы → максимум (≈150 бойцов) — чинит «мало лучников».")
+    static let optShadows = LocalizedText(
+        en: "Heavy shadows (accurate / environment / on plants) → off — the biggest FPS win.",
+        uk: "Важкі тіні (точні / оточення / на рослинах) → вимкнено — найбільший приріст FPS.",
+        ru: "Тяжёлые тени (точные / окружения / на растениях) → выключены — самый большой прирост FPS.")
+    static let optGrass = LocalizedText(
+        en: "Grass density → 25 — lighter battlefields.",
+        uk: "Щільність трави → 25 — легші поля бою.",
+        ru: "Плотность травы → 25 — более лёгкие поля боя.")
+    static let perfNote = LocalizedText(
+        en: "Everything else stays as your in-game Video menu has it. More than ~150 soldiers needs an .exe patch (risky — not supported yet).",
+        uk: "Решта лишається такою, як у меню Video самої гри. Більше ~150 бійців потребує патчу .exe (ризиковано — поки не підтримується).",
+        ru: "Остальное остаётся таким, как в меню Video самой игры. Больше ~150 бойцов требует патча .exe (рискованно — пока не поддерживается).")
+
+    /// Categories mirror the original PoP Helper's tweak tabs (Rumata's app).
+    /// Russian labels match the original verbatim (that's what Denys sees in-game).
     static func categoryName(_ category: String) -> LocalizedText {
         switch category {
-        case "spawns": return LocalizedText(en: "Spawns & parties", uk: "Спавни та загони", ru: "Спавны и отряды")
-        case "parties": return LocalizedText(en: "Parties", uk: "Загони", ru: "Отряды")
-        case "world": return LocalizedText(en: "World map", uk: "Світ і мапа", ru: "Мир и карта")
-        case "battle": return LocalizedText(en: "Battle", uk: "Битви", ru: "Битвы")
-        case "troops": return LocalizedText(en: "Troops", uk: "Війська", ru: "Войска")
+        case "party": return LocalizedText(en: "Party", uk: "Загони", ru: "Отряд")
         case "tournaments": return LocalizedText(en: "Tournaments", uk: "Турніри", ru: "Турниры")
-        case "noldor": return LocalizedText(en: "Noldor", uk: "Нолдори", ru: "Нолдоры")
-        case "companions": return LocalizedText(en: "Companions", uk: "Компаньйони", ru: "Компаньоны")
-        case "prisoners": return LocalizedText(en: "Prisoners", uk: "Полонені", ru: "Пленные")
-        case "kingdom": return LocalizedText(en: "Kingdom & orders", uk: "Королівство й ордени", ru: "Королевство и ордены")
-        case "economy": return LocalizedText(en: "Economy", uk: "Економіка", ru: "Экономика")
-        case "items": return LocalizedText(en: "Items", uk: "Предмети", ru: "Предметы")
-        case "quests": return LocalizedText(en: "Quests", uk: "Квести", ru: "Квесты")
-        case "cheats": return LocalizedText(en: "Cheats & QoL", uk: "Чити та зручність", ru: "Читы и удобство")
+        case "towns": return LocalizedText(en: "Towns & villages", uk: "Міста/замки/села", ru: "Города/замки/деревни")
+        case "prisoners": return LocalizedText(en: "Prisoners", uk: "Захоплення полонених", ru: "Захват пленных")
+        case "battle": return LocalizedText(en: "Battle", uk: "Битва", ru: "Битва")
+        case "orders": return LocalizedText(en: "Orders & CKO", uk: "Ордени та ВЛО", ru: "Ордена и СКО")
+        case "lords": return LocalizedText(en: "Lords", uk: "Лорди", ru: "Лорды")
+        case "honor": return LocalizedText(en: "Honor", uk: "Честь", ru: "Честь")
+        case "misc": return LocalizedText(en: "Misc", uk: "Різне", ru: "Разное")
+        case "spawns": return LocalizedText(en: "Spawns", uk: "Спавни", ru: "Спавны")
         default: return LocalizedText(en: "Other", uk: "Інше", ru: "Прочее")
         }
     }

@@ -41,6 +41,9 @@ struct Tweak: Codable, Identifiable, Hashable {
     let description: LocalizedText
     let category: String
     let wikiRef: String?
+    /// Short, plain-language guidance shown when the tweak is expanded: what the
+    /// recommended value gives and which direction to tune. Optional.
+    var recommendation: LocalizedText? = nil
     let params: [TweakParam]
     let operations: [TweakOperation]
 }

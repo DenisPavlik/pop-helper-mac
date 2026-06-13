@@ -2,49 +2,40 @@ import SwiftUI
 
 /// Display metadata for tweak categories: SF Symbol icon, stable ordering, accent tint.
 enum CategoryMeta {
-    /// Preferred sidebar order; unknown categories are appended after these.
+    /// Sidebar order mirrors the original PoP Helper's tweak tabs.
     static let order = [
-        "spawns", "parties", "world", "battle", "troops", "tournaments",
-        "noldor", "companions", "prisoners", "kingdom", "economy", "items",
-        "quests", "cheats", "other",
+        "party", "tournaments", "towns", "prisoners", "battle",
+        "orders", "lords", "honor", "misc", "spawns", "other",
     ]
 
     static func icon(_ category: String) -> String {
         switch category {
-        case "spawns": return "flag.checkered"
-        case "parties": return "person.3.fill"
-        case "world": return "globe.europe.africa.fill"
-        case "battle": return "burst.fill"
-        case "troops": return "shield.lefthalf.filled"
+        case "party": return "person.3.fill"
         case "tournaments": return "trophy.fill"
-        case "noldor": return "sparkles"
-        case "companions": return "person.2.fill"
+        case "towns": return "building.2.fill"
         case "prisoners": return "lock.fill"
-        case "kingdom": return "crown.fill"
-        case "economy": return "dollarsign.circle.fill"
-        case "items": return "bag.fill"
-        case "quests": return "scroll.fill"
-        case "cheats": return "wand.and.stars"
+        case "battle": return "burst.fill"
+        case "orders": return "shield.lefthalf.filled"
+        case "lords": return "crown.fill"
+        case "honor": return "hand.raised.fill"
+        case "misc": return "ellipsis.circle.fill"
+        case "spawns": return "flag.checkered"
         default: return "slider.horizontal.3"
         }
     }
 
     static func tint(_ category: String) -> Color {
         switch category {
-        case "spawns": return .red
-        case "parties": return .purple
-        case "world": return .cyan
-        case "battle": return .pink
-        case "troops": return .blue
+        case "party": return .purple
         case "tournaments": return .orange
-        case "noldor": return .teal
-        case "companions": return .indigo
+        case "towns": return .green
         case "prisoners": return .brown
-        case "kingdom": return .yellow
-        case "economy": return .green
-        case "items": return .mint
-        case "quests": return .orange
-        case "cheats": return .gray
+        case "battle": return .pink
+        case "orders": return .blue
+        case "lords": return .yellow
+        case "honor": return .teal
+        case "misc": return .gray
+        case "spawns": return .red
         default: return .gray
         }
     }
