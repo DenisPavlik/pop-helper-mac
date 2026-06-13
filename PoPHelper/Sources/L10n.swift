@@ -55,11 +55,19 @@ enum L10n {
     static func categoryName(_ category: String) -> LocalizedText {
         switch category {
         case "spawns": return LocalizedText(en: "Spawns & parties", uk: "Спавни та загони")
+        case "parties": return LocalizedText(en: "Parties", uk: "Загони")
+        case "world": return LocalizedText(en: "World map", uk: "Світ і мапа")
+        case "battle": return LocalizedText(en: "Battle", uk: "Битви")
+        case "troops": return LocalizedText(en: "Troops", uk: "Війська")
         case "tournaments": return LocalizedText(en: "Tournaments", uk: "Турніри")
         case "noldor": return LocalizedText(en: "Noldor", uk: "Нолдори")
         case "companions": return LocalizedText(en: "Companions", uk: "Компаньйони")
         case "prisoners": return LocalizedText(en: "Prisoners", uk: "Полонені")
+        case "kingdom": return LocalizedText(en: "Kingdom & orders", uk: "Королівство й ордени")
         case "economy": return LocalizedText(en: "Economy", uk: "Економіка")
+        case "items": return LocalizedText(en: "Items", uk: "Предмети")
+        case "quests": return LocalizedText(en: "Quests", uk: "Квести")
+        case "cheats": return LocalizedText(en: "Cheats & QoL", uk: "Чити та зручність")
         default: return LocalizedText(en: "Other", uk: "Інше")
         }
     }

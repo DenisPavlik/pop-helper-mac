@@ -695,7 +695,7 @@
         "en": "Raises the cap on renown gained per battle. The stored value must be the square of the desired cap (vanilla 2500 = cap of 50); the actual maximum can run up to 10% above the cap.",
         "uk": "Підвищує межу слави, яку можна здобути за одну битву. Значення зберігається як квадрат бажаної межі (2500 у грі = межа 50); фактичний максимум може бути до 10% вищим."
       },
-      "category": "other",
+      "category": "battle",
       "wikiRef": "Tweak 4 e",
       "params": [
         {
