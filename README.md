@@ -61,7 +61,7 @@ python3 research/validate_tweaks.py # validate tweaks.json against pristine file
 - [x] Tweak engine (apply / revert / status) + backups; self-tests green; cross-checked against the live mod
 - [x] Reset to Defaults + automatic initial/safety backups (pristine baseline imported from PoP Helper's pre-tweak backup)
 - [x] Category-organized SwiftUI UI — sidebar of categories, compact checkbox list, search
-- [x] Grow the DB — **49 tweaks** across 13 categories, all validated against pristine files
+- [x] Grow the DB — **85 tweaks** across 14 categories, all validated against pristine files
 - [x] Verify apply/revert end-to-end — `swift run PoPHelper --verify-apply` round-trips every tweak on the pristine baseline (49/49, no disk writes)
 - [x] Cosmetic pack manager — install/uninstall PoP Helper's add-on packs (female
   faces, crosshair, UI skin, fonts, arena, …) with backups + module.ini handling;
