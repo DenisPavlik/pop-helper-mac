@@ -5,11 +5,13 @@
       "id": "female-faces",
       "name": {
         "en": "Alternative female faces",
-        "uk": "Покращені жіночі обличчя"
+        "uk": "Покращені жіночі обличчя",
+        "ru": "Улучшенные женские лица"
       },
       "description": {
         "en": "Prettier female face meshes and textures (PoP Helper's faces1).",
-        "uk": "Гарніші меші й текстури жіночих облич (faces1 з PoP Helper)."
+        "uk": "Гарніші меші й текстури жіночих облич (faces1 з PoP Helper).",
+        "ru": "Более красивые меши и текстуры женских лиц (faces1 из PoP Helper)."
       },
       "kind": "copy",
       "files": [
@@ -40,11 +42,13 @@
       "id": "crosshair-tool",
       "name": {
         "en": "Crosshair",
-        "uk": "Приціл"
+        "uk": "Приціл",
+        "ru": "Прицел"
       },
       "description": {
         "en": "Replace the aiming crosshair — choose a style.",
-        "uk": "Заміна прицілу під час стрільби — обери стиль."
+        "uk": "Заміна прицілу під час стрільби — обери стиль.",
+        "ru": "Замена прицела при стрельбе — выберите стиль."
       },
       "kind": "choice",
       "options": [
@@ -52,7 +56,8 @@
           "id": "1",
           "name": {
             "en": "Crosshair 1",
-            "uk": "Приціл 1"
+            "uk": "Приціл 1",
+            "ru": "Прицел 1"
           },
           "preview": "image/pic/crosshair/1.png",
           "files": [
@@ -66,7 +71,8 @@
           "id": "2",
           "name": {
             "en": "Crosshair 2",
-            "uk": "Приціл 2"
+            "uk": "Приціл 2",
+            "ru": "Прицел 2"
           },
           "preview": "image/pic/crosshair/2.png",
           "files": [
@@ -80,7 +86,8 @@
           "id": "3",
           "name": {
             "en": "Crosshair 3",
-            "uk": "Приціл 3"
+            "uk": "Приціл 3",
+            "ru": "Прицел 3"
           },
           "preview": "image/pic/crosshair/3.png",
           "files": [
@@ -94,7 +101,8 @@
           "id": "4",
           "name": {
             "en": "Crosshair 4",
-            "uk": "Приціл 4"
+            "uk": "Приціл 4",
+            "ru": "Прицел 4"
           },
           "preview": "image/pic/crosshair/4.png",
           "files": [
@@ -108,7 +116,8 @@
           "id": "5",
           "name": {
             "en": "Crosshair 5",
-            "uk": "Приціл 5"
+            "uk": "Приціл 5",
+            "ru": "Прицел 5"
           },
           "preview": "image/pic/crosshair/5.png",
           "files": [
@@ -122,7 +131,8 @@
           "id": "6",
           "name": {
             "en": "Crosshair 6",
-            "uk": "Приціл 6"
+            "uk": "Приціл 6",
+            "ru": "Прицел 6"
           },
           "preview": "image/pic/crosshair/6.png",
           "files": [
@@ -136,7 +146,8 @@
           "id": "7",
           "name": {
             "en": "Crosshair 7",
-            "uk": "Приціл 7"
+            "uk": "Приціл 7",
+            "ru": "Прицел 7"
           },
           "preview": "image/pic/crosshair/7.png",
           "files": [
@@ -150,7 +161,8 @@
           "id": "8",
           "name": {
             "en": "Crosshair 8",
-            "uk": "Приціл 8"
+            "uk": "Приціл 8",
+            "ru": "Прицел 8"
           },
           "preview": "image/pic/crosshair/8.png",
           "files": [
@@ -164,7 +176,8 @@
           "id": "9",
           "name": {
             "en": "Crosshair 9",
-            "uk": "Приціл 9"
+            "uk": "Приціл 9",
+            "ru": "Прицел 9"
           },
           "preview": "image/pic/crosshair/9.png",
           "files": [
@@ -178,7 +191,8 @@
           "id": "10",
           "name": {
             "en": "Crosshair 10",
-            "uk": "Приціл 10"
+            "uk": "Приціл 10",
+            "ru": "Прицел 10"
           },
           "preview": "image/pic/crosshair/10.png",
           "files": [
@@ -192,7 +206,8 @@
           "id": "11",
           "name": {
             "en": "Crosshair 11",
-            "uk": "Приціл 11"
+            "uk": "Приціл 11",
+            "ru": "Прицел 11"
           },
           "preview": "image/pic/crosshair/11.png",
           "files": [
@@ -206,7 +221,8 @@
           "id": "12",
           "name": {
             "en": "Crosshair 12",
-            "uk": "Приціл 12"
+            "uk": "Приціл 12",
+            "ru": "Прицел 12"
           },
           "preview": "image/pic/crosshair/12.png",
           "files": [
@@ -220,7 +236,8 @@
           "id": "13",
           "name": {
             "en": "Crosshair 13",
-            "uk": "Приціл 13"
+            "uk": "Приціл 13",
+            "ru": "Прицел 13"
           },
           "preview": "image/pic/crosshair/13.png",
           "files": [
@@ -234,7 +251,8 @@
           "id": "14",
           "name": {
             "en": "Crosshair 14",
-            "uk": "Приціл 14"
+            "uk": "Приціл 14",
+            "ru": "Прицел 14"
           },
           "preview": "image/pic/crosshair/14.png",
           "files": [
@@ -248,7 +266,8 @@
           "id": "15",
           "name": {
             "en": "Crosshair 15",
-            "uk": "Приціл 15"
+            "uk": "Приціл 15",
+            "ru": "Прицел 15"
           },
           "preview": "image/pic/crosshair/15.png",
           "files": [
@@ -262,7 +281,8 @@
           "id": "16",
           "name": {
             "en": "Crosshair 16",
-            "uk": "Приціл 16"
+            "uk": "Приціл 16",
+            "ru": "Прицел 16"
           },
           "preview": "image/pic/crosshair/16.png",
           "files": [
@@ -276,7 +296,8 @@
           "id": "17",
           "name": {
             "en": "Crosshair 17",
-            "uk": "Приціл 17"
+            "uk": "Приціл 17",
+            "ru": "Прицел 17"
           },
           "preview": "image/pic/crosshair/17.png",
           "files": [
@@ -290,7 +311,8 @@
           "id": "18",
           "name": {
             "en": "Crosshair 18",
-            "uk": "Приціл 18"
+            "uk": "Приціл 18",
+            "ru": "Прицел 18"
           },
           "preview": "image/pic/crosshair/18.png",
           "files": [
@@ -304,7 +326,8 @@
           "id": "19",
           "name": {
             "en": "Crosshair 19",
-            "uk": "Приціл 19"
+            "uk": "Приціл 19",
+            "ru": "Прицел 19"
           },
           "preview": "image/pic/crosshair/19.png",
           "files": [
@@ -318,7 +341,8 @@
           "id": "20",
           "name": {
             "en": "Crosshair 20",
-            "uk": "Приціл 20"
+            "uk": "Приціл 20",
+            "ru": "Прицел 20"
           },
           "preview": "image/pic/crosshair/20.png",
           "files": [
@@ -334,11 +358,13 @@
       "id": "ui-pack",
       "name": {
         "en": "UI skin",
-        "uk": "Скін інтерфейсу"
+        "uk": "Скін інтерфейсу",
+        "ru": "Скин интерфейса"
       },
       "description": {
         "en": "Dezlaros UI pack — reskin the in-game panels.",
-        "uk": "UI-пак Dezlaros — змінює вигляд ігрових панелей."
+        "uk": "UI-пак Dezlaros — змінює вигляд ігрових панелей.",
+        "ru": "UI-пак Dezlaros — меняет вид игровых панелей."
       },
       "kind": "choice",
       "options": [
@@ -346,7 +372,8 @@
           "id": "got",
           "name": {
             "en": "Game of Thrones",
-            "uk": "Game of Thrones"
+            "uk": "Game of Thrones",
+            "ru": "Game of Thrones"
           },
           "files": [
             {
@@ -359,7 +386,8 @@
           "id": "knightly",
           "name": {
             "en": "Knightly",
-            "uk": "Knightly"
+            "uk": "Knightly",
+            "ru": "Knightly"
           },
           "files": [
             {
@@ -372,7 +400,8 @@
           "id": "ngold",
           "name": {
             "en": "Native Gold",
-            "uk": "Native Gold"
+            "uk": "Native Gold",
+            "ru": "Native Gold"
           },
           "files": [
             {
@@ -385,7 +414,8 @@
           "id": "ngreen",
           "name": {
             "en": "Native Green",
-            "uk": "Native Green"
+            "uk": "Native Green",
+            "ru": "Native Green"
           },
           "files": [
             {
@@ -398,7 +428,8 @@
           "id": "np",
           "name": {
             "en": "Native Purple",
-            "uk": "Native Purple"
+            "uk": "Native Purple",
+            "ru": "Native Purple"
           },
           "files": [
             {
@@ -411,7 +442,8 @@
           "id": "nr",
           "name": {
             "en": "Native Red",
-            "uk": "Native Red"
+            "uk": "Native Red",
+            "ru": "Native Red"
           },
           "files": [
             {
@@ -424,7 +456,8 @@
           "id": "ns",
           "name": {
             "en": "Native Silver",
-            "uk": "Native Silver"
+            "uk": "Native Silver",
+            "ru": "Native Silver"
           },
           "files": [
             {
@@ -437,7 +470,8 @@
           "id": "ny",
           "name": {
             "en": "Native Yellow",
-            "uk": "Native Yellow"
+            "uk": "Native Yellow",
+            "ru": "Native Yellow"
           },
           "files": [
             {
@@ -450,7 +484,8 @@
           "id": "v",
           "name": {
             "en": "Vaegir",
-            "uk": "Vaegir"
+            "uk": "Vaegir",
+            "ru": "Vaegir"
           },
           "files": [
             {
@@ -463,7 +498,8 @@
           "id": "vg",
           "name": {
             "en": "Vaegir Gold",
-            "uk": "Vaegir Gold"
+            "uk": "Vaegir Gold",
+            "ru": "Vaegir Gold"
           },
           "files": [
             {
@@ -478,11 +514,13 @@
       "id": "arena-overhaul",
       "name": {
         "en": "Arena Overhaul",
-        "uk": "Оновлені арени"
+        "uk": "Оновлені арени",
+        "ru": "Обновлённые арены"
       },
       "description": {
         "en": "Reworked tournament arena scenes.",
-        "uk": "Перероблені сцени турнірних арен."
+        "uk": "Перероблені сцени турнірних арен.",
+        "ru": "Переработанные сцены турнирных арен."
       },
       "kind": "copy",
       "files": [
@@ -496,11 +534,13 @@
       "id": "fonts",
       "name": {
         "en": "Font",
-        "uk": "Шрифт"
+        "uk": "Шрифт",
+        "ru": "Шрифт"
       },
       "description": {
         "en": "Alternative in-game font.",
-        "uk": "Альтернативний ігровий шрифт."
+        "uk": "Альтернативний ігровий шрифт.",
+        "ru": "Альтернативный игровой шрифт."
       },
       "kind": "copy",
       "files": [
@@ -518,11 +558,13 @@
       "id": "old-qualis-gem",
       "name": {
         "en": "Old Qualis Gem look",
-        "uk": "Старий вигляд Qualis Gem"
+        "uk": "Старий вигляд Qualis Gem",
+        "ru": "Старый вид камня Квалис"
       },
       "description": {
         "en": "Restore the old Qualis Gem appearance.",
-        "uk": "Повернути старий вигляд каменя Qualis."
+        "uk": "Повернути старий вигляд каменя Qualis.",
+        "ru": "Вернуть старый вид камня Квалис."
       },
       "kind": "copy",
       "files": [
@@ -543,11 +585,13 @@
       "id": "collision-fixes",
       "name": {
         "en": "Collision fixes",
-        "uk": "Виправлення колізій"
+        "uk": "Виправлення колізій",
+        "ru": "Исправления коллизий"
       },
       "description": {
         "en": "Mesh collision fixes (PoP Helper's colfix).",
-        "uk": "Виправлення колізій мешів (colfix з PoP Helper)."
+        "uk": "Виправлення колізій мешів (colfix з PoP Helper).",
+        "ru": "Исправления коллизий мешей (colfix из PoP Helper)."
       },
       "kind": "copy",
       "files": [
