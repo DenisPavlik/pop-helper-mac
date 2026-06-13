@@ -170,11 +170,12 @@ enum SelfTest {
             r.failures.append("expected conflict when pattern missing"); r.checks += 1
         }
 
+        // Multi-op: one knob tweaked, one left at its vanilla value → applied (NOT conflict).
         let opA = TweakOperation(file: "a.txt", original: "X 1", replacement: "X 2", occurrence: .all, expectedCount: 1)
         let opB = TweakOperation(file: "b.txt", original: "Y 1", replacement: "Y 2", occurrence: .all, expectedCount: 1)
         let t2 = tweak(operations: [opA, opB])
-        if case .conflict = TweakEngine.status(of: t2, files: ["a.txt": "X 2", "b.txt": "Y 1"]) {} else {
-            r.failures.append("expected conflict when partially applied"); r.checks += 1
+        if case .applied = TweakEngine.status(of: t2, files: ["a.txt": "X 2", "b.txt": "Y 1"]) {} else {
+            r.failures.append("expected applied when one op tweaked, one at vanilla"); r.checks += 1
         }
     }
 

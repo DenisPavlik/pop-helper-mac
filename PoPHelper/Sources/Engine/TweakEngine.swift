@@ -141,7 +141,6 @@ enum TweakEngine {
     static func status(of tweak: Tweak, files: [String: String]) -> TweakStatus {
         let keys = declaredKeys(of: tweak)
         var anyApplied = false
-        var anyNotApplied = false
         var values: [String: Int] = [:]
         for op in tweak.operations {
             guard let content = files[op.file] else {
@@ -149,13 +148,14 @@ enum TweakEngine {
             }
             let originalCount = ranges(of: op.original, in: content).count
             let selected = selectedCount(of: op)
+            // Op text equals pristine — either the tweak isn't applied, or this
+            // particular knob is left at its vanilla value. Not a conflict.
             if originalCount == op.expectedCount {
-                anyNotApplied = true
                 continue
             }
             guard let applied = try? appliedMatches(of: op, declaredKeys: keys, in: content),
                   originalCount == op.expectedCount - selected,
-                  applied.count >= selected
+                  applied.count == selected
             else {
                 return .conflict(detail: "\(op.file): found \(originalCount)/\(op.expectedCount) pristine occurrences")
             }
@@ -164,10 +164,12 @@ enum TweakEngine {
                 values.merge(first.values) { current, _ in current }
             }
         }
-        if anyApplied && anyNotApplied {
-            return .conflict(detail: "partially applied")
+        guard anyApplied else { return .notApplied }
+        // Knobs left at their vanilla value read back as the original value.
+        for param in tweak.params where values[param.key] == nil {
+            values[param.key] = param.originalValue
         }
-        return anyApplied ? .applied(values: values) : .notApplied
+        return .applied(values: values)
     }
 
     // MARK: Apply / revert
@@ -213,6 +215,10 @@ enum TweakEngine {
         var touched: Set<String> = []
         for op in tweak.operations {
             guard var content = files[op.file] else { throw TweakEngineError.fileMissing(op.file) }
+            // Knob already at its vanilla value → nothing to revert for this op.
+            if ranges(of: op.original, in: content).count == op.expectedCount {
+                continue
+            }
             let matches = try appliedMatches(of: op, declaredKeys: keys, in: content)
             guard matches.count == selectedCount(of: op) else {
                 throw TweakEngineError.notInExpectedState(

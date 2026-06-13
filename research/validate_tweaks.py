@@ -152,6 +152,16 @@ def validate(db):
                 fail(f"{tag}: original found {count} times, "
                      f"expectedCount={oper['expectedCount']}")
 
+            # (e) for non-structural value ops, the PARAMETERIZED pattern must be
+            # unique too: with the param value wildcarded it must still match the
+            # pristine file exactly expectedCount times, else status-detection /
+            # revert can latch onto coincidental locations.
+            if keys and not oper.get("structural"):
+                rx_hits = len(build_regex(repl, params).findall(text))
+                if rx_hits != oper["expectedCount"]:
+                    fail(f"{tag}: parameterized pattern matches pristine {rx_hits} "
+                         f"times (ambiguous), expectedCount={oper['expectedCount']}")
+
             # occurrence sanity
             occ = oper["occurrence"]
             if occ != "all":

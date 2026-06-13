@@ -13,6 +13,9 @@ struct PoPHelperApp: App {
         if CommandLine.arguments.contains("--status") {
             exit(CLI.statusReport() ? 0 : 1)
         }
+        if CommandLine.arguments.contains("--verify-apply") {
+            exit(CLI.verifyApply() ? 0 : 1)
+        }
         // When launched via `swift run` (no .app bundle) the process starts as a
         // background agent; promote it so the window shows and gets focus.
         NSApplication.shared.setActivationPolicy(.regular)

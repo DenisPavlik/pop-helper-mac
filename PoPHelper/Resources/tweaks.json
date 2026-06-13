@@ -67,8 +67,8 @@
         },
         {
           "file": "scripts.txt",
-          "original": "4 0 30 2 1224979098644774957 60",
-          "replacement": "4 0 30 2 1224979098644774957 {threshold}",
+          "original": "0 4 0 30 2 1224979098644774957 60 4",
+          "replacement": "0 4 0 30 2 1224979098644774957 {threshold} 4",
           "occurrence": "all",
           "expectedCount": 2
         }
@@ -118,8 +118,8 @@
       "operations": [
         {
           "file": "menus.txt",
-          "original": "2 144115188075857282 20",
-          "replacement": "2 144115188075857282 {chance}",
+          "original": "4 0 2147483678 2 144115188075857282 20 2133 2 1224979098644774915",
+          "replacement": "4 0 2147483678 2 144115188075857282 {chance} 2133 2 1224979098644774915",
           "occurrence": "all",
           "expectedCount": 1
         }
@@ -671,15 +671,15 @@
       "operations": [
         {
           "file": "simple_triggers.txt",
-          "original": "20 2121 3 1224979098644774913 400",
-          "replacement": "{partySkillFactor} 2121 3 1224979098644774913 {partyEscapeBase}",
+          "original": "2 1224979098644774912 20 2121 3 1224979098644774913 400 1224979098644774912 1",
+          "replacement": "2 1224979098644774912 {partySkillFactor} 2121 3 1224979098644774913 {partyEscapeBase} 1224979098644774912 1",
           "occurrence": "all",
           "expectedCount": 1
         },
         {
           "file": "simple_triggers.txt",
-          "original": "10 2121 3 1224979098644774913 200",
-          "replacement": "{fiefSkillFactor} 2121 3 1224979098644774913 {fiefEscapeBase}",
+          "original": "2 1224979098644774912 10 2121 3 1224979098644774913 200 1224979098644774912 4",
+          "replacement": "2 1224979098644774912 {fiefSkillFactor} 2121 3 1224979098644774913 {fiefEscapeBase} 1224979098644774912 4",
           "occurrence": "all",
           "expectedCount": 1
         }
@@ -750,8 +750,8 @@
       "operations": [
         {
           "file": "scripts.txt",
-          "original": "2500 2130 1",
-          "replacement": "{renownCapSquared} 2130 1",
+          "original": "144115188075856231 2500 2130 1 144115188075856231",
+          "replacement": "144115188075856231 {renownCapSquared} 2130 1 144115188075856231",
           "occurrence": "all",
           "expectedCount": 1
         }
@@ -788,7 +788,7 @@
             "uk": "Дільник платні"
           },
           "originalValue": 25,
-          "defaultValue": 25,
+          "defaultValue": 40,
           "min": 1,
           "max": 1000
         },
@@ -843,7 +843,7 @@
             "uk": "Зниження платні за пункт «Лідерства» (%)"
           },
           "originalValue": 5,
-          "defaultValue": 5,
+          "defaultValue": 9,
           "min": 0,
           "max": 100
         }
@@ -851,8 +851,8 @@
       "operations": [
         {
           "file": "scripts.txt",
-          "original": "2105 2 1224979098644774914 3 2107 2 1224979098644774914 1224979098644774914 2108 2 1224979098644774914 25",
-          "replacement": "2105 2 1224979098644774914 {levelBonus} 2107 2 1224979098644774914 1224979098644774914 2108 2 1224979098644774914 {divisor}",
+          "original": "1224979098644774915 2105 2 1224979098644774914 3 2107 2 1224979098644774914 1224979098644774914 2108 2 1224979098644774914 25 3",
+          "replacement": "1224979098644774915 2105 2 1224979098644774914 {levelBonus} 2107 2 1224979098644774914 1224979098644774914 2108 2 1224979098644774914 {divisor} 3",
           "occurrence": "all",
           "expectedCount": 1
         },
@@ -879,8 +879,8 @@
         },
         {
           "file": "scripts.txt",
-          "original": "2122 3 1224979098644774918 5 1224979098644774917",
-          "replacement": "2122 3 1224979098644774918 {leadershipCut} 1224979098644774917",
+          "original": "360287970189639680 2122 3 1224979098644774918 5 1224979098644774917 2121",
+          "replacement": "360287970189639680 2122 3 1224979098644774918 {leadershipCut} 1224979098644774917 2121",
           "occurrence": "all",
           "expectedCount": 1
         }
@@ -906,7 +906,7 @@
             "uk": "Рента з села"
           },
           "originalValue": 600,
-          "defaultValue": 600,
+          "defaultValue": 800,
           "min": 0,
           "max": 100000
         },
@@ -917,7 +917,7 @@
             "uk": "Рента із замку"
           },
           "originalValue": 600,
-          "defaultValue": 600,
+          "defaultValue": 1000,
           "min": 0,
           "max": 100000
         },
@@ -928,7 +928,7 @@
             "uk": "Рента з міста"
           },
           "originalValue": 1200,
-          "defaultValue": 1200,
+          "defaultValue": 2000,
           "min": 0,
           "max": 100000
         },
@@ -939,7 +939,7 @@
             "uk": "Дільник загального доходу"
           },
           "originalValue": 480,
-          "defaultValue": 480,
+          "defaultValue": 400,
           "min": 1,
           "max": 10000
         }
@@ -1515,8 +1515,8 @@
       "operations": [
         {
           "file": "scripts.txt",
-          "original": "2108 2 1224979098644774927 8",
-          "replacement": "2108 2 1224979098644774927 {lootDivisor}",
+          "original": "1224979098644774928 2108 2 1224979098644774927 8 2108",
+          "replacement": "1224979098644774928 2108 2 1224979098644774927 {lootDivisor} 2108",
           "occurrence": "all",
           "expectedCount": 1
         },
@@ -1825,7 +1825,7 @@
             "uk": "Ліміт сержантів у гарнізоні"
           },
           "originalValue": 50,
-          "defaultValue": 50,
+          "defaultValue": 100,
           "min": 0,
           "max": 500
         },
@@ -1836,7 +1836,7 @@
             "uk": "Ліміт лицарів у гарнізоні"
           },
           "originalValue": 30,
-          "defaultValue": 30,
+          "defaultValue": 60,
           "min": 0,
           "max": 500
         }
@@ -1867,204 +1867,6 @@
           "file": "scripts.txt",
           "original": "1224979098644774914 2147483680 2 1224979098644774924 30",
           "replacement": "1224979098644774914 2147483680 2 1224979098644774924 {knightLimit}",
-          "occurrence": "all",
-          "expectedCount": 1
-        }
-      ]
-    },
-    {
-      "id": "ko-patrols",
-      "name": {
-        "en": "KO patrols: amount, size and frequency",
-        "uk": "Патрулі орденів: кількість, розмір і частота"
-      },
-      "description": {
-        "en": "Tunes the Knighthood Order patrols that spawn on their own around fiefs hosting a chapter. Sets the world-map caps for regular KO patrols and for \"lost\" Ebony Gauntlet/Silvermist patrols in D'Shar lands, their 15% spawn chances, and the knight/sergeant counts in co-op and solo patrols. Increasing these adds flavor and eases befriending orders.",
-        "uk": "Налаштовує патрулі лицарських орденів, що самостійно з'являються довкола володінь з капітулом ордену. Задає ліміти на карті для звичайних патрулів орденів і для «загублених» патрулів Чорної Рукавиці/Срібнотуманних у землях Д'Шар, їхні 15% шанси появи та кількість лицарів/сержантів у спільних і одиночних патрулях. Збільшення додає колориту й полегшує приязнь з орденами."
-      },
-      "category": "kingdom",
-      "wikiRef": "Tweak 2 o",
-      "params": [
-        {
-          "key": "maxPatrols",
-          "name": {
-            "en": "Max regular KO patrols on map",
-            "uk": "Макс. звичайних патрулів орденів на карті"
-          },
-          "originalValue": 9,
-          "defaultValue": 18,
-          "min": 0,
-          "max": 100
-        },
-        {
-          "key": "maxLost",
-          "name": {
-            "en": "Max \"lost\" Ebony/Silvermist patrols",
-            "uk": "Макс. «загублених» патрулів Рукавиці/Срібла"
-          },
-          "originalValue": 13,
-          "defaultValue": 13,
-          "min": 0,
-          "max": 100
-        },
-        {
-          "key": "patrolChance",
-          "name": {
-            "en": "Regular patrol spawn chance (%)",
-            "uk": "Шанс появи звичайного патруля (%)"
-          },
-          "originalValue": 15,
-          "defaultValue": 30,
-          "min": 0,
-          "max": 100
-        },
-        {
-          "key": "lostChance",
-          "name": {
-            "en": "\"Lost\" patrol spawn chance (%)",
-            "uk": "Шанс появи «загубленого» патруля (%)"
-          },
-          "originalValue": 15,
-          "defaultValue": 15,
-          "min": 0,
-          "max": 100
-        },
-        {
-          "key": "coopKnightMin",
-          "name": {
-            "en": "Co-op patrol: min knights",
-            "uk": "Спільний патруль: мін. лицарів"
-          },
-          "originalValue": 6,
-          "defaultValue": 6,
-          "min": 0,
-          "max": 100
-        },
-        {
-          "key": "coopKnightMax",
-          "name": {
-            "en": "Co-op patrol: max knights",
-            "uk": "Спільний патруль: макс. лицарів"
-          },
-          "originalValue": 20,
-          "defaultValue": 20,
-          "min": 1,
-          "max": 100
-        },
-        {
-          "key": "coopSergMin",
-          "name": {
-            "en": "Co-op patrol: min sergeants",
-            "uk": "Спільний патруль: мін. сержантів"
-          },
-          "originalValue": 10,
-          "defaultValue": 10,
-          "min": 0,
-          "max": 100
-        },
-        {
-          "key": "coopSergMax",
-          "name": {
-            "en": "Co-op patrol: max sergeants",
-            "uk": "Спільний патруль: макс. сержантів"
-          },
-          "originalValue": 25,
-          "defaultValue": 25,
-          "min": 1,
-          "max": 100
-        },
-        {
-          "key": "soloKnightMin",
-          "name": {
-            "en": "Solo patrol: min knights",
-            "uk": "Одиночний патруль: мін. лицарів"
-          },
-          "originalValue": 4,
-          "defaultValue": 4,
-          "min": 0,
-          "max": 100
-        },
-        {
-          "key": "soloKnightMax",
-          "name": {
-            "en": "Solo patrol: max knights",
-            "uk": "Одиночний патруль: макс. лицарів"
-          },
-          "originalValue": 12,
-          "defaultValue": 12,
-          "min": 1,
-          "max": 100
-        },
-        {
-          "key": "lostKnightMin",
-          "name": {
-            "en": "\"Lost\" patrol: min knights",
-            "uk": "«Загублений» патруль: мін. лицарів"
-          },
-          "originalValue": 4,
-          "defaultValue": 4,
-          "min": 0,
-          "max": 100
-        },
-        {
-          "key": "lostKnightMax",
-          "name": {
-            "en": "\"Lost\" patrol: max knights",
-            "uk": "«Загублений» патруль: макс. лицарів"
-          },
-          "originalValue": 12,
-          "defaultValue": 12,
-          "min": 1,
-          "max": 100
-        }
-      ],
-      "operations": [
-        {
-          "file": "scripts.txt",
-          "original": "2310 2 1224979098644774925 576460752303423550 2147483678 2 1224979098644774925 9",
-          "replacement": "2310 2 1224979098644774925 576460752303423550 2147483678 2 1224979098644774925 {maxPatrols}",
-          "occurrence": "all",
-          "expectedCount": 1
-        },
-        {
-          "file": "scripts.txt",
-          "original": "2310 2 1224979098644774925 576460752303423550 2147483678 2 1224979098644774925 13",
-          "replacement": "2310 2 1224979098644774925 576460752303423550 2147483678 2 1224979098644774925 {maxLost}",
-          "occurrence": "all",
-          "expectedCount": 1
-        },
-        {
-          "file": "scripts.txt",
-          "original": "1224979098644774914 1 2136 3 1224979098644774920 0 100 2147483680 2 1224979098644774920 15",
-          "replacement": "1224979098644774914 1 2136 3 1224979098644774920 0 100 2147483680 2 1224979098644774920 {patrolChance}",
-          "occurrence": "all",
-          "expectedCount": 1
-        },
-        {
-          "file": "scripts.txt",
-          "original": "2136 3 1224979098644774928 0 100 2147483678 2 1224979098644774928 15",
-          "replacement": "2136 3 1224979098644774928 0 100 2147483678 2 1224979098644774928 {lostChance}",
-          "occurrence": "all",
-          "expectedCount": 1
-        },
-        {
-          "file": "scripts.txt",
-          "original": "6 20 1610 3 1224979098644774926 1224979098644774914 1224979098644774923 2136 3 1224979098644774923 10 25",
-          "replacement": "{coopKnightMin} {coopKnightMax} 1610 3 1224979098644774926 1224979098644774914 1224979098644774923 2136 3 1224979098644774923 {coopSergMin} {coopSergMax}",
-          "occurrence": "all",
-          "expectedCount": 1
-        },
-        {
-          "file": "scripts.txt",
-          "original": "1224979098644774913 5 0 2136 3 1224979098644774923 4 12",
-          "replacement": "1224979098644774913 5 0 2136 3 1224979098644774923 {soloKnightMin} {soloKnightMax}",
-          "occurrence": "all",
-          "expectedCount": 1
-        },
-        {
-          "file": "scripts.txt",
-          "original": "1224979098644774915 68 2136 3 1224979098644774924 4 12",
-          "replacement": "1224979098644774915 68 2136 3 1224979098644774924 {lostKnightMin} {lostKnightMax}",
           "occurrence": "all",
           "expectedCount": 1
         }
@@ -2127,8 +1929,8 @@
         },
         {
           "file": "scripts.txt",
-          "original": "-5 3 4 0 1073742364 3",
-          "replacement": "{othersMin} {othersMax} 4 0 1073742364 3",
+          "original": "1224979098644774939 -5 3 4 0 1073742364 3 1224979098644774936",
+          "replacement": "1224979098644774939 {othersMin} {othersMax} 4 0 1073742364 3 1224979098644774936",
           "occurrence": "all",
           "expectedCount": 1
         }
@@ -2184,22 +1986,22 @@
       "operations": [
         {
           "file": "scripts.txt",
-          "original": "1224979098644774922 1224979098644774927 -1 2105 2",
-          "replacement": "1224979098644774922 1224979098644774927 {defeatHit} 2105 2",
+          "original": "1 4 936748722493063695 1224979098644774922 1224979098644774927 -1 2105 2 144115188075857004 -1 3",
+          "replacement": "1 4 936748722493063695 1224979098644774922 1224979098644774927 {defeatHit} 2105 2 144115188075857004 -1 3",
           "occurrence": "all",
           "expectedCount": 1
         },
         {
           "file": "simple_triggers.txt",
-          "original": "1224979098644774912 1224979098644774916 -2 2105 2",
-          "replacement": "1224979098644774912 1224979098644774916 {fieflessHit2} 2105 2",
+          "original": "4 936748722493063695 1224979098644774912 1224979098644774916 -2 2105 2 144115188075857187 -2",
+          "replacement": "4 936748722493063695 1224979098644774912 1224979098644774916 {fieflessHit2} 2105 2 144115188075857187 -2",
           "occurrence": "all",
           "expectedCount": 1
         },
         {
           "file": "simple_triggers.txt",
-          "original": "1224979098644774912 1224979098644774916 -1 2105 2",
-          "replacement": "1224979098644774912 1224979098644774916 {fieflessHit1} 2105 2",
+          "original": "4 936748722493063695 1224979098644774912 1224979098644774916 -1 2105 2 144115188075857187 -1",
+          "replacement": "4 936748722493063695 1224979098644774912 1224979098644774916 {fieflessHit1} 2105 2 144115188075857187 -1",
           "occurrence": "all",
           "expectedCount": 1
         }
@@ -2293,7 +2095,7 @@
             "uk": "Лицар: мін. прести́ж"
           },
           "originalValue": 10,
-          "defaultValue": 10,
+          "defaultValue": 5,
           "min": 0,
           "max": 1000
         },
@@ -2304,7 +2106,7 @@
             "uk": "Лицар: макс. прести́ж (+1)"
           },
           "originalValue": 46,
-          "defaultValue": 46,
+          "defaultValue": 23,
           "min": 1,
           "max": 1000
         },
@@ -2315,7 +2117,7 @@
             "uk": "Сержант: мін. прести́ж"
           },
           "originalValue": 4,
-          "defaultValue": 4,
+          "defaultValue": 2,
           "min": 0,
           "max": 1000
         },
@@ -2326,7 +2128,7 @@
             "uk": "Сержант: макс. прести́ж (+1)"
           },
           "originalValue": 36,
-          "defaultValue": 36,
+          "defaultValue": 18,
           "min": 1,
           "max": 1000
         }
@@ -2427,15 +2229,15 @@
       "operations": [
         {
           "file": "scripts.txt",
-          "original": "2108 2 1224979098644774920 100 2108 2 1224979098644774920",
-          "replacement": "2108 2 1224979098644774920 {timeFactor} 2108 2 1224979098644774920",
+          "original": "1224979098644774918 2108 2 1224979098644774920 100 2108 2 1224979098644774920 35",
+          "replacement": "1224979098644774918 2108 2 1224979098644774920 {timeFactor} 2108 2 1224979098644774920 35",
           "occurrence": "all",
           "expectedCount": 1
         },
         {
           "file": "scripts.txt",
-          "original": "2121 3 1224979098644774917 1000 1224979098644774917",
-          "replacement": "2121 3 1224979098644774917 {costFactor} 1224979098644774917",
+          "original": "25 2121 3 1224979098644774917 1000 1224979098644774917 2107",
+          "replacement": "25 2121 3 1224979098644774917 {costFactor} 1224979098644774917 2107",
           "occurrence": "all",
           "expectedCount": 1
         }
@@ -2483,7 +2285,7 @@
             "uk": "Дільник вартості"
           },
           "originalValue": 5,
-          "defaultValue": 5,
+          "defaultValue": 10,
           "min": 1,
           "max": 1000
         },
@@ -2584,8 +2386,8 @@
         },
         {
           "file": "simple_triggers.txt",
-          "original": "2107 2 1224979098644774912 5 2121 3 1224979098644774913 66 1224979098644774912",
-          "replacement": "2107 2 1224979098644774912 {escapePerLeadership} 2121 3 1224979098644774913 {escapeBase} 1224979098644774912",
+          "original": "360287970189639680 2107 2 1224979098644774912 5 2121 3 1224979098644774913 66 1224979098644774912 32",
+          "replacement": "360287970189639680 2107 2 1224979098644774912 {escapePerLeadership} 2121 3 1224979098644774913 {escapeBase} 1224979098644774912 32",
           "occurrence": "all",
           "expectedCount": 1
         }
@@ -2611,7 +2413,7 @@
             "uk": "Множник вибування"
           },
           "originalValue": 2,
-          "defaultValue": 2,
+          "defaultValue": 4,
           "min": 1,
           "max": 64,
           "presets": [
@@ -2796,8 +2598,8 @@
         },
         {
           "file": "conversation.txt",
-          "original": "2133 2 72057594037927946 2000",
-          "replacement": "2133 2 72057594037927946 {prize}",
+          "original": "1 2133 2 72057594037927946 2000 Congratulations,_champion!_Your_fight_there_was_something_to_remember!_You_managed_to_be_the_last_fighter_standing_beating_down_everyone_else._And_of_course_you_won_the_grand_prize_of_the_fights:_{reg10}_denars.",
+          "replacement": "1 2133 2 72057594037927946 {prize} Congratulations,_champion!_Your_fight_there_was_something_to_remember!_You_managed_to_be_the_last_fighter_standing_beating_down_everyone_else._And_of_course_you_won_the_grand_prize_of_the_fights:_{reg10}_denars.",
           "occurrence": "all",
           "expectedCount": 1
         },
@@ -3268,8 +3070,8 @@
       "operations": [
         {
           "file": "conversation.txt",
-          "original": "506 3 504403158265495618 24 15",
-          "replacement": "506 3 504403158265495618 {valueA} {valueB}",
+          "original": "20 506 3 504403158265495618 24 15 1290",
+          "replacement": "20 506 3 504403158265495618 {valueA} {valueB} 1290",
           "occurrence": "all",
           "expectedCount": 1
         }
@@ -3417,61 +3219,6 @@
       ]
     },
     {
-      "id": "limit-battle-advantage",
-      "name": {
-        "en": "Limit battle advantage (fairer field spawns)",
-        "uk": "Обмеження бойової переваги (чесніший спавн на полі)"
-      },
-      "description": {
-        "en": "Caps the engine's battle-advantage spawn ratio so that, as long as both sides can fill the battlesize, you always get at least half as many troops on the field as the enemy regardless of your Tactics skill, and at most twice theirs. Inserts a clamp into the calculate_battle_advantage script (lowest disadvantage -5, highest advantage +5; +5 is the engine maximum).",
-        "uk": "Обмежує співвідношення бойової переваги рушія так, що — поки обидві сторони можуть заповнити розмір битви — ви завжди матимете на полі щонайменше половину війська ворога незалежно від навички «Тактика» і щонайбільше вдвічі більше. Додає обмежувач у скрипт calculate_battle_advantage (найнижча невигода -5, найвища перевага +5; +5 — це максимум рушія)."
-      },
-      "category": "battle",
-      "wikiRef": "Tweak 10 i",
-      "params": [
-        {
-          "key": "minAdvantage",
-          "name": {
-            "en": "Lowest battle advantage",
-            "uk": "Найнижча бойова перевага"
-          },
-          "originalValue": -5,
-          "defaultValue": -5,
-          "min": -5,
-          "max": 0
-        },
-        {
-          "key": "maxAdvantage",
-          "name": {
-            "en": "Highest battle advantage",
-            "uk": "Найвища бойова перевага"
-          },
-          "originalValue": 5,
-          "defaultValue": 5,
-          "min": 0,
-          "max": 5
-        }
-      ],
-      "operations": [
-        {
-          "file": "scripts.txt",
-          "original": "28 1 2 936748722493063355 648518346341351441 2133 2 1224979098644774912 72057594037927936",
-          "replacement": "30 1 2 936748722493063355 648518346341351441 2133 2 1224979098644774912 72057594037927936",
-          "occurrence": "all",
-          "expectedCount": 1,
-          "structural": true
-        },
-        {
-          "file": "scripts.txt",
-          "original": "2106 2 1224979098644774918 1224979098644774916 2108 2 1224979098644774918 100",
-          "replacement": "2106 2 1224979098644774918 1224979098644774916 2108 2 1224979098644774918 100 2111 2 1224979098644774918 {minAdvantage} 2110 2 1224979098644774918 {maxAdvantage}",
-          "occurrence": "all",
-          "expectedCount": 1,
-          "structural": true
-        }
-      ]
-    },
-    {
       "id": "disable-night-ambushes",
       "name": {
         "en": "Disable night ambushes",
@@ -3489,30 +3236,6 @@
           "file": "scripts.txt",
           "original": "72 2147483679 2 144115188075856246 0",
           "replacement": "73 31 2 0 1 2147483679 2 144115188075856246 0",
-          "occurrence": "all",
-          "expectedCount": 1,
-          "structural": true
-        }
-      ]
-    },
-    {
-      "id": "no-item-gold-loss-when-captured",
-      "name": {
-        "en": "Keep items and gold when taken prisoner",
-        "uk": "Зберігати речі та гроші в полоні"
-      },
-      "description": {
-        "en": "Replaces the body of the loot_player_items script with a no-op so that being taken prisoner no longer strips 1-5 of your items or a portion of your gold. (Your troops are still lost.)",
-        "uk": "Замінює тіло скрипту loot_player_items на порожнє, тож потрапляння в полон більше не забирає 1-5 ваших речей і частину золота. (Війська все одно втрачаються.)"
-      },
-      "category": "battle",
-      "wikiRef": "Tweak 10 x",
-      "params": [],
-      "operations": [
-        {
-          "file": "scripts.txt",
-          "original": "52 23 2 1224979098644774912 1 1540 2 1224979098644774913 360287970189639680 6 3 1224979098644774914 0 1224979098644774913 1541 3 1224979098644774915 360287970189639680 1224979098644774914 30 2 1224979098644774915 0 1542 3 1224979098644774916 360287970189639680 1224979098644774914 1570 2 1224979098644774917 1224979098644774915 2133 2 1224979098644774918 0 4 0 31 2 1224979098644774917 11 2133 2 1224979098644774918 20 5 0 31 2 1224979098644774917 1 2133 2 1224979098644774918 15 5 0 1073741855 2 1224979098644774917 2 1073741855 2 1224979098644774917 3 1073741855 2 1224979098644774917 4 1073741855 2 1224979098644774917 8 1073741855 2 1224979098644774917 9 31 2 1224979098644774917 10 2133 2 1224979098644774918 5 5 0 1073741855 2 1224979098644774917 12 1073741855 2 1224979098644774917 13 1073741855 2 1224979098644774917 14 1073741855 2 1224979098644774917 15 31 2 1224979098644774917 7 2133 2 1224979098644774918 5 3 0 2136 3 1224979098644774919 0 100 2147483678 2 1224979098644774919 1224979098644774918 1531 2 360287970189639680 1224979098644774915 4 0 32 2 1224979098644774912 0 521 3 1224979098644774920 1224979098644774912 109 2105 2 1224979098644774920 110 501 3 1224979098644774912 1224979098644774920 1224979098644774915 2106 2 1224979098644774920 110 2105 2 1224979098644774920 115 501 3 1224979098644774912 1224979098644774920 1224979098644774916 2106 2 1224979098644774920 115 2105 2 1224979098644774920 1 2109 2 1224979098644774920 5 501 3 1224979098644774912 109 1224979098644774920 3 0 3 0 2149 2 1224979098644774921 360287970189639680 2123 3 1224979098644774922 1224979098644774921 4 2123 3 1224979098644774923 1224979098644774921 10 2136 3 1224979098644774924 1224979098644774923 1224979098644774922 1529 2 360287970189639680 1224979098644774924",
-          "replacement": "1 23 2 1224979098644774912 1",
           "occurrence": "all",
           "expectedCount": 1,
           "structural": true
@@ -3591,143 +3314,6 @@
       ]
     },
     {
-      "id": "resting-values",
-      "name": {
-        "en": "Resting limits and speed",
-        "uk": "Обмеження та швидкість відпочинку"
-      },
-      "description": {
-        "en": "Adjusts resting: the maximum consecutive hours you may rest, the time-acceleration multiplier, and whether you can be attacked while resting (1 = yes, 0 = no). Three groups are covered: walled fiefs / Elacrai / Order Stronghold / Hideout (4 spots), open-map camping, and villages with a Manor.",
-        "uk": "Налаштовує відпочинок: максимум годин відпочинку поспіль, множник прискорення часу та чи можуть на вас напасти під час відпочинку (1 = так, 0 = ні). Охоплено три групи: фортеці / Елакрай / твердиня ордену / схрон (4 місця), табір на відкритій мапі та села з маєтком."
-      },
-      "category": "cheats",
-      "wikiRef": "Tweak 21 d",
-      "params": [
-        {
-          "key": "fiefHours",
-          "name": {
-            "en": "Walled fiefs: max hours",
-            "uk": "Фортеці: макс. годин"
-          },
-          "originalValue": 168,
-          "defaultValue": 168,
-          "min": 1,
-          "max": 8760
-        },
-        {
-          "key": "fiefSpeed",
-          "name": {
-            "en": "Walled fiefs: speed multiplier",
-            "uk": "Фортеці: множник швидкості"
-          },
-          "originalValue": 5,
-          "defaultValue": 5,
-          "min": 1,
-          "max": 50
-        },
-        {
-          "key": "fiefAttackable",
-          "name": {
-            "en": "Walled fiefs: attackable (1/0)",
-            "uk": "Фортеці: можна напасти (1/0)"
-          },
-          "originalValue": 0,
-          "defaultValue": 0,
-          "min": 0,
-          "max": 1
-        },
-        {
-          "key": "campHours",
-          "name": {
-            "en": "Camping: max hours",
-            "uk": "Табір: макс. годин"
-          },
-          "originalValue": 8760,
-          "defaultValue": 8760,
-          "min": 1,
-          "max": 8760
-        },
-        {
-          "key": "campSpeed",
-          "name": {
-            "en": "Camping: speed multiplier",
-            "uk": "Табір: множник швидкості"
-          },
-          "originalValue": 5,
-          "defaultValue": 5,
-          "min": 1,
-          "max": 50
-        },
-        {
-          "key": "campAttackable",
-          "name": {
-            "en": "Camping: attackable (1/0)",
-            "uk": "Табір: можна напасти (1/0)"
-          },
-          "originalValue": 1,
-          "defaultValue": 1,
-          "min": 0,
-          "max": 1
-        },
-        {
-          "key": "manorHours",
-          "name": {
-            "en": "Manor village: max hours",
-            "uk": "Село з маєтком: макс. годин"
-          },
-          "originalValue": 168,
-          "defaultValue": 168,
-          "min": 1,
-          "max": 8760
-        },
-        {
-          "key": "manorSpeed",
-          "name": {
-            "en": "Manor village: speed multiplier",
-            "uk": "Село з маєтком: множник швидкості"
-          },
-          "originalValue": 5,
-          "defaultValue": 5,
-          "min": 1,
-          "max": 50
-        },
-        {
-          "key": "manorAttackable",
-          "name": {
-            "en": "Manor village: attackable (1/0)",
-            "uk": "Село з маєтком: можна напасти (1/0)"
-          },
-          "originalValue": 1,
-          "defaultValue": 1,
-          "min": 0,
-          "max": 1
-        }
-      ],
-      "operations": [
-        {
-          "file": "menus.txt",
-          "original": "1031 3 168 5 0",
-          "replacement": "1031 3 {fiefHours} {fiefSpeed} {fiefAttackable}",
-          "occurrence": "all",
-          "expectedCount": 4
-        },
-        {
-          "file": "menus.txt",
-          "original": "1031 3 8760 5 1",
-          "replacement": "1031 3 {campHours} {campSpeed} {campAttackable}",
-          "occurrence": "all",
-          "expectedCount": 1
-        },
-        {
-          "file": "menus.txt",
-          "original": "1031 3 168 5 1",
-          "replacement": "1031 3 {manorHours} {manorSpeed} {manorAttackable}",
-          "occurrence": "all",
-          "expectedCount": 1
-        }
-      ]
-    },
-    {
       "id": "deserter-party-size",
       "name": {
         "en": "Deserter party size",
@@ -3777,8 +3363,8 @@
       "operations": [
         {
           "file": "scripts.txt",
-          "original": "2 2105 2 1224979098644774921 11 2136 3 1224979098644774922 10",
-          "replacement": "{levelMultiplier} 2105 2 1224979098644774921 {perLevelBase} 2136 3 1224979098644774922 {minimum}",
+          "original": "1224979098644774920 2 2105 2 1224979098644774921 11 2136 3 1224979098644774922 10 1224979098644774921",
+          "replacement": "1224979098644774920 {levelMultiplier} 2105 2 1224979098644774921 {perLevelBase} 2136 3 1224979098644774922 {minimum} 1224979098644774921",
           "occurrence": "all",
           "expectedCount": 1
         }
@@ -4125,8 +3711,8 @@
         },
         {
           "file": "scripts.txt",
-          "original": "100 2107 2 1224979098644774920 100",
-          "replacement": "{roundDivisor} 2107 2 1224979098644774920 100",
+          "original": "1224979098644774920 100 2107 2 1224979098644774920 100 2133",
+          "replacement": "1224979098644774920 {roundDivisor} 2107 2 1224979098644774920 100 2133",
           "occurrence": "all",
           "expectedCount": 1
         }
@@ -4261,8 +3847,8 @@
         },
         {
           "file": "conversation.txt",
-          "original": "21 500 3 144115188075855892",
-          "replacement": "{daysAway} 500 3 144115188075855892",
+          "original": "144115188075855892 151 21 500 3 144115188075855892 152 1",
+          "replacement": "144115188075855892 151 {daysAway} 500 3 144115188075855892 152 1",
           "occurrence": "all",
           "expectedCount": 1
         }
