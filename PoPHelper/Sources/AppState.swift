@@ -24,6 +24,14 @@ struct TweakViewState: Identifiable {
     }
 }
 
+struct PackViewState: Identifiable {
+    let pack: Pack
+    var available: Bool
+    var installed: Bool
+    var optionId: String?
+    var id: String { pack.id }
+}
+
 @MainActor
 final class AppState: ObservableObject {
     @Published var language: AppLanguage {
@@ -37,10 +45,15 @@ final class AppState: ObservableObject {
     let manager: ModManager
     private var database: TweakDatabase?
 
+    @Published var packStates: [PackViewState] = []
+    private(set) var packManager: PackManager
+    private var packDB: PackDatabase?
+
     init() {
         let stored = UserDefaults.standard.string(forKey: "appLanguage")
         language = AppLanguage(rawValue: stored ?? "uk") ?? .ukrainian
         manager = ModManager()
+        packManager = PackManager(modFolder: manager.modFolder)
         modFolderPath = manager.modFolder.path
         reload()
     }
@@ -61,6 +74,7 @@ final class AppState: ObservableObject {
 
     func setModFolder(_ url: URL) {
         manager.setModFolder(url)
+        packManager = PackManager(modFolder: url)
         modFolderPath = url.path
         reload()
     }
@@ -95,6 +109,55 @@ final class AppState: ObservableObject {
             states = []
             loadError = error.localizedDescription
         }
+        reloadPacks()
+    }
+
+    // MARK: Cosmetic packs
+
+    func reloadPacks() {
+        guard manager.modFolderExists else { packStates = []; return }
+        do {
+            let db = try packDB ?? PackDatabase.load()
+            packDB = db
+            let installed = packManager.loadState()
+            packStates = db.packs.map { pack in
+                let inst = installed[pack.id]
+                return PackViewState(
+                    pack: pack,
+                    available: packManager.isAvailable(pack),
+                    installed: inst != nil,
+                    optionId: inst?.optionId ?? pack.options?.first?.id)
+            }
+        } catch {
+            packStates = []
+        }
+    }
+
+    func installPack(_ pack: Pack, optionId: String?) {
+        do {
+            try packManager.install(pack, optionId: optionId)
+            lastActionMessage = String(format: L10n.packInstalled.text(for: language),
+                                       pack.name.text(for: language))
+        } catch {
+            lastActionMessage = error.localizedDescription
+        }
+        reloadPacks()
+    }
+
+    func uninstallPack(_ pack: Pack) {
+        do {
+            try packManager.uninstall(pack)
+            lastActionMessage = String(format: L10n.packRemoved.text(for: language),
+                                       pack.name.text(for: language))
+        } catch {
+            lastActionMessage = error.localizedDescription
+        }
+        reloadPacks()
+    }
+
+    func packPreviewURL(_ pack: Pack, _ option: PackOption) -> URL? {
+        guard let preview = option.preview else { return nil }
+        return packManager.packsLibrary.appendingPathComponent(pack.id).appendingPathComponent(preview)
     }
 
     /// Applies every dirty tweak: backs up the touched files once, edits in memory, writes to disk, reloads.

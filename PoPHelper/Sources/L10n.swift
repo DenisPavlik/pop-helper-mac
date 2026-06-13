@@ -44,6 +44,19 @@ enum L10n {
         uk: "Файл не збігається ні з оригіналом 3.9.5, ні з відомою твікнутою формою — схоже, його змінила інша програма. Додаток його не чіпатиме.")
 
     static let allTweaks = LocalizedText(en: "All tweaks", uk: "Усі твіки")
+    static let cosmetics = LocalizedText(en: "Cosmetics", uk: "Косметика")
+    static let cosmeticsDesc = LocalizedText(
+        en: "Visual add-on packs from PoP Helper (faces, crosshair, UI, fonts…). Installing copies files into the mod; your originals are backed up.",
+        uk: "Візуальні паки з PoP Helper (обличчя, приціл, інтерфейс, шрифти…). Установка копіює файли в мод; твої оригінали зберігаються в бекап.")
+    static let install = LocalizedText(en: "Install", uk: "Встановити")
+    static let remove = LocalizedText(en: "Remove", uk: "Видалити")
+    static let installed = LocalizedText(en: "Installed", uk: "Встановлено")
+    static let chooseStyle = LocalizedText(en: "Style", uk: "Варіант")
+    static let packUnavailable = LocalizedText(
+        en: "Pack files not found in the local library.",
+        uk: "Файли пака не знайдено в локальній бібліотеці.")
+    static let packInstalled = LocalizedText(en: "Installed pack: %@", uk: "Встановлено пак: %@")
+    static let packRemoved = LocalizedText(en: "Removed pack: %@", uk: "Видалено пак: %@")
     static let categoriesHeader = LocalizedText(en: "Categories", uk: "Категорії")
     static let searchPlaceholder = LocalizedText(en: "Search tweaks", uk: "Пошук твіків")
     static let settings = LocalizedText(en: "Manage", uk: "Керування")

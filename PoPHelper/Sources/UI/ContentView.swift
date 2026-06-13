@@ -4,6 +4,7 @@ import AppKit
 enum SidebarItem: Hashable {
     case all
     case category(String)
+    case cosmetics
 }
 
 struct ContentView: View {
@@ -20,6 +21,8 @@ struct ContentView: View {
             Group {
                 if let error = app.loadError {
                     errorView(error)
+                } else if selection == .cosmetics {
+                    CosmeticsView()
                 } else {
                     detailView
                 }
@@ -73,6 +76,20 @@ struct ContentView: View {
                     }
                     .tag(SidebarItem.category(category))
                 }
+            }
+
+            Section {
+                Label {
+                    HStack {
+                        Text(L10n.cosmetics.text(for: app.language))
+                        Spacer()
+                        let installed = app.packStates.filter(\.installed).count
+                        countBadge(on: installed, total: app.packStates.count)
+                    }
+                } icon: {
+                    Image(systemName: "paintbrush.pointed.fill").foregroundStyle(.pink)
+                }
+                .tag(SidebarItem.cosmetics)
             }
         }
         .safeAreaInset(edge: .bottom) { sidebarFooter }

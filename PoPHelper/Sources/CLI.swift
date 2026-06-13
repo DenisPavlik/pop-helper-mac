@@ -39,6 +39,34 @@ enum CLI {
         }
     }
 
+    /// Read-only: checks every pack in packs.json is present in the local library and
+    /// that each file mapping resolves to real source file(s). `swift run PoPHelper --verify-packs`
+    static func verifyPacks() -> Bool {
+        let manager = ModManager()
+        let pm = PackManager(modFolder: manager.modFolder)
+        do {
+            let db = try PackDatabase.load()
+            let installed = pm.loadState()
+            var ok = true
+            print("Cosmetic packs (library: \(pm.packsLibrary.path))\n")
+            for pack in db.packs {
+                let avail = pm.isAvailable(pack)
+                let inst = installed[pack.id] != nil
+                let opts = pack.options?.count ?? 0
+                var detail = avail ? "available" : "MISSING from library"
+                if !avail { ok = false }
+                if pack.kind == .choice { detail += ", \(opts) options" }
+                if inst { detail += ", INSTALLED(\(installed[pack.id]?.optionId ?? "-"))" }
+                print("  \(pack.id.padding(toLength: 18, withPad: " ", startingAt: 0)) \(detail)")
+            }
+            print(ok ? "\nRESULT: all packs available." : "\nRESULT: some packs missing from the local library.")
+            return ok
+        } catch {
+            print("Error: \(error.localizedDescription)")
+            return false
+        }
+    }
+
     /// Dry run: against the real mod files (read-only, nothing is written), apply every
     /// not-applied tweak in memory and revert every applied one, checking the resulting
     /// status. Verifies the apply/revert engine on real data without touching the mod.

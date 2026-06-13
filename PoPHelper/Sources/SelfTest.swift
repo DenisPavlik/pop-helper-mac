@@ -68,7 +68,9 @@ enum SelfTest {
         applyGuards(r)
         occurrenceDecoding(r)
         resetAndBackups(r)
+        packManager(r)
         bundledDatabase(r)
+        bundledPackDatabase(r)
 
         if r.failures.isEmpty {
             print("✅ self-test passed — \(r.checks) checks")
@@ -263,6 +265,100 @@ enum SelfTest {
             let ensured = try mgr.ensurePristineBaseline()
             r.expect(ensured, "ensurePristineBaseline imports detected backup")
             r.expect(mgr.hasPristineBaseline, "baseline present after ensure")
+        }
+    }
+
+    private static func packManager(_ r: Recorder) {
+        let fm = FileManager.default
+        let root = fm.temporaryDirectory.appendingPathComponent("pophelper-packtest-\(getpid())")
+        try? fm.removeItem(at: root)
+        defer { try? fm.removeItem(at: root) }
+
+        func write(_ text: String, _ url: URL) throws {
+            try fm.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+            try Data(text.utf8).write(to: url)
+        }
+        func read(_ url: URL) -> String? { try? String(contentsOf: url, encoding: .utf8) }
+
+        r.expectNoThrow("pack install/uninstall round trip") {
+            let mod = root.appendingPathComponent("mod")
+            let lib = root.appendingPathComponent("lib")
+            let backups = root.appendingPathComponent("packbackups")
+            let state = root.appendingPathComponent("state.json")
+
+            // Live mod: an existing texture + a module.ini.
+            try write("ORIGINAL-UI", mod.appendingPathComponent("Textures/user_interface_b.dds"))
+            try write("header\nload_mod_resource = base\n", mod.appendingPathComponent("module.ini"))
+
+            // Pack library: a "choice" pack (two options) + a brf "copy" pack needing a module resource.
+            try write("UI-VARIANT-A", lib.appendingPathComponent("ui/files/a/user_interface_b.dds"))
+            try write("UI-VARIANT-B", lib.appendingPathComponent("ui/files/b/user_interface_b.dds"))
+            try write("BRFDATA", lib.appendingPathComponent("col/ColFix.brf"))
+
+            let uiPack = Pack(
+                id: "ui", name: LocalizedText(en: "UI", uk: "UI"),
+                description: LocalizedText(en: "", uk: ""), kind: .choice, files: nil,
+                options: [
+                    PackOption(id: "a", name: LocalizedText(en: "A", uk: "A"), preview: nil,
+                               files: [FileMapping(from: "files/a/user_interface_b.dds", to: "Textures/user_interface_b.dds")]),
+                    PackOption(id: "b", name: LocalizedText(en: "B", uk: "B"), preview: nil,
+                               files: [FileMapping(from: "files/b/user_interface_b.dds", to: "Textures/user_interface_b.dds")]),
+                ], moduleResources: nil)
+            let colPack = Pack(
+                id: "col", name: LocalizedText(en: "Col", uk: "Col"),
+                description: LocalizedText(en: "", uk: ""), kind: .copy,
+                files: [FileMapping(from: "ColFix.brf", to: "Resource/ColFix.brf")],
+                options: nil, moduleResources: ["ColFix"])
+
+            let pm = PackManager(modFolder: mod, packsLibrary: lib, backupsRoot: backups, stateFile: state)
+            r.expect(pm.isAvailable(uiPack) && pm.isAvailable(colPack), "packs available")
+            r.expect(!pm.isInstalled("ui"), "ui not installed initially")
+
+            // Install choice option A → existing file backed up & replaced.
+            try pm.install(uiPack, optionId: "a")
+            r.expectEqual(read(mod.appendingPathComponent("Textures/user_interface_b.dds")), "UI-VARIANT-A", "ui A applied")
+            r.expectEqual(pm.installedOption("ui"), "a", "ui option recorded")
+
+            // Switch to option B (reinstall).
+            try pm.install(uiPack, optionId: "b")
+            r.expectEqual(read(mod.appendingPathComponent("Textures/user_interface_b.dds")), "UI-VARIANT-B", "ui B applied")
+
+            // Uninstall → original restored.
+            try pm.uninstall(uiPack)
+            r.expectEqual(read(mod.appendingPathComponent("Textures/user_interface_b.dds")), "ORIGINAL-UI", "ui restored to original")
+            r.expect(!pm.isInstalled("ui"), "ui uninstalled")
+
+            // brf copy pack: new file created + module.ini resource line added, then removed.
+            try pm.install(colPack, optionId: nil)
+            r.expectEqual(read(mod.appendingPathComponent("Resource/ColFix.brf")), "BRFDATA", "ColFix copied")
+            r.expect(read(mod.appendingPathComponent("module.ini"))?.contains("load_mod_resource = ColFix") == true,
+                     "module.ini resource line added")
+            try pm.uninstall(colPack)
+            r.expect(!fm.fileExists(atPath: mod.appendingPathComponent("Resource/ColFix.brf").path),
+                     "ColFix removed (was absent before)")
+            r.expect(read(mod.appendingPathComponent("module.ini"))?.contains("ColFix") != true,
+                     "module.ini resource line removed")
+        }
+    }
+
+    private static func bundledPackDatabase(_ r: Recorder) {
+        r.expectNoThrow("load bundled packs.json") {
+            let db = try PackDatabase.load()
+            r.expectEqual(db.schemaVersion, 1, "packs schemaVersion")
+            r.expect(!db.packs.isEmpty, "packs not empty")
+            r.expectEqual(Set(db.packs.map(\.id)).count, db.packs.count, "unique pack ids")
+            for pack in db.packs {
+                r.expect(pack.name.en != "" && pack.name.uk != "", "\(pack.id): bilingual name")
+                switch pack.kind {
+                case .copy:
+                    r.expect(!(pack.files ?? []).isEmpty, "\(pack.id): copy pack has files")
+                case .choice:
+                    r.expect(!(pack.options ?? []).isEmpty, "\(pack.id): choice pack has options")
+                    for o in pack.options ?? [] {
+                        r.expect(!o.files.isEmpty, "\(pack.id)/\(o.id): option has files")
+                    }
+                }
+            }
         }
     }
 

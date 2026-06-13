@@ -1,0 +1,564 @@
+{
+  "schemaVersion": 1,
+  "packs": [
+    {
+      "id": "female-faces",
+      "name": {
+        "en": "Alternative female faces",
+        "uk": "Покращені жіночі обличчя"
+      },
+      "description": {
+        "en": "Prettier female face meshes and textures (PoP Helper's faces1).",
+        "uk": "Гарніші меші й текстури жіночих облич (faces1 з PoP Helper)."
+      },
+      "kind": "copy",
+      "files": [
+        {
+          "from": "Textures",
+          "to": "Textures"
+        },
+        {
+          "from": "Resource",
+          "to": "Resource"
+        },
+        {
+          "from": "skins.txt",
+          "to": "skins.txt"
+        }
+      ],
+      "moduleResources": [
+        "wb_textures_face_gen",
+        "wb_materials_face_gen",
+        "wb_meshes_face_gen",
+        "materials_face_gen",
+        "materials_face_gen_gaolu",
+        "meshes_face_gen_gaolu",
+        "hair_gaolu"
+      ]
+    },
+    {
+      "id": "crosshair-tool",
+      "name": {
+        "en": "Crosshair",
+        "uk": "Приціл"
+      },
+      "description": {
+        "en": "Replace the aiming crosshair — choose a style.",
+        "uk": "Заміна прицілу під час стрільби — обери стиль."
+      },
+      "kind": "choice",
+      "options": [
+        {
+          "id": "1",
+          "name": {
+            "en": "Crosshair 1",
+            "uk": "Приціл 1"
+          },
+          "preview": "image/pic/crosshair/1.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets1.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "name": {
+            "en": "Crosshair 2",
+            "uk": "Приціл 2"
+          },
+          "preview": "image/pic/crosshair/2.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets2.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "name": {
+            "en": "Crosshair 3",
+            "uk": "Приціл 3"
+          },
+          "preview": "image/pic/crosshair/3.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets3.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "4",
+          "name": {
+            "en": "Crosshair 4",
+            "uk": "Приціл 4"
+          },
+          "preview": "image/pic/crosshair/4.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets4.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "5",
+          "name": {
+            "en": "Crosshair 5",
+            "uk": "Приціл 5"
+          },
+          "preview": "image/pic/crosshair/5.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets5.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "6",
+          "name": {
+            "en": "Crosshair 6",
+            "uk": "Приціл 6"
+          },
+          "preview": "image/pic/crosshair/6.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets6.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "7",
+          "name": {
+            "en": "Crosshair 7",
+            "uk": "Приціл 7"
+          },
+          "preview": "image/pic/crosshair/7.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets7.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "8",
+          "name": {
+            "en": "Crosshair 8",
+            "uk": "Приціл 8"
+          },
+          "preview": "image/pic/crosshair/8.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets8.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "9",
+          "name": {
+            "en": "Crosshair 9",
+            "uk": "Приціл 9"
+          },
+          "preview": "image/pic/crosshair/9.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets9.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "10",
+          "name": {
+            "en": "Crosshair 10",
+            "uk": "Приціл 10"
+          },
+          "preview": "image/pic/crosshair/10.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets10.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "11",
+          "name": {
+            "en": "Crosshair 11",
+            "uk": "Приціл 11"
+          },
+          "preview": "image/pic/crosshair/11.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets11.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "12",
+          "name": {
+            "en": "Crosshair 12",
+            "uk": "Приціл 12"
+          },
+          "preview": "image/pic/crosshair/12.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets12.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "13",
+          "name": {
+            "en": "Crosshair 13",
+            "uk": "Приціл 13"
+          },
+          "preview": "image/pic/crosshair/13.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets13.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "14",
+          "name": {
+            "en": "Crosshair 14",
+            "uk": "Приціл 14"
+          },
+          "preview": "image/pic/crosshair/14.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets14.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "15",
+          "name": {
+            "en": "Crosshair 15",
+            "uk": "Приціл 15"
+          },
+          "preview": "image/pic/crosshair/15.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets15.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "16",
+          "name": {
+            "en": "Crosshair 16",
+            "uk": "Приціл 16"
+          },
+          "preview": "image/pic/crosshair/16.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets16.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "17",
+          "name": {
+            "en": "Crosshair 17",
+            "uk": "Приціл 17"
+          },
+          "preview": "image/pic/crosshair/17.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets17.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "18",
+          "name": {
+            "en": "Crosshair 18",
+            "uk": "Приціл 18"
+          },
+          "preview": "image/pic/crosshair/18.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets18.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "19",
+          "name": {
+            "en": "Crosshair 19",
+            "uk": "Приціл 19"
+          },
+          "preview": "image/pic/crosshair/19.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets19.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        },
+        {
+          "id": "20",
+          "name": {
+            "en": "Crosshair 20",
+            "uk": "Приціл 20"
+          },
+          "preview": "image/pic/crosshair/20.png",
+          "files": [
+            {
+              "from": "files/other/CrosshairChanger/ui_gadgets20.dds",
+              "to": "Textures/ui_gadgets.dds"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ui-pack",
+      "name": {
+        "en": "UI skin",
+        "uk": "Скін інтерфейсу"
+      },
+      "description": {
+        "en": "Dezlaros UI pack — reskin the in-game panels.",
+        "uk": "UI-пак Dezlaros — змінює вигляд ігрових панелей."
+      },
+      "kind": "choice",
+      "options": [
+        {
+          "id": "got",
+          "name": {
+            "en": "Game of Thrones",
+            "uk": "Game of Thrones"
+          },
+          "files": [
+            {
+              "from": "files/other/ui_pack/got/user_interface_b.dds",
+              "to": "Textures/user_interface_b.dds"
+            }
+          ]
+        },
+        {
+          "id": "knightly",
+          "name": {
+            "en": "Knightly",
+            "uk": "Knightly"
+          },
+          "files": [
+            {
+              "from": "files/other/ui_pack/knightly/user_interface_b.dds",
+              "to": "Textures/user_interface_b.dds"
+            }
+          ]
+        },
+        {
+          "id": "ngold",
+          "name": {
+            "en": "Native Gold",
+            "uk": "Native Gold"
+          },
+          "files": [
+            {
+              "from": "files/other/ui_pack/ngold/user_interface_b.dds",
+              "to": "Textures/user_interface_b.dds"
+            }
+          ]
+        },
+        {
+          "id": "ngreen",
+          "name": {
+            "en": "Native Green",
+            "uk": "Native Green"
+          },
+          "files": [
+            {
+              "from": "files/other/ui_pack/ngreen/user_interface_b.dds",
+              "to": "Textures/user_interface_b.dds"
+            }
+          ]
+        },
+        {
+          "id": "np",
+          "name": {
+            "en": "Native Purple",
+            "uk": "Native Purple"
+          },
+          "files": [
+            {
+              "from": "files/other/ui_pack/np/user_interface_b.dds",
+              "to": "Textures/user_interface_b.dds"
+            }
+          ]
+        },
+        {
+          "id": "nr",
+          "name": {
+            "en": "Native Red",
+            "uk": "Native Red"
+          },
+          "files": [
+            {
+              "from": "files/other/ui_pack/nr/user_interface_b.dds",
+              "to": "Textures/user_interface_b.dds"
+            }
+          ]
+        },
+        {
+          "id": "ns",
+          "name": {
+            "en": "Native Silver",
+            "uk": "Native Silver"
+          },
+          "files": [
+            {
+              "from": "files/other/ui_pack/ns/user_interface_b.dds",
+              "to": "Textures/user_interface_b.dds"
+            }
+          ]
+        },
+        {
+          "id": "ny",
+          "name": {
+            "en": "Native Yellow",
+            "uk": "Native Yellow"
+          },
+          "files": [
+            {
+              "from": "files/other/ui_pack/ny/user_interface_b.dds",
+              "to": "Textures/user_interface_b.dds"
+            }
+          ]
+        },
+        {
+          "id": "v",
+          "name": {
+            "en": "Vaegir",
+            "uk": "Vaegir"
+          },
+          "files": [
+            {
+              "from": "files/other/ui_pack/v/user_interface_b.dds",
+              "to": "Textures/user_interface_b.dds"
+            }
+          ]
+        },
+        {
+          "id": "vg",
+          "name": {
+            "en": "Vaegir Gold",
+            "uk": "Vaegir Gold"
+          },
+          "files": [
+            {
+              "from": "files/other/ui_pack/vg/user_interface_b.dds",
+              "to": "Textures/user_interface_b.dds"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arena-overhaul",
+      "name": {
+        "en": "Arena Overhaul",
+        "uk": "Оновлені арени"
+      },
+      "description": {
+        "en": "Reworked tournament arena scenes.",
+        "uk": "Перероблені сцени турнірних арен."
+      },
+      "kind": "copy",
+      "files": [
+        {
+          "from": ".sco",
+          "to": "SceneObj"
+        }
+      ]
+    },
+    {
+      "id": "fonts",
+      "name": {
+        "en": "Font",
+        "uk": "Шрифт"
+      },
+      "description": {
+        "en": "Alternative in-game font.",
+        "uk": "Альтернативний ігровий шрифт."
+      },
+      "kind": "copy",
+      "files": [
+        {
+          "from": "Textures/font.dds",
+          "to": "Textures/font.dds"
+        },
+        {
+          "from": "Data/font_data.xml",
+          "to": "Data/font_data.xml"
+        }
+      ]
+    },
+    {
+      "id": "old-qualis-gem",
+      "name": {
+        "en": "Old Qualis Gem look",
+        "uk": "Старий вигляд Qualis Gem"
+      },
+      "description": {
+        "en": "Restore the old Qualis Gem appearance.",
+        "uk": "Повернути старий вигляд каменя Qualis."
+      },
+      "kind": "copy",
+      "files": [
+        {
+          "from": "Resource/pop_random.brf",
+          "to": "Resource/pop_random.brf"
+        },
+        {
+          "from": "Textures/aqs_objects.dds",
+          "to": "Textures/aqs_objects.dds"
+        }
+      ],
+      "moduleResources": [
+        "pop_random"
+      ]
+    },
+    {
+      "id": "collision-fixes",
+      "name": {
+        "en": "Collision fixes",
+        "uk": "Виправлення колізій"
+      },
+      "description": {
+        "en": "Mesh collision fixes (PoP Helper's colfix).",
+        "uk": "Виправлення колізій мешів (colfix з PoP Helper)."
+      },
+      "kind": "copy",
+      "files": [
+        {
+          "from": "ColFix.brf",
+          "to": "Resource/ColFix.brf"
+        }
+      ],
+      "moduleResources": [
+        "ColFix"
+      ]
+    }
+  ]
+}
