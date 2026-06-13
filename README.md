@@ -63,8 +63,10 @@ python3 research/validate_tweaks.py # validate tweaks.json against pristine file
 - [x] Category-organized SwiftUI UI — sidebar of categories, compact checkbox list, search
 - [x] Grow the DB — **49 tweaks** across 13 categories, all validated against pristine files
 - [x] Verify apply/revert end-to-end — `swift run PoPHelper --verify-apply` round-trips every tweak on the pristine baseline (49/49, no disk writes)
-- [ ] Visually verify apply / revert / reset through the GUI + in-game
-- [ ] Cosmetic add-on packs (improved faces, colour fixes, textures, sounds) — a
-  separate asset-copy subsystem, mirroring PoP Helper's `faces1` / `colfix` / `ndmm`
-- [ ] Keep growing the tweak DB toward fuller catalog coverage (293 known)
+- [x] Cosmetic pack manager — install/uninstall PoP Helper's add-on packs (female
+  faces, crosshair, UI skin, fonts, arena, …) with backups + module.ini handling;
+  `research/extract_rcc.py` pulls them from PoP Helper's Qt `.rcc` files (assets
+  stay local, not in git)
+- [ ] Visually verify apply / revert / reset / packs through the GUI + in-game
+- [ ] Keep growing the tweak DB toward fuller catalog coverage (293 known; mine `tweaks.sl3`)
 - [ ] Bundle as a downloadable `.app` (GitHub Release)
