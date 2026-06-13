@@ -60,7 +60,8 @@ python3 research/validate_tweaks.py # validate tweaks.json against pristine file
 - [x] Design tweak database format — `docs/tweak-db-format.md`; 10-tweak starter DB validated
 - [x] Tweak engine (apply / revert / status) + backups; self-tests green; cross-checked against the live mod
 - [x] Reset to Defaults + automatic initial/safety backups (pristine baseline imported from PoP Helper's pre-tweak backup)
-- [ ] Polished, category-organized SwiftUI UI (the current UI is functional but plain)
-- [ ] Visually verify the window and apply a tweak end-to-end through the GUI
-- [ ] Grow the DB beyond the 10 starter tweaks
+- [x] Category-organized SwiftUI UI — sidebar of categories, compact checkbox list, search
+- [x] Grow the DB — **53 tweaks** across 14 categories, all validated against pristine files
+- [ ] Visually verify apply / revert / reset end-to-end through the GUI
+- [ ] Keep growing the DB toward full catalog coverage (293 known)
 - [ ] Bundle as a downloadable `.app` (GitHub Release)

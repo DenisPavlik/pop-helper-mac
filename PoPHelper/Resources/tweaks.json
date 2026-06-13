@@ -756,6 +756,3553 @@
           "expectedCount": 1
         }
       ]
+    },
+    {
+      "id": "troop-wages",
+      "name": {
+        "en": "Troop wage formula",
+        "uk": "Формула платні бійцям"
+      },
+      "description": {
+        "en": "Tunes how weekly troop wages are calculated. The base wage is (level + bonus) squared, divided by the divisor; mounted units are multiplied/divided by the cavalry factors (66% extra by default); mercenaries and companions have their own multipliers; and each Leadership point cuts wages by a percentage. Requires a new week to show in the budget report.",
+        "uk": "Налаштовує щотижневу платню бійцям. Базова платня — (рівень + бонус) у квадраті, поділене на дільник; для кінноти застосовуються множник і дільник (типово +66%); найманці та компаньйони мають власні множники; кожен пункт «Лідерства» зменшує платню на відсоток. Зміни з'являться у звіті з наступного тижня."
+      },
+      "category": "economy",
+      "wikiRef": "Tweak 12 e",
+      "params": [
+        {
+          "key": "levelBonus",
+          "name": {
+            "en": "Level bonus (added before squaring)",
+            "uk": "Бонус до рівня (додається перед піднесенням у квадрат)"
+          },
+          "originalValue": 3,
+          "defaultValue": 3,
+          "min": 0,
+          "max": 50
+        },
+        {
+          "key": "divisor",
+          "name": {
+            "en": "Wage divisor",
+            "uk": "Дільник платні"
+          },
+          "originalValue": 25,
+          "defaultValue": 25,
+          "min": 1,
+          "max": 1000
+        },
+        {
+          "key": "mountedMul",
+          "name": {
+            "en": "Mounted multiplier",
+            "uk": "Множник для кінноти"
+          },
+          "originalValue": 5,
+          "defaultValue": 5,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "mountedDiv",
+          "name": {
+            "en": "Mounted divisor",
+            "uk": "Дільник для кінноти"
+          },
+          "originalValue": 3,
+          "defaultValue": 3,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "mercMul",
+          "name": {
+            "en": "Mercenary multiplier",
+            "uk": "Множник для найманців"
+          },
+          "originalValue": 2,
+          "defaultValue": 2,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "companionMul",
+          "name": {
+            "en": "Companion multiplier",
+            "uk": "Множник для компаньйонів"
+          },
+          "originalValue": 3,
+          "defaultValue": 3,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "leadershipCut",
+          "name": {
+            "en": "Wage reduction per Leadership point (%)",
+            "uk": "Зниження платні за пункт «Лідерства» (%)"
+          },
+          "originalValue": 5,
+          "defaultValue": 5,
+          "min": 0,
+          "max": 100
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "2105 2 1224979098644774914 3 2107 2 1224979098644774914 1224979098644774914 2108 2 1224979098644774914 25",
+          "replacement": "2105 2 1224979098644774914 {levelBonus} 2107 2 1224979098644774914 1224979098644774914 2108 2 1224979098644774914 {divisor}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "152 1 1224979098644774912 2107 2 1224979098644774914 5 2108 2 1224979098644774914 3",
+          "replacement": "152 1 1224979098644774912 2107 2 1224979098644774914 {mountedMul} 2108 2 1224979098644774914 {mountedDiv}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "33 3 1224979098644774912 360287970189639737 360287970189639764 2107 2 1224979098644774914 2",
+          "replacement": "33 3 1224979098644774912 360287970189639737 360287970189639764 2107 2 1224979098644774914 {mercMul}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "33 3 1224979098644774912 360287970189640185 360287970189640205 2107 2 1224979098644774914 3",
+          "replacement": "33 3 1224979098644774912 360287970189640185 360287970189640205 2107 2 1224979098644774914 {companionMul}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2122 3 1224979098644774918 5 1224979098644774917",
+          "replacement": "2122 3 1224979098644774918 {leadershipCut} 1224979098644774917",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "base-income-rents",
+      "name": {
+        "en": "Base income (rents) from fiefs",
+        "uk": "Базовий дохід (рента) з володінь"
+      },
+      "description": {
+        "en": "Sets the base weekly rent from villages, castles and towns, plus the final divisor applied to your total income (lower divisor = more money). Also affects the AI's maintainable garrison size. Takes effect from the week after next.",
+        "uk": "Задає базову щотижневу ренту з сіл, замків і міст, а також кінцевий дільник усього вашого доходу (менший дільник = більше грошей). Також впливає на розмір гарнізонів, які може утримувати ШІ. Діє з тижня, що настане за наступним."
+      },
+      "category": "economy",
+      "wikiRef": "Tweak 12 a",
+      "params": [
+        {
+          "key": "village",
+          "name": {
+            "en": "Village rent",
+            "uk": "Рента з села"
+          },
+          "originalValue": 600,
+          "defaultValue": 600,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "castle",
+          "name": {
+            "en": "Castle rent",
+            "uk": "Рента із замку"
+          },
+          "originalValue": 600,
+          "defaultValue": 600,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "town",
+          "name": {
+            "en": "Town rent",
+            "uk": "Рента з міста"
+          },
+          "originalValue": 1200,
+          "defaultValue": 1200,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "divisor",
+          "name": {
+            "en": "Total income divisor",
+            "uk": "Дільник загального доходу"
+          },
+          "originalValue": 480,
+          "defaultValue": 480,
+          "min": 1,
+          "max": 10000
+        }
+      ],
+      "operations": [
+        {
+          "file": "simple_triggers.txt",
+          "original": "600 2107 2 1224979098644774915 4 2105 2 1224979098644774914 1224979098644774915 3 0 5 0 541 3 1224979098644774912 0 2 2133 2 1224979098644774914 600 2107 2 1224979098644774915 6 2105 2 1224979098644774914 1224979098644774915 5 0 541 3 1224979098644774912 0 3 2133 2 1224979098644774914 1200 2107 2 1224979098644774915 3 2105 2 1224979098644774914 1224979098644774915 3 0 521 3 1224979098644774916 1224979098644774912 50 2120 3 1224979098644774917 80 1224979098644774916 2107 2 1224979098644774914 1224979098644774917 2108 2 1224979098644774914 480",
+          "replacement": "{village} 2107 2 1224979098644774915 4 2105 2 1224979098644774914 1224979098644774915 3 0 5 0 541 3 1224979098644774912 0 2 2133 2 1224979098644774914 {castle} 2107 2 1224979098644774915 6 2105 2 1224979098644774914 1224979098644774915 5 0 541 3 1224979098644774912 0 3 2133 2 1224979098644774914 {town} 2107 2 1224979098644774915 3 2105 2 1224979098644774914 1224979098644774915 3 0 521 3 1224979098644774916 1224979098644774912 50 2120 3 1224979098644774917 80 1224979098644774916 2107 2 1224979098644774914 1224979098644774917 2108 2 1224979098644774914 {divisor}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "enterprise-values",
+      "name": {
+        "en": "Enterprise values",
+        "uk": "Параметри підприємств"
+      },
+      "description": {
+        "en": "Changes the four values of every enterprise: weekly inputs purchased, weekly outputs produced, weekly labor/upkeep cost, and the build (buying) price. Outputs are the main profit driver. Requires a new game to take effect.",
+        "uk": "Змінює чотири параметри кожного підприємства: щотижневу закупівлю сировини (входи), щотижневе виробництво (виходи), щотижневі витрати на працю/утримання та ціну будівництва. Виходи — головне джерело прибутку. Потребує нової гри."
+      },
+      "category": "economy",
+      "wikiRef": "Tweak 12 d",
+      "params": [
+        {
+          "key": "millIn",
+          "name": {
+            "en": "Mill & Bakery: inputs/week",
+            "uk": "Млин і пекарня: входи/тиждень"
+          },
+          "originalValue": 6,
+          "defaultValue": 6,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "millOut",
+          "name": {
+            "en": "Mill & Bakery: outputs/week",
+            "uk": "Млин і пекарня: виходи/тиждень"
+          },
+          "originalValue": 6,
+          "defaultValue": 12,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "millLabor",
+          "name": {
+            "en": "Mill & Bakery: labor/upkeep",
+            "uk": "Млин і пекарня: праця/утримання"
+          },
+          "originalValue": 30,
+          "defaultValue": 30,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "millPrice",
+          "name": {
+            "en": "Mill & Bakery: build price",
+            "uk": "Млин і пекарня: ціна будівництва"
+          },
+          "originalValue": 4500,
+          "defaultValue": 4500,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "breweryIn",
+          "name": {
+            "en": "Brewery: inputs/week",
+            "uk": "Пивоварня: входи/тиждень"
+          },
+          "originalValue": 1,
+          "defaultValue": 1,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "breweryOut",
+          "name": {
+            "en": "Brewery: outputs/week",
+            "uk": "Пивоварня: виходи/тиждень"
+          },
+          "originalValue": 2,
+          "defaultValue": 4,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "breweryLabor",
+          "name": {
+            "en": "Brewery: labor/upkeep",
+            "uk": "Пивоварня: праця/утримання"
+          },
+          "originalValue": 50,
+          "defaultValue": 50,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "breweryPrice",
+          "name": {
+            "en": "Brewery: build price",
+            "uk": "Пивоварня: ціна будівництва"
+          },
+          "originalValue": 5000,
+          "defaultValue": 5000,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "wineIn",
+          "name": {
+            "en": "Wine Press: inputs/week",
+            "uk": "Винний прес: входи/тиждень"
+          },
+          "originalValue": 4,
+          "defaultValue": 4,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "wineOut",
+          "name": {
+            "en": "Wine Press: outputs/week",
+            "uk": "Винний прес: виходи/тиждень"
+          },
+          "originalValue": 2,
+          "defaultValue": 4,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "wineLabor",
+          "name": {
+            "en": "Wine Press: labor/upkeep",
+            "uk": "Винний прес: праця/утримання"
+          },
+          "originalValue": 60,
+          "defaultValue": 60,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "winePrice",
+          "name": {
+            "en": "Wine Press: build price",
+            "uk": "Винний прес: ціна будівництва"
+          },
+          "originalValue": 5000,
+          "defaultValue": 5000,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "tanneryIn",
+          "name": {
+            "en": "Tannery: inputs/week",
+            "uk": "Чинбарня: входи/тиждень"
+          },
+          "originalValue": 3,
+          "defaultValue": 3,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "tanneryOut",
+          "name": {
+            "en": "Tannery: outputs/week",
+            "uk": "Чинбарня: виходи/тиждень"
+          },
+          "originalValue": 3,
+          "defaultValue": 6,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "tanneryLabor",
+          "name": {
+            "en": "Tannery: labor/upkeep",
+            "uk": "Чинбарня: праця/утримання"
+          },
+          "originalValue": 50,
+          "defaultValue": 50,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "tanneryPrice",
+          "name": {
+            "en": "Tannery: build price",
+            "uk": "Чинбарня: ціна будівництва"
+          },
+          "originalValue": 12000,
+          "defaultValue": 12000,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "woolIn",
+          "name": {
+            "en": "Wool Cloth Weavery: inputs/week",
+            "uk": "Ткацтво вовни: входи/тиждень"
+          },
+          "originalValue": 2,
+          "defaultValue": 2,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "woolOut",
+          "name": {
+            "en": "Wool Cloth Weavery: outputs/week",
+            "uk": "Ткацтво вовни: виходи/тиждень"
+          },
+          "originalValue": 2,
+          "defaultValue": 4,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "woolLabor",
+          "name": {
+            "en": "Wool Cloth Weavery: labor/upkeep",
+            "uk": "Ткацтво вовни: праця/утримання"
+          },
+          "originalValue": 120,
+          "defaultValue": 120,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "woolPrice",
+          "name": {
+            "en": "Wool Cloth Weavery: build price",
+            "uk": "Ткацтво вовни: ціна будівництва"
+          },
+          "originalValue": 6000,
+          "defaultValue": 6000,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "linenIn",
+          "name": {
+            "en": "Linen Weavery: inputs/week",
+            "uk": "Ткацтво льону: входи/тиждень"
+          },
+          "originalValue": 2,
+          "defaultValue": 2,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "linenOut",
+          "name": {
+            "en": "Linen Weavery: outputs/week",
+            "uk": "Ткацтво льону: виходи/тиждень"
+          },
+          "originalValue": 2,
+          "defaultValue": 4,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "linenLabor",
+          "name": {
+            "en": "Linen Weavery: labor/upkeep",
+            "uk": "Ткацтво льону: праця/утримання"
+          },
+          "originalValue": 120,
+          "defaultValue": 120,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "linenPrice",
+          "name": {
+            "en": "Linen Weavery: build price",
+            "uk": "Ткацтво льону: ціна будівництва"
+          },
+          "originalValue": 6000,
+          "defaultValue": 6000,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "ironIn",
+          "name": {
+            "en": "Ironworks: inputs/week",
+            "uk": "Ливарня: входи/тиждень"
+          },
+          "originalValue": 2,
+          "defaultValue": 2,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "ironOut",
+          "name": {
+            "en": "Ironworks: outputs/week",
+            "uk": "Ливарня: виходи/тиждень"
+          },
+          "originalValue": 2,
+          "defaultValue": 4,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "ironLabor",
+          "name": {
+            "en": "Ironworks: labor/upkeep",
+            "uk": "Ливарня: праця/утримання"
+          },
+          "originalValue": 60,
+          "defaultValue": 60,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "ironPrice",
+          "name": {
+            "en": "Ironworks: build price",
+            "uk": "Ливарня: ціна будівництва"
+          },
+          "originalValue": 3500,
+          "defaultValue": 3500,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "oilIn",
+          "name": {
+            "en": "Oil Press: inputs/week",
+            "uk": "Олійний прес: входи/тиждень"
+          },
+          "originalValue": 6,
+          "defaultValue": 6,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "oilOut",
+          "name": {
+            "en": "Oil Press: outputs/week",
+            "uk": "Олійний прес: виходи/тиждень"
+          },
+          "originalValue": 2,
+          "defaultValue": 4,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "oilLabor",
+          "name": {
+            "en": "Oil Press: labor/upkeep",
+            "uk": "Олійний прес: праця/утримання"
+          },
+          "originalValue": 80,
+          "defaultValue": 80,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "oilPrice",
+          "name": {
+            "en": "Oil Press: build price",
+            "uk": "Олійний прес: ціна будівництва"
+          },
+          "originalValue": 4500,
+          "defaultValue": 4500,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "velvetIn",
+          "name": {
+            "en": "Velvet Weavery & Dyeworks: inputs/week",
+            "uk": "Оксамитова ткальня й фарбарня: входи/тиждень"
+          },
+          "originalValue": 2,
+          "defaultValue": 2,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "velvetOut",
+          "name": {
+            "en": "Velvet Weavery & Dyeworks: outputs/week",
+            "uk": "Оксамитова ткальня й фарбарня: виходи/тиждень"
+          },
+          "originalValue": 2,
+          "defaultValue": 4,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "velvetLabor",
+          "name": {
+            "en": "Velvet Weavery & Dyeworks: labor/upkeep",
+            "uk": "Оксамитова ткальня й фарбарня: праця/утримання"
+          },
+          "originalValue": 160,
+          "defaultValue": 160,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "velvetPrice",
+          "name": {
+            "en": "Velvet Weavery & Dyeworks: build price",
+            "uk": "Оксамитова ткальня й фарбарня: ціна будівництва"
+          },
+          "originalValue": 10000,
+          "defaultValue": 10000,
+          "min": 0,
+          "max": 1000000
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "6 507 3 288230376151711861 55 6 507 3 288230376151711861 56 30 507 3 288230376151711861 53 50 507 3 288230376151711861 58 4500",
+          "replacement": "{millIn} 507 3 288230376151711861 55 {millOut} 507 3 288230376151711861 56 {millLabor} 507 3 288230376151711861 53 50 507 3 288230376151711861 58 {millPrice}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "1 507 3 288230376151711849 55 2 507 3 288230376151711849 56 50 507 3 288230376151711849 53 120 507 3 288230376151711849 58 5000",
+          "replacement": "{breweryIn} 507 3 288230376151711849 55 {breweryOut} 507 3 288230376151711849 56 {breweryLabor} 507 3 288230376151711849 53 120 507 3 288230376151711849 58 {breweryPrice}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "4 507 3 288230376151711848 55 2 507 3 288230376151711848 56 60 507 3 288230376151711848 53 220 507 3 288230376151711848 58 5000",
+          "replacement": "{wineIn} 507 3 288230376151711848 55 {wineOut} 507 3 288230376151711848 56 {wineLabor} 507 3 288230376151711848 53 220 507 3 288230376151711848 58 {winePrice}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "3 507 3 288230376151711845 55 3 507 3 288230376151711845 56 50 507 3 288230376151711845 53 220 507 3 288230376151711845 58 12000",
+          "replacement": "{tanneryIn} 507 3 288230376151711845 55 {tanneryOut} 507 3 288230376151711845 56 {tanneryLabor} 507 3 288230376151711845 53 220 507 3 288230376151711845 58 {tanneryPrice}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2 507 3 288230376151711838 55 2 507 3 288230376151711838 56 120 507 3 288230376151711838 53 250 507 3 288230376151711838 58 6000",
+          "replacement": "{woolIn} 507 3 288230376151711838 55 {woolOut} 507 3 288230376151711838 56 {woolLabor} 507 3 288230376151711838 53 250 507 3 288230376151711838 58 {woolPrice}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2 507 3 288230376151711836 55 2 507 3 288230376151711836 56 120 507 3 288230376151711836 53 250 507 3 288230376151711836 58 6000",
+          "replacement": "{linenIn} 507 3 288230376151711836 55 {linenOut} 507 3 288230376151711836 56 {linenLabor} 507 3 288230376151711836 53 250 507 3 288230376151711836 58 {linenPrice}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2 507 3 288230376151711843 55 2 507 3 288230376151711843 56 60 507 3 288230376151711843 53 410 507 3 288230376151711843 58 3500",
+          "replacement": "{ironIn} 507 3 288230376151711843 55 {ironOut} 507 3 288230376151711843 56 {ironLabor} 507 3 288230376151711843 53 410 507 3 288230376151711843 58 {ironPrice}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "6 507 3 288230376151711833 55 2 507 3 288230376151711833 56 80 507 3 288230376151711833 53 450 507 3 288230376151711833 58 4500",
+          "replacement": "{oilIn} 507 3 288230376151711833 55 {oilOut} 507 3 288230376151711833 56 {oilLabor} 507 3 288230376151711833 53 450 507 3 288230376151711833 58 {oilPrice}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2 507 3 288230376151711841 55 2 507 3 288230376151711841 56 160 507 3 288230376151711841 53 1025 507 3 288230376151711841 57 288230376151711840 507 3 288230376151711841 58 10000",
+          "replacement": "{velvetIn} 507 3 288230376151711841 55 {velvetOut} 507 3 288230376151711841 56 {velvetLabor} 507 3 288230376151711841 53 1025 507 3 288230376151711841 57 288230376151711840 507 3 288230376151711841 58 {velvetPrice}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "more-loot",
+      "name": {
+        "en": "More loot from battles",
+        "uk": "Більше здобичі з битв"
+      },
+      "description": {
+        "en": "Lowers the divisor in the loot-probability formula so you receive more loot overall after battles (vanilla 8; lower = more). Also lets you reduce the companions' loot share (3 by default; set to 1 to treat them as regular troops, or 0 to cut them out entirely).",
+        "uk": "Зменшує дільник у формулі ймовірності здобичі, тож після битв ви отримуєте більше трофеїв (у грі 8; менше = більше). Також дозволяє зменшити частку здобичі компаньйонів (типово 3; 1 — як у звичайних бійців, 0 — взагалі без частки)."
+      },
+      "category": "battle",
+      "wikiRef": "Tweak 11 a",
+      "params": [
+        {
+          "key": "lootDivisor",
+          "name": {
+            "en": "Loot probability divisor",
+            "uk": "Дільник ймовірності здобичі"
+          },
+          "originalValue": 8,
+          "defaultValue": 4,
+          "min": 1,
+          "max": 20,
+          "presets": [
+            {
+              "value": 8,
+              "label": {
+                "en": "Vanilla",
+                "uk": "Як у грі"
+              }
+            },
+            {
+              "value": 4,
+              "label": {
+                "en": "About double loot",
+                "uk": "Приблизно вдвічі більше"
+              }
+            },
+            {
+              "value": 1,
+              "label": {
+                "en": "Maximum loot",
+                "uk": "Максимум здобичі"
+              }
+            }
+          ]
+        },
+        {
+          "key": "companionShare",
+          "name": {
+            "en": "Companion loot share",
+            "uk": "Частка здобичі компаньйонів"
+          },
+          "originalValue": 3,
+          "defaultValue": 1,
+          "min": 0,
+          "max": 10,
+          "presets": [
+            {
+              "value": 3,
+              "label": {
+                "en": "Vanilla",
+                "uk": "Як у грі"
+              }
+            },
+            {
+              "value": 1,
+              "label": {
+                "en": "Same as regular troops",
+                "uk": "Як у звичайних бійців"
+              }
+            },
+            {
+              "value": 0,
+              "label": {
+                "en": "No share",
+                "uk": "Без частки"
+              }
+            }
+          ]
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "2108 2 1224979098644774927 8",
+          "replacement": "2108 2 1224979098644774927 {lootDivisor}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2147485155 1 1224979098644774915 1653 3 1224979098644774916 648518346341351424 1224979098644774914 2105 2 1224979098644774912 1224979098644774916 5 0 2105 2 1224979098644774912 3 3 0 3 0 2133 2 72057594037927936 1224979098644774912",
+          "replacement": "2147485155 1 1224979098644774915 1653 3 1224979098644774916 648518346341351424 1224979098644774914 2105 2 1224979098644774912 1224979098644774916 5 0 2105 2 1224979098644774912 {companionShare} 3 0 3 0 2133 2 72057594037927936 1224979098644774912",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "guarantee-ko-chapters-at-start",
+      "name": {
+        "en": "Guarantee KO chapters at game start",
+        "uk": "Гарантовані капітули лицарських орденів на старті"
+      },
+      "description": {
+        "en": "Raises the spawn chance of the starting Knighthood Order chapters to 100% so the listed orders are guaranteed in their home fiefs on a new game. Where two orders compete for one fief (Avendor: Ebony Gauntlet vs Raven Spear; Ethos: Radiant Cross vs Immortals), setting the primary to 100 leaves the secondary at 0%. Requires a new game.",
+        "uk": "Підвищує шанс появи стартових капітулів лицарських орденів до 100%, тож перелічені ордени гарантовано з'являться у своїх рідних володіннях на новій грі. Там, де за одне володіння змагаються два ордени (Авендор: Чорна Рукавиця проти Воронячого Списа; Етос: Сяйний Хрест проти Безсмертних), встановлення 100% для основного лишає другому 0%. Потребує нової гри."
+      },
+      "category": "kingdom",
+      "wikiRef": "Tweak 2 g",
+      "params": [
+        {
+          "key": "silvermist",
+          "name": {
+            "en": "Silvermist Rangers (Senderfall)",
+            "uk": "Срібнотуманні слідопити (Сендерфол)"
+          },
+          "originalValue": 31,
+          "defaultValue": 100,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "ebony",
+          "name": {
+            "en": "Ebony Gauntlet (Avendor)",
+            "uk": "Чорна Рукавиця (Авендор)"
+          },
+          "originalValue": 31,
+          "defaultValue": 100,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "ravenSpear",
+          "name": {
+            "en": "Raven Spear (Avendor, secondary)",
+            "uk": "Воронячий Спис (Авендор, другий)"
+          },
+          "originalValue": 46,
+          "defaultValue": 100,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "radiantCross",
+          "name": {
+            "en": "Radiant Cross (Ethos)",
+            "uk": "Сяйний Хрест (Етос)"
+          },
+          "originalValue": 81,
+          "defaultValue": 100,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "immortals",
+          "name": {
+            "en": "Immortals (Ethos, secondary)",
+            "uk": "Безсмертні (Етос, другий)"
+          },
+          "originalValue": 91,
+          "defaultValue": 100,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "falcons",
+          "name": {
+            "en": "Order of the Falcon (Falcondark)",
+            "uk": "Орден Сокола (Фалькондарк)"
+          },
+          "originalValue": 51,
+          "defaultValue": 100,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "windriders",
+          "name": {
+            "en": "Windriders (Nal Tar)",
+            "uk": "Вершники Вітру (Нал Тар)"
+          },
+          "originalValue": 21,
+          "defaultValue": 100,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "dragons",
+          "name": {
+            "en": "Order of the Dragon (Ravenstern)",
+            "uk": "Орден Дракона (Равенстерн)"
+          },
+          "originalValue": 31,
+          "defaultValue": 100,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "lions",
+          "name": {
+            "en": "Order of the Lion (Marleons)",
+            "uk": "Орден Лева (Марлеонс)"
+          },
+          "originalValue": 11,
+          "defaultValue": 100,
+          "min": 0,
+          "max": 100
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "31 501 3 648518346341351456 289 360287970189640021",
+          "replacement": "{silvermist} 501 3 648518346341351456 289 360287970189640021",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "31 501 3 648518346341351461 289 360287970189640019 5 0 2147483678 2 1224979098644774913 46 501 3 648518346341351461 289 360287970189640015",
+          "replacement": "{ebony} 501 3 648518346341351461 289 360287970189640019 5 0 2147483678 2 1224979098644774913 {ravenSpear} 501 3 648518346341351461 289 360287970189640015",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "81 501 3 648518346341351448 289 360287970189640016 5 0 2147483678 2 1224979098644774913 91 501 3 648518346341351448 289 360287970189640010",
+          "replacement": "{radiantCross} 501 3 648518346341351448 289 360287970189640016 5 0 2147483678 2 1224979098644774913 {immortals} 501 3 648518346341351448 289 360287970189640010",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "51 501 3 648518346341351500 289 360287970189640014",
+          "replacement": "{falcons} 501 3 648518346341351500 289 360287970189640014",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "21 501 3 648518346341351462 289 360287970189640011",
+          "replacement": "{windriders} 501 3 648518346341351462 289 360287970189640011",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "31 501 3 648518346341351453 289 360287970189640008",
+          "replacement": "{dragons} 501 3 648518346341351453 289 360287970189640008",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "11 501 3 648518346341351452 289 360287970189640009",
+          "replacement": "{lions} 501 3 648518346341351452 289 360287970189640009",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "garrison-size-walled-fiefs",
+      "name": {
+        "en": "Garrison size of walled fiefs",
+        "uk": "Розмір гарнізону укріплених володінь"
+      },
+      "description": {
+        "en": "Controls how many times the kingdom reinforcement script is called for each walled fief at game start, which determines its garrison size. Vanilla: castles 18, cities 40, capital towns 48. Actual reinforcements per call scale with your character level. Requires a new game.",
+        "uk": "Керує тим, скільки разів на старті гри викликається скрипт королівських підкріплень для кожного укріпленого володіння, що визначає розмір його гарнізону. У грі: замки 18, міста 40, столиці 48. Фактична кількість підкріплень за виклик залежить від рівня вашого персонажа. Потребує нової гри."
+      },
+      "category": "kingdom",
+      "wikiRef": "Tweak 13 n",
+      "params": [
+        {
+          "key": "castle",
+          "name": {
+            "en": "Castle reinforcement calls",
+            "uk": "Виклики підкріплень для замку"
+          },
+          "originalValue": 18,
+          "defaultValue": 36,
+          "min": 1,
+          "max": 200
+        },
+        {
+          "key": "city",
+          "name": {
+            "en": "City reinforcement calls",
+            "uk": "Виклики підкріплень для міста"
+          },
+          "originalValue": 40,
+          "defaultValue": 80,
+          "min": 1,
+          "max": 200
+        },
+        {
+          "key": "capital",
+          "name": {
+            "en": "Capital town reinforcement calls",
+            "uk": "Виклики підкріплень для столиці"
+          },
+          "originalValue": 48,
+          "defaultValue": 96,
+          "min": 1,
+          "max": 200
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "2133 2 1224979098644774972 18 4 0 541 3 1224979098644774930 0 3 2133 2 1224979098644774972 40 1073741855 2 1224979098644774930 648518346341351446 1073741855 2 1224979098644774930 648518346341351450 1073741855 2 1224979098644774930 648518346341351451 1073741855 2 1224979098644774930 648518346341351453 31 2 1224979098644774930 648518346341351455 2133 2 1224979098644774972 48 3 0",
+          "replacement": "2133 2 1224979098644774972 {castle} 4 0 541 3 1224979098644774930 0 3 2133 2 1224979098644774972 {city} 1073741855 2 1224979098644774930 648518346341351446 1073741855 2 1224979098644774930 648518346341351450 1073741855 2 1224979098644774930 648518346341351451 1073741855 2 1224979098644774930 648518346341351453 31 2 1224979098644774930 648518346341351455 2133 2 1224979098644774972 {capital} 3 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "ko-garrison-reinforcement",
+      "name": {
+        "en": "KO garrison reinforcement rate and limit",
+        "uk": "Швидкість і ліміт поповнення гарнізонів орденів"
+      },
+      "description": {
+        "en": "Free Knighthood Order reinforcements added to garrisons that host a chapter. Sets the spawn chance for KO sergeants (vanilla 39, AI uses 89) and knights (vanilla 4, AI uses 10), and the per-garrison limits below which more are added (sergeants 50, knights 30). Actual maximum is always +3 above the limit; max rate is 100.",
+        "uk": "Безкоштовні підкріплення лицарських орденів, що додаються до гарнізонів з капітулом ордену. Задає шанс появи сержантів ордену (у грі 39, ШІ використовує 89) і лицарів (у грі 4, ШІ — 10), а також ліміти на гарнізон, нижче яких додаються нові (сержанти 50, лицарі 30). Фактичний максимум завжди на +3 більший за ліміт; максимальна швидкість — 100."
+      },
+      "category": "kingdom",
+      "wikiRef": "Tweak 2 n",
+      "params": [
+        {
+          "key": "sergeantRate",
+          "name": {
+            "en": "Sergeant spawn chance",
+            "uk": "Шанс появи сержантів"
+          },
+          "originalValue": 39,
+          "defaultValue": 89,
+          "min": 0,
+          "max": 100,
+          "presets": [
+            {
+              "value": 39,
+              "label": {
+                "en": "Vanilla",
+                "uk": "Як у грі"
+              }
+            },
+            {
+              "value": 89,
+              "label": {
+                "en": "Pre-3.9 rate (same as AI)",
+                "uk": "До 3.9 (як у ШІ)"
+              }
+            }
+          ]
+        },
+        {
+          "key": "knightRate",
+          "name": {
+            "en": "Knight spawn chance",
+            "uk": "Шанс появи лицарів"
+          },
+          "originalValue": 4,
+          "defaultValue": 10,
+          "min": 0,
+          "max": 100,
+          "presets": [
+            {
+              "value": 4,
+              "label": {
+                "en": "Vanilla",
+                "uk": "Як у грі"
+              }
+            },
+            {
+              "value": 10,
+              "label": {
+                "en": "Same as AI",
+                "uk": "Як у ШІ"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sergeantLimit",
+          "name": {
+            "en": "Sergeant garrison limit",
+            "uk": "Ліміт сержантів у гарнізоні"
+          },
+          "originalValue": 50,
+          "defaultValue": 50,
+          "min": 0,
+          "max": 500
+        },
+        {
+          "key": "knightLimit",
+          "name": {
+            "en": "Knight garrison limit",
+            "uk": "Ліміт лицарів у гарнізоні"
+          },
+          "originalValue": 30,
+          "defaultValue": 30,
+          "min": 0,
+          "max": 500
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "2133 2 1224979098644774921 39 5 0 2133 2 1224979098644774921 89",
+          "replacement": "2133 2 1224979098644774921 {sergeantRate} 5 0 2133 2 1224979098644774921 89",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2133 2 1224979098644774921 4 5 0 2133 2 1224979098644774921 10",
+          "replacement": "2133 2 1224979098644774921 {knightRate} 5 0 2133 2 1224979098644774921 10",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "1224979098644774919 2147483680 2 1224979098644774922 50",
+          "replacement": "1224979098644774919 2147483680 2 1224979098644774922 {sergeantLimit}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "1224979098644774914 2147483680 2 1224979098644774924 30",
+          "replacement": "1224979098644774914 2147483680 2 1224979098644774924 {knightLimit}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "ko-patrols",
+      "name": {
+        "en": "KO patrols: amount, size and frequency",
+        "uk": "Патрулі орденів: кількість, розмір і частота"
+      },
+      "description": {
+        "en": "Tunes the Knighthood Order patrols that spawn on their own around fiefs hosting a chapter. Sets the world-map caps for regular KO patrols and for \"lost\" Ebony Gauntlet/Silvermist patrols in D'Shar lands, their 15% spawn chances, and the knight/sergeant counts in co-op and solo patrols. Increasing these adds flavor and eases befriending orders.",
+        "uk": "Налаштовує патрулі лицарських орденів, що самостійно з'являються довкола володінь з капітулом ордену. Задає ліміти на карті для звичайних патрулів орденів і для «загублених» патрулів Чорної Рукавиці/Срібнотуманних у землях Д'Шар, їхні 15% шанси появи та кількість лицарів/сержантів у спільних і одиночних патрулях. Збільшення додає колориту й полегшує приязнь з орденами."
+      },
+      "category": "kingdom",
+      "wikiRef": "Tweak 2 o",
+      "params": [
+        {
+          "key": "maxPatrols",
+          "name": {
+            "en": "Max regular KO patrols on map",
+            "uk": "Макс. звичайних патрулів орденів на карті"
+          },
+          "originalValue": 9,
+          "defaultValue": 18,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "maxLost",
+          "name": {
+            "en": "Max \"lost\" Ebony/Silvermist patrols",
+            "uk": "Макс. «загублених» патрулів Рукавиці/Срібла"
+          },
+          "originalValue": 13,
+          "defaultValue": 13,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "patrolChance",
+          "name": {
+            "en": "Regular patrol spawn chance (%)",
+            "uk": "Шанс появи звичайного патруля (%)"
+          },
+          "originalValue": 15,
+          "defaultValue": 30,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "lostChance",
+          "name": {
+            "en": "\"Lost\" patrol spawn chance (%)",
+            "uk": "Шанс появи «загубленого» патруля (%)"
+          },
+          "originalValue": 15,
+          "defaultValue": 15,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "coopKnightMin",
+          "name": {
+            "en": "Co-op patrol: min knights",
+            "uk": "Спільний патруль: мін. лицарів"
+          },
+          "originalValue": 6,
+          "defaultValue": 6,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "coopKnightMax",
+          "name": {
+            "en": "Co-op patrol: max knights",
+            "uk": "Спільний патруль: макс. лицарів"
+          },
+          "originalValue": 20,
+          "defaultValue": 20,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "coopSergMin",
+          "name": {
+            "en": "Co-op patrol: min sergeants",
+            "uk": "Спільний патруль: мін. сержантів"
+          },
+          "originalValue": 10,
+          "defaultValue": 10,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "coopSergMax",
+          "name": {
+            "en": "Co-op patrol: max sergeants",
+            "uk": "Спільний патруль: макс. сержантів"
+          },
+          "originalValue": 25,
+          "defaultValue": 25,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "soloKnightMin",
+          "name": {
+            "en": "Solo patrol: min knights",
+            "uk": "Одиночний патруль: мін. лицарів"
+          },
+          "originalValue": 4,
+          "defaultValue": 4,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "soloKnightMax",
+          "name": {
+            "en": "Solo patrol: max knights",
+            "uk": "Одиночний патруль: макс. лицарів"
+          },
+          "originalValue": 12,
+          "defaultValue": 12,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "lostKnightMin",
+          "name": {
+            "en": "\"Lost\" patrol: min knights",
+            "uk": "«Загублений» патруль: мін. лицарів"
+          },
+          "originalValue": 4,
+          "defaultValue": 4,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "lostKnightMax",
+          "name": {
+            "en": "\"Lost\" patrol: max knights",
+            "uk": "«Загублений» патруль: макс. лицарів"
+          },
+          "originalValue": 12,
+          "defaultValue": 12,
+          "min": 1,
+          "max": 100
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "2310 2 1224979098644774925 576460752303423550 2147483678 2 1224979098644774925 9",
+          "replacement": "2310 2 1224979098644774925 576460752303423550 2147483678 2 1224979098644774925 {maxPatrols}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2310 2 1224979098644774925 576460752303423550 2147483678 2 1224979098644774925 13",
+          "replacement": "2310 2 1224979098644774925 576460752303423550 2147483678 2 1224979098644774925 {maxLost}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "1224979098644774914 1 2136 3 1224979098644774920 0 100 2147483680 2 1224979098644774920 15",
+          "replacement": "1224979098644774914 1 2136 3 1224979098644774920 0 100 2147483680 2 1224979098644774920 {patrolChance}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2136 3 1224979098644774928 0 100 2147483678 2 1224979098644774928 15",
+          "replacement": "2136 3 1224979098644774928 0 100 2147483678 2 1224979098644774928 {lostChance}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "6 20 1610 3 1224979098644774926 1224979098644774914 1224979098644774923 2136 3 1224979098644774923 10 25",
+          "replacement": "{coopKnightMin} {coopKnightMax} 1610 3 1224979098644774926 1224979098644774914 1224979098644774923 2136 3 1224979098644774923 {coopSergMin} {coopSergMax}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "1224979098644774913 5 0 2136 3 1224979098644774923 4 12",
+          "replacement": "1224979098644774913 5 0 2136 3 1224979098644774923 {soloKnightMin} {soloKnightMax}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "1224979098644774915 68 2136 3 1224979098644774924 4 12",
+          "replacement": "1224979098644774915 68 2136 3 1224979098644774924 {lostKnightMin} {lostKnightMax}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "relation-distributing-fiefs",
+      "name": {
+        "en": "Relation change when distributing fiefs",
+        "uk": "Зміна ставлення за роздачу володінь"
+      },
+      "description": {
+        "en": "Sets the relation you gain with a vassal who receives a fief, and the min/max relation change with the other lords (the actual maximum is one lower than the set value; the exact result depends on personalities and mutual relations).",
+        "uk": "Задає, скільки ставлення ви здобуваєте з васалом, що отримав володіння, та мінімальну/максимальну зміну ставлення з іншими лордами (фактичний максимум на одиницю менший за задане значення; точний результат залежить від характерів і взаємин лордів)."
+      },
+      "category": "kingdom",
+      "wikiRef": "Tweak 5 f",
+      "params": [
+        {
+          "key": "receiverGain",
+          "name": {
+            "en": "Relation gain with the receiver",
+            "uk": "Приріст ставлення з отримувачем"
+          },
+          "originalValue": 10,
+          "defaultValue": 10,
+          "min": -50,
+          "max": 100
+        },
+        {
+          "key": "othersMin",
+          "name": {
+            "en": "Min relation change with other lords",
+            "uk": "Мін. зміна ставлення з іншими лордами"
+          },
+          "originalValue": -5,
+          "defaultValue": 0,
+          "min": -50,
+          "max": 50
+        },
+        {
+          "key": "othersMax",
+          "name": {
+            "en": "Max relation change with other lords (+1)",
+            "uk": "Макс. зміна ставлення з іншими лордами (+1)"
+          },
+          "originalValue": 3,
+          "defaultValue": 1,
+          "min": -50,
+          "max": 50
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "10 2105 2 144115188075857001 10 6 3",
+          "replacement": "{receiverGain} 2105 2 144115188075857001 10 6 3",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "-5 3 4 0 1073742364 3",
+          "replacement": "{othersMin} {othersMax} 4 0 1073742364 3",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "remove-relation-hit-fiefless-vassals",
+      "name": {
+        "en": "Relation hits with fiefless and defeated vassals",
+        "uk": "Втрата ставлення з безземельними та переможеними васалами"
+      },
+      "description": {
+        "en": "Controls the relation penalties applied repeatedly to certain vassal personalities: -1 each time such a vassal is defeated in battle, and -2/-1 for not owning a fief. Set them to 0 to remove the drip. Note: this also applies between kings and their own vassals.",
+        "uk": "Керує штрафами ставлення, що раз за разом застосовуються до васалів певних характерів: -1 щоразу, коли такого васала перемагають у битві, і -2/-1 за відсутність володіння. Встановіть 0, щоб прибрати поступову втрату. Увага: це діє й між королями та їхніми васалами."
+      },
+      "category": "kingdom",
+      "wikiRef": "Tweak 5 g",
+      "params": [
+        {
+          "key": "defeatHit",
+          "name": {
+            "en": "Penalty on being defeated",
+            "uk": "Штраф за поразку в битві"
+          },
+          "originalValue": -1,
+          "defaultValue": 0,
+          "min": -10,
+          "max": 0
+        },
+        {
+          "key": "fieflessHit2",
+          "name": {
+            "en": "Penalty for no fief (cunning/pitiless/etc.)",
+            "uk": "Штраф за відсутність володіння (хитрі/безжальні тощо)"
+          },
+          "originalValue": -2,
+          "defaultValue": 0,
+          "min": -10,
+          "max": 0
+        },
+        {
+          "key": "fieflessHit1",
+          "name": {
+            "en": "Penalty for no fief (martial)",
+            "uk": "Штраф за відсутність володіння (войовничі)"
+          },
+          "originalValue": -1,
+          "defaultValue": 0,
+          "min": -10,
+          "max": 0
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "1224979098644774922 1224979098644774927 -1 2105 2",
+          "replacement": "1224979098644774922 1224979098644774927 {defeatHit} 2105 2",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "simple_triggers.txt",
+          "original": "1224979098644774912 1224979098644774916 -2 2105 2",
+          "replacement": "1224979098644774912 1224979098644774916 {fieflessHit2} 2105 2",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "simple_triggers.txt",
+          "original": "1224979098644774912 1224979098644774916 -1 2105 2",
+          "replacement": "1224979098644774912 1224979098644774916 {fieflessHit1} 2105 2",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "party-size",
+      "name": {
+        "en": "Party size formula",
+        "uk": "Формула розміру загону"
+      },
+      "description": {
+        "en": "Sets how your party size is calculated: a base size, plus a bonus for each Leadership point, plus a bonus for each Charisma point, plus one extra slot for every N renown (lower N = more troops from renown).",
+        "uk": "Задає, як обчислюється розмір вашого загону: базовий розмір, плюс бонус за кожен пункт «Лідерства», плюс бонус за кожен пункт «Харизми», плюс один додатковий слот за кожні N слави (менше N = більше бійців за славу)."
+      },
+      "category": "troops",
+      "wikiRef": "Tweak 1 w",
+      "params": [
+        {
+          "key": "base",
+          "name": {
+            "en": "Base party size",
+            "uk": "Базовий розмір загону"
+          },
+          "originalValue": 10,
+          "defaultValue": 30,
+          "min": 0,
+          "max": 1000
+        },
+        {
+          "key": "perLeadership",
+          "name": {
+            "en": "Per Leadership point",
+            "uk": "За пункт «Лідерства»"
+          },
+          "originalValue": 10,
+          "defaultValue": 15,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "perCharisma",
+          "name": {
+            "en": "Per Charisma point",
+            "uk": "За пункт «Харизми»"
+          },
+          "originalValue": 2,
+          "defaultValue": 5,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "renownPer",
+          "name": {
+            "en": "Renown needed per extra slot",
+            "uk": "Слави на додатковий слот"
+          },
+          "originalValue": 25,
+          "defaultValue": 25,
+          "min": 1,
+          "max": 1000
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "2133 2 1224979098644774913 10 2170 3 1224979098644774914 1 1224979098644774912 2172 3 1224979098644774915 1224979098644774912 3 2107 2 1224979098644774914 10 2107 2 1224979098644774915 2 2105 2 1224979098644774913 1224979098644774914 2105 2 1224979098644774913 1224979098644774915 520 3 1224979098644774916 1224979098644774912 7 2123 3 1224979098644774917 1224979098644774916 25",
+          "replacement": "2133 2 1224979098644774913 {base} 2170 3 1224979098644774914 1 1224979098644774912 2172 3 1224979098644774915 1224979098644774912 3 2107 2 1224979098644774914 {perLeadership} 2107 2 1224979098644774915 {perCharisma} 2105 2 1224979098644774913 1224979098644774914 2105 2 1224979098644774913 1224979098644774915 520 3 1224979098644774916 1224979098644774912 7 2123 3 1224979098644774917 1224979098644774916 {renownPer}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "ko-induction-prestige-cost-range",
+      "name": {
+        "en": "KO induction prestige cost range",
+        "uk": "Діапазон прести́жу за вступ до орденів"
+      },
+      "description": {
+        "en": "Sets the base (x1.0 multiplier) minimum and maximum prestige cost to induct a unit into a Knighthood Order, scaled by your Honor rating. Vanilla knights 10-46 and sergeants 6-36 (the actual maximum is one lower than the set value). Order-specific multipliers (1.0x to 1.5x) still apply on top.",
+        "uk": "Задає базовий (множник x1.0) мінімальний і максимальний прести́ж для вступу бійця до лицарського ордену, що масштабується за вашою «Честю». У грі лицарі 10-46, сержанти 6-36 (фактичний максимум на одиницю менший за задане значення). Поверх цього діють множники окремих орденів (від 1.0x до 1.5x)."
+      },
+      "category": "troops",
+      "wikiRef": "Tweak 2 m",
+      "params": [
+        {
+          "key": "knightMin",
+          "name": {
+            "en": "Knight: min prestige",
+            "uk": "Лицар: мін. прести́ж"
+          },
+          "originalValue": 10,
+          "defaultValue": 10,
+          "min": 0,
+          "max": 1000
+        },
+        {
+          "key": "knightMax",
+          "name": {
+            "en": "Knight: max prestige (+1)",
+            "uk": "Лицар: макс. прести́ж (+1)"
+          },
+          "originalValue": 46,
+          "defaultValue": 46,
+          "min": 1,
+          "max": 1000
+        },
+        {
+          "key": "sergeantMin",
+          "name": {
+            "en": "Sergeant: min prestige",
+            "uk": "Сержант: мін. прести́ж"
+          },
+          "originalValue": 4,
+          "defaultValue": 4,
+          "min": 0,
+          "max": 1000
+        },
+        {
+          "key": "sergeantMax",
+          "name": {
+            "en": "Sergeant: max prestige (+1)",
+            "uk": "Сержант: макс. прести́ж (+1)"
+          },
+          "originalValue": 36,
+          "defaultValue": 36,
+          "min": 1,
+          "max": 1000
+        }
+      ],
+      "operations": [
+        {
+          "file": "conversation.txt",
+          "original": "2108 2 72057594037927938 10 2112 3 72057594037927938 10 46 2108 2 72057594037927939 6 2112 3 72057594037927939 4 36",
+          "replacement": "2108 2 72057594037927938 10 2112 3 72057594037927938 {knightMin} {knightMax} 2108 2 72057594037927939 6 2112 3 72057594037927939 {sergeantMin} {sergeantMax}",
+          "structural": false,
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "cko-equipping-time-cost",
+      "name": {
+        "en": "CKO equipping time and cost",
+        "uk": "Час і вартість спорядження ВЛО"
+      },
+      "description": {
+        "en": "Tunes how long your Custom Knighthood Order knights and sergeants take to get new equipment and how much it costs. Higher equipping-time factor shortens upgrade times; lower cost factor makes upgrades cheaper (both scale non-linearly). Do not apply while equipping is in progress.",
+        "uk": "Налаштовує, скільки часу лицарі й сержанти вашого Власного лицарського ордену (ВЛО) витрачають на отримання нового спорядження і скільки це коштує. Більший множник часу скорочує час оновлення; менший множник вартості здешевлює оновлення (обидва масштабуються нелінійно). Не застосовуйте під час спорядження."
+      },
+      "category": "troops",
+      "wikiRef": "Tweak 3 c",
+      "params": [
+        {
+          "key": "timeFactor",
+          "name": {
+            "en": "Equipping-time factor (higher = faster)",
+            "uk": "Множник часу спорядження (більше = швидше)"
+          },
+          "originalValue": 100,
+          "defaultValue": 1000,
+          "min": 1,
+          "max": 100000,
+          "presets": [
+            {
+              "value": 100,
+              "label": {
+                "en": "Vanilla",
+                "uk": "Як у грі"
+              }
+            },
+            {
+              "value": 1000,
+              "label": {
+                "en": "~7x faster",
+                "uk": "~7x швидше"
+              }
+            },
+            {
+              "value": 10000,
+              "label": {
+                "en": "Near-instant",
+                "uk": "Майже миттєво"
+              }
+            }
+          ]
+        },
+        {
+          "key": "costFactor",
+          "name": {
+            "en": "Equipping-cost factor (lower = cheaper)",
+            "uk": "Множник вартості спорядження (менше = дешевше)"
+          },
+          "originalValue": 1000,
+          "defaultValue": 100,
+          "min": 1,
+          "max": 100000,
+          "presets": [
+            {
+              "value": 1000,
+              "label": {
+                "en": "Vanilla",
+                "uk": "Як у грі"
+              }
+            },
+            {
+              "value": 100,
+              "label": {
+                "en": "~1/19 cost",
+                "uk": "~1/19 вартості"
+              }
+            },
+            {
+              "value": 10,
+              "label": {
+                "en": "Near-minimum cost",
+                "uk": "Майже мінімальна вартість"
+              }
+            }
+          ]
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "2108 2 1224979098644774920 100 2108 2 1224979098644774920",
+          "replacement": "2108 2 1224979098644774920 {timeFactor} 2108 2 1224979098644774920",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2121 3 1224979098644774917 1000 1224979098644774917",
+          "replacement": "2121 3 1224979098644774917 {costFactor} 1224979098644774917",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "tavern-mercenary-hiring-cost",
+      "name": {
+        "en": "Tavern mercenary hiring cost",
+        "uk": "Вартість найму найманців у тавернах"
+      },
+      "description": {
+        "en": "Tunes the price to hire a mercenary in taverns. The cost per troop is ((level + addend)^2 + offset) / divisor, multiplied by the mounted factor for cavalry. Lower it to make tavern mercenaries cheaper.",
+        "uk": "Налаштовує ціну найму найманця в тавернах. Вартість за бійця — ((рівень + доданок)^2 + зсув) / дільник, помножена на множник для кінноти. Зменште, щоб найманці в тавернах коштували дешевше."
+      },
+      "category": "troops",
+      "wikiRef": "Tweak 17 k",
+      "params": [
+        {
+          "key": "levelAddend",
+          "name": {
+            "en": "Level addend",
+            "uk": "Доданок до рівня"
+          },
+          "originalValue": 5,
+          "defaultValue": 5,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "offset",
+          "name": {
+            "en": "Cost offset",
+            "uk": "Зсув вартості"
+          },
+          "originalValue": 40,
+          "defaultValue": 40,
+          "min": 0,
+          "max": 10000
+        },
+        {
+          "key": "divisor",
+          "name": {
+            "en": "Cost divisor",
+            "uk": "Дільник вартості"
+          },
+          "originalValue": 5,
+          "defaultValue": 5,
+          "min": 1,
+          "max": 1000
+        },
+        {
+          "key": "mountedFactor",
+          "name": {
+            "en": "Mounted multiplier",
+            "uk": "Множник для кінноти"
+          },
+          "originalValue": 2,
+          "defaultValue": 2,
+          "min": 1,
+          "max": 100
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "5 2107 2 1224979098644774913 1224979098644774913 2105 2 1224979098644774913 40 2108 2 1224979098644774913 5 4 0 152 1 1224979098644774912 2107 2 1224979098644774913 2",
+          "replacement": "{levelAddend} 2107 2 1224979098644774913 1224979098644774913 2105 2 1224979098644774913 {offset} 2108 2 1224979098644774913 {divisor} 4 0 152 1 1224979098644774912 2107 2 1224979098644774913 {mountedFactor}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "prisoner-recruitment-factors",
+      "name": {
+        "en": "Prisoner recruitment factors",
+        "uk": "Чинники наймання полонених"
+      },
+      "description": {
+        "en": "Tunes recruiting from prisoners: the level limit for hiring rescued prisoners into your party (and the AI's), the hours required between recruitment attempts, and the escape chance of recruited prisoner troops (formula: base% - Leadership x perPoint%).",
+        "uk": "Налаштовує наймання з полонених: ліміт рівня для наймання звільнених полонених у ваш загін (і для ШІ), кількість годин між спробами наймання та шанс утечі найнятих з полонених бійців (формула: база% - «Лідерство» x заПункт%)."
+      },
+      "category": "prisoners",
+      "wikiRef": "Tweak 17 e",
+      "params": [
+        {
+          "key": "rescuedLevelLimit",
+          "name": {
+            "en": "Rescued-prisoner level limit (1-61)",
+            "uk": "Ліміт рівня звільнених полонених (1-61)"
+          },
+          "originalValue": 40,
+          "defaultValue": 61,
+          "min": 1,
+          "max": 61
+        },
+        {
+          "key": "recruitHours",
+          "name": {
+            "en": "Hours between recruit attempts",
+            "uk": "Годин між спробами наймання"
+          },
+          "originalValue": 24,
+          "defaultValue": 6,
+          "min": 0,
+          "max": 168
+        },
+        {
+          "key": "escapeBase",
+          "name": {
+            "en": "Escape chance base (%)",
+            "uk": "База шансу втечі (%)"
+          },
+          "originalValue": 66,
+          "defaultValue": 66,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "escapePerLeadership",
+          "name": {
+            "en": "Escape reduction per Leadership point (%)",
+            "uk": "Зниження втечі за пункт «Лідерства» (%)"
+          },
+          "originalValue": 5,
+          "defaultValue": 10,
+          "min": 0,
+          "max": 100
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "2147483678 2 1224979098644774918 40 2147483679 2 1224979098644774917 360287970189639943",
+          "replacement": "2147483678 2 1224979098644774918 {rescuedLevelLimit} 2147483679 2 1224979098644774917 360287970189639943",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "menus.txt",
+          "original": "2270 1 1224979098644774912 2106 2 1224979098644774912 24 32 2 1224979098644774912 144115188075856178",
+          "replacement": "2270 1 1224979098644774912 2106 2 1224979098644774912 {recruitHours} 32 2 1224979098644774912 144115188075856178",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "simple_triggers.txt",
+          "original": "2107 2 1224979098644774912 5 2121 3 1224979098644774913 66 1224979098644774912",
+          "replacement": "2107 2 1224979098644774912 {escapePerLeadership} 2121 3 1224979098644774913 {escapeBase} 1224979098644774912",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "tournament-rounds-factor",
+      "name": {
+        "en": "Tournament elimination factor (rounds)",
+        "uk": "Множник вибування турніру (раунди)"
+      },
+      "description": {
+        "en": "Sets the factor by which the remaining tournament participants are reduced after each round you win. Vanilla is 2 (half are eliminated each round, giving 6 rounds for 64 participants). A higher factor removes more per round and shortens the tournament; a factor of 1 makes every tournament last a single round.",
+        "uk": "Задає множник, на який зменшується кількість учасників турніру після кожного виграного раунду. У грі це 2 (щораунду вибуває половина, тож для 64 учасників виходить 6 раундів). Більший множник прибирає більше за раунд і скорочує турнір; множник 1 робить турнір одним раундом."
+      },
+      "category": "tournaments",
+      "wikiRef": "Tweak 7 e",
+      "params": [
+        {
+          "key": "factor",
+          "name": {
+            "en": "Elimination factor",
+            "uk": "Множник вибування"
+          },
+          "originalValue": 2,
+          "defaultValue": 2,
+          "min": 1,
+          "max": 64,
+          "presets": [
+            {
+              "value": 1,
+              "label": {
+                "en": "Single round",
+                "uk": "Один раунд"
+              }
+            },
+            {
+              "value": 2,
+              "label": {
+                "en": "Vanilla",
+                "uk": "Як у грі"
+              }
+            }
+          ]
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "1224979098644774913 72057594037927936 2123 3 1224979098644774914 1224979098644774913 2",
+          "replacement": "1224979098644774913 72057594037927936 2123 3 1224979098644774914 1224979098644774913 {factor}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "tournament-frequency",
+      "name": {
+        "en": "Tournament frequency and duration",
+        "uk": "Частота й тривалість турнірів"
+      },
+      "description": {
+        "en": "Controls how often tournaments are held and how long they last. The threshold is the number of active tournaments below which the game tries to add more; the chance is the per-24-hour percentage to add a new tournament to a random town; the minimum and maximum bound the days a tournament stays available (vanilla lasts between the minimum and the maximum minus one).",
+        "uk": "Керує тим, як часто проводяться турніри та скільки вони тривають. Поріг — кількість активних турнірів, нижче якої гра намагається додати нові; шанс — відсоток щодоби додати новий турнір у випадкове місто; мінімум і максимум обмежують кількість днів, протягом яких турнір доступний (у грі — від мінімуму до максимуму мінус один)."
+      },
+      "category": "tournaments",
+      "wikiRef": "Tweak 7 d",
+      "params": [
+        {
+          "key": "threshold",
+          "name": {
+            "en": "Active-tournament threshold",
+            "uk": "Поріг активних турнірів"
+          },
+          "originalValue": 3,
+          "defaultValue": 6,
+          "min": 0,
+          "max": 50
+        },
+        {
+          "key": "chance",
+          "name": {
+            "en": "Daily add chance (%)",
+            "uk": "Щоденний шанс додати (%)"
+          },
+          "originalValue": 30,
+          "defaultValue": 60,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "minDays",
+          "name": {
+            "en": "Minimum days",
+            "uk": "Мінімум днів"
+          },
+          "originalValue": 12,
+          "defaultValue": 12,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "maxDays",
+          "name": {
+            "en": "Maximum days (exclusive)",
+            "uk": "Максимум днів (не включно)"
+          },
+          "originalValue": 15,
+          "defaultValue": 15,
+          "min": 2,
+          "max": 100
+        }
+      ],
+      "operations": [
+        {
+          "file": "simple_triggers.txt",
+          "original": "3 2136 3 1224979098644774921 0 100 2147483678 2 1224979098644774921 30 2136 3 1224979098644774926 648518346341351446 648518346341351464 2136 3 1224979098644774927 12 15",
+          "replacement": "{threshold} 2136 3 1224979098644774921 0 100 2147483678 2 1224979098644774921 {chance} 2136 3 1224979098644774926 648518346341351446 648518346341351464 2136 3 1224979098644774927 {minDays} {maxDays}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "noldor-tournament-rune-plate-wins",
+      "name": {
+        "en": "Noldor tournament wins for Mystical Rune Plate",
+        "uk": "Перемог у нолдорському турнірі для Містичної рунної кіраси"
+      },
+      "description": {
+        "en": "Sets how many Noldor tournament wins are required before Aeldarian will reward you with the Mystical Rune Plate. Vanilla requires 10 wins; lower it to receive the armor sooner.",
+        "uk": "Задає, скільки перемог у нолдорському турнірі потрібно, щоб Аелдаріан нагородив вас Містичною рунною кірасою. У грі потрібно 10 перемог; зменште, щоб отримати броню швидше."
+      },
+      "category": "tournaments",
+      "wikiRef": "Tweak 7 c",
+      "params": [
+        {
+          "key": "wins",
+          "name": {
+            "en": "Wins required",
+            "uk": "Потрібно перемог"
+          },
+          "originalValue": 10,
+          "defaultValue": 5,
+          "min": 1,
+          "max": 100,
+          "presets": [
+            {
+              "value": 1,
+              "label": {
+                "en": "1 win",
+                "uk": "1 перемога"
+              }
+            },
+            {
+              "value": 10,
+              "label": {
+                "en": "Vanilla",
+                "uk": "Як у грі"
+              }
+            }
+          ]
+        }
+      ],
+      "operations": [
+        {
+          "file": "conversation.txt",
+          "original": "dlga_start:noldor_give_armor_1 1087 0  4 30 2 144115188075857292 10 2190",
+          "replacement": "dlga_start:noldor_give_armor_1 1087 0  4 30 2 144115188075857292 {wins} 2190",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "arena-win-prize",
+      "name": {
+        "en": "Arena fight victory prize",
+        "uk": "Нагорода за перемогу на арені"
+      },
+      "description": {
+        "en": "Sets the denar prize for winning the whole arena training fight (vanilla 2000). Covers all three places in the dialogue where the full-victory sum is stored, so the reward stays consistent.",
+        "uk": "Задає нагороду в динарах за перемогу в усьому тренувальному бою на арені (у грі 2000). Охоплює всі три місця в діалозі, де зберігається сума за повну перемогу, тож нагорода лишається узгодженою."
+      },
+      "category": "tournaments",
+      "wikiRef": "Tweak 7 i",
+      "params": [
+        {
+          "key": "prize",
+          "name": {
+            "en": "Victory prize (denars)",
+            "uk": "Нагорода за перемогу (динари)"
+          },
+          "originalValue": 2000,
+          "defaultValue": 5000,
+          "min": 0,
+          "max": 1000000
+        }
+      ],
+      "operations": [
+        {
+          "file": "conversation.txt",
+          "original": "500 2133 2 72057594037927951 2000",
+          "replacement": "500 2133 2 72057594037927951 {prize}",
+          "occurrence": "all",
+          "expectedCount": 2
+        },
+        {
+          "file": "conversation.txt",
+          "original": "2133 2 72057594037927946 2000",
+          "replacement": "2133 2 72057594037927946 {prize}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "360287970189639680 2000 1062 2 200 360287970189639680",
+          "replacement": "360287970189639680 {prize} 1062 2 200 360287970189639680",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "faction-relation-caps",
+      "name": {
+        "en": "Faction relation caps",
+        "uk": "Межі ставлення фракцій"
+      },
+      "description": {
+        "en": "Some factions refuse to let your relation rise above (or fall below) a fixed cap, re-checked every 168 hours. This sets each cap individually: Rogue Knights, Heretics, Jatu, Snake Cult, Adventurer Companies, Mystmountain Tribes, D'Shar Raiders and Singalians. Raise them to befriend factions you normally cannot.",
+        "uk": "Деякі фракції не дають вашому ставленню піднятися вище (чи впасти нижче) фіксованої межі, що перевіряється щотри доби (168 годин). Це задає кожну межу окремо: лицарі-розбійники, єретики, джату, культ Змії, загони шукачів пригод, племена Імлистих гір, рейдери Д'Шар та сінгалійці. Підвищте їх, щоб подружитися з фракціями, з якими зазвичай не вдається."
+      },
+      "category": "noldor",
+      "wikiRef": "Tweak 5 a",
+      "params": [
+        {
+          "key": "rogueKnights",
+          "name": {
+            "en": "Rogue Knights cap",
+            "uk": "Межа лицарів-розбійників"
+          },
+          "originalValue": 10,
+          "defaultValue": 100,
+          "min": -100,
+          "max": 100
+        },
+        {
+          "key": "heretics",
+          "name": {
+            "en": "Heretics cap",
+            "uk": "Межа єретиків"
+          },
+          "originalValue": -15,
+          "defaultValue": 100,
+          "min": -100,
+          "max": 100
+        },
+        {
+          "key": "jatu",
+          "name": {
+            "en": "Jatu cap",
+            "uk": "Межа джату"
+          },
+          "originalValue": 2,
+          "defaultValue": 100,
+          "min": -100,
+          "max": 100
+        },
+        {
+          "key": "snakeCult",
+          "name": {
+            "en": "Snake Cult cap",
+            "uk": "Межа культу Змії"
+          },
+          "originalValue": -5,
+          "defaultValue": 100,
+          "min": -100,
+          "max": 100
+        },
+        {
+          "key": "adventurers",
+          "name": {
+            "en": "Adventurer Companies cap",
+            "uk": "Межа загонів шукачів пригод"
+          },
+          "originalValue": 10,
+          "defaultValue": 100,
+          "min": -100,
+          "max": 100
+        },
+        {
+          "key": "mystmountain",
+          "name": {
+            "en": "Mystmountain Tribes cap",
+            "uk": "Межа племен Імлистих гір"
+          },
+          "originalValue": 10,
+          "defaultValue": 100,
+          "min": -100,
+          "max": 100
+        },
+        {
+          "key": "dshar",
+          "name": {
+            "en": "D'Shar Raiders cap",
+            "uk": "Межа рейдерів Д'Шар"
+          },
+          "originalValue": 10,
+          "defaultValue": 100,
+          "min": -100,
+          "max": 100
+        },
+        {
+          "key": "singalians",
+          "name": {
+            "en": "Singalians cap",
+            "uk": "Межа сінгалійців"
+          },
+          "originalValue": 10,
+          "defaultValue": 100,
+          "min": -100,
+          "max": 100
+        }
+      ],
+      "operations": [
+        {
+          "file": "simple_triggers.txt",
+          "original": "432345564227567651 4 0 32 2 1224979098644774912 10 1270 3 432345564227567629 432345564227567651 10 1270 3 432345564227567630 432345564227567651 10 3 0",
+          "replacement": "432345564227567651 4 0 32 2 1224979098644774912 {rogueKnights} 1270 3 432345564227567629 432345564227567651 {rogueKnights} 1270 3 432345564227567630 432345564227567651 {rogueKnights} 3 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "simple_triggers.txt",
+          "original": "432345564227567657 4 0 32 2 1224979098644774912 -15 1270 3 432345564227567629 432345564227567657 -15 1270 3 432345564227567630 432345564227567657 -15 3 0",
+          "replacement": "432345564227567657 4 0 32 2 1224979098644774912 {heretics} 1270 3 432345564227567629 432345564227567657 {heretics} 1270 3 432345564227567630 432345564227567657 {heretics} 3 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "simple_triggers.txt",
+          "original": "432345564227567653 4 0 32 2 1224979098644774912 2 1270 3 432345564227567629 432345564227567653 2 1270 3 432345564227567630 432345564227567653 2 3 0",
+          "replacement": "432345564227567653 4 0 32 2 1224979098644774912 {jatu} 1270 3 432345564227567629 432345564227567653 {jatu} 1270 3 432345564227567630 432345564227567653 {jatu} 3 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "simple_triggers.txt",
+          "original": "432345564227567658 4 0 32 2 1224979098644774912 -5 1270 3 432345564227567629 432345564227567658 -5 1270 3 432345564227567630 432345564227567658 -5 3 0",
+          "replacement": "432345564227567658 4 0 32 2 1224979098644774912 {snakeCult} 1270 3 432345564227567629 432345564227567658 {snakeCult} 1270 3 432345564227567630 432345564227567658 {snakeCult} 3 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "simple_triggers.txt",
+          "original": "432345564227567650 4 0 32 2 1224979098644774912 10 1270 3 432345564227567629 432345564227567650 10 1270 3 432345564227567630 432345564227567650 10 3 0",
+          "replacement": "432345564227567650 4 0 32 2 1224979098644774912 {adventurers} 1270 3 432345564227567629 432345564227567650 {adventurers} 1270 3 432345564227567630 432345564227567650 {adventurers} 3 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "simple_triggers.txt",
+          "original": "432345564227567655 4 0 32 2 1224979098644774912 10 1270 3 432345564227567629 432345564227567655 10 1270 3 432345564227567630 432345564227567655 10 3 0",
+          "replacement": "432345564227567655 4 0 32 2 1224979098644774912 {mystmountain} 1270 3 432345564227567629 432345564227567655 {mystmountain} 1270 3 432345564227567630 432345564227567655 {mystmountain} 3 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "simple_triggers.txt",
+          "original": "432345564227567642 4 0 32 2 1224979098644774912 10 1270 3 432345564227567629 432345564227567642 10 1270 3 432345564227567630 432345564227567642 10 3 0",
+          "replacement": "432345564227567642 4 0 32 2 1224979098644774912 {dshar} 1270 3 432345564227567629 432345564227567642 {dshar} 1270 3 432345564227567630 432345564227567642 {dshar} 3 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "simple_triggers.txt",
+          "original": "432345564227567656 4 0 32 2 1224979098644774912 10 1270 3 432345564227567629 432345564227567656 10 1270 3 432345564227567630 432345564227567656 10 3 0",
+          "replacement": "432345564227567656 4 0 32 2 1224979098644774912 {singalians} 1270 3 432345564227567629 432345564227567656 {singalians} 1270 3 432345564227567630 432345564227567656 {singalians} 3 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "long-bow-buff",
+      "name": {
+        "en": "Long Bow buff",
+        "uk": "Підсилення довгого лука"
+      },
+      "description": {
+        "en": "Makes the Long Bow more competent by adjusting its price, accuracy and shot speed. Vanilla values are 183 denars, 86 accuracy and 65 shot speed.",
+        "uk": "Робить довгий лук кориснішим, змінюючи його ціну, влучність і швидкість пострілу. Ігрові значення — 183 динари, влучність 86 і швидкість пострілу 65."
+      },
+      "category": "items",
+      "wikiRef": "Tweak 18 s",
+      "params": [
+        {
+          "key": "price",
+          "name": {
+            "en": "Price (denars)",
+            "uk": "Ціна (динари)"
+          },
+          "originalValue": 183,
+          "defaultValue": 303,
+          "min": 1,
+          "max": 100000
+        },
+        {
+          "key": "accuracy",
+          "name": {
+            "en": "Accuracy",
+            "uk": "Влучність"
+          },
+          "originalValue": 86,
+          "defaultValue": 88,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "shotSpeed",
+          "name": {
+            "en": "Shot speed",
+            "uk": "Швидкість пострілу"
+          },
+          "originalValue": 65,
+          "defaultValue": 70,
+          "min": 1,
+          "max": 200
+        }
+      ],
+      "operations": [
+        {
+          "file": "item_kinds1.txt",
+          "original": "itm_long_bow Long_Bow Long_Bow 2  long_bow 0  long_bow_carry 3458764513820540928  274792456 5905584128 183 656394 1.750000 100 0 0 86 3 0 80 65 0 0 281 0",
+          "replacement": "itm_long_bow Long_Bow Long_Bow 2  long_bow 0  long_bow_carry 3458764513820540928  274792456 5905584128 {price} 656394 1.750000 100 0 0 {accuracy} 3 0 80 {shotSpeed} 0 0 281 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "runed-bastard-sword-restore",
+      "name": {
+        "en": "Runed Bastard Sword power restore",
+        "uk": "Відновлення сили рунного бастарда"
+      },
+      "description": {
+        "en": "Restores the Runed Bastard Sword towards its pre-3.9 strength by raising its cost and speed. Vanilla values are 4213 denars and 110 speed.",
+        "uk": "Повертає рунному бастарду силу, яку він мав до версії 3.9, підвищуючи його вартість і швидкість. Ігрові значення — 4213 динарів і швидкість 110."
+      },
+      "category": "items",
+      "wikiRef": "Tweak 18 s",
+      "params": [
+        {
+          "key": "cost",
+          "name": {
+            "en": "Cost (denars)",
+            "uk": "Вартість (динари)"
+          },
+          "originalValue": 4213,
+          "defaultValue": 5103,
+          "min": 1,
+          "max": 100000
+        },
+        {
+          "key": "speed",
+          "name": {
+            "en": "Speed rating",
+            "uk": "Швидкість"
+          },
+          "originalValue": 110,
+          "defaultValue": 118,
+          "min": 1,
+          "max": 200
+        }
+      ],
+      "operations": [
+        {
+          "file": "item_kinds1.txt",
+          "original": "itm_runed_bastard Runed_Bastard_Sword Runed_Bastard_Sword 2  vik1prepped3 0  vik1prepped3_scabbard 3458764513820540928  4259843 9223635958593749247 4213 222228 3.000000 1 0 0 0 18 44032 110 0 125 0 291 43",
+          "replacement": "itm_runed_bastard Runed_Bastard_Sword Runed_Bastard_Sword 2  vik1prepped3 0  vik1prepped3_scabbard 3458764513820540928  4259843 9223635958593749247 {cost} 222228 3.000000 1 0 0 0 18 44032 {speed} 0 125 0 291 43",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "rune-plate-armor-buff",
+      "name": {
+        "en": "Sapphire/Ruby/Emerald Rune Plate armor buff",
+        "uk": "Підсилення броні Сапфірової/Рубінової/Смарагдової рунних кірас"
+      },
+      "description": {
+        "en": "Adds +2 to the head, body and leg armor rating of the Sapphire, Ruby and Emerald Rune Plates (and their caped versions) so they are more worth their Qualis-Gem price compared to a Lordly Noldor Ancient Plate.",
+        "uk": "Додає +2 до захисту голови, тіла й ніг для Сапфірової, Рубінової та Смарагдової рунних кірас (і їхніх версій із плащем), щоб вони краще виправдовували свою ціну в каменях Кваліс порівняно з шляхетною нолдорською прадавньою кірасою."
+      },
+      "category": "items",
+      "wikiRef": "Tweak 18 s",
+      "params": [],
+      "operations": [
+        {
+          "file": "item_kinds1.txt",
+          "original": "itm_rune_plate_saphire Sapphire_Rune_Plate Sapphire_Rune_Plate 1  pa_pop_armor_27_second 0  553652237 0 35010 973078948 12.000000 1 7 70 30 15 0 0 0 0 0 0 0",
+          "replacement": "itm_rune_plate_saphire Sapphire_Rune_Plate Sapphire_Rune_Plate 1  pa_pop_armor_27_second 0  553652237 0 35010 973078948 12.000000 1 9 72 32 15 0 0 0 0 0 0 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "item_kinds1.txt",
+          "original": "itm_rune_plate_ruby Ruby_Rune_Plate Ruby_Rune_Plate 1  pa_pop_armor_27_third 0  553652237 0 35030 973078948 32.000000 1 11 75 34 35 0 0 0 0 0 0 0",
+          "replacement": "itm_rune_plate_ruby Ruby_Rune_Plate Ruby_Rune_Plate 1  pa_pop_armor_27_third 0  553652237 0 35030 973078948 32.000000 1 13 77 36 35 0 0 0 0 0 0 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "item_kinds1.txt",
+          "original": "itm_rune_plate_emerald Emerald_Rune_Plate Emerald_Rune_Plate 1  pa_pop_armor_27_fourth 0  553652237 0 35020 973078948 20.000000 1 9 73 32 25 0 0 0 0 0 0 0",
+          "replacement": "itm_rune_plate_emerald Emerald_Rune_Plate Emerald_Rune_Plate 1  pa_pop_armor_27_fourth 0  553652237 0 35020 973078948 20.000000 1 11 75 34 25 0 0 0 0 0 0 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "item_kinds1.txt",
+          "original": "itm_rune_plate_saphire_cape Sapphire_Rune_Plate_with_Cape Sapphire_Rune_Plate_with_Cape 1  pa_pop_armor_27_second_cape 0  553652237 0 35010 973078948 12.000000 1 7 70 30 15 0 0 0 0 0 0 0",
+          "replacement": "itm_rune_plate_saphire_cape Sapphire_Rune_Plate_with_Cape Sapphire_Rune_Plate_with_Cape 1  pa_pop_armor_27_second_cape 0  553652237 0 35010 973078948 12.000000 1 9 72 32 15 0 0 0 0 0 0 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "item_kinds1.txt",
+          "original": "itm_rune_plate_ruby_cape Ruby_Rune_Plate_with_Cape Ruby_Rune_Plate_with_Cape 1  pa_pop_armor_27_third_cape 0  553652237 0 35030 973078948 32.000000 1 11 75 34 35 0 0 0 0 0 0 0",
+          "replacement": "itm_rune_plate_ruby_cape Ruby_Rune_Plate_with_Cape Ruby_Rune_Plate_with_Cape 1  pa_pop_armor_27_third_cape 0  553652237 0 35030 973078948 32.000000 1 13 77 36 35 0 0 0 0 0 0 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "item_kinds1.txt",
+          "original": "itm_rune_plate_emerald_cape Emerald_Rune_Plate_with_Cape Emerald_Rune_Plate_with_Cape 1  pa_pop_armor_27_fourth_cape 0  553652237 0 35020 973078948 20.000000 1 9 73 32 25 0 0 0 0 0 0 0",
+          "replacement": "itm_rune_plate_emerald_cape Emerald_Rune_Plate_with_Cape Emerald_Rune_Plate_with_Cape 1  pa_pop_armor_27_fourth_cape 0  553652237 0 35020 973078948 20.000000 1 11 75 34 25 0 0 0 0 0 0 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "quest-prisoner-soldier-rank",
+      "name": {
+        "en": "Soldier rank for \"capture prisoners\" quest",
+        "uk": "Ранг бійців для завдання \"захопити полонених\""
+      },
+      "description": {
+        "en": "Sets the troop-tier range the game picks from for the lord quest to capture a certain amount of enemy prisoners. Vanilla picks tiers 2 to 5 (45 = tier 5 maximum, 42 = tier 2 minimum). Lower both to allow easier, lower-tier prisoners.",
+        "uk": "Задає діапазон рангів бійців, з якого гра обирає ціль для лордського завдання захопити певну кількість ворожих полонених. У грі обираються ранги від 2 до 5 (45 = максимум 5-й ранг, 42 = мінімум 2-й ранг). Зменште обидва, щоб дозволити простіших полонених нижчого рангу."
+      },
+      "category": "quests",
+      "wikiRef": "Tweak 14 e",
+      "params": [
+        {
+          "key": "maxTier",
+          "name": {
+            "en": "Upper tier code",
+            "uk": "Код верхнього рангу"
+          },
+          "originalValue": 45,
+          "defaultValue": 44,
+          "min": 41,
+          "max": 46
+        },
+        {
+          "key": "minTier",
+          "name": {
+            "en": "Lower tier code",
+            "uk": "Код нижнього рангу"
+          },
+          "originalValue": 42,
+          "defaultValue": 41,
+          "min": 41,
+          "max": 46
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "45 1 2136 3 1224979098644775003 42",
+          "replacement": "{maxTier} 1 2136 3 1224979098644775003 {minTier}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "quest-resolve-dispute-rtr-loss",
+      "name": {
+        "en": "Right to rule lost on aborted \"Resolve dispute\"",
+        "uk": "Втрата права правити за провал \"Залагодити суперечку\""
+      },
+      "description": {
+        "en": "Sets how much right to rule you lose when the \"Resolve dispute\" quest is aborted or expires. Vanilla is -2 (applied for both the abort and the expiration case). Set to 0 to lose nothing.",
+        "uk": "Задає, скільки права правити ви втрачаєте, коли завдання \"Залагодити суперечку\" скасовується або спливає. У грі це -2 (застосовується і за скасування, і за прострочення). Поставте 0, щоб не втрачати нічого."
+      },
+      "category": "quests",
+      "wikiRef": "Tweak 14 d",
+      "params": [
+        {
+          "key": "rtrLoss",
+          "name": {
+            "en": "Right to rule change",
+            "uk": "Зміна права правити"
+          },
+          "originalValue": -2,
+          "defaultValue": 0,
+          "min": -20,
+          "max": 0,
+          "presets": [
+            {
+              "value": 0,
+              "label": {
+                "en": "No loss",
+                "uk": "Без втрати"
+              }
+            },
+            {
+              "value": -2,
+              "label": {
+                "en": "Vanilla",
+                "uk": "Як у грі"
+              }
+            }
+          ]
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "2133 2 1224979098644774925 -2 2133 2 1224979098644774914 0",
+          "replacement": "2133 2 1224979098644774925 {rtrLoss} 2133 2 1224979098644774914 0",
+          "occurrence": "all",
+          "expectedCount": 2
+        }
+      ]
+    },
+    {
+      "id": "quest-ko-renown-repeat-cooldown",
+      "name": {
+        "en": "Knighthood Order renown quest cooldown",
+        "uk": "Перезарядка завдання слави Лицарського ордену"
+      },
+      "description": {
+        "en": "Controls the cooldown of the repeatable renown quest given by Knighthood Orders. Set both values to 0 to make the quest instantly repeatable. Vanilla values are 24 and 15.",
+        "uk": "Керує перезарядкою повторюваного завдання на славу, яке видають Лицарські ордени. Поставте обидва значення на 0, щоб завдання можна було повторювати миттєво. Ігрові значення — 24 і 15."
+      },
+      "category": "quests",
+      "wikiRef": "Tweak 14 a",
+      "params": [
+        {
+          "key": "valueA",
+          "name": {
+            "en": "Cooldown value A",
+            "uk": "Значення перезарядки A"
+          },
+          "originalValue": 24,
+          "defaultValue": 0,
+          "min": 0,
+          "max": 200
+        },
+        {
+          "key": "valueB",
+          "name": {
+            "en": "Cooldown value B",
+            "uk": "Значення перезарядки B"
+          },
+          "originalValue": 15,
+          "defaultValue": 0,
+          "min": 0,
+          "max": 200
+        }
+      ],
+      "operations": [
+        {
+          "file": "conversation.txt",
+          "original": "506 3 504403158265495618 24 15",
+          "replacement": "506 3 504403158265495618 {valueA} {valueB}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "noble-troop-recruit-cost",
+      "name": {
+        "en": "Noble troop recruitment cost",
+        "uk": "Вартість наймання шляхетних бійців"
+      },
+      "description": {
+        "en": "Sets the crown cost to accept a Noble into your court through the War Room. Vanilla is 500 per Noble for the single-recruit option (and 5000 for the bulk \"10x\" option, which must stay tenfold the single price).",
+        "uk": "Задає вартість у кронах за прийняття шляхтича до вашого двору через Воєнну залу. У грі це 500 за одного шляхтича для одиночного варіанту (і 5000 для гуртового варіанту \"x10\", який має лишатися вдесятеро більшим за одиночну ціну)."
+      },
+      "category": "economy",
+      "wikiRef": "Tweak 17 j",
+      "params": [
+        {
+          "key": "single",
+          "name": {
+            "en": "Cost per Noble",
+            "uk": "Ціна за шляхтича"
+          },
+          "originalValue": 500,
+          "defaultValue": 250,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "bulk",
+          "name": {
+            "en": "Cost for 10 Nobles",
+            "uk": "Ціна за 10 шляхтичів"
+          },
+          "originalValue": 5000,
+          "defaultValue": 2500,
+          "min": 0,
+          "max": 1000000
+        }
+      ],
+      "operations": [
+        {
+          "file": "conversation.txt",
+          "original": "2149 2 1224979098644774913 360287970189639680 30 2 1224979098644774913 500 541 3 144115188075856143 274",
+          "replacement": "2149 2 1224979098644774913 360287970189639680 30 2 1224979098644774913 {single} 541 3 144115188075856143 274",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "Accept_1x_{s17}_into_your_court_for_500_denars.  1009  5 1529 2 360287970189639680 500",
+          "replacement": "Accept_1x_{s17}_into_your_court_for_{single}_denars.  1009  5 1529 2 360287970189639680 {single}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "2149 2 1224979098644774914 360287970189639680 30 2 1224979098644774914 5000 Accept_10x_{s17}_into_your_court_for_5000_denars.  1009  5 1529 2 360287970189639680 5000",
+          "replacement": "2149 2 1224979098644774914 360287970189639680 30 2 1224979098644774914 {bulk} Accept_10x_{s17}_into_your_court_for_{bulk}_denars.  1009  5 1529 2 360287970189639680 {bulk}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "min-flee-seconds",
+      "name": {
+        "en": "Minimum flee delay in battle",
+        "uk": "Мінімальна затримка перед втечею в битві"
+      },
+      "description": {
+        "en": "Sets the minimum number of seconds that must pass in a battle before routing enemies are allowed to flee. Lower values let beaten enemies break and run sooner; the value is applied to both the decide_run_away_or_not and formation_decide_run_away_or_not scripts (vanilla 180, Native 45).",
+        "uk": "Задає мінімальну кількість секунд бою, які мають минути, перш ніж розбиті вороги зможуть кинутися навтьоки. Менші значення дають змогу подоланим ворогам тікати раніше; значення застосовується до скриптів decide_run_away_or_not та formation_decide_run_away_or_not (180 у грі, 45 у Native)."
+      },
+      "category": "battle",
+      "wikiRef": "Tweak 8 f",
+      "params": [
+        {
+          "key": "seconds",
+          "name": {
+            "en": "Minimum seconds before fleeing",
+            "uk": "Мінімум секунд до втечі"
+          },
+          "originalValue": 180,
+          "defaultValue": 60,
+          "min": 0,
+          "max": 600,
+          "presets": [
+            {
+              "value": 45,
+              "label": {
+                "en": "Native",
+                "uk": "Як у Native"
+              }
+            },
+            {
+              "value": 180,
+              "label": {
+                "en": "Vanilla",
+                "uk": "Як у грі"
+              }
+            }
+          ]
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "15 1 5 0 30 2 1224979098644774913 180",
+          "replacement": "15 1 5 0 30 2 1224979098644774913 {seconds}",
+          "occurrence": "all",
+          "expectedCount": 2
+        }
+      ]
+    },
+    {
+      "id": "always-join-any-side-battles",
+      "name": {
+        "en": "Always join any side in battles",
+        "uk": "Завжди приєднуватися до будь-якої сторони в битві"
+      },
+      "description": {
+        "en": "Removes the relation requirements that normally block you from helping one side of a field battle, so you can join either side regardless of standing. The two relation gates (-50) are widened to -100 and the upper bounds (80) raised to 101.",
+        "uk": "Прибирає вимоги до відносин, що зазвичай не дають допомогти одній зі сторін польової битви, тож ви можете приєднатися до будь-якої сторони незалежно від ставлення. Два пороги відносин (-50) розширено до -100, а верхні межі (80) підвищено до 101."
+      },
+      "category": "battle",
+      "wikiRef": "Tweak 10 u",
+      "params": [],
+      "operations": [
+        {
+          "file": "menus.txt",
+          "original": "-50 2147483678 2 1224979098644774915 80",
+          "replacement": "-100 2147483678 2 1224979098644774915 101",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "menus.txt",
+          "original": "-50 2147483678 2 1224979098644774913 80",
+          "replacement": "-100 2147483678 2 1224979098644774913 101",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "limit-battle-advantage",
+      "name": {
+        "en": "Limit battle advantage (fairer field spawns)",
+        "uk": "Обмеження бойової переваги (чесніший спавн на полі)"
+      },
+      "description": {
+        "en": "Caps the engine's battle-advantage spawn ratio so that, as long as both sides can fill the battlesize, you always get at least half as many troops on the field as the enemy regardless of your Tactics skill, and at most twice theirs. Inserts a clamp into the calculate_battle_advantage script (lowest disadvantage -5, highest advantage +5; +5 is the engine maximum).",
+        "uk": "Обмежує співвідношення бойової переваги рушія так, що — поки обидві сторони можуть заповнити розмір битви — ви завжди матимете на полі щонайменше половину війська ворога незалежно від навички «Тактика» і щонайбільше вдвічі більше. Додає обмежувач у скрипт calculate_battle_advantage (найнижча невигода -5, найвища перевага +5; +5 — це максимум рушія)."
+      },
+      "category": "battle",
+      "wikiRef": "Tweak 10 i",
+      "params": [
+        {
+          "key": "minAdvantage",
+          "name": {
+            "en": "Lowest battle advantage",
+            "uk": "Найнижча бойова перевага"
+          },
+          "originalValue": -5,
+          "defaultValue": -5,
+          "min": -5,
+          "max": 0
+        },
+        {
+          "key": "maxAdvantage",
+          "name": {
+            "en": "Highest battle advantage",
+            "uk": "Найвища бойова перевага"
+          },
+          "originalValue": 5,
+          "defaultValue": 5,
+          "min": 0,
+          "max": 5
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "28 1 2 936748722493063355 648518346341351441 2133 2 1224979098644774912 72057594037927936",
+          "replacement": "30 1 2 936748722493063355 648518346341351441 2133 2 1224979098644774912 72057594037927936",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2106 2 1224979098644774918 1224979098644774916 2108 2 1224979098644774918 100",
+          "replacement": "2106 2 1224979098644774918 1224979098644774916 2108 2 1224979098644774918 100 2111 2 1224979098644774918 {minAdvantage} 2110 2 1224979098644774918 {maxAdvantage}",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        }
+      ]
+    },
+    {
+      "id": "disable-night-ambushes",
+      "name": {
+        "en": "Disable night ambushes",
+        "uk": "Вимкнути нічні засідки"
+      },
+      "description": {
+        "en": "Completely disables Scorpion Assassin night ambushes by adding an always-false condition to the start of the cf_enter_center_location_bandit_check script, so the ambush check never fires.",
+        "uk": "Повністю вимикає нічні засідки скорпіонів-вбивць, додаючи завжди-хибну умову на початок скрипту cf_enter_center_location_bandit_check, тож перевірка засідки ніколи не спрацьовує."
+      },
+      "category": "battle",
+      "wikiRef": "Tweak 10 z",
+      "params": [],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "72 2147483679 2 144115188075856246 0",
+          "replacement": "73 31 2 0 1 2147483679 2 144115188075856246 0",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        }
+      ]
+    },
+    {
+      "id": "no-item-gold-loss-when-captured",
+      "name": {
+        "en": "Keep items and gold when taken prisoner",
+        "uk": "Зберігати речі та гроші в полоні"
+      },
+      "description": {
+        "en": "Replaces the body of the loot_player_items script with a no-op so that being taken prisoner no longer strips 1-5 of your items or a portion of your gold. (Your troops are still lost.)",
+        "uk": "Замінює тіло скрипту loot_player_items на порожнє, тож потрапляння в полон більше не забирає 1-5 ваших речей і частину золота. (Війська все одно втрачаються.)"
+      },
+      "category": "battle",
+      "wikiRef": "Tweak 10 x",
+      "params": [],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "52 23 2 1224979098644774912 1 1540 2 1224979098644774913 360287970189639680 6 3 1224979098644774914 0 1224979098644774913 1541 3 1224979098644774915 360287970189639680 1224979098644774914 30 2 1224979098644774915 0 1542 3 1224979098644774916 360287970189639680 1224979098644774914 1570 2 1224979098644774917 1224979098644774915 2133 2 1224979098644774918 0 4 0 31 2 1224979098644774917 11 2133 2 1224979098644774918 20 5 0 31 2 1224979098644774917 1 2133 2 1224979098644774918 15 5 0 1073741855 2 1224979098644774917 2 1073741855 2 1224979098644774917 3 1073741855 2 1224979098644774917 4 1073741855 2 1224979098644774917 8 1073741855 2 1224979098644774917 9 31 2 1224979098644774917 10 2133 2 1224979098644774918 5 5 0 1073741855 2 1224979098644774917 12 1073741855 2 1224979098644774917 13 1073741855 2 1224979098644774917 14 1073741855 2 1224979098644774917 15 31 2 1224979098644774917 7 2133 2 1224979098644774918 5 3 0 2136 3 1224979098644774919 0 100 2147483678 2 1224979098644774919 1224979098644774918 1531 2 360287970189639680 1224979098644774915 4 0 32 2 1224979098644774912 0 521 3 1224979098644774920 1224979098644774912 109 2105 2 1224979098644774920 110 501 3 1224979098644774912 1224979098644774920 1224979098644774915 2106 2 1224979098644774920 110 2105 2 1224979098644774920 115 501 3 1224979098644774912 1224979098644774920 1224979098644774916 2106 2 1224979098644774920 115 2105 2 1224979098644774920 1 2109 2 1224979098644774920 5 501 3 1224979098644774912 109 1224979098644774920 3 0 3 0 2149 2 1224979098644774921 360287970189639680 2123 3 1224979098644774922 1224979098644774921 4 2123 3 1224979098644774923 1224979098644774921 10 2136 3 1224979098644774924 1224979098644774923 1224979098644774922 1529 2 360287970189639680 1224979098644774924",
+          "replacement": "1 23 2 1224979098644774912 1",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        }
+      ]
+    },
+    {
+      "id": "patrol-radius",
+      "name": {
+        "en": "Patrol radius",
+        "uk": "Радіус патрулювання"
+      },
+      "description": {
+        "en": "Sets the patrolling radius of militia patrols, Errant Knights, independent KO patrols and Stronghold KO patrols. The value times 6 is the in-game distance (vanilla 5 = 30 units, roughly Sarleon-to-Singal); 1 is the minimum.",
+        "uk": "Задає радіус патрулювання для ополченських патрулів, мандрівних лицарів, незалежних патрулів лицарських орденів і патрулів твердині ордену. Значення множиться на 6, щоб дати ігрову відстань (5 у грі = 30 одиниць, приблизно від Сарлеона до Сінгала); мінімум — 1."
+      },
+      "category": "world",
+      "wikiRef": "Tweak 1 s",
+      "params": [
+        {
+          "key": "militiaRadius",
+          "name": {
+            "en": "Militia patrol radius",
+            "uk": "Радіус ополченського патруля"
+          },
+          "originalValue": 5,
+          "defaultValue": 8,
+          "min": 1,
+          "max": 50
+        },
+        {
+          "key": "koRadius",
+          "name": {
+            "en": "Knighthood Order patrol radius",
+            "uk": "Радіус патруля лицарського ордену"
+          },
+          "originalValue": 5,
+          "defaultValue": 8,
+          "min": 1,
+          "max": 50
+        },
+        {
+          "key": "strongholdRadius",
+          "name": {
+            "en": "Stronghold KO patrol radius",
+            "uk": "Радіус патруля твердині ордену"
+          },
+          "originalValue": 5,
+          "defaultValue": 8,
+          "min": 1,
+          "max": 50
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "1643 2 1224979098644774915 5",
+          "replacement": "1643 2 1224979098644774915 {militiaRadius}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "1643 2 1224979098644774926 5",
+          "replacement": "1643 2 1224979098644774926 {koRadius}",
+          "occurrence": "all",
+          "expectedCount": 2
+        },
+        {
+          "file": "conversation.txt",
+          "original": "1643 2 1224979098644774913 5",
+          "replacement": "1643 2 1224979098644774913 {strongholdRadius}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "resting-values",
+      "name": {
+        "en": "Resting limits and speed",
+        "uk": "Обмеження та швидкість відпочинку"
+      },
+      "description": {
+        "en": "Adjusts resting: the maximum consecutive hours you may rest, the time-acceleration multiplier, and whether you can be attacked while resting (1 = yes, 0 = no). Three groups are covered: walled fiefs / Elacrai / Order Stronghold / Hideout (4 spots), open-map camping, and villages with a Manor.",
+        "uk": "Налаштовує відпочинок: максимум годин відпочинку поспіль, множник прискорення часу та чи можуть на вас напасти під час відпочинку (1 = так, 0 = ні). Охоплено три групи: фортеці / Елакрай / твердиня ордену / схрон (4 місця), табір на відкритій мапі та села з маєтком."
+      },
+      "category": "cheats",
+      "wikiRef": "Tweak 21 d",
+      "params": [
+        {
+          "key": "fiefHours",
+          "name": {
+            "en": "Walled fiefs: max hours",
+            "uk": "Фортеці: макс. годин"
+          },
+          "originalValue": 168,
+          "defaultValue": 168,
+          "min": 1,
+          "max": 8760
+        },
+        {
+          "key": "fiefSpeed",
+          "name": {
+            "en": "Walled fiefs: speed multiplier",
+            "uk": "Фортеці: множник швидкості"
+          },
+          "originalValue": 5,
+          "defaultValue": 5,
+          "min": 1,
+          "max": 50
+        },
+        {
+          "key": "fiefAttackable",
+          "name": {
+            "en": "Walled fiefs: attackable (1/0)",
+            "uk": "Фортеці: можна напасти (1/0)"
+          },
+          "originalValue": 0,
+          "defaultValue": 0,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "campHours",
+          "name": {
+            "en": "Camping: max hours",
+            "uk": "Табір: макс. годин"
+          },
+          "originalValue": 8760,
+          "defaultValue": 8760,
+          "min": 1,
+          "max": 8760
+        },
+        {
+          "key": "campSpeed",
+          "name": {
+            "en": "Camping: speed multiplier",
+            "uk": "Табір: множник швидкості"
+          },
+          "originalValue": 5,
+          "defaultValue": 5,
+          "min": 1,
+          "max": 50
+        },
+        {
+          "key": "campAttackable",
+          "name": {
+            "en": "Camping: attackable (1/0)",
+            "uk": "Табір: можна напасти (1/0)"
+          },
+          "originalValue": 1,
+          "defaultValue": 1,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "manorHours",
+          "name": {
+            "en": "Manor village: max hours",
+            "uk": "Село з маєтком: макс. годин"
+          },
+          "originalValue": 168,
+          "defaultValue": 168,
+          "min": 1,
+          "max": 8760
+        },
+        {
+          "key": "manorSpeed",
+          "name": {
+            "en": "Manor village: speed multiplier",
+            "uk": "Село з маєтком: множник швидкості"
+          },
+          "originalValue": 5,
+          "defaultValue": 5,
+          "min": 1,
+          "max": 50
+        },
+        {
+          "key": "manorAttackable",
+          "name": {
+            "en": "Manor village: attackable (1/0)",
+            "uk": "Село з маєтком: можна напасти (1/0)"
+          },
+          "originalValue": 1,
+          "defaultValue": 1,
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "operations": [
+        {
+          "file": "menus.txt",
+          "original": "1031 3 168 5 0",
+          "replacement": "1031 3 {fiefHours} {fiefSpeed} {fiefAttackable}",
+          "occurrence": "all",
+          "expectedCount": 4
+        },
+        {
+          "file": "menus.txt",
+          "original": "1031 3 8760 5 1",
+          "replacement": "1031 3 {campHours} {campSpeed} {campAttackable}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "menus.txt",
+          "original": "1031 3 168 5 1",
+          "replacement": "1031 3 {manorHours} {manorSpeed} {manorAttackable}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "deserter-party-size",
+      "name": {
+        "en": "Deserter party size",
+        "uk": "Розмір загонів дезертирів"
+      },
+      "description": {
+        "en": "Controls how many units spawn in deserter parties. The count is a random number between the minimum and (per-level + player level x multiplier - 1). Vanilla: min 10, per-level base 11, multiplier 2 (so at level 10 the range is 10-30).",
+        "uk": "Керує тим, скільки бійців з'являється в загонах дезертирів. Кількість — випадкове число між мінімумом і (база + рівень гравця x множник - 1). У грі: мінімум 10, база 11, множник 2 (тож на 10-му рівні діапазон 10-30)."
+      },
+      "category": "spawns",
+      "wikiRef": "Tweak 1 o",
+      "params": [
+        {
+          "key": "levelMultiplier",
+          "name": {
+            "en": "Per player level multiplier",
+            "uk": "Множник за рівень гравця"
+          },
+          "originalValue": 2,
+          "defaultValue": 2,
+          "min": 0,
+          "max": 20
+        },
+        {
+          "key": "perLevelBase",
+          "name": {
+            "en": "Per-level base",
+            "uk": "База за рівень"
+          },
+          "originalValue": 11,
+          "defaultValue": 11,
+          "min": 1,
+          "max": 200
+        },
+        {
+          "key": "minimum",
+          "name": {
+            "en": "Minimum size",
+            "uk": "Мінімальний розмір"
+          },
+          "originalValue": 10,
+          "defaultValue": 10,
+          "min": 1,
+          "max": 200
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "2 2105 2 1224979098644774921 11 2136 3 1224979098644774922 10",
+          "replacement": "{levelMultiplier} 2105 2 1224979098644774921 {perLevelBase} 2136 3 1224979098644774922 {minimum}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "party-growth-level-multiplier",
+      "name": {
+        "en": "Party-size growth rate by player level",
+        "uk": "Темп зростання загонів за рівнем гравця"
+      },
+      "description": {
+        "en": "Sets the player-level multiplier in update_party_creation_random_limits, which scales how much bigger map parties (bandits, unique spawns, etc.) grow as you level up. Higher values mean tougher spawns (vanilla 4, Native 3).",
+        "uk": "Задає множник рівня гравця в update_party_creation_random_limits, який визначає, наскільки більшими стають загони на мапі (бандити, унікальні спавни тощо) у міру вашого зростання. Більші значення дають складніші спавни (4 у грі, 3 у Native)."
+      },
+      "category": "spawns",
+      "wikiRef": "Tweak 1 p",
+      "params": [
+        {
+          "key": "multiplier",
+          "name": {
+            "en": "Level multiplier",
+            "uk": "Множник рівня"
+          },
+          "originalValue": 4,
+          "defaultValue": 4,
+          "min": 0,
+          "max": 20,
+          "presets": [
+            {
+              "value": 3,
+              "label": {
+                "en": "Native",
+                "uk": "Як у Native"
+              }
+            },
+            {
+              "value": 4,
+              "label": {
+                "en": "Vanilla",
+                "uk": "Як у грі"
+              }
+            }
+          ]
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "2171 2 1224979098644774912 360287970189639680 2122 3 1224979098644774913 1224979098644774912 4",
+          "replacement": "2171 2 1224979098644774912 360287970189639680 2122 3 1224979098644774913 1224979098644774912 {multiplier}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "max-parties-on-map",
+      "name": {
+        "en": "Maximum parties on the world map",
+        "uk": "Максимум загонів на мапі світу"
+      },
+      "description": {
+        "en": "Sets the maximum number of each kind of spawned party allowed on the world map at once: Red Brotherhood, Singalian Slavers, Azi Dahaka Death Cult, deserters, Vanskerry Raiders, signature unique-spawn patrols (Eyegrim, Dread Legion, Wolfbode, Three Seers, Rasmus), outlaw bands, AI-created militia patrols, and the combined per-kingdom militia patrol total.",
+        "uk": "Задає максимальну кількість кожного типу загонів, що можуть одночасно існувати на мапі: Червоне Братство, сінгалійські работорговці, культ смерті Азі Дахака, дезертири, ванскерійські розбійники, патрулі унікальних спавнів (Айгрим, Легіон Жаху, Вольфбоде, Три Провидці, Расмус), зграї розбійників, ополченські патрулі від ШІ та сумарну межу ополченських патрулів на королівство."
+      },
+      "category": "spawns",
+      "wikiRef": "Tweak 1 n",
+      "params": [
+        {
+          "key": "redBrotherhood",
+          "name": {
+            "en": "Red Brotherhood parties",
+            "uk": "Загони Червоного Братства"
+          },
+          "originalValue": 13,
+          "defaultValue": 13,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "singalianSlavers",
+          "name": {
+            "en": "Singalian Slavers",
+            "uk": "Сінгалійські работорговці"
+          },
+          "originalValue": 10,
+          "defaultValue": 10,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "aziDahaka",
+          "name": {
+            "en": "Azi Dahaka Death Cult Marauders",
+            "uk": "Мародери культу Азі Дахака"
+          },
+          "originalValue": 4,
+          "defaultValue": 4,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "deserters",
+          "name": {
+            "en": "Deserter parties",
+            "uk": "Загони дезертирів"
+          },
+          "originalValue": 8,
+          "defaultValue": 8,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "vanskerry",
+          "name": {
+            "en": "Vanskerry Raiders",
+            "uk": "Ванскерійські розбійники"
+          },
+          "originalValue": 15,
+          "defaultValue": 15,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "signaturePatrols",
+          "name": {
+            "en": "Unique-spawn signature patrols (each)",
+            "uk": "Патрулі унікальних спавнів (кожного)"
+          },
+          "originalValue": 4,
+          "defaultValue": 4,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "outlawBands",
+          "name": {
+            "en": "Outlaw Bands",
+            "uk": "Зграї розбійників"
+          },
+          "originalValue": 30,
+          "defaultValue": 30,
+          "min": 0,
+          "max": 200
+        },
+        {
+          "key": "militiaAuto",
+          "name": {
+            "en": "AI-created militia patrols",
+            "uk": "Ополченські патрулі від ШІ"
+          },
+          "originalValue": 9,
+          "defaultValue": 9,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "militiaTotal",
+          "name": {
+            "en": "Total militia patrols per kingdom",
+            "uk": "Усього ополченських патрулів на королівство"
+          },
+          "originalValue": 20,
+          "defaultValue": 20,
+          "min": 0,
+          "max": 200
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "2147483678 2 1224979098644774912 13 2136 3 1224979098644774913 648518346341351446 648518346341351464",
+          "replacement": "2147483678 2 1224979098644774912 {redBrotherhood} 2136 3 1224979098644774913 648518346341351446 648518346341351464",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2147483678 2 1224979098644774912 10 2310 2 1224979098644774913 576460752303423530",
+          "replacement": "2147483678 2 1224979098644774912 {singalianSlavers} 2310 2 1224979098644774913 576460752303423530",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2147483678 2 1224979098644774912 4 2135 2 1224979098644774913 20",
+          "replacement": "2147483678 2 1224979098644774912 {aziDahaka} 2135 2 1224979098644774913 20",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2147483678 2 1224979098644774912 8 1103 1 4",
+          "replacement": "2147483678 2 1224979098644774912 {deserters} 1103 1 4",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2147483678 2 1224979098644774912 15 2135 2 1224979098644774913 3",
+          "replacement": "2147483678 2 1224979098644774912 {vanskerry} 2135 2 1224979098644774913 3",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2147483678 2 1224979098644774912 4 524 3 1224979098644774913",
+          "replacement": "2147483678 2 1224979098644774912 {signaturePatrols} 524 3 1224979098644774913",
+          "occurrence": "all",
+          "expectedCount": 5
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2147483678 2 1224979098644774912 30 2147483678 2 1224979098644774914 50",
+          "replacement": "2147483678 2 1224979098644774912 {outlawBands} 2147483678 2 1224979098644774914 50",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2147483678 2 1224979098644774914 9 1100 2 1224979098644774912 576460752303423495",
+          "replacement": "2147483678 2 1224979098644774914 {militiaAuto} 1100 2 1224979098644774912 576460752303423495",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "2310 2 1224979098644774913 576460752303423495 2147483678 2 1224979098644774913 20",
+          "replacement": "2310 2 1224979098644774913 576460752303423495 2147483678 2 1224979098644774913 {militiaTotal}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "ransom-amount-for-lords",
+      "name": {
+        "en": "Ransom amounts for captured lords",
+        "uk": "Розмір викупу за полонених лордів"
+      },
+      "description": {
+        "en": "Tunes the ransom offered for captured lords and kings in calculate_ransom_amount_for_troop, plus how often offers arrive. The minimum ransom is base + leader bonus + (town x6 + castle x2 + village x1) x fief value + renown x renownFactor; the maximum is minimum x3/2. Lower the rounding divisor (100) to boost offers.",
+        "uk": "Налаштовує викуп за полонених лордів і королів у calculate_ransom_amount_for_troop, а також частоту пропозицій. Мінімальний викуп = база + бонус за лідера + (місто x6 + замок x2 + село x1) x вартість феоду + слава x множник; максимум = мінімум x3/2. Зменшіть дільник округлення (100), щоб підвищити пропозиції."
+      },
+      "category": "prisoners",
+      "wikiRef": "Tweak 15 e",
+      "params": [
+        {
+          "key": "frequencyHours",
+          "name": {
+            "en": "Hours between ransom offers",
+            "uk": "Годин між пропозиціями викупу"
+          },
+          "originalValue": 24,
+          "defaultValue": 24,
+          "min": 1,
+          "max": 720
+        },
+        {
+          "key": "baseAmount",
+          "name": {
+            "en": "Base ransom amount",
+            "uk": "Базовий розмір викупу"
+          },
+          "originalValue": 400,
+          "defaultValue": 400,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "leaderBonus",
+          "name": {
+            "en": "Faction leader bonus",
+            "uk": "Бонус за лідера фракції"
+          },
+          "originalValue": 4000,
+          "defaultValue": 4000,
+          "min": 0,
+          "max": 1000000
+        },
+        {
+          "key": "fiefValue",
+          "name": {
+            "en": "Per-fief value multiplier",
+            "uk": "Множник вартості феоду"
+          },
+          "originalValue": 1300,
+          "defaultValue": 1300,
+          "min": 0,
+          "max": 100000
+        },
+        {
+          "key": "renownFactor",
+          "name": {
+            "en": "Renown multiplier",
+            "uk": "Множник слави"
+          },
+          "originalValue": 5,
+          "defaultValue": 5,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "roundDivisor",
+          "name": {
+            "en": "Rounding divisor (lower = bigger ransoms)",
+            "uk": "Дільник округлення (менше = більший викуп)"
+          },
+          "originalValue": 100,
+          "defaultValue": 50,
+          "min": 1,
+          "max": 1000
+        }
+      ],
+      "operations": [
+        {
+          "file": "simple_triggers.txt",
+          "original": "24.000000  10 2147483679 2",
+          "replacement": "{frequencyHours}.000000  10 2147483679 2",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "400 2133 2 1224979098644774915 -9 4 0 542 3 1224979098644774913 11 1224979098644774912 2105 2 1224979098644774914 4000",
+          "replacement": "{baseAmount} 2133 2 1224979098644774915 -9 4 0 542 3 1224979098644774913 11 1224979098644774912 2105 2 1224979098644774914 {leaderBonus}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "6 5 0 541 3 1224979098644774917 0 2 2105 2 1224979098644774916 2 5 0 2105 2 1224979098644774916 1 3 0 3 0 2107 2 1224979098644774916 1300",
+          "replacement": "6 5 0 541 3 1224979098644774917 0 2 2105 2 1224979098644774916 2 5 0 2105 2 1224979098644774916 1 3 0 3 0 2107 2 1224979098644774916 {fiefValue}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "5 2105 2 1224979098644774914 1224979098644774918 2122 3 1224979098644774919 1224979098644774914 3 2108 2 1224979098644774919 2",
+          "replacement": "{renownFactor} 2105 2 1224979098644774914 1224979098644774918 2122 3 1224979098644774919 1224979098644774914 3 2108 2 1224979098644774919 2",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "scripts.txt",
+          "original": "100 2107 2 1224979098644774920 100",
+          "replacement": "{roundDivisor} 2107 2 1224979098644774920 100",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "recruit-prisoner-cooldown",
+      "name": {
+        "en": "Prisoner recruitment cooldown",
+        "uk": "Перезарядка наймання полонених"
+      },
+      "description": {
+        "en": "Sets the number of hours you must wait between attempts to recruit prisoners from the camp menu (vanilla 24).",
+        "uk": "Задає кількість годин очікування між спробами найняти полонених через меню табору (24 у грі)."
+      },
+      "category": "prisoners",
+      "wikiRef": "Tweak 17 e",
+      "params": [
+        {
+          "key": "hours",
+          "name": {
+            "en": "Hours between attempts",
+            "uk": "Годин між спробами"
+          },
+          "originalValue": 24,
+          "defaultValue": 1,
+          "min": 1,
+          "max": 720
+        }
+      ],
+      "operations": [
+        {
+          "file": "menus.txt",
+          "original": "105 1 1 2270 1 1224979098644774912 2106 2 1224979098644774912 24 32 2 1224979098644774912 144115188075856178 4 0 32 2 144115188075856178 0",
+          "replacement": "105 1 1 2270 1 1224979098644774912 2106 2 1224979098644774912 {hours} 32 2 1224979098644774912 144115188075856178 4 0 32 2 144115188075856178 0",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "prisoner-capacity-by-party-size",
+      "name": {
+        "en": "Prisoner capacity scales with party size",
+        "uk": "Місткість полонених залежить від розміру загону"
+      },
+      "description": {
+        "en": "Overhauls how many prisoners you can hold so it scales with your party size (Viking Conquest style) instead of a flat value. At 0 Prisoner Management you need 5 soldiers per prisoner; this ratio drops by 0.3 per skill point, reaching 2 soldiers per prisoner at 10 PM. Incompatible with the tweak that makes companions contribute their Prisoner Management skill.",
+        "uk": "Переробляє місткість полонених так, що вона залежить від розміру загону (як у Viking Conquest), а не від фіксованого числа. За 0 «Нагляду за полоненими» потрібно 5 вояків на полоненого; це співвідношення зменшується на 0.3 за пункт навички, досягаючи 2 вояків на полоненого за 10. Несумісно з твіком, що дозволяє компаньйонам додавати свій «Нагляд за полоненими»."
+      },
+      "category": "prisoners",
+      "wikiRef": "Tweak 19 c",
+      "params": [],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "6 2133 2 1224979098644774912 360287970189639680 2133 2 1224979098644774913 0 2170 3 1224979098644774914 2 1224979098644774912 2122 3 1224979098644774913 1224979098644774914 10 2133 2 72057594037927936 1224979098644774913 2075 1 72057594037927936",
+          "replacement": "10 2133 2 1224979098644774912 0 2133 2 1224979098644774913 5 2170 3 1224979098644774914 1369094286720630786 360287970189639680 1601 2 1224979098644774915 648518346341351424 2107 2 1224979098644774914 3 2108 2 1224979098644774914 10 2106 2 1224979098644774913 1224979098644774914 2123 3 1224979098644774912 1224979098644774915 1224979098644774913 2133 2 72057594037927936 1224979098644774912 2075 1 72057594037927936",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        }
+      ]
+    },
+    {
+      "id": "prisoner-troops-no-escape",
+      "name": {
+        "en": "Prisoner troops never escape over time",
+        "uk": "Полонені бійці не тікають з часом"
+      },
+      "description": {
+        "en": "Stops ordinary prisoner troops held in your fiefs from gradually escaping over time. Removes the escape operation from the 168-hour prison trigger and decrements its operation counter accordingly.",
+        "uk": "Зупиняє поступову втечу звичайних полонених бійців з ваших фортець. Прибирає операцію втечі зі 168-годинного триггера в'язниці та відповідно зменшує лічильник операцій."
+      },
+      "category": "prisoners",
+      "wikiRef": "Tweak 17 g",
+      "params": [],
+      "operations": [
+        {
+          "file": "simple_triggers.txt",
+          "original": "168.000000  23 6 3 1224979098644774912 648518346341351446 648518346341351504 1651 2 1224979098644774913 1224979098644774912 2123 3 1224979098644774914 1224979098644774913 2 7 3 1224979098644774915 0 1224979098644774913 1656 3 1224979098644774916 1224979098644774912 1224979098644774915 2147485155 1 1224979098644774916 1657 3 1224979098644774917 1224979098644774912 1224979098644774915 2136 3 1224979098644774918 0 40 2105 2 1224979098644774918 1224979098644774914 2110 2 1224979098644774918 100 4 0 541 3 1224979098644774912 275 1 2108 2 1224979098644774918 2 3 0 2107 2 1224979098644774917 1224979098644774918 2108 2 1224979098644774917 100 4 0 30 2 1224979098644774918 20 2111 2 1224979098644774917 1 3 0 1616 3 1224979098644774912 1224979098644774916 1224979098644774917 3 0 3 0",
+          "replacement": "168.000000  22 6 3 1224979098644774912 648518346341351446 648518346341351504 1651 2 1224979098644774913 1224979098644774912 2123 3 1224979098644774914 1224979098644774913 2 7 3 1224979098644774915 0 1224979098644774913 1656 3 1224979098644774916 1224979098644774912 1224979098644774915 2147485155 1 1224979098644774916 1657 3 1224979098644774917 1224979098644774912 1224979098644774915 2136 3 1224979098644774918 0 40 2105 2 1224979098644774918 1224979098644774914 2110 2 1224979098644774918 100 4 0 541 3 1224979098644774912 275 1 2108 2 1224979098644774918 2 3 0 2107 2 1224979098644774917 1224979098644774918 2108 2 1224979098644774917 100 4 0 30 2 1224979098644774918 20 2111 2 1224979098644774917 1 3 0 3 0 3 0",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        }
+      ]
+    },
+    {
+      "id": "companions-spreading-word",
+      "name": {
+        "en": "Companions spreading the word about you",
+        "uk": "Компаньйони розповідають про вас"
+      },
+      "description": {
+        "en": "Adjusts the reward when a companion who left to spread the word about you returns: how much Right to Rule you gain, and how many days they are away before returning.",
+        "uk": "Налаштовує винагороду за повернення компаньйона, який пішов розповідати про вас: скільки «Права на владу» ви отримуєте та скільки днів він відсутній до повернення."
+      },
+      "category": "companions",
+      "wikiRef": "Tweak 16 g",
+      "params": [
+        {
+          "key": "rightToRule",
+          "name": {
+            "en": "Right to Rule gained",
+            "uk": "Отримане «Право на владу»"
+          },
+          "originalValue": 3,
+          "defaultValue": 5,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "daysAway",
+          "name": {
+            "en": "Days before companion returns",
+            "uk": "Днів до повернення компаньйона"
+          },
+          "originalValue": 21,
+          "defaultValue": 7,
+          "min": 1,
+          "max": 365
+        }
+      ],
+      "operations": [
+        {
+          "file": "conversation.txt",
+          "original": "2133 2 144115188075855886 0 1 2 936748722493063755 3",
+          "replacement": "2133 2 144115188075855886 0 1 2 936748722493063755 {rightToRule}",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "21 500 3 144115188075855892",
+          "replacement": "{daysAway} 500 3 144115188075855892",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
+    },
+    {
+      "id": "besiege-friendly-fiefs",
+      "name": {
+        "en": "Besiege friendly castles and towns",
+        "uk": "Облога дружніх замків і міст"
+      },
+      "description": {
+        "en": "Enables the cheat-menu option to besiege friendly castles and towns (the \"honest\" variant, which sets your relation with the target faction to a negative value so the siege state persists and war can be declared). Replaces the mno_cheat_town_start_siege menu entry.",
+        "uk": "Вмикає опцію меню чітів для облоги дружніх замків і міст («чесний» варіант, що встановлює ваше ставлення до цільової фракції на від'ємне значення, щоб стан облоги зберігався та можна було оголосити війну). Замінює пункт меню mno_cheat_town_start_siege."
+      },
+      "category": "cheats",
+      "wikiRef": "Tweak 9 i",
+      "params": [
+        {
+          "key": "relationAfter",
+          "name": {
+            "en": "Relation set after the attempt",
+            "uk": "Ставлення після спроби"
+          },
+          "originalValue": -40,
+          "defaultValue": -40,
+          "min": -100,
+          "max": 0
+        }
+      ],
+      "operations": [
+        {
+          "file": "menus.txt",
+          "original": "mno_cheat_town_start_siege  11 31 2 144115188075856146 1 541 3 144115188075856280 54 -1 2147483678 2 144115188075856956 1 1 2 936748722493063355 648518346341351424 32 2 72057594037927936 1 4 0 541 3 144115188075856280 0 3 2133 2 72057594037927942 1 5 0 2133 2 72057594037927942 0 3 0  {!}CHEAT:_Besiege_the_{reg6?town:castle}...  2 2133 2 144115188075856218 144115188075856280 2060 1 864691128455135333",
+          "replacement": "mno_cheat_town_start_siege  10 541 3 144115188075856280 54 -1 2147483678 2 144115188075856956 1 1 2 936748722493063355 648518346341351424 32 2 72057594037927936 1 4 0 541 3 144115188075856280 0 3 2133 2 72057594037927942 1 5 0 2133 2 72057594037927942 0 3 0  Besiege_the_{reg6?town:castle}...  5 2133 2 144115188075856218 144115188075856280 2190 3 1224979098644774912 432345564227567630 144115188075856957 2110 2 1224979098644774912 {relationAfter} 1 3 936748722493063446 144115188075856957 1224979098644774912 2060 1 864691128455135333",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        }
+      ]
     }
   ]
 }

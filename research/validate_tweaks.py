@@ -44,8 +44,9 @@ CURRENT_DIR = (
     "MountBlade Warband/Modules/Prophesy of Pendor V3.9.5"
 )
 
-CATEGORIES = {"spawns", "tournaments", "noldor", "companions", "prisoners",
-              "economy", "other"}
+CATEGORIES = {"spawns", "parties", "world", "battle", "troops", "tournaments",
+              "noldor", "companions", "prisoners", "kingdom", "economy", "items",
+              "quests", "cheats", "other"}
 PLACEHOLDER_RE = re.compile(r"\{([A-Za-z_][A-Za-z0-9_]*)\}")
 
 failures = []
@@ -60,7 +61,9 @@ def load_file(directory, name, cache={}):
     key = (directory, name)
     if key not in cache:
         with open(os.path.join(directory, name), "rb") as f:
-            cache[key] = f.read().decode("utf-8")
+            # ISO-Latin-1, matching the app's ModManager: 1:1 byte mapping so
+            # huge non-UTF-8 module files (e.g. item_kinds1.txt) decode cleanly.
+            cache[key] = f.read().decode("latin-1")
     return cache[key]
 
 
@@ -157,8 +160,11 @@ def validate(db):
                             i > oper["expectedCount"] for i in occ)):
                     fail(f"{tag}: bad occurrence {occ!r}")
 
-            # (b) render(replacement, originalValues) == original
-            if keys:
+            # (b) render(replacement, originalValues) == original.
+            # Structural ops are deliberate block rewrites — exempt from round-trip.
+            if oper.get("structural"):
+                pass
+            elif keys:
                 rendered_orig = render(repl, originals)
                 if rendered_orig != orig:
                     fail(f"{tag}: replacement rendered with originalValues "
