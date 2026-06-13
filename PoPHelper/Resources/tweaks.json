@@ -1887,7 +1887,8 @@
           "occurrence": "all",
           "expectedCount": 1
         }
-      ]
+      ],
+      "requiresNewGame": true
     },
     {
       "id": "garrison-size-walled-fiefs",
@@ -5704,7 +5705,8 @@
           "occurrence": "all",
           "expectedCount": 1
         }
-      ]
+      ],
+      "requiresNewGame": true
     },
     {
       "id": "villagers-fight-back-party-size",
@@ -8130,6 +8132,110 @@
           "file": "simple_triggers.txt",
           "original": "200.000000  2 2106 2 144115188075856083 1 2111 2 144115188075856083 25 ",
           "replacement": "200.000000  0 ",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        }
+      ]
+    },
+    {
+      "id": "knockout-elite-enemies",
+      "category": "party",
+      "wikiRef": "Tweak (PoP Helper *)",
+      "requiresNewGame": true,
+      "name": {
+        "en": "Knock out elite enemies (capture them)",
+        "uk": "Оглушення елітних ворогів (захоплюй їх)",
+        "ru": "Оглушение высокоуровневых бойцов"
+      },
+      "description": {
+        "en": "Makes 5 of the toughest enemies — Demonic Magnus, Anaconda Knight, Serpent Priestess, Adder Vanguard, Seeress — get knocked UNCONSCIOUS instead of dying, so you can capture and recruit them.",
+        "uk": "Робить, щоб 5 найсильніших ворогів — Демонічний Магнус, Лицар Анаконди, Зміїна Жриця, Гадючий Авангард, Провидиця — НЕПРИТОМНІЛИ замість гинути, щоб ти міг захопити й завербувати їх.",
+        "ru": "Делает так, что 5 сильнейших врагов — Демонический Магнус, Рыцарь Анаконды, Змеиная Жрица, Гадючий Авангард, Провидица — теряют сознание вместо смерти, чтобы ты мог их захватить и завербовать."
+      },
+      "recommendation": {
+        "en": "A recruiter's dream — capture and field these elite Snake Cult / demonic units instead of just killing them. Requires a new game.",
+        "uk": "Мрія рекрутера — захоплюй і водь цих елітних бійців Культу Змії / демонів, а не просто вбивай. Потребує нову гру.",
+        "ru": "Мечта рекрутёра — захватывай и води этих элитных бойцов Культа Змеи / демонов, а не просто убивай. Требует новой игры."
+      },
+      "params": [],
+      "operations": [
+        {
+          "file": "troops.txt",
+          "original": "trp_demonic_magnus Demonic_Magnus Demonic_Magni 0 66061443 0 0 3 0 0",
+          "replacement": "trp_demonic_magnus Demonic_Magnus Demonic_Magni 0 66061315 0 0 3 0 0",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        },
+        {
+          "file": "troops.txt",
+          "original": "trp_seeress Seeress Seeress 0 334496898 0 0 41 0 0",
+          "replacement": "trp_seeress Seeress Seeress 0 61867010 0 0 41 0 0",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        },
+        {
+          "file": "troops.txt",
+          "original": "trp_snake_priestess Serpent_Priestess Serpent_Priestesses 0 24118402 0 0 3 0 0",
+          "replacement": "trp_snake_priestess Serpent_Priestess Serpent_Priestesses 0 24118274 0 0 3 0 0",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        },
+        {
+          "file": "troops.txt",
+          "original": "trp_anaconda_knight Anaconda_Knight Anaconda_Knights 0 32507015 0 0 3 0 0",
+          "replacement": "trp_anaconda_knight Anaconda_Knight Anaconda_Knights 0 32506883 0 0 3 0 0",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        },
+        {
+          "file": "troops.txt",
+          "original": "trp_asp_vanguard Asp_Vanguard Asp_Vanguards 0 133170306 0 0 3 0 0",
+          "replacement": "trp_asp_vanguard Asp_Vanguard Asp_Vanguards 0 133170178 0 0 3 0 0",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        }
+      ]
+    },
+    {
+      "id": "control-village-garrisons",
+      "category": "towns",
+      "wikiRef": "Tweak 13 q",
+      "requiresNewGame": true,
+      "name": {
+        "en": "Manage your village garrisons",
+        "uk": "Керування гарнізоном своїх сіл",
+        "ru": "Управление гарнизоном своих деревень"
+      },
+      "description": {
+        "en": "Adds a “Manage the garrison” option in your villages, so you can stash and withdraw troops (and companions) there for free — a permanent, cost-free source of recruits and a safe troop store.",
+        "uk": "Додає в твоїх селах пункт «Керувати гарнізоном» — можна безкоштовно складати й забирати звідти війська (і спутників): постійне безкоштовне джерело рекрутів і надійний склад військ.",
+        "ru": "Добавляет в твоих деревнях пункт «Управлять гарнизоном» — можно бесплатно складывать и забирать оттуда войска (и спутников): постоянный бесплатный источник рекрутов и надёжный склад войск."
+      },
+      "recommendation": {
+        "en": "A free troop vault + steady recruit source (villages keep producing peasants). Requires a new game — village garrisons are set up at game start.",
+        "uk": "Безкоштовний склад військ + стабільне джерело рекрутів (села продовжують готувати селян). Потребує нову гру — гарнізони сіл створюються на старті.",
+        "ru": "Бесплатный склад войск + стабильный источник рекрутов (деревни продолжают готовить крестьян). Требует новой игры — гарнизоны деревень создаются на старте."
+      },
+      "params": [],
+      "operations": [
+        {
+          "file": "menus.txt",
+          "original": "2133 2 144115188075856246 1 3 0 13",
+          "replacement": "2133 2 144115188075856246 1 3 0 14",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        },
+        {
+          "file": "menus.txt",
+          "original": "3 0  .  mno_village_center",
+          "replacement": "3 0  .  mno_village_manage_garrison  4 2147484189 3 144115188075856143 35 2 2147484189 3 144115188075856143 35 1 2147484209 3 144115188075856143 39 1 541 3 144115188075856143 7 360287970189639680  Manage_the_garrison.  1 2043 1 1  .  mno_village_center",
           "occurrence": "all",
           "expectedCount": 1,
           "structural": true

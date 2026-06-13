@@ -44,6 +44,10 @@ struct Tweak: Codable, Identifiable, Hashable {
     /// Short, plain-language guidance shown when the tweak is expanded: what the
     /// recommended value gives and which direction to tune. Optional.
     var recommendation: LocalizedText? = nil
+    /// Marked with `*` in the original PoP Helper: only takes effect on a NEW game
+    /// (or only affects a new character). Safe to apply to an existing save, but
+    /// won't change it retroactively. Optional (absent = false).
+    var requiresNewGame: Bool? = nil
     let params: [TweakParam]
     let operations: [TweakOperation]
 }

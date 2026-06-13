@@ -19,13 +19,27 @@ struct TweakRow: View {
                     .disabled(isConflict)
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(state.tweak.name.text(for: app.language))
-                        .font(app.font(.body, .medium))
+                    HStack(spacing: 4) {
+                        if state.tweak.requiresNewGame == true {
+                            Text("*")
+                                .font(app.font(.body, .bold))
+                                .foregroundStyle(.orange)
+                                .help(L10n.requiresNewGame.text(for: app.language))
+                        }
+                        Text(state.tweak.name.text(for: app.language))
+                            .font(app.font(.body, .medium))
+                    }
                     Text(state.tweak.description.text(for: app.language))
                         .font(app.font(.caption))
                         .foregroundStyle(.secondary)
                         .lineLimit(2)
                         .fixedSize(horizontal: false, vertical: true)
+                    if state.tweak.requiresNewGame == true {
+                        Label(L10n.requiresNewGame.text(for: app.language), systemImage: "asterisk.circle.fill")
+                            .font(app.font(.caption2))
+                            .foregroundStyle(.orange)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
                 }
 
                 Spacer(minLength: 8)

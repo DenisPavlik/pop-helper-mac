@@ -22,6 +22,11 @@ enum L10n {
     static let statusModified = LocalizedText(en: "Pending", uk: "Очікує", ru: "Ожидает")
     static let original = LocalizedText(en: "vanilla", uk: "стандартно", ru: "стандартно")
     static let recommended = LocalizedText(en: "rec.", uk: "рек.", ru: "рек.")
+    static let requiresNewGame = LocalizedText(
+        en: "Requires a new game — won't change an existing save retroactively (safe to apply).",
+        uk: "Потребує нову гру — на наявний сейв заднім числом не вплине (застосувати безпечно).",
+        ru: "Требует новой игры — на существующий сейв задним числом не повлияет (применять безопасно).")
+    static let newGameBadge = LocalizedText(en: "new game", uk: "нова гра", ru: "новая игра")
     static let recommendedFull = LocalizedText(
         en: "Suggested value — a safe orientation if you don't know the mechanic.",
         uk: "Рекомендоване значення — безпечний орієнтир, якщо не знаєш механіку.",
