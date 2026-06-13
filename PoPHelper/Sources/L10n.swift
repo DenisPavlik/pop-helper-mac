@@ -43,6 +43,15 @@ enum L10n {
         en: "This file doesn't match the pristine 3.9.5 layout nor a known tweaked form — it was likely edited by another tool. The app won't touch it.",
         uk: "Файл не збігається ні з оригіналом 3.9.5, ні з відомою твікнутою формою — схоже, його змінила інша програма. Додаток його не чіпатиме.")
 
+    static let allTweaks = LocalizedText(en: "All tweaks", uk: "Усі твіки")
+    static let categoriesHeader = LocalizedText(en: "Categories", uk: "Категорії")
+    static let searchPlaceholder = LocalizedText(en: "Search tweaks", uk: "Пошук твіків")
+    static let settings = LocalizedText(en: "Manage", uk: "Керування")
+    static let noMatches = LocalizedText(en: "No tweaks match your search.", uk: "Немає твіків за запитом.")
+    static let summary = LocalizedText(en: "%d on · %d total", uk: "%d увімкнено · %d усього")
+    static let pendingSummary = LocalizedText(en: "%d pending change(s)", uk: "очікує змін: %d")
+    static let noPending = LocalizedText(en: "No pending changes", uk: "Немає змін до застосування")
+
     static func categoryName(_ category: String) -> LocalizedText {
         switch category {
         case "spawns": return LocalizedText(en: "Spawns & parties", uk: "Спавни та загони")

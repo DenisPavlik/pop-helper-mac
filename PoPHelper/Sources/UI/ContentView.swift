@@ -1,23 +1,33 @@
 import SwiftUI
 import AppKit
 
+enum SidebarItem: Hashable {
+    case all
+    case category(String)
+}
+
 struct ContentView: View {
     @EnvironmentObject var app: AppState
+    @State private var selection: SidebarItem? = .all
+    @State private var searchText = ""
     @State private var showResetConfirm = false
 
     var body: some View {
-        VStack(spacing: 0) {
-            header
-            Divider()
-            if let error = app.loadError {
-                errorView(error)
-            } else {
-                tweakList
+        NavigationSplitView {
+            sidebar
+                .navigationSplitViewColumnWidth(min: 220, ideal: 240, max: 300)
+        } detail: {
+            Group {
+                if let error = app.loadError {
+                    errorView(error)
+                } else {
+                    detailView
+                }
             }
-            Divider()
-            footer
+            .frame(minWidth: 520, minHeight: 480)
+            .toolbar { toolbarContent }
         }
-        .frame(minWidth: 640, minHeight: 520)
+        .searchable(text: $searchText, placement: .toolbar, prompt: L10n.searchPlaceholder.text(for: app.language))
         .confirmationDialog(
             L10n.resetConfirmTitle.text(for: app.language),
             isPresented: $showResetConfirm,
@@ -32,58 +42,179 @@ struct ContentView: View {
         }
     }
 
-    private var header: some View {
-        HStack {
+    // MARK: Sidebar
+
+    private var categories: [String] { CategoryMeta.sorted(app.categories) }
+
+    private var sidebar: some View {
+        List(selection: $selection) {
+            Label {
+                HStack {
+                    Text(L10n.allTweaks.text(for: app.language))
+                    Spacer()
+                    countBadge(on: appliedCount(in: nil), total: app.states.count)
+                }
+            } icon: {
+                Image(systemName: "square.grid.2x2.fill").foregroundStyle(.secondary)
+            }
+            .tag(SidebarItem.all)
+
+            Section(L10n.categoriesHeader.text(for: app.language)) {
+                ForEach(categories, id: \.self) { category in
+                    Label {
+                        HStack {
+                            Text(L10n.categoryName(category).text(for: app.language))
+                            Spacer()
+                            countBadge(on: appliedCount(in: category), total: app.states(in: category).count)
+                        }
+                    } icon: {
+                        Image(systemName: CategoryMeta.icon(category))
+                            .foregroundStyle(CategoryMeta.tint(category))
+                    }
+                    .tag(SidebarItem.category(category))
+                }
+            }
+        }
+        .safeAreaInset(edge: .bottom) { sidebarFooter }
+    }
+
+    private func countBadge(on: Int, total: Int) -> some View {
+        Text(on > 0 ? "\(on)/\(total)" : "\(total)")
+            .font(.caption2)
+            .foregroundStyle(on > 0 ? Color.green : .secondary)
+            .monospacedDigit()
+    }
+
+    private var sidebarFooter: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Divider()
+            Text("Prophesy of Pendor 3.9.5").font(.caption.weight(.medium))
+            Text(app.modFolderPath)
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+                .lineLimit(1)
+                .truncationMode(.middle)
+                .help(app.modFolderPath)
+        }
+        .padding(.horizontal, 10)
+        .padding(.bottom, 8)
+    }
+
+    // MARK: Detail
+
+    private var visibleStates: [TweakViewState] {
+        let base: [TweakViewState]
+        if searchText.isEmpty {
+            switch selection {
+            case .category(let c): base = app.states(in: c)
+            default: base = app.states
+            }
+        } else {
+            // Search spans every category.
+            let q = searchText.lowercased()
+            base = app.states.filter {
+                $0.tweak.name.text(for: app.language).lowercased().contains(q)
+                    || $0.tweak.description.text(for: app.language).lowercased().contains(q)
+            }
+        }
+        return base
+    }
+
+    private var detailTitle: String {
+        if !searchText.isEmpty { return L10n.searchPlaceholder.text(for: app.language) }
+        switch selection {
+        case .category(let c): return L10n.categoryName(c).text(for: app.language)
+        default: return L10n.allTweaks.text(for: app.language)
+        }
+    }
+
+    private var detailView: some View {
+        VStack(spacing: 0) {
+            detailHeader
+            Divider()
+            if visibleStates.isEmpty {
+                ContentUnavailableView(
+                    L10n.noMatches.text(for: app.language),
+                    systemImage: "magnifyingglass")
+            } else {
+                ScrollView {
+                    LazyVStack(spacing: 12) {
+                        ForEach(visibleStates) { state in
+                            TweakCard(state: binding(for: state.id))
+                        }
+                    }
+                    .padding(16)
+                }
+            }
+            Divider()
+            actionBar
+        }
+    }
+
+    private var detailHeader: some View {
+        let total = visibleStates.count
+        let on = visibleStates.filter {
+            if case .applied = $0.status { return true } else { return false }
+        }.count
+        return HStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text("Prophesy of Pendor 3.9.5")
-                    .font(.headline)
-                Text(app.modFolderPath)
+                Text(detailTitle).font(.title2.weight(.semibold))
+                Text(String(format: L10n.summary.text(for: app.language), on, total))
                     .font(.caption)
                     .foregroundStyle(.secondary)
-                    .lineLimit(1)
-                    .truncationMode(.middle)
             }
             Spacer()
-            Button(L10n.chooseFolder.text(for: app.language)) { chooseFolder() }
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+    }
+
+    private var actionBar: some View {
+        HStack(spacing: 10) {
+            if let message = app.lastActionMessage {
+                Label(message, systemImage: "info.circle")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
+            } else {
+                Text(app.dirtyCount > 0
+                     ? String(format: L10n.pendingSummary.text(for: app.language), app.dirtyCount)
+                     : L10n.noPending.text(for: app.language))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+            if app.dirtyCount > 0 {
+                Button(L10n.discard.text(for: app.language)) { app.discardChanges() }
+            }
+            Button {
+                app.applyChanges()
+            } label: {
+                Text("\(L10n.applyChanges.text(for: app.language)) (\(app.dirtyCount))")
+            }
+            .keyboardShortcut("s")
+            .buttonStyle(.borderedProminent)
+            .disabled(app.dirtyCount == 0)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+    }
+
+    // MARK: Toolbar
+
+    @ToolbarContentBuilder
+    private var toolbarContent: some ToolbarContent {
+        ToolbarItemGroup(placement: .primaryAction) {
             Picker("", selection: $app.language) {
                 Text("Укр").tag(AppLanguage.ukrainian)
                 Text("Eng").tag(AppLanguage.english)
             }
             .pickerStyle(.segmented)
-            .frame(width: 110)
-        }
-        .padding(12)
-    }
+            .frame(width: 104)
 
-    private var tweakList: some View {
-        List {
-            ForEach(app.categories, id: \.self) { category in
-                Section(L10n.categoryName(category).text(for: app.language)) {
-                    ForEach(app.states(in: category)) { state in
-                        TweakRow(state: binding(for: state.id))
-                    }
-                }
-            }
-        }
-        .listStyle(.inset)
-    }
-
-    private func errorView(_ message: String) -> some View {
-        VStack(spacing: 12) {
-            Image(systemName: "exclamationmark.triangle")
-                .font(.largeTitle)
-                .foregroundStyle(.orange)
-            Text(message)
-                .multilineTextAlignment(.center)
-            Button(L10n.chooseFolder.text(for: app.language)) { chooseFolder() }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding()
-    }
-
-    private var footer: some View {
-        HStack {
-            Menu(L10n.backups.text(for: app.language)) {
+            Menu {
+                Button(L10n.chooseFolder.text(for: app.language)) { chooseFolder() }
+                Divider()
                 Button(L10n.openBackupsFolder.text(for: app.language)) {
                     NSWorkspace.shared.open(app.manager.backupsRoot)
                 }
@@ -91,40 +222,43 @@ struct ContentView: View {
                     Button("\(L10n.restoreLatestBackup.text(for: app.language)) (\(latest.lastPathComponent))") {
                         restore(latest)
                     }
-                } else {
-                    Text(L10n.noBackups.text(for: app.language))
                 }
-            }
-            .fixedSize()
-            if let message = app.lastActionMessage {
-                Text(message)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(2)
-            }
-            Button(role: .destructive) {
-                showResetConfirm = true
+                Divider()
+                Button(L10n.resetToDefaults.text(for: app.language), role: .destructive) {
+                    showResetConfirm = true
+                }
+                .disabled(!app.canResetToDefaults)
             } label: {
-                Text(L10n.resetToDefaults.text(for: app.language))
+                Label(L10n.settings.text(for: app.language), systemImage: "ellipsis.circle")
             }
-            .disabled(!app.canResetToDefaults)
-            Spacer()
-            if app.dirtyCount > 0 {
-                Button(L10n.discard.text(for: app.language)) { app.discardChanges() }
-            }
-            Button("\(L10n.applyChanges.text(for: app.language)) (\(app.dirtyCount))") {
-                app.applyChanges()
-            }
-            .keyboardShortcut("s")
-            .buttonStyle(.borderedProminent)
-            .disabled(app.dirtyCount == 0)
         }
-        .padding(12)
+    }
+
+    // MARK: Error / helpers
+
+    private func errorView(_ message: String) -> some View {
+        VStack(spacing: 14) {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .font(.system(size: 40))
+                .foregroundStyle(.orange)
+            Text(message)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.secondary)
+            Button(L10n.chooseFolder.text(for: app.language)) { chooseFolder() }
+                .buttonStyle(.borderedProminent)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding()
+    }
+
+    private func appliedCount(in category: String?) -> Int {
+        let states = category.map { app.states(in: $0) } ?? app.states
+        return states.filter { if case .applied = $0.status { return true } else { return false } }.count
     }
 
     private func binding(for id: String) -> Binding<TweakViewState> {
         Binding(
-            get: { app.states.first(where: { $0.id == id })! },
+            get: { app.states.first(where: { $0.id == id }) ?? app.states[0] },
             set: { newValue in
                 if let i = app.states.firstIndex(where: { $0.id == id }) {
                     app.states[i] = newValue

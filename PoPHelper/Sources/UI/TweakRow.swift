@@ -1,6 +1,8 @@
 import SwiftUI
 
-struct TweakRow: View {
+/// A single tweak rendered as a card: toggle + name + status badge, description,
+/// and inline parameter editors when enabled.
+struct TweakCard: View {
     @Binding var state: TweakViewState
     @EnvironmentObject var app: AppState
 
@@ -9,56 +11,83 @@ struct TweakRow: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            HStack(alignment: .firstTextBaseline) {
-                Toggle(isOn: $state.desiredEnabled) {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .top, spacing: 12) {
+                Toggle("", isOn: $state.desiredEnabled)
+                    .toggleStyle(.switch)
+                    .labelsHidden()
+                    .disabled(isConflict)
+                    .controlSize(.small)
+
+                VStack(alignment: .leading, spacing: 3) {
                     Text(state.tweak.name.text(for: app.language))
-                        .fontWeight(.medium)
+                        .font(.headline)
+                    Text(state.tweak.description.text(for: app.language))
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
-                .toggleStyle(.checkbox)
-                .disabled(isConflict)
-                Spacer()
+                Spacer(minLength: 8)
                 statusBadge
             }
-            Text(state.tweak.description.text(for: app.language))
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
+
             if isConflict {
-                Text(L10n.conflictHelp.text(for: app.language))
-                    .font(.caption)
+                Label(L10n.conflictHelp.text(for: app.language), systemImage: "exclamationmark.triangle.fill")
+                    .font(.callout)
                     .foregroundStyle(.orange)
                     .fixedSize(horizontal: false, vertical: true)
+                    .padding(.leading, 2)
             } else if state.desiredEnabled && !state.tweak.params.isEmpty {
+                Divider()
                 paramEditors
             }
         }
-        .padding(.vertical, 4)
+        .padding(14)
+        .background(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(Color(nsColor: .controlBackgroundColor))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .strokeBorder(borderColor, lineWidth: state.isDirty ? 1.5 : 1)
+        )
+    }
+
+    private var borderColor: Color {
+        if state.isDirty { return .accentColor.opacity(0.7) }
+        switch state.status {
+        case .applied: return .green.opacity(0.4)
+        case .conflict: return .orange.opacity(0.55)
+        case .notApplied: return Color(nsColor: .separatorColor)
+        }
     }
 
     private var statusBadge: some View {
-        let (text, color): (LocalizedText, Color) = {
-            if state.isDirty { return (L10n.statusModified, .blue) }
+        let (text, color, icon): (LocalizedText, Color, String) = {
+            if state.isDirty { return (L10n.statusModified, .accentColor, "circle.dashed") }
             switch state.status {
-            case .applied: return (L10n.statusApplied, .green)
-            case .notApplied: return (L10n.statusNotApplied, .secondary)
-            case .conflict: return (L10n.statusConflict, .orange)
+            case .applied: return (L10n.statusApplied, .green, "checkmark.circle.fill")
+            case .notApplied: return (L10n.statusNotApplied, .secondary, "circle")
+            case .conflict: return (L10n.statusConflict, .orange, "exclamationmark.triangle.fill")
             }
         }()
-        return Text(text.text(for: app.language))
-            .font(.caption2.weight(.semibold))
-            .padding(.horizontal, 8)
-            .padding(.vertical, 2)
+        return Label(text.text(for: app.language), systemImage: icon)
+            .labelStyle(.titleAndIcon)
+            .font(.caption.weight(.semibold))
+            .padding(.horizontal, 9)
+            .padding(.vertical, 4)
             .background(color.opacity(0.15), in: Capsule())
             .foregroundStyle(color)
+            .fixedSize()
     }
 
     private var paramEditors: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 8) {
             ForEach(state.tweak.params, id: \.key) { param in
-                HStack(spacing: 8) {
+                HStack(spacing: 10) {
                     Text(param.name.text(for: app.language))
-                        .font(.caption)
+                        .font(.callout)
+                        .frame(minWidth: 120, alignment: .leading)
                     if let presets = param.presets, !presets.isEmpty {
                         Picker("", selection: valueBinding(param)) {
                             ForEach(presets, id: \.value) { preset in
@@ -78,13 +107,14 @@ struct TweakRow: View {
                         Stepper("", value: valueBinding(param), in: range(of: param))
                             .labelsHidden()
                     }
-                    Text("(\(L10n.original.text(for: app.language)): \(param.originalValue))")
-                        .font(.caption2)
+                    Spacer(minLength: 4)
+                    Text("\(L10n.original.text(for: app.language)): \(param.originalValue)")
+                        .font(.caption)
                         .foregroundStyle(.tertiary)
                 }
-                .padding(.leading, 20)
             }
         }
+        .padding(.leading, 2)
     }
 
     private func currentValue(_ param: TweakParam) -> Int {
