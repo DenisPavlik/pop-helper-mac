@@ -1,15 +1,12 @@
 import Foundation
 
 enum TweakEngineError: LocalizedError {
-    case unknownPlaceholder(String)
     case missingValue(key: String)
     case fileMissing(String)
     case notInExpectedState(tweakID: String, detail: String)
 
     var errorDescription: String? {
         switch self {
-        case .unknownPlaceholder(let key):
-            return "Template references undeclared parameter {\(key)}"
         case .missingValue(let key):
             return "No value provided for parameter {\(key)}"
         case .fileMissing(let name):
@@ -21,31 +18,35 @@ enum TweakEngineError: LocalizedError {
 }
 
 /// Pure string-patching engine. File IO lives in ModManager.
+///
+/// A `{token}` in a template is a *parameter placeholder* only when `token` is
+/// one of the tweak's declared param keys (`declaredKeys`). Every other brace
+/// token is literal text — Warband module files are full of register tokens
+/// like `{s3}`, `{reg9}`, `{reg24}` that must survive verbatim.
 enum TweakEngine {
 
     // MARK: Templates
 
-    /// Splits a template into literal chunks and `{key}` placeholders.
     private enum Segment {
         case literal(String)
         case placeholder(String)
     }
 
-    private static func segments(of template: String) -> [Segment] {
+    private static func segments(of template: String, declaredKeys: Set<String>) -> [Segment] {
         var result: [Segment] = []
         var literal = ""
         var rest = Substring(template)
         while let open = rest.firstIndex(of: "{") {
             guard let close = rest[open...].firstIndex(of: "}") else { break }
             let key = String(rest[rest.index(after: open)..<close])
-            // Only treat simple identifiers as placeholders; anything else is literal text.
-            if !key.isEmpty, key.allSatisfy({ $0.isLetter || $0.isNumber || $0 == "_" }) {
+            if declaredKeys.contains(key) {
                 literal += rest[..<open]
                 result.append(.literal(literal))
                 literal = ""
                 result.append(.placeholder(key))
                 rest = rest[rest.index(after: close)...]
             } else {
+                // Not a declared param → keep the whole `{…}` span as literal text.
                 literal += rest[..<rest.index(after: close)]
                 rest = rest[rest.index(after: close)...]
             }
@@ -55,15 +56,15 @@ enum TweakEngine {
         return result
     }
 
-    static func placeholderKeys(in template: String) -> [String] {
-        segments(of: template).compactMap {
+    static func placeholderKeys(in template: String, declaredKeys: Set<String>) -> [String] {
+        segments(of: template, declaredKeys: declaredKeys).compactMap {
             if case .placeholder(let key) = $0 { return key } else { return nil }
         }
     }
 
-    static func render(_ template: String, values: [String: Int]) throws -> String {
+    static func render(_ template: String, values: [String: Int], declaredKeys: Set<String>) throws -> String {
         var out = ""
-        for segment in segments(of: template) {
+        for segment in segments(of: template, declaredKeys: declaredKeys) {
             switch segment {
             case .literal(let s): out += s
             case .placeholder(let key):
@@ -75,10 +76,10 @@ enum TweakEngine {
     }
 
     /// Regex matching the rendered template with any integer values; group i captures the i-th placeholder.
-    static func regex(for template: String) throws -> (regex: NSRegularExpression, keys: [String]) {
+    static func regex(for template: String, declaredKeys: Set<String>) throws -> (regex: NSRegularExpression, keys: [String]) {
         var pattern = ""
         var keys: [String] = []
-        for segment in segments(of: template) {
+        for segment in segments(of: template, declaredKeys: declaredKeys) {
             switch segment {
             case .literal(let s): pattern += NSRegularExpression.escapedPattern(for: s)
             case .placeholder(let key):
@@ -87,6 +88,10 @@ enum TweakEngine {
             }
         }
         return (try NSRegularExpression(pattern: pattern), keys)
+    }
+
+    private static func declaredKeys(of tweak: Tweak) -> Set<String> {
+        Set(tweak.params.map(\.key))
     }
 
     // MARK: Matching helpers
@@ -111,9 +116,9 @@ enum TweakEngine {
     /// Regex matches of the replacement template that are NOT byte-equal to `original`
     /// (the template also matches the pristine text, since only numbers differ).
     private static func appliedMatches(
-        of op: TweakOperation, in content: String
+        of op: TweakOperation, declaredKeys: Set<String>, in content: String
     ) throws -> [(range: Range<String.Index>, values: [String: Int])] {
-        let (re, keys) = try regex(for: op.replacement)
+        let (re, keys) = try regex(for: op.replacement, declaredKeys: declaredKeys)
         let ns = content as NSString
         let full = NSRange(location: 0, length: ns.length)
         var result: [(Range<String.Index>, [String: Int])] = []
@@ -134,6 +139,7 @@ enum TweakEngine {
     // MARK: Status
 
     static func status(of tweak: Tweak, files: [String: String]) -> TweakStatus {
+        let keys = declaredKeys(of: tweak)
         var anyApplied = false
         var anyNotApplied = false
         var values: [String: Int] = [:]
@@ -147,7 +153,7 @@ enum TweakEngine {
                 anyNotApplied = true
                 continue
             }
-            guard let applied = try? appliedMatches(of: op, in: content),
+            guard let applied = try? appliedMatches(of: op, declaredKeys: keys, in: content),
                   originalCount == op.expectedCount - selected,
                   applied.count >= selected
             else {
@@ -171,10 +177,11 @@ enum TweakEngine {
     static func apply(
         _ tweak: Tweak, values: [String: Int], to files: inout [String: String]
     ) throws -> Set<String> {
+        let keys = declaredKeys(of: tweak)
         var touched: Set<String> = []
         for op in tweak.operations {
             guard var content = files[op.file] else { throw TweakEngineError.fileMissing(op.file) }
-            for key in placeholderKeys(in: op.replacement) where values[key] == nil {
+            for key in placeholderKeys(in: op.replacement, declaredKeys: keys) where values[key] == nil {
                 throw TweakEngineError.missingValue(key: key)
             }
             let occurrences = ranges(of: op.original, in: content)
@@ -190,7 +197,7 @@ enum TweakEngine {
             case .indices(let list):
                 selected = list.compactMap { $0 >= 1 && $0 <= occurrences.count ? occurrences[$0 - 1] : nil }
             }
-            let rendered = try render(op.replacement, values: values)
+            let rendered = try render(op.replacement, values: values, declaredKeys: keys)
             for range in selected.reversed() {
                 content.replaceSubrange(range, with: rendered)
             }
@@ -202,10 +209,11 @@ enum TweakEngine {
 
     @discardableResult
     static func revert(_ tweak: Tweak, in files: inout [String: String]) throws -> Set<String> {
+        let keys = declaredKeys(of: tweak)
         var touched: Set<String> = []
         for op in tweak.operations {
             guard var content = files[op.file] else { throw TweakEngineError.fileMissing(op.file) }
-            let matches = try appliedMatches(of: op, in: content)
+            let matches = try appliedMatches(of: op, declaredKeys: keys, in: content)
             guard matches.count == selectedCount(of: op) else {
                 throw TweakEngineError.notInExpectedState(
                     tweakID: tweak.id,

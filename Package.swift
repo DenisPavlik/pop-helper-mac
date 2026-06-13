@@ -12,10 +12,7 @@ let package = Package(
             sources: ["Sources"],
             resources: [.copy("Resources/tweaks.json")]
         ),
-        .testTarget(
-            name: "PoPHelperTests",
-            dependencies: ["PoPHelper"],
-            path: "Tests/PoPHelperTests"
-        ),
+        // No XCTest target: the dev machine has Command Line Tools only (no Xcode),
+        // so tests run as an in-process self-test — `swift run PoPHelper --self-test`.
     ]
 )

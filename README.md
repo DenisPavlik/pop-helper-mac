@@ -21,12 +21,32 @@ PoP tweaks are plain-text edits to the mod's module files (`menus.txt`, `scripts
 
 ## Project layout
 
+- `docs/tweak-db-format.md` — the `tweaks.json` schema (schemaVersion 1)
 - `research/` — reverse-engineering artifacts:
   - `PH_config.ini` — the original PoP Helper settings recovered from the mod folder
   - `diffs/` — diffs between the pristine 3.9.5 files (from PoP Helper's own backup) and the tweaked files, i.e. ground truth for what each tweak changes
   - `tweak-catalog.md` — catalog of known tweaks compiled from the PoP wiki and Steam guides
   - `applied-tweaks-analysis.md` — interpretation of the diffs / PH_config
-- `PoPHelper/` — the SwiftUI app (Swift Package, builds to a .app)
+  - `validate_tweaks.py` — validates `tweaks.json` against the pristine files; `--status` reports applied/not/conflict against the live mod
+- `PoPHelper/Sources/` — the SwiftUI app:
+  - `Models/TweakModels.swift` — DB model types
+  - `Engine/TweakEngine.swift` — pure search/replace apply/revert/status engine
+  - `Engine/ModManager.swift` — locating the mod, file IO (ISO-Latin-1, byte-exact), timestamped backups
+  - `AppState.swift`, `L10n.swift`, `UI/` — SwiftUI app, bilingual strings
+  - `SelfTest.swift`, `CLI.swift` — headless `--self-test` and `--status` entry points
+- `PoPHelper/Resources/tweaks.json` — the tweak database
+
+## Building & running
+
+Command Line Tools only (no Xcode required):
+
+```
+swift build                         # build
+swift run PoPHelper                 # launch the GUI
+swift run PoPHelper --self-test     # run the engine self-tests (no XCTest needed)
+swift run PoPHelper --status        # report each tweak's state against the live mod
+python3 research/validate_tweaks.py # validate tweaks.json against pristine files
+```
 
 ## Status / roadmap
 
@@ -34,6 +54,8 @@ PoP tweaks are plain-text edits to the mod's module files (`menus.txt`, `scripts
 - [x] Extract diffs of previously applied tweaks
 - [x] Compile tweak catalog (research agents) — 293 tweaks in `research/tweak-catalog.md`
 - [x] Reverse-engineer previously applied tweaks — `research/applied-tweaks-analysis.md` (~60 identified)
-- [ ] Design tweak database format (JSON: search/replace patterns + parameters)
-- [ ] SwiftUI app: tweak list UI, apply/revert engine, backup manager
+- [x] Design tweak database format — `docs/tweak-db-format.md`; 10-tweak starter DB validated
+- [x] Tweak engine (apply / revert / status) + backups; self-tests green; cross-checked against the live mod
+- [ ] SwiftUI UI: visually verify the window and apply a tweak end-to-end through the GUI
+- [ ] Grow the DB beyond the 10 starter tweaks
 - [ ] Bundle as .app
