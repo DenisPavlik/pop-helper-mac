@@ -137,18 +137,46 @@ struct ContentView: View {
                     L10n.noMatches.text(for: app.language),
                     systemImage: "magnifyingglass")
             } else {
-                ScrollView {
-                    LazyVStack(spacing: 12) {
-                        ForEach(visibleStates) { state in
-                            TweakCard(state: binding(for: state.id))
-                        }
-                    }
-                    .padding(16)
-                }
+                tweakList
             }
             Divider()
             actionBar
         }
+    }
+
+    /// Group by category in the "All tweaks" view; flat list inside one category or while searching.
+    private var grouped: Bool {
+        guard searchText.isEmpty else { return false }
+        switch selection {
+        case .all, .none: return true
+        default: return false
+        }
+    }
+
+    private var tweakList: some View {
+        List {
+            if grouped {
+                ForEach(categories, id: \.self) { category in
+                    let rows = visibleStates.filter { $0.tweak.category == category }
+                    if !rows.isEmpty {
+                        Section {
+                            ForEach(rows) { state in
+                                TweakRow(state: binding(for: state.id))
+                            }
+                        } header: {
+                            Label(L10n.categoryName(category).text(for: app.language),
+                                  systemImage: CategoryMeta.icon(category))
+                                .foregroundStyle(CategoryMeta.tint(category))
+                        }
+                    }
+                }
+            } else {
+                ForEach(visibleStates) { state in
+                    TweakRow(state: binding(for: state.id))
+                }
+            }
+        }
+        .listStyle(.inset)
     }
 
     private var detailHeader: some View {
