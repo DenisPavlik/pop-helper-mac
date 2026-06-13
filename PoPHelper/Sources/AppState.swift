@@ -159,6 +159,32 @@ final class AppState: ObservableObject {
         reloadPacks()
     }
 
+    // MARK: Font scaling (explicit — reliable on macOS, unlike dynamicTypeSize)
+
+    var fontScale: CGFloat {
+        switch textSize {
+        case .small: return 1.0
+        case .medium: return 1.2
+        case .large: return 1.45
+        }
+    }
+
+    func font(_ style: Font.TextStyle = .body, _ weight: Font.Weight = .regular) -> Font {
+        let base: CGFloat
+        switch style {
+        case .largeTitle: base = 26
+        case .title: base = 22
+        case .title2: base = 17
+        case .title3: base = 15
+        case .headline, .body: base = 13
+        case .callout: base = 12
+        case .subheadline, .caption: base = 11
+        case .footnote, .caption2: base = 10
+        @unknown default: base = 13
+        }
+        return .system(size: base * fontScale, weight: weight)
+    }
+
     func packPreviewURL(_ pack: Pack, _ option: PackOption) -> URL? {
         guard let preview = option.preview else { return nil }
         return packManager.packsLibrary.appendingPathComponent(pack.id).appendingPathComponent(preview)

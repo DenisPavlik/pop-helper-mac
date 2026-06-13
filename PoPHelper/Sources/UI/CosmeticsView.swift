@@ -8,9 +8,9 @@ struct CosmeticsView: View {
         VStack(spacing: 0) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(L10n.cosmetics.text(for: app.language)).font(.title2.weight(.semibold))
+                    Text(L10n.cosmetics.text(for: app.language)).font(app.font(.title2, .semibold))
                     Text(L10n.cosmeticsDesc.text(for: app.language))
-                        .font(.caption).foregroundStyle(.secondary)
+                        .font(app.font(.caption)).foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 Spacer()
@@ -64,15 +64,15 @@ struct PackCard: View {
                     .disabled(!state.available)
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(state.pack.name.text(for: app.language)).fontWeight(.medium)
+                    Text(state.pack.name.text(for: app.language)).font(app.font(.body, .medium))
                     Text(state.pack.description.text(for: app.language))
-                        .font(.caption).foregroundStyle(.secondary)
+                        .font(app.font(.caption)).foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 Spacer(minLength: 8)
                 if state.installed {
                     Label(L10n.installed.text(for: app.language), systemImage: "checkmark.circle.fill")
-                        .font(.caption2.weight(.semibold))
+                        .font(app.font(.caption2, .semibold))
                         .padding(.horizontal, 7).padding(.vertical, 3)
                         .background(.green.opacity(0.15), in: Capsule())
                         .foregroundStyle(.green)
@@ -82,7 +82,7 @@ struct PackCard: View {
 
             if !state.available {
                 Label(L10n.packUnavailable.text(for: app.language), systemImage: "exclamationmark.triangle.fill")
-                    .font(.caption).foregroundStyle(.orange).padding(.leading, 26)
+                    .font(app.font(.caption)).foregroundStyle(.orange).padding(.leading, 26)
             } else if isChoice, let options = state.pack.options {
                 HStack(alignment: .top, spacing: 12) {
                     Picker(L10n.chooseStyle.text(for: app.language), selection: Binding(

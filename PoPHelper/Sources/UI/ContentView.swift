@@ -108,7 +108,7 @@ struct ContentView: View {
 
     private func countBadge(on: Int, total: Int) -> some View {
         Text(on > 0 ? "\(on)/\(total)" : "\(total)")
-            .font(.caption2)
+            .font(app.font(.caption2))
             .foregroundStyle(on > 0 ? Color.green : .secondary)
             .monospacedDigit()
     }
@@ -116,9 +116,9 @@ struct ContentView: View {
     private var sidebarFooter: some View {
         VStack(alignment: .leading, spacing: 4) {
             Divider()
-            Text("Prophesy of Pendor 3.9.5").font(.caption.weight(.medium))
+            Text("Prophesy of Pendor 3.9.5").font(app.font(.caption, .medium))
             Text(app.modFolderPath)
-                .font(.caption2)
+                .font(app.font(.caption2))
                 .foregroundStyle(.secondary)
                 .lineLimit(1)
                 .truncationMode(.middle)
@@ -214,9 +214,9 @@ struct ContentView: View {
         }.count
         return HStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text(detailTitle).font(.title2.weight(.semibold))
+                Text(detailTitle).font(app.font(.title2, .semibold))
                 Text(String(format: L10n.summary.text(for: app.language), on, total))
-                    .font(.caption)
+                    .font(app.font(.caption))
                     .foregroundStyle(.secondary)
             }
             Spacer()
@@ -229,14 +229,14 @@ struct ContentView: View {
         HStack(spacing: 10) {
             if let message = app.lastActionMessage {
                 Label(message, systemImage: "info.circle")
-                    .font(.caption)
+                    .font(app.font(.caption))
                     .foregroundStyle(.secondary)
                     .lineLimit(2)
             } else {
                 Text(app.dirtyCount > 0
                      ? String(format: L10n.pendingSummary.text(for: app.language), app.dirtyCount)
                      : L10n.noPending.text(for: app.language))
-                    .font(.caption)
+                    .font(app.font(.caption))
                     .foregroundStyle(.secondary)
             }
             Spacer()
@@ -261,14 +261,6 @@ struct ContentView: View {
     @ToolbarContentBuilder
     private var toolbarContent: some ToolbarContent {
         ToolbarItemGroup(placement: .primaryAction) {
-            Picker("", selection: $app.language) {
-                Text("Укр").tag(AppLanguage.ukrainian)
-                Text("Рус").tag(AppLanguage.russian)
-                Text("Eng").tag(AppLanguage.english)
-            }
-            .pickerStyle(.segmented)
-            .frame(width: 150)
-
             Menu {
                 Button(L10n.chooseFolder.text(for: app.language)) { chooseFolder() }
                 Divider()

@@ -29,7 +29,7 @@ struct SettingsView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                Text(L10n.settingsTitle.text(for: app.language)).font(.title2.weight(.semibold))
+                Text(L10n.settingsTitle.text(for: app.language)).font(app.font(.title2, .semibold))
                 Spacer()
             }
             .padding(.horizontal, 16).padding(.vertical, 12)
@@ -59,9 +59,9 @@ struct SettingsView: View {
 
                 Section {
                     Text(L10n.textSizePreview.text(for: app.language))
-                        .font(.headline)
+                        .font(app.font(.headline, .semibold))
                     Text(L10n.cosmeticsDesc.text(for: app.language))
-                        .font(.body).foregroundStyle(.secondary)
+                        .font(app.font(.body)).foregroundStyle(.secondary)
                 } header: {
                     Text(L10n.preview.text(for: app.language))
                 }

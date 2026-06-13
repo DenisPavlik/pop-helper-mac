@@ -20,9 +20,9 @@ struct TweakRow: View {
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(state.tweak.name.text(for: app.language))
-                        .fontWeight(.medium)
+                        .font(app.font(.body, .medium))
                     Text(state.tweak.description.text(for: app.language))
-                        .font(.caption)
+                        .font(app.font(.caption))
                         .foregroundStyle(.secondary)
                         .lineLimit(2)
                         .fixedSize(horizontal: false, vertical: true)
@@ -34,7 +34,7 @@ struct TweakRow: View {
 
             if isConflict {
                 Text(L10n.conflictHelp.text(for: app.language))
-                    .font(.caption)
+                    .font(app.font(.caption))
                     .foregroundStyle(.orange)
                     .lineLimit(2)
                     .fixedSize(horizontal: false, vertical: true)
@@ -65,7 +65,7 @@ struct TweakRow: View {
     private func badge(_ text: LocalizedText, _ color: Color, _ icon: String) -> some View {
         Label(text.text(for: app.language), systemImage: icon)
             .labelStyle(.titleAndIcon)
-            .font(.caption2.weight(.semibold))
+            .font(app.font(.caption2, .semibold))
             .padding(.horizontal, 7)
             .padding(.vertical, 3)
             .background(color.opacity(0.15), in: Capsule())
@@ -78,7 +78,7 @@ struct TweakRow: View {
             ForEach(state.tweak.params, id: \.key) { param in
                 HStack(spacing: 8) {
                     Text(param.name.text(for: app.language))
-                        .font(.caption)
+                        .font(app.font(.caption))
                         .foregroundStyle(.secondary)
                         .frame(minWidth: 110, alignment: .leading)
                     if let presets = param.presets, !presets.isEmpty {
@@ -104,7 +104,7 @@ struct TweakRow: View {
                             .controlSize(.small)
                     }
                     Text("\(L10n.original.text(for: app.language)): \(param.originalValue)")
-                        .font(.caption2)
+                        .font(app.font(.caption2))
                         .foregroundStyle(.tertiary)
                 }
             }
