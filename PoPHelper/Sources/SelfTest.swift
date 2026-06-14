@@ -65,6 +65,7 @@ enum SelfTest {
         selectiveOccurrence(r)
         noParamFullReplacement(r)
         conflictDetection(r)
+        mutualExclusion(r)
         applyGuards(r)
         occurrenceDecoding(r)
         resetAndBackups(r)
@@ -198,6 +199,34 @@ enum SelfTest {
         if case .applied = TweakEngine.status(of: t2, files: ["a.txt": "X 2", "b.txt": "Y 1"]) {} else {
             r.failures.append("expected applied when one op tweaked, one at vanilla"); r.checks += 1
         }
+    }
+
+    private static func mutualExclusion(_ r: Recorder) {
+        func mk(_ id: String, partner: String) -> Tweak {
+            Tweak(id: id, name: LocalizedText(en: id, uk: id), description: LocalizedText(en: "", uk: ""),
+                  category: "lords", wikiRef: nil, conflictsWith: [partner], params: [],
+                  operations: [TweakOperation(file: "f.txt", original: "O", replacement: "R",
+                                              occurrence: .all, expectedCount: 1)])
+        }
+        let a = mk("a", partner: "b"); let b = mk("b", partner: "a")
+        func vs(_ t: Tweak, _ s: TweakStatus, _ on: Bool) -> TweakViewState {
+            TweakViewState(tweak: t, status: s, desiredEnabled: on, desiredValues: [:])
+        }
+        // idle: neither chosen → both free
+        var st = [vs(a, .notApplied, false), vs(b, .notApplied, false)]
+        r.expect(mutualExclusionBlocker(for: a, in: st) == nil, "ME idle: a free")
+        r.expect(mutualExclusionBlocker(for: b, in: st) == nil, "ME idle: b free")
+        // a chosen → b blocked by a, a stays free
+        st = [vs(a, .notApplied, true), vs(b, .notApplied, false)]
+        r.expectEqual(mutualExclusionBlocker(for: b, in: st)?.id, "a", "ME: a on → b blocked")
+        r.expect(mutualExclusionBlocker(for: a, in: st) == nil, "ME: a on → a free")
+        // a applied (our form), b externally applied → b blocked, a NOT blocked (no deadlock)
+        st = [vs(a, .applied(values: [:]), true), vs(b, .appliedExternally(detail: ""), true)]
+        r.expectEqual(mutualExclusionBlocker(for: b, in: st)?.id, "a", "ME: a applied → b blocked")
+        r.expect(mutualExclusionBlocker(for: a, in: st) == nil, "ME: external b doesn't block applied a")
+        // tweak with no conflictsWith is never blocked
+        let lone = tweak(operations: [TweakOperation(file: "f.txt", original: "O", replacement: "R", occurrence: .all, expectedCount: 1)])
+        r.expect(mutualExclusionBlocker(for: lone, in: [vs(a, .applied(values: [:]), true)]) == nil, "ME: no conflictsWith → free")
     }
 
     private static func applyGuards(_ r: Recorder) {

@@ -23,6 +23,35 @@ struct TweakViewState: Identifiable {
             return false
         }
     }
+
+    /// This tweak is applied in our own recognised form (so we can revert/retoggle it).
+    var isAppliedOurForm: Bool {
+        if case .applied = status { return true } else { return false }
+    }
+
+    /// "Engaged" for mutual-exclusion: it is on in a way the user controls — either applied in
+    /// our form, or a not-yet-applied tweak the user has just enabled. (An externally-applied
+    /// tweak is on but NOT user-controllable, so it never blocks its partner.)
+    var isEngagedForExclusion: Bool {
+        if case .applied = status { return true }
+        if case .notApplied = status, desiredEnabled { return true }
+        return false
+    }
+}
+
+/// Pure mutual-exclusion rule (testable without an AppState instance): a tweak is blocked when
+/// a partner from its `conflictsWith` group is engaged and this tweak isn't the applied winner.
+func mutualExclusionBlocker(for tweak: Tweak, in states: [TweakViewState]) -> Tweak? {
+    guard let partners = tweak.conflictsWith, !partners.isEmpty else { return nil }
+    // The tweak applied in our own form owns the shared bytes — never block it (the user
+    // clears it to free the others).
+    if let me = states.first(where: { $0.id == tweak.id }), me.isAppliedOurForm { return nil }
+    for pid in partners {
+        if let p = states.first(where: { $0.id == pid }), p.isEngagedForExclusion {
+            return p.tweak
+        }
+    }
+    return nil
 }
 
 struct PackViewState: Identifiable {
@@ -78,6 +107,13 @@ final class AppState: ObservableObject {
 
     func states(in category: String) -> [TweakViewState] {
         states.filter { $0.tweak.category == category }
+    }
+
+    /// For a mutually-exclusive group: if a partner tweak is currently engaged (and this one
+    /// isn't the applied winner), return that partner so the UI can lock this row and tell the
+    /// user which checkbox to clear. nil = not blocked.
+    func mutualExclusionBlocker(for tweak: Tweak) -> Tweak? {
+        PoPHelper.mutualExclusionBlocker(for: tweak, in: states)
     }
 
     var dirtyCount: Int { states.filter(\.isDirty).count }

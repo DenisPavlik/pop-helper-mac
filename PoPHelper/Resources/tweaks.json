@@ -7887,6 +7887,9 @@
           "expectedCount": 1,
           "structural": true
         }
+      ],
+      "conflictsWith": [
+        "forbid-lords-raid-stronger-garrison"
       ]
     },
     {
@@ -7983,6 +7986,9 @@
           "expectedCount": 1,
           "structural": true
         }
+      ],
+      "conflictsWith": [
+        "hostile-lords-no-raid-player-villages"
       ]
     },
     {

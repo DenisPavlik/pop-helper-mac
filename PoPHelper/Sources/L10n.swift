@@ -24,6 +24,11 @@ enum L10n {
         en: "This spot in your mod is already modified — most likely the original PoP Helper applied this tweak. It's active in-game; PoP Helper Mac just can't toggle this exact variant.",
         uk: "Це місце у вашому моді вже змінене — найімовірніше, оригінальний PoP Helper уже застосував цей твік. Він активний у грі; PoP Helper Mac просто не може керувати саме цим варіантом.",
         ru: "Это место в вашем моде уже изменено — скорее всего, оригинальный PoP Helper уже применил этот твик. Он активен в игре; PoP Helper Mac просто не может управлять именно этим вариантом.")
+    static let statusBlocked = LocalizedText(en: "Locked", uk: "Заблоковано", ru: "Заблокировано")
+    static let mutualExclusionHelp = LocalizedText(
+        en: "Incompatible with “%@” — they edit the same game data, so only one can be on. Clear that checkbox to enable this one.",
+        uk: "Несумісно з «%@» — чіпає ті самі дані гри, тож увімкнути можна лише один. Зніми галочку з нього, щоб увімкнути цей.",
+        ru: "Несовместимо с «%@» — меняет те же данные игры, поэтому включить можно только один. Снимите галочку с него, чтобы включить этот.")
     static let statusModified = LocalizedText(en: "Pending", uk: "Очікує", ru: "Ожидает")
     static let original = LocalizedText(en: "vanilla", uk: "стандартно", ru: "стандартно")
     static let recommended = LocalizedText(en: "rec.", uk: "рек.", ru: "рек.")

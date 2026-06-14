@@ -14,13 +14,25 @@ struct TweakRow: View {
         if case .appliedExternally = state.status { return true } else { return false }
     }
 
-    /// The toggle is locked whenever we can't cleanly apply/revert the tweak.
-    private var isLocked: Bool { isConflict || isAppliedExternally }
+    /// Non-nil when a mutually-exclusive partner is engaged → this row is locked until the
+    /// user clears that partner's checkbox.
+    private var meBlocker: Tweak? { app.mutualExclusionBlocker(for: state.tweak) }
+
+    /// The toggle is locked whenever we can't cleanly apply/revert the tweak, or a mutually
+    /// exclusive partner is currently on.
+    private var isLocked: Bool { isConflict || isAppliedExternally || meBlocker != nil }
+
+    /// Shown unchecked while blocked by a mutually-exclusive partner (the partner is the one
+    /// that's on); otherwise reflects the user's choice.
+    private var toggleBinding: Binding<Bool> {
+        Binding(get: { meBlocker == nil ? state.desiredEnabled : false },
+                set: { state.desiredEnabled = $0 })
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack(alignment: .top, spacing: 10) {
-                Toggle("", isOn: $state.desiredEnabled)
+                Toggle("", isOn: toggleBinding)
                     .toggleStyle(.checkbox)
                     .labelsHidden()
                     .disabled(isLocked)
@@ -53,7 +65,15 @@ struct TweakRow: View {
                 statusBadge
             }
 
-            if isConflict {
+            if let blocker = meBlocker {
+                Text(String(format: L10n.mutualExclusionHelp.text(for: app.language),
+                            blocker.name.text(for: app.language)))
+                    .font(app.font(.caption))
+                    .foregroundStyle(.red)
+                    .lineLimit(3)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.leading, 26)
+            } else if isConflict {
                 Text(L10n.conflictHelp.text(for: app.language))
                     .font(app.font(.caption))
                     .foregroundStyle(.orange)
@@ -92,7 +112,9 @@ struct TweakRow: View {
 
     @ViewBuilder
     private var statusBadge: some View {
-        if state.isDirty {
+        if meBlocker != nil {
+            badge(L10n.statusBlocked, .red, "lock.fill")
+        } else if state.isDirty {
             badge(L10n.statusModified, .accentColor, "circle.dashed")
         } else {
             switch state.status {

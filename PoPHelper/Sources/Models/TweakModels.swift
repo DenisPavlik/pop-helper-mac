@@ -48,6 +48,10 @@ struct Tweak: Codable, Identifiable, Hashable {
     /// (or only affects a new character). Safe to apply to an existing save, but
     /// won't change it retroactively. Optional (absent = false).
     var requiresNewGame: Bool? = nil
+    /// IDs of tweaks this one is mutually exclusive with — they edit the same bytes, so at
+    /// most one of the group can be on. The UI locks the others while one is enabled.
+    /// Declared symmetrically on every member of the group. Optional (absent = no conflicts).
+    var conflictsWith: [String]? = nil
     let params: [TweakParam]
     let operations: [TweakOperation]
 }
