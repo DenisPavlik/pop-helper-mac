@@ -280,6 +280,12 @@ struct ContentView: View {
     private var toolbarContent: some ToolbarContent {
         ToolbarItemGroup(placement: .primaryAction) {
             Menu {
+                Button {
+                    app.reload()
+                } label: {
+                    Label(L10n.reverify.text(for: app.language), systemImage: "arrow.clockwise")
+                }
+                Divider()
                 Button(L10n.chooseFolder.text(for: app.language)) { chooseFolder() }
                 Divider()
                 Button(L10n.openBackupsFolder.text(for: app.language)) {

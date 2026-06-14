@@ -36,21 +36,25 @@ enum L10n {
     static let openBackupsFolder = LocalizedText(en: "Open backups folder", uk: "Відкрити папку бекапів", ru: "Открыть папку бэкапов")
     static let noBackups = LocalizedText(en: "No backups yet", uk: "Бекапів ще немає", ru: "Бэкапов пока нет")
     static let restoredMessage = LocalizedText(en: "Restored backup %@", uk: "Відновлено бекап %@", ru: "Восстановлен бэкап %@")
-    static let resetToDefaults = LocalizedText(en: "Reset to defaults", uk: "Скинути до дефолту", ru: "Сбросить до дефолта")
+    static let resetToDefaults = LocalizedText(en: "Undo all tweaks", uk: "Скасувати всі твіки", ru: "Отменить все твики")
+    static let reverify = LocalizedText(
+        en: "Re-verify against game files",
+        uk: "Перевірити за файлами гри",
+        ru: "Проверить по файлам игры")
     static let resetConfirmTitle = LocalizedText(
-        en: "Reset all tweaks to vanilla 3.9.5?",
-        uk: "Скинути всі твіки до ванільної 3.9.5?",
-        ru: "Сбросить все твики до ванильной 3.9.5?")
+        en: "Undo all PoP Helper tweaks?",
+        uk: "Скасувати всі твіки PoP Helper?",
+        ru: "Отменить все твики PoP Helper?")
     static let resetConfirmMessage = LocalizedText(
-        en: "This restores every module file to the original, un-tweaked state — including tweaks you applied earlier. Your current files are backed up first, so this can be undone.",
-        uk: "Це відновить усі файли моду до оригінального, нетвікнутого стану — включно з твіками, які ти вмикав раніше. Поточні файли спершу зберігаються в бекап, тож дію можна відкотити.",
-        ru: "Это вернёт все файлы мода в оригинальное, нетвикнутое состояние — включая твики, которые ты включал раньше. Текущие файлы сначала сохраняются в бэкап, так что действие можно откатить.")
-    static let resetConfirmButton = LocalizedText(en: "Reset everything", uk: "Скинути все", ru: "Сбросить всё")
+        en: "This restores your mod to how it was before PoP Helper first touched it — keeping any other mods you had installed, but removing every tweak. Your current files are backed up first, so this can be undone.",
+        uk: "Це поверне твій мод до стану, яким він був до першого запуску PoP Helper — зберігаючи інші встановлені моди, але прибираючи всі твіки. Поточні файли спершу зберігаються в бекап, тож дію можна відкотити.",
+        ru: "Это вернёт твой мод к состоянию до первого запуска PoP Helper — сохраняя другие установленные моды, но убирая все твики. Текущие файлы сначала сохраняются в бэкап, так что действие можно откатить.")
+    static let resetConfirmButton = LocalizedText(en: "Undo all tweaks", uk: "Скасувати всі твіки", ru: "Отменить все твики")
     static let cancel = LocalizedText(en: "Cancel", uk: "Скасувати", ru: "Отмена")
     static let resetDoneMessage = LocalizedText(
-        en: "Reset %d files to vanilla. Backup: %@",
-        uk: "Скинуто файлів до ванілі: %d. Бекап: %@",
-        ru: "Сброшено файлов до ванили: %d. Бэкап: %@")
+        en: "Restored %d files to your pre-tweak mod. Backup: %@",
+        uk: "Відновлено файлів до твого мода без твіків: %d. Бекап: %@",
+        ru: "Восстановлено файлов до твоего мода без твиков: %d. Бэкап: %@")
     static let resetUnavailable = LocalizedText(
         en: "No original files found to reset from. A fresh-install backup or PoP Helper's _backupHelper folder is required.",
         uk: "Не знайдено оригінальних файлів для скидання. Потрібен бекап чистого встановлення або папка _backupHelper від PoP Helper.",

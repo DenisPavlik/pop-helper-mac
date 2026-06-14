@@ -116,6 +116,13 @@ final class ModManager {
             .sorted { $0.lastPathComponent > $1.lastPathComponent }
     }
 
+    /// The app's full snapshot of the mod as it was the first time PoP Helper saw it,
+    /// made by `ensureInitialBackup()`. This is the user's REAL pre-tweak mod (including
+    /// any third-party mini-mods), unlike the bare-vanilla `pristineStore`.
+    func initialSnapshot() -> URL? {
+        listBackups().first { $0.lastPathComponent.hasSuffix("initial snapshot") }
+    }
+
     func restore(backup dir: URL) throws {
         try restoreFiles(from: dir)
     }
@@ -196,14 +203,26 @@ final class ModManager {
         case unavailable
     }
 
-    /// Restores every file in the pristine baseline over the live mod, after taking a
-    /// timestamped safety backup of the current files so the reset itself is undoable.
+    /// Undoes all tweaks by restoring the mod to how it was before PoP Helper touched it,
+    /// after taking a timestamped safety backup so the reset itself is undoable.
+    ///
+    /// Prefers the user's own initial snapshot (preserves third-party mini-mods the user
+    /// had installed); only falls back to the bare-vanilla pristine baseline if no snapshot
+    /// exists. Using the stale vanilla baseline on a mod that carries extra content would
+    /// wipe that content and leave dangling references that crash the game on load.
     func resetToDefaults() throws -> ResetResult {
-        guard try ensurePristineBaseline() else { return .unavailable }
-        let names = moduleFileNames(in: pristineStore)
+        let source: URL
+        if let snapshot = initialSnapshot(), !moduleFileNames(in: snapshot).isEmpty {
+            source = snapshot
+        } else if try ensurePristineBaseline() {
+            source = pristineStore
+        } else {
+            return .unavailable
+        }
+        let names = moduleFileNames(in: source)
         guard !names.isEmpty else { return .unavailable }
         let safety = try backup(files: names)
-        try restoreFiles(from: pristineStore)
+        try restoreFiles(from: source)
         return .restored(files: names.count, safetyBackup: safety)
     }
 }

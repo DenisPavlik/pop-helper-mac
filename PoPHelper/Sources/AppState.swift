@@ -102,8 +102,11 @@ final class AppState: ObservableObject {
             _ = try? manager.ensureInitialBackup()
             let fileNames = Set(db.tweaks.flatMap { $0.operations.map(\.file) })
             let files = try manager.readFiles(named: fileNames)
+            // Convert each file to bytes once for the whole batch (huge speedup: status
+            // scans each file for every tweak; doing it per call cost ~13-26s).
+            let byteFiles = files.mapValues { Array($0.utf8) }
             states = db.tweaks.map { tweak in
-                let status = TweakEngine.status(of: tweak, files: files)
+                let status = TweakEngine.status(of: tweak, byteFiles: byteFiles)
                 var values = Dictionary(uniqueKeysWithValues: tweak.params.map { ($0.key, $0.defaultValue) })
                 if case .applied(let current) = status {
                     values.merge(current) { _, applied in applied }

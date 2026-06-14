@@ -15,11 +15,12 @@ enum CLI {
             let db = try TweakDatabase.load()
             let fileNames = Set(db.tweaks.flatMap { $0.operations.map(\.file) })
             let files = try manager.readFiles(named: fileNames)
+            let byteFiles = files.mapValues { Array($0.utf8) }   // convert once for the whole batch
             print("Status report against: \(manager.modFolder.path)")
             let width = db.tweaks.map(\.id.count).max() ?? 0
             for tweak in db.tweaks {
                 let id = tweak.id.padding(toLength: width + 2, withPad: " ", startingAt: 0)
-                switch TweakEngine.status(of: tweak, files: files) {
+                switch TweakEngine.status(of: tweak, byteFiles: byteFiles) {
                 case .notApplied:
                     print("  \(id) not applied")
                 case .applied(let values):
@@ -158,6 +159,59 @@ enum CLI {
         } catch {
             print("Error: \(error.localizedDescription)")
             return false
+        }
+    }
+
+    /// Applies the given tweak ids (at their default values) to the LIVE mod files and
+    /// writes them back. Drives the automated in-game load-test loop:
+    ///     swift run PoPHelper --apply qualis-gem-chance-noldor-tournament,tournament-rewards
+    /// Prints one line per tweak (`APPLIED <id>` / `NOTAPPLICABLE <id>` / `ERROR ...`) and a
+    /// SUMMARY line. A tweak whose pristine pattern isn't present on the live files (e.g. a
+    /// hand-edited or already-variant section) is NOTAPPLICABLE — skipped, not an error.
+    /// Exit code: 0 = at least one tweak applied & written, 3 = none applicable, 1 = hard error.
+    static func applyTweaks(ids: [String]) -> Int32 {
+        let manager = ModManager()
+        guard manager.modFolderExists else {
+            print("Mod folder not found: \(manager.modFolder.path)")
+            return 1
+        }
+        do {
+            let db = try TweakDatabase.load()
+            let byId = Dictionary(uniqueKeysWithValues: db.tweaks.map { ($0.id, $0) })
+            let unknown = ids.filter { byId[$0] == nil }
+            if !unknown.isEmpty {
+                print("UNKNOWN \(unknown.joined(separator: ", "))")
+                return 1
+            }
+            let tweaks = ids.compactMap { byId[$0] }
+            let fileNames = Set(tweaks.flatMap { $0.operations.map(\.file) })
+            var files = try manager.readFiles(named: fileNames)
+            var applied: [String] = []
+            var notApplicable: [String] = []
+            for tweak in tweaks {
+                let defs = Dictionary(uniqueKeysWithValues: tweak.params.map { ($0.key, $0.defaultValue) })
+                var trial = files            // apply to a copy; commit only on full success
+                do {
+                    try TweakEngine.apply(tweak, values: defs, to: &trial)
+                    files = trial
+                    applied.append(tweak.id)
+                    print("APPLIED \(tweak.id)")
+                } catch let e as TweakEngineError {
+                    if case .notInExpectedState = e {
+                        notApplicable.append(tweak.id)
+                        print("NOTAPPLICABLE \(tweak.id)")
+                    } else {
+                        print("ERROR \(tweak.id): \(e.localizedDescription)")
+                        return 1
+                    }
+                }
+            }
+            if !applied.isEmpty { try manager.write(files: files) }
+            print("SUMMARY applied=\(applied.count) notApplicable=\(notApplicable.count)")
+            return applied.isEmpty ? 3 : 0
+        } catch {
+            print("Error: \(error.localizedDescription)")
+            return 1
         }
     }
 }

@@ -76,7 +76,12 @@ enum TweakEngine {
     }
 
     /// Regex matching the rendered template with any integer values; group i captures the i-th placeholder.
+    /// Compiled regexes are cached: status() rebuilds these for every applied op on every
+    /// reload, and `NSRegularExpression(pattern:)` compilation is expensive.
+    private static var regexCache: [String: (NSRegularExpression, [String])] = [:]
     static func regex(for template: String, declaredKeys: Set<String>) throws -> (regex: NSRegularExpression, keys: [String]) {
+        let cacheKey = template + "\u{1}" + declaredKeys.sorted().joined(separator: "\u{2}")
+        if let hit = regexCache[cacheKey] { return hit }
         var pattern = ""
         var keys: [String] = []
         for segment in segments(of: template, declaredKeys: declaredKeys) {
@@ -87,7 +92,9 @@ enum TweakEngine {
                 keys.append(key)
             }
         }
-        return (try NSRegularExpression(pattern: pattern), keys)
+        let compiled = (try NSRegularExpression(pattern: pattern), keys)
+        regexCache[cacheKey] = compiled
+        return compiled
     }
 
     private static func declaredKeys(of tweak: Tweak) -> Set<String> {
@@ -104,6 +111,151 @@ enum TweakEngine {
             searchFrom = r.upperBound
         }
         return result
+    }
+
+    /// Fast count of non-overlapping literal occurrences. NSString's search is C-backed
+    /// and dramatically faster than Swift `String.range(of:)` on the large module files —
+    /// status() runs a count for every op of every tweak on each reload, so this is the
+    /// difference between a responsive UI and a ~20s freeze.
+    static func count(of needle: String, in haystack: NSString) -> Int {
+        guard !needle.isEmpty else { return 0 }
+        var count = 0
+        var start = 0
+        while start < haystack.length {
+            let found = haystack.range(of: needle, options: .literal,
+                                       range: NSRange(location: start, length: haystack.length - start))
+            if found.location == NSNotFound { break }
+            count += 1
+            start = found.location + found.length
+        }
+        return count
+    }
+
+    /// Convenience for the rare String-based callers (apply/revert).
+    static func count(of needle: String, in haystack: String) -> Int {
+        count(of: needle, in: haystack as NSString)
+    }
+
+    // MARK: Byte-level matching (status hot path)
+    // The status check runs over every op of every tweak on each reload; with ~250 ops
+    // against multi-MB files, String/NSString scanning and NSRegularExpression are far too
+    // slow (~13s). These operate on UTF-8 byte arrays (built once per file) using memmem.
+
+    /// memmem-based count of non-overlapping literal occurrences.
+    static func count(of needle: [UInt8], in hay: [UInt8]) -> Int {
+        guard !needle.isEmpty, hay.count >= needle.count else { return 0 }
+        var total = 0
+        hay.withUnsafeBytes { hraw in
+            needle.withUnsafeBytes { nraw in
+                let hbase = hraw.baseAddress!, nbase = nraw.baseAddress!
+                let hlen = hraw.count, nlen = nraw.count
+                var offset = 0
+                while hlen - offset >= nlen {
+                    guard let found = memmem(hbase + offset, hlen - offset, nbase, nlen) else { break }
+                    total += 1
+                    offset = (UnsafeRawPointer(found) - hbase) + nlen
+                }
+            }
+        }
+        return total
+    }
+
+    private enum BSeg { case lit([UInt8]); case num(String) }
+
+    /// Byte-level pattern scan for status. In ONE pass over `hay`, anchored on the
+    /// replacement template's first literal segment (which is distinctive — it carries the
+    /// long PoP reference numbers — so memmem skips through the file fast even when absent),
+    /// it counts pattern matches that are byte-equal to `op.original` (orig) vs different
+    /// (applied), and captures the first applied match's param values. Doing both counts in
+    /// one anchored scan avoids a separate, costly full-file search for the long `op.original`
+    /// string (which, once a tweak is applied, is absent and would scan the whole file).
+    /// Mirrors the regex `(-?\d+)` (greedy) + literal semantics. nil when the template has no
+    /// leading literal anchor (caller falls back to the regex path).
+    static func scanPattern(of op: TweakOperation, declaredKeys: Set<String>,
+                            hay: [UInt8]) -> (orig: Int, applied: Int, firstValues: [String: Int])? {
+        let segs: [BSeg] = segments(of: op.replacement, declaredKeys: declaredKeys).map {
+            switch $0 {
+            case .literal(let s): return .lit(Array(s.utf8))
+            case .placeholder(let k): return .num(k)
+            }
+        }
+        // Anchor on the first non-empty literal. The template may start with one placeholder
+        // (e.g. "{hours}.000000 …"); in that case the match starts just before the anchor and
+        // we back-parse the leading number. Two or more leading placeholders are ambiguous to
+        // anchor → nil (caller falls back to regex; very rare).
+        guard let anchorIdx = segs.firstIndex(where: {
+            if case .lit(let b) = $0 { return !b.isEmpty } else { return false }
+        }), case .lit(let anchor) = segs[anchorIdx] else { return nil }
+        // How many placeholders precede the anchor (segments() emits an empty leading literal
+        // before a starting placeholder). 0 → match starts at the anchor; 1 → back-parse one
+        // leading number; ≥2 → ambiguous, fall back.
+        let leadingPlaceholders = segs[0..<anchorIdx].reduce(0) { n, s in
+            if case .num = s { return n + 1 } else { return n }
+        }
+        guard leadingPlaceholders <= 1 else { return nil }
+        let originalBytes = Array(op.original.utf8)
+        var orig = 0, applied = 0
+        var firstValues: [String: Int] = [:]
+        hay.withUnsafeBufferPointer { hb in
+            anchor.withUnsafeBytes { araw in
+                let hbase = UnsafeRawPointer(hb.baseAddress!)
+                let hcount = hb.count
+                var from = 0
+                while hcount - from >= anchor.count {
+                    guard let found = memmem(hbase + from, hcount - from, araw.baseAddress!, anchor.count) else { break }
+                    let p = UnsafeRawPointer(found) - hbase
+                    // Match start: the anchor itself (no leading placeholder), or back over the
+                    // single leading placeholder's number (digits, then an optional '-').
+                    var matchStart = p
+                    if leadingPlaceholders == 1 {
+                        while matchStart > 0, hb[matchStart - 1] >= 0x30, hb[matchStart - 1] <= 0x39 { matchStart -= 1 }
+                        if matchStart > 0, hb[matchStart - 1] == 0x2D { matchStart -= 1 }
+                    }
+                    if let (endPos, values) = matchTemplate(segs, in: hb, at: matchStart) {
+                        var isOrig = (endPos - matchStart) == originalBytes.count
+                        if isOrig {
+                            for i in 0..<originalBytes.count where hb[matchStart + i] != originalBytes[i] { isOrig = false; break }
+                        }
+                        if isOrig {
+                            orig += 1
+                        } else {
+                            applied += 1
+                            if applied == 1 { firstValues = values }
+                        }
+                        from = max(endPos, p + 1)
+                    } else {
+                        from = p + 1
+                    }
+                }
+            }
+        }
+        return (orig, applied, firstValues)
+    }
+
+    private static func matchTemplate(_ segs: [BSeg], in hay: UnsafeBufferPointer<UInt8>,
+                                      at start: Int) -> (end: Int, values: [String: Int])? {
+        var pos = start
+        var values: [String: Int] = [:]
+        for seg in segs {
+            switch seg {
+            case .lit(let bytes):
+                if pos + bytes.count > hay.count { return nil }
+                for i in 0..<bytes.count where hay[pos + i] != bytes[i] { return nil }
+                pos += bytes.count
+            case .num(let key):
+                var j = pos
+                var neg = false
+                if j < hay.count, hay[j] == 0x2D { neg = true; j += 1 }   // '-'
+                let digitStart = j
+                while j < hay.count, hay[j] >= 0x30, hay[j] <= 0x39 { j += 1 }   // 0-9
+                if j == digitStart { return nil }
+                var v = 0
+                for k in digitStart..<j { v = v * 10 + Int(hay[k] - 0x30) }
+                values[key] = neg ? -v : v
+                pos = j
+            }
+        }
+        return (pos, values)
     }
 
     private static func selectedCount(of op: TweakOperation) -> Int {
@@ -139,30 +291,50 @@ enum TweakEngine {
     // MARK: Status
 
     static func status(of tweak: Tweak, files: [String: String]) -> TweakStatus {
+        // Convert each file to a UTF-8 byte array once. Callers that score many tweaks in a
+        // row (reload/--status) should build byteFiles once and call the byteFiles overload
+        // so each file is converted a single time for the whole batch.
+        status(of: tweak, byteFiles: files.mapValues { Array($0.utf8) })
+    }
+
+    static func status(of tweak: Tweak, byteFiles: [String: [UInt8]]) -> TweakStatus {
         let keys = declaredKeys(of: tweak)
         var anyApplied = false
         var values: [String: Int] = [:]
         for op in tweak.operations {
-            guard let content = files[op.file] else {
+            guard let hay = byteFiles[op.file] else {
                 return .conflict(detail: "missing file \(op.file)")
             }
-            let originalCount = ranges(of: op.original, in: content).count
             let selected = selectedCount(of: op)
-            // Op text equals pristine — either the tweak isn't applied, or this
-            // particular knob is left at its vanilla value. Not a conflict.
-            if originalCount == op.expectedCount {
-                continue
+            // The exact count of op.original is the pristine gate — robust for structural
+            // tweaks whose replacement changes literal (non-placeholder) bytes, where the
+            // replacement pattern would not even match the original text.
+            let originalCount = count(of: Array(op.original.utf8), in: hay)
+            if originalCount == op.expectedCount { continue }   // at pristine for this op
+            let placeholders = placeholderKeys(in: op.replacement, declaredKeys: keys)
+            let appliedCount: Int
+            var firstValues: [String: Int] = [:]
+            if placeholders.isEmpty {
+                // Parameterless op: applied form is a fixed literal.
+                appliedCount = count(of: Array(op.replacement.utf8), in: hay)
+            } else if let scan = scanPattern(of: op, declaredKeys: keys, hay: hay) {
+                // Parameterised op: one anchored byte scan counts applied matches + values.
+                appliedCount = scan.applied
+                firstValues = scan.firstValues
+            } else {
+                // Template has 2+ leading placeholders (no usable anchor) — regex fallback. Rare.
+                let content = String(decoding: hay, as: UTF8.self)
+                guard let applied = try? appliedMatches(of: op, declaredKeys: keys, in: content) else {
+                    return .conflict(detail: "\(op.file): found \(originalCount)/\(op.expectedCount) pristine occurrences")
+                }
+                appliedCount = applied.count
+                if let first = applied.first { firstValues = first.values }
             }
-            guard let applied = try? appliedMatches(of: op, declaredKeys: keys, in: content),
-                  originalCount == op.expectedCount - selected,
-                  applied.count == selected
-            else {
+            guard originalCount == op.expectedCount - selected, appliedCount == selected else {
                 return .conflict(detail: "\(op.file): found \(originalCount)/\(op.expectedCount) pristine occurrences")
             }
             anyApplied = true
-            if let first = applied.first {
-                values.merge(first.values) { current, _ in current }
-            }
+            values.merge(firstValues) { current, _ in current }
         }
         guard anyApplied else { return .notApplied }
         // Knobs left at their vanilla value read back as the original value.
@@ -216,7 +388,7 @@ enum TweakEngine {
         for op in tweak.operations {
             guard var content = files[op.file] else { throw TweakEngineError.fileMissing(op.file) }
             // Knob already at its vanilla value → nothing to revert for this op.
-            if ranges(of: op.original, in: content).count == op.expectedCount {
+            if count(of: op.original, in: content) == op.expectedCount {
                 continue
             }
             let matches = try appliedMatches(of: op, declaredKeys: keys, in: content)

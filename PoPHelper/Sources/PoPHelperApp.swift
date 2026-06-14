@@ -19,6 +19,11 @@ struct PoPHelperApp: App {
         if CommandLine.arguments.contains("--verify-packs") {
             exit(CLI.verifyPacks() ? 0 : 1)
         }
+        // Apply a comma-separated set of tweak ids to the live mod (load-test loop).
+        if let i = CommandLine.arguments.firstIndex(of: "--apply"), i + 1 < CommandLine.arguments.count {
+            let ids = CommandLine.arguments[i + 1].split(separator: ",").map(String.init)
+            exit(CLI.applyTweaks(ids: ids))
+        }
         // When launched via `swift run` (no .app bundle) the process starts as a
         // background agent; promote it so the window shows and gets focus.
         NSApplication.shared.setActivationPolicy(.regular)

@@ -1077,6 +1077,7 @@
     },
     {
       "id": "enterprise-values",
+      "requiresNewGame": true,
       "name": {
         "en": "Enterprise values",
         "uk": "Параметри підприємств",
@@ -1892,6 +1893,7 @@
     },
     {
       "id": "garrison-size-walled-fiefs",
+      "requiresNewGame": true,
       "name": {
         "en": "Garrison size of walled fiefs",
         "uk": "Розмір гарнізону укріплених володінь",
