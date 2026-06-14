@@ -300,7 +300,9 @@ enum TweakEngine {
     static func status(of tweak: Tweak, byteFiles: [String: [UInt8]]) -> TweakStatus {
         let keys = declaredKeys(of: tweak)
         var anyApplied = false
+        var anyExternal = false   // an op whose vanilla form is entirely gone & not our applied form
         var values: [String: Int] = [:]
+        var externalDetail = ""
         for op in tweak.operations {
             guard let hay = byteFiles[op.file] else {
                 return .conflict(detail: "missing file \(op.file)")
@@ -330,12 +332,29 @@ enum TweakEngine {
                 appliedCount = applied.count
                 if let first = applied.first { firstValues = first.values }
             }
-            guard originalCount == op.expectedCount - selected, appliedCount == selected else {
-                return .conflict(detail: "\(op.file): found \(originalCount)/\(op.expectedCount) pristine occurrences")
+            if originalCount == op.expectedCount - selected, appliedCount == selected {
+                anyApplied = true
+                values.merge(firstValues) { current, _ in current }
+                continue
             }
-            anyApplied = true
-            values.merge(firstValues) { current, _ in current }
+            // The vanilla pattern is entirely absent. Our patterns are validated against the
+            // pristine baseline and we never apply a tweak unless the vanilla form is present,
+            // so its complete absence means this location was changed by something other than
+            // PoP Helper Mac — in practice the original Windows PoP Helper applied this tweak in
+            // its own byte variant (which may not match our applied form, or may match it an
+            // unexpected number of times). Treat as already-applied-elsewhere, not a conflict.
+            if originalCount == 0 {
+                anyExternal = true
+                if externalDetail.isEmpty { externalDetail = "\(op.file): vanilla form absent (already modified outside PoP Helper Mac)" }
+                continue
+            }
+            // Some — but not all — vanilla occurrences remain and it isn't cleanly applied:
+            // a genuinely partial/ambiguous state → real conflict.
+            return .conflict(detail: "\(op.file): found \(originalCount)/\(op.expectedCount) pristine occurrences")
         }
+        // A touched-but-unrecognised op means we can't cleanly toggle the tweak; report it as
+        // already applied (locked) even if other ops happen to sit at their vanilla value.
+        if anyExternal { return .appliedExternally(detail: externalDetail) }
         guard anyApplied else { return .notApplied }
         // Knobs left at their vanilla value read back as the original value.
         for param in tweak.params where values[param.key] == nil {

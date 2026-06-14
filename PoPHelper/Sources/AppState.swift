@@ -18,7 +18,8 @@ struct TweakViewState: Identifiable {
         case .applied(let current):
             if !desiredEnabled { return true }
             return tweak.params.contains { desiredValues[$0.key] != current[$0.key] }
-        case .conflict:
+        case .conflict, .appliedExternally:
+            // Locked: we can't cleanly apply/revert a form we don't recognise.
             return false
         }
     }
@@ -114,7 +115,12 @@ final class AppState: ObservableObject {
                 return TweakViewState(
                     tweak: tweak,
                     status: status,
-                    desiredEnabled: { if case .applied = status { return true } else { return false } }(),
+                    desiredEnabled: {
+                        switch status {
+                        case .applied, .appliedExternally: return true   // effectively on
+                        default: return false
+                        }
+                    }(),
                     desiredValues: values)
             }
         } catch {

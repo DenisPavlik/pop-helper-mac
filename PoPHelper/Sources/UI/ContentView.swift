@@ -228,7 +228,10 @@ struct ContentView: View {
     private var detailHeader: some View {
         let total = visibleStates.count
         let on = visibleStates.filter {
-            if case .applied = $0.status { return true } else { return false }
+            switch $0.status {
+            case .applied, .appliedExternally: return true
+            default: return false
+            }
         }.count
         return HStack {
             VStack(alignment: .leading, spacing: 2) {
@@ -326,7 +329,12 @@ struct ContentView: View {
 
     private func appliedCount(in category: String?) -> Int {
         let states = category.map { app.states(in: $0) } ?? app.states
-        return states.filter { if case .applied = $0.status { return true } else { return false } }.count
+        return states.filter {
+            switch $0.status {
+            case .applied, .appliedExternally: return true
+            default: return false
+            }
+        }.count
     }
 
     private func binding(for id: String) -> Binding<TweakViewState> {

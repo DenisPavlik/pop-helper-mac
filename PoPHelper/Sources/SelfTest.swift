@@ -165,12 +165,30 @@ enum SelfTest {
     }
 
     private static func conflictDetection(_ r: Recorder) {
+        // Vanilla pattern entirely gone & not our applied form → appliedExternally (the original
+        // PoP Helper already tweaked this spot in its own variant), NOT a hard conflict.
         let op = TweakOperation(
             file: "f.txt", original: "needle 60", replacement: "needle {threshold}",
             occurrence: .all, expectedCount: 1)
         let t = tweak(params: [thresholdParam], operations: [op])
-        if case .conflict = TweakEngine.status(of: t, files: ["f.txt": "something else"]) {} else {
-            r.failures.append("expected conflict when pattern missing"); r.checks += 1
+        if case .appliedExternally = TweakEngine.status(of: t, files: ["f.txt": "something else"]) {} else {
+            r.failures.append("expected appliedExternally when vanilla pattern fully gone"); r.checks += 1
+        }
+
+        // Structural op (no params), vanilla block replaced by an unknown form → appliedExternally.
+        let opS = TweakOperation(file: "f.txt", original: "old block 1 2 3", replacement: "new block 4 5 6",
+                                 occurrence: .all, expectedCount: 1)
+        let tS = tweak(operations: [opS])
+        if case .appliedExternally = TweakEngine.status(of: tS, files: ["f.txt": "pre someone elses variant post"]) {} else {
+            r.failures.append("expected appliedExternally for structural op with unknown variant"); r.checks += 1
+        }
+
+        // Genuine partial/ambiguous state (1 of 2 vanilla occurrences, none applied) → conflict.
+        let opP = TweakOperation(file: "f.txt", original: "X 1", replacement: "X 2",
+                                 occurrence: .all, expectedCount: 2)
+        let tP = tweak(operations: [opP])
+        if case .conflict = TweakEngine.status(of: tP, files: ["f.txt": "X 1 only once"]) {} else {
+            r.failures.append("expected conflict when partial occurrences (1 of 2)"); r.checks += 1
         }
 
         // Multi-op: one knob tweaked, one left at its vanilla value → applied (NOT conflict).

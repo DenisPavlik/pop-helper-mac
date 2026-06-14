@@ -10,13 +10,20 @@ struct TweakRow: View {
         if case .conflict = state.status { return true } else { return false }
     }
 
+    private var isAppliedExternally: Bool {
+        if case .appliedExternally = state.status { return true } else { return false }
+    }
+
+    /// The toggle is locked whenever we can't cleanly apply/revert the tweak.
+    private var isLocked: Bool { isConflict || isAppliedExternally }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack(alignment: .top, spacing: 10) {
                 Toggle("", isOn: $state.desiredEnabled)
                     .toggleStyle(.checkbox)
                     .labelsHidden()
-                    .disabled(isConflict)
+                    .disabled(isLocked)
 
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 4) {
@@ -53,6 +60,13 @@ struct TweakRow: View {
                     .lineLimit(2)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.leading, 26)
+            } else if isAppliedExternally {
+                Text(L10n.appliedExternallyHelp.text(for: app.language))
+                    .font(app.font(.caption))
+                    .foregroundStyle(.secondary)
+                    .lineLimit(3)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.leading, 26)
             } else if state.desiredEnabled {
                 if !state.tweak.params.isEmpty {
                     paramEditors
@@ -73,7 +87,7 @@ struct TweakRow: View {
         }
         .padding(.vertical, 5)
         .contentShape(Rectangle())
-        .onTapGesture { if !isConflict { state.desiredEnabled.toggle() } }
+        .onTapGesture { if !isLocked { state.desiredEnabled.toggle() } }
     }
 
     @ViewBuilder
@@ -83,6 +97,7 @@ struct TweakRow: View {
         } else {
             switch state.status {
             case .applied: badge(L10n.statusApplied, .green, "checkmark.circle.fill")
+            case .appliedExternally: badge(L10n.statusAppliedExternally, .green, "checkmark.seal.fill")
             case .conflict: badge(L10n.statusConflict, .orange, "exclamationmark.triangle.fill")
             case .notApplied: EmptyView()
             }

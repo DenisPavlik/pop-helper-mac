@@ -19,6 +19,11 @@ enum L10n {
     static let statusApplied = LocalizedText(en: "Applied", uk: "Застосовано", ru: "Применено")
     static let statusNotApplied = LocalizedText(en: "Off", uk: "Вимкнено", ru: "Выключено")
     static let statusConflict = LocalizedText(en: "Conflict", uk: "Конфлікт", ru: "Конфликт")
+    static let statusAppliedExternally = LocalizedText(en: "Already applied", uk: "Вже застосовано", ru: "Уже применено")
+    static let appliedExternallyHelp = LocalizedText(
+        en: "This spot in your mod is already modified — most likely the original PoP Helper applied this tweak. It's active in-game; PoP Helper Mac just can't toggle this exact variant.",
+        uk: "Це місце у вашому моді вже змінене — найімовірніше, оригінальний PoP Helper уже застосував цей твік. Він активний у грі; PoP Helper Mac просто не може керувати саме цим варіантом.",
+        ru: "Это место в вашем моде уже изменено — скорее всего, оригинальный PoP Helper уже применил этот твик. Он активен в игре; PoP Helper Mac просто не может управлять именно этим вариантом.")
     static let statusModified = LocalizedText(en: "Pending", uk: "Очікує", ru: "Ожидает")
     static let original = LocalizedText(en: "vanilla", uk: "стандартно", ru: "стандартно")
     static let recommended = LocalizedText(en: "rec.", uk: "рек.", ru: "рек.")

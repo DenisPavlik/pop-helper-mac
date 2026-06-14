@@ -29,6 +29,8 @@ enum CLI {
                         : "applied " + values.sorted { $0.key < $1.key }
                             .map { "\($0.key)=\($0.value)" }.joined(separator: ", ")
                     print("  \(id) \(detail)")
+                case .appliedExternally(let why):
+                    print("  \(id) applied externally (\(why))")
                 case .conflict(let why):
                     print("  \(id) conflict (\(why))")
                 }

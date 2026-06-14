@@ -8243,6 +8243,155 @@
           "structural": true
         }
       ]
+    },
+    {
+      "id": "reduce-rune-upgrade-cost-al-aziz",
+      "name": {
+        "en": "Cheaper rune-equipment upgrades (Al-Aziz)",
+        "uk": "Дешевші покращення рунного спорядження (Аль-Азіз)",
+        "ru": "Дешевле улучшение рунного снаряжения (Аль-Азиз)"
+      },
+      "description": {
+        "en": "Upgrading rune equipment at the Hidden Mines of Al-Aziz no longer costs a Qualis Gem and a Large Pouch of Diamonds — each of the 18 upgrades now needs only its inset gem (Sapphire/Ruby/Emerald) plus gold. Stop burning precious Qualis Gems on gear upgrades.",
+        "uk": "Покращення рунного спорядження в Прихованих копальнях Аль-Азіза більше не коштує куаліс-самоцвіт і велику торбу діамантів — кожне з 18 покращень тепер потребує лише свого самоцвіта (сапфір/рубін/смарагд) і золота. Більше не витрачай дорогоцінні куаліси на спорядження.",
+        "ru": "Улучшение рунного снаряжения в Скрытых шахтах Аль-Азиза больше не требует куалис-самоцвет и большой мешок алмазов — каждому из 18 улучшений теперь нужен только свой самоцвет (сапфир/рубин/изумруд) и золото. Хватит тратить драгоценные куалисы на снаряжение."
+      },
+      "category": "misc",
+      "wikiRef": "Tweak 18 a",
+      "recommendation": {
+        "en": "The 'old', cheaper requirement (a streamer ask). Qualis Gems are the rarest currency in Pendor — better spent on Noldor troops or saved than on rune upgrades. Safe to turn on; affects future upgrades only, not your save.",
+        "uk": "Те саме «старе», дешевше вимога (просили стрімери). Куаліси — найрідкісніша валюта Пендора, краще витрачати їх на нолдорські війська чи берегти, ніж на покращення. Вмикати безпечно; впливає лише на майбутні покращення, не на сейв.",
+        "ru": "То самое «старое», дешёвое требование (просьба стримеров). Куалисы — самая редкая валюта Пендора, их лучше тратить на нолдорские войска или беречь, чем на улучшения. Включать безопасно; влияет только на будущие улучшения, не на сейв."
+      },
+      "params": [],
+      "operations": [
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window 66440 32  3 150 1 288230376151713035 150 1 288230376151711870 150 1 288230376151711875 Insert_Sapphire_into_Strange_Rune_Axe.  6  5 1531 2 360287970189639680 288230376151713035 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window 66440 32  1 150 1 288230376151713035 Insert_Sapphire_into_Strange_Rune_Axe.  6  3 1531 2 360287970189639680 288230376151713035 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.1 66440 32  3 150 1 288230376151713035 150 1 288230376151711870 150 1 288230376151711875 Insert_Ruby_into_Strange_Rune_Axe.  6  5 1531 2 360287970189639680 288230376151713035 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.1 66440 32  1 150 1 288230376151713035 Insert_Ruby_into_Strange_Rune_Axe.  6  3 1531 2 360287970189639680 288230376151713035 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.2 66440 32  3 150 1 288230376151713035 150 1 288230376151711870 150 1 288230376151711875 Insert_Emerald_into_Strange_Rune_Axe.  6  5 1531 2 360287970189639680 288230376151713035 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.2 66440 32  1 150 1 288230376151713035 Insert_Emerald_into_Strange_Rune_Axe.  6  3 1531 2 360287970189639680 288230376151713035 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.3 66440 32  3 150 1 288230376151713152 150 1 288230376151711870 150 1 288230376151711875 Insert_Sapphire_into_Strange_Rune_Glaive.  6  5 1531 2 360287970189639680 288230376151713152 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.3 66440 32  1 150 1 288230376151713152 Insert_Sapphire_into_Strange_Rune_Glaive.  6  3 1531 2 360287970189639680 288230376151713152 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.4 66440 32  3 150 1 288230376151713152 150 1 288230376151711870 150 1 288230376151711875 Insert_Ruby_into_Strange_Rune_Glaive.  6  5 1531 2 360287970189639680 288230376151713152 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.4 66440 32  1 150 1 288230376151713152 Insert_Ruby_into_Strange_Rune_Glaive.  6  3 1531 2 360287970189639680 288230376151713152 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.5 66440 32  3 150 1 288230376151713152 150 1 288230376151711870 150 1 288230376151711875 Insert_Emerald_into_Strange_Rune_Glaive.  6  5 1531 2 360287970189639680 288230376151713152 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.5 66440 32  1 150 1 288230376151713152 Insert_Emerald_into_Strange_Rune_Glaive.  6  3 1531 2 360287970189639680 288230376151713152 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.6 66440 32  3 150 1 288230376151713039 150 1 288230376151711870 150 1 288230376151711875 Insert_Sapphire_into_Strange_Rune_Sword.  6  5 1531 2 360287970189639680 288230376151713039 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.6 66440 32  1 150 1 288230376151713039 Insert_Sapphire_into_Strange_Rune_Sword.  6  3 1531 2 360287970189639680 288230376151713039 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.7 66440 32  3 150 1 288230376151713039 150 1 288230376151711870 150 1 288230376151711875 Insert_Ruby_into_Strange_Rune_Sword.  6  5 1531 2 360287970189639680 288230376151713039 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.7 66440 32  1 150 1 288230376151713039 Insert_Ruby_into_Strange_Rune_Sword.  6  3 1531 2 360287970189639680 288230376151713039 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.8 66440 32  3 150 1 288230376151713039 150 1 288230376151711870 150 1 288230376151711875 Insert_Emerald_into_Strange_Rune_Sword.  6  5 1531 2 360287970189639680 288230376151713039 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.8 66440 32  1 150 1 288230376151713039 Insert_Emerald_into_Strange_Rune_Sword.  6  3 1531 2 360287970189639680 288230376151713039 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.9 66440 32  3 150 1 288230376151712868 150 1 288230376151711870 150 1 288230376151711875 Insert_Sapphire_into_Strange_Rune_Bow.  6  5 1531 2 360287970189639680 288230376151712868 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.9 66440 32  1 150 1 288230376151712868 Insert_Sapphire_into_Strange_Rune_Bow.  6  3 1531 2 360287970189639680 288230376151712868 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.10 66440 32  3 150 1 288230376151712868 150 1 288230376151711870 150 1 288230376151711875 Insert_Ruby_into_Strange_Rune_Bow.  6  5 1531 2 360287970189639680 288230376151712868 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.10 66440 32  1 150 1 288230376151712868 Insert_Ruby_into_Strange_Rune_Bow.  6  3 1531 2 360287970189639680 288230376151712868 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.11 66440 32  3 150 1 288230376151712868 150 1 288230376151711870 150 1 288230376151711875 Insert_Emerald_into_Strange_Rune_Bow.  6  5 1531 2 360287970189639680 288230376151712868 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.11 66440 32  1 150 1 288230376151712868 Insert_Emerald_into_Strange_Rune_Bow.  6  3 1531 2 360287970189639680 288230376151712868 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.12 66440 32  3 150 1 288230376151713094 150 1 288230376151711870 150 1 288230376151711875 Insert_Sapphire_into_Strange_Rune_Two-handed_Sword.  6  5 1531 2 360287970189639680 288230376151713094 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.12 66440 32  1 150 1 288230376151713094 Insert_Sapphire_into_Strange_Rune_Two-handed_Sword.  6  3 1531 2 360287970189639680 288230376151713094 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.13 66440 32  3 150 1 288230376151713094 150 1 288230376151711870 150 1 288230376151711875 Insert_Ruby_into_Strange_Rune_Two-handed_Sword.  6  5 1531 2 360287970189639680 288230376151713094 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.13 66440 32  1 150 1 288230376151713094 Insert_Ruby_into_Strange_Rune_Two-handed_Sword.  6  3 1531 2 360287970189639680 288230376151713094 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.14 66440 32  3 150 1 288230376151713094 150 1 288230376151711870 150 1 288230376151711875 Insert_Emerald_into_Strange_Rune_Two-handed_Sword.  6  5 1531 2 360287970189639680 288230376151713094 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.14 66440 32  1 150 1 288230376151713094 Insert_Emerald_into_Strange_Rune_Two-handed_Sword.  6  3 1531 2 360287970189639680 288230376151713094 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.15 66440 32  3 150 1 288230376151712432 150 1 288230376151711870 150 1 288230376151711875 Insert_Sapphire_into_Mystical_Rune_Plate.  6  5 1531 2 360287970189639680 288230376151712432 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.15 66440 32  1 150 1 288230376151712432 Insert_Sapphire_into_Mystical_Rune_Plate.  6  3 1531 2 360287970189639680 288230376151712432 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.16 66440 32  3 150 1 288230376151712432 150 1 288230376151711870 150 1 288230376151711875 Insert_Ruby_into_Mystical_Rune_Plate.  6  5 1531 2 360287970189639680 288230376151712432 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.16 66440 32  1 150 1 288230376151712432 Insert_Ruby_into_Mystical_Rune_Plate.  6  3 1531 2 360287970189639680 288230376151712432 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_magic_azziz_8:close_window.17 66440 32  3 150 1 288230376151712432 150 1 288230376151711870 150 1 288230376151711875 Insert_Emerald_into_Mystical_Rune_Plate.  6  5 1531 2 360287970189639680 288230376151712432 1531 2 360287970189639680 288230376151711870 1531 2 360287970189639680 288230376151711875 ",
+          "replacement": "dlga_magic_azziz_8:close_window.17 66440 32  1 150 1 288230376151712432 Insert_Emerald_into_Mystical_Rune_Plate.  6  3 1531 2 360287970189639680 288230376151712432 ",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ]
     }
   ]
 }

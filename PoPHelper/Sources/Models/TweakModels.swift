@@ -114,7 +114,13 @@ enum TweakStatus: Equatable {
     case notApplied
     /// Tweak detected; current parameter values read back from the file.
     case applied(values: [String: Int])
-    /// Neither pristine nor tweaked form matches — file was changed by something else.
+    /// The vanilla pattern is entirely gone and our applied form isn't present either —
+    /// this spot was changed by something other than PoP Helper Mac. In practice that means
+    /// the original Windows PoP Helper already applied this tweak in its own byte form, so the
+    /// tweak is active in-game; we just can't recognise/toggle that exact variant. Shown as
+    /// "already applied" and locked (not a scary "conflict").
+    case appliedExternally(detail: String)
+    /// Partial/ambiguous state (some occurrences vanilla, some changed) — a genuine conflict.
     case conflict(detail: String)
 }
 
