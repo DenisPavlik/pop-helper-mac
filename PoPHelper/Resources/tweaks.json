@@ -8398,6 +8398,128 @@
           "expectedCount": 1
         }
       ]
+    },
+    {
+      "id": "auto-resolve-min-casualties",
+      "name": {
+        "en": "Auto-resolve: minimum casualties",
+        "uk": "Автобій: мінімум втрат",
+        "ru": "Авторасчёт боя: минимум потерь"
+      },
+      "description": {
+        "en": "When you let your troops auto-resolve a battle (\"Order your troops to attack without you\"), the engine forces a minimum number of casualties on each side (vanilla 5). In fights you dominate, this floor is the only thing still killing your elite troops. Lower it toward 0 to take (almost) no losses in lopsided auto-resolved battles. It cannot cost you a victory: on the winning side the casualty value is far above this floor, so lowering it only affects the side taking light losses — you.",
+        "uk": "Коли ти віддаєш бій на автоматичний розрахунок («атакувати без вас»), движок змушує кожну сторону втратити мінімум бійців (у ваніллі — 5). У боях, де ти переважаєш, саме ця «підлога» й вибиває твоїх елітних бійців. Знизь її до ~0, щоб у нерівних автобоях не втрачати майже нікого. Перемогу це відібрати не може: на стороні-переможці значення втрат значно вище за цю підлогу, тож зниження впливає лише на сторону з малими втратами — тобто на тебе.",
+        "ru": "Когда ты отдаёшь бой на авторасчёт («атаковать без вас»), движок заставляет каждую сторону потерять минимум бойцов (в ванили — 5). В боях, где ты доминируешь, именно этот «пол» и выбивает твоих элитных бойцов. Снизь его до ~0, чтобы в неравных авторасчётных боях не терять почти никого. Победу это отнять не может: на стороне-победителе значение потерь намного выше этого пола, так что снижение влияет только на сторону с малыми потерями — то есть на тебя."
+      },
+      "category": "battle",
+      "wikiRef": "RE — game_event_simulate_battle (research/auto-resolve-decode)",
+      "recommendation": {
+        "en": "Set to 1 (or 0) so dominant auto-resolved fights cost you (almost) no troops. If you still see real losses, your battles are large enough that the engine's strength-ratio math dominates — a deeper quality-aware tweak is the next step.",
+        "uk": "Постав 1 (або 0), щоб переможні автобої коштували тобі майже нуля бійців. Якщо втрати все одно помітні — твої бої досить великі, і там домінує математика співвідношення сил; наступний крок — глибший твік «з урахуванням якості військ».",
+        "ru": "Поставь 1 (или 0), чтобы победные автобои стоили тебе почти нуля бойцов. Если потери всё равно заметны — бои достаточно крупные, и там доминирует математика соотношения сил; следующий шаг — более глубокий твик «с учётом качества войск»."
+      },
+      "params": [
+        {
+          "key": "floor",
+          "name": {
+            "en": "Minimum casualties",
+            "uk": "Мінімум втрат",
+            "ru": "Минимум потерь"
+          },
+          "originalValue": 5,
+          "defaultValue": 1,
+          "min": 0,
+          "max": 5,
+          "presets": [
+            {
+              "value": 5,
+              "label": {
+                "en": "Vanilla",
+                "uk": "Ваніль",
+                "ru": "Ваниль"
+              }
+            },
+            {
+              "value": 2,
+              "label": {
+                "en": "Reduced",
+                "uk": "Зменшено",
+                "ru": "Уменьшено"
+              }
+            },
+            {
+              "value": 1,
+              "label": {
+                "en": "Minimal (recommended)",
+                "uk": "Мінімальні (рекомендовано)",
+                "ru": "Минимальные (рекомендуется)"
+              }
+            },
+            {
+              "value": 0,
+              "label": {
+                "en": "None",
+                "uk": "Жодних",
+                "ru": "Никаких"
+              }
+            }
+          ]
+        }
+      ],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "2111 2 1224979098644774928 5 2111 2 1224979098644774927 5",
+          "replacement": "2111 2 1224979098644774928 {floor} 2111 2 1224979098644774927 {floor}",
+          "occurrence": "all",
+          "expectedCount": 1
+        }
+      ],
+      "conflictsWith": [
+        "auto-resolve-quality-scaling"
+      ]
+    },
+    {
+      "id": "auto-resolve-quality-scaling",
+      "name": {
+        "en": "Auto-resolve: troop quality matters (Lanchester)",
+        "uk": "Автобій: якість військ вирішує (Ланчестер)",
+        "ru": "Авторасчёт: качество войск решает (Ланчестер)"
+      },
+      "description": {
+        "en": "Rewrites how auto-resolved battles split casualties so troop QUALITY dominates, not just headcount. Vanilla makes your losses = your_vulnerability x enemy_total_attack, so a big horde of weak troops bleeds your elites even when you vastly outclass them. This scales each side's losses by the square of the strength ratio (Lanchester's square law): the much stronger army wipes the weaker one and takes near-zero losses, while evenly matched battles are unaffected. Works for medium and large battles (300 vs 300) and for both attacking and defending. Note: it also makes off-map AI-vs-AI battles quality-aware. Structural edit to game_event_simulate_battle; toggle off to fully restore vanilla.",
+        "uk": "Переписує розподіл втрат в автобоях так, щоб вирішувала ЯКІСТЬ військ, а не лише кількість. У ваніллі твої втрати = твоя_вразливість x сумарна_атака_ворога, тож велика юрба слабких вибиває твоїх елітних навіть коли ти на голову сильніший. Цей тві́к множить втрати кожної сторони на квадрат співвідношення сил (закон Ланчестера): значно сильніша армія виносить слабшу майже без втрат, а рівні бої лишаються незмінними. Працює для середніх і великих боїв (300 на 300), і в атаці, і в обороні. Зауваж: це робить «якісними» й бої ШІ проти ШІ поза картою. Структурна правка game_event_simulate_battle; вимкни — і ваніль повністю повертається.",
+        "ru": "Переписывает распределение потерь в автобоях так, чтобы решало КАЧЕСТВО войск, а не только число. В ванили твои потери = твоя_уязвимость x суммарная_атака_врага, поэтому большая толпа слабых выбивает твоих элитных, даже когда ты намного сильнее. Этот твик умножает потери каждой стороны на квадрат соотношения сил (закон Ланчестера): намного более сильная армия сносит слабую почти без потерь, а равные бои не меняются. Работает для средних и крупных боёв (300 на 300), и в атаке, и в обороне. Учти: это делает «качественными» и бои ИИ против ИИ вне карты. Структурная правка game_event_simulate_battle; выключи — ваниль полностью возвращается."
+      },
+      "category": "battle",
+      "wikiRef": "RE — game_event_simulate_battle quality scaling (research/auto-resolve-decode)",
+      "recommendation": {
+        "en": "Enable to make auto-resolve respect troop quality: your elite army (Noldor, rangers, Valkyries) will crush a weaker force of equal size and take almost no losses. If a fight ever feels too lopsided, tell me and I'll soften the square law to linear. Mutually exclusive with the simple 'minimum casualties' tweak (this one already includes a minimum-loss floor).",
+        "uk": "Увімкни, щоб автобій враховував якість військ: твоя елітна армія (нолдери, рейнджери, валькірії) рознесе слабший загін рівного розміру майже без втрат. Якщо колись бій здасться надто однобоким — скажи, і я пом'якшу квадратичний закон до лінійного. Взаємно виключний із простим тві́ком «мінімум втрат» (цей уже містить нижню межу втрат).",
+        "ru": "Включи, чтобы автобой учитывал качество войск: твоя элитная армия (нолдеры, рейнджеры, валькирии) разнесёт более слабый отряд равного размера почти без потерь. Если бой когда-то покажется слишком односторонним — скажи, и я смягчу квадратичный закон до линейного. Взаимно исключающий с простым твиком «минимум потерь» (этот уже содержит нижний порог потерь)."
+      },
+      "conflictsWith": [
+        "auto-resolve-min-casualties"
+      ],
+      "params": [],
+      "operations": [
+        {
+          "file": "scripts.txt",
+          "original": "576 21 1 1224979098644774912 22 1 1224979098644774913",
+          "replacement": "590 21 1 1224979098644774912 22 1 1224979098644774913",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        },
+        {
+          "file": "scripts.txt",
+          "original": "2111 2 1224979098644774928 5 2111 2 1224979098644774927 5 4 0",
+          "replacement": "2111 2 1224979098644774928 5 2111 2 1224979098644774927 5 2133 2 1224979098644775002 1224979098644774923 2111 2 1224979098644775002 1 2133 2 1224979098644775003 1224979098644774925 2111 2 1224979098644775003 1 2107 2 1224979098644774928 1224979098644775003 2108 2 1224979098644774928 1224979098644775002 2107 2 1224979098644774928 1224979098644775003 2108 2 1224979098644774928 1224979098644775002 2107 2 1224979098644774927 1224979098644775002 2108 2 1224979098644774927 1224979098644775003 2107 2 1224979098644774927 1224979098644775002 2108 2 1224979098644774927 1224979098644775003 2111 2 1224979098644774928 1 2111 2 1224979098644774927 1 4 0",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        }
+      ]
     }
   ]
 }
