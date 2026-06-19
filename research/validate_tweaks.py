@@ -139,7 +139,12 @@ def validate(db):
             keys = param_keys(repl, params)
             used_keys.update(keys)
             for k in PLACEHOLDER_RE.findall(repl):
-                if k not in params and ("{%s}" % k) not in orig:
+                # Structural ops introduce NEW content (e.g. appended dialog
+                # lines), which may legitimately contain game string registers
+                # like {s12} that aren't in `original`. Only enforce the
+                # "must be literal text from original" rule for in-place ops.
+                if (k not in params and ("{%s}" % k) not in orig
+                        and not oper.get("structural")):
                     fail(f"{tag}: undeclared placeholder {{{k}}} (not a param "
                          f"and not literal text from original)")
             for k in PLACEHOLDER_RE.findall(orig):

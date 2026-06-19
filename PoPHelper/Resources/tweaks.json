@@ -8520,6 +8520,53 @@
           "structural": true
         }
       ]
+    },
+    {
+      "id": "free-castle-horse-training",
+      "name": {
+        "en": "Free horse training in your conquered stronghold",
+        "uk": "Безкоштовне навчання коня у захопленій фортеці",
+        "ru": "Бесплатная тренировка коня в захваченной крепости"
+      },
+      "description": {
+        "en": "Adds a one-time gift from the quartermaster of an Order stronghold you conquered: the first time you finish talking to him, he offers to train one of your horses to 'Champion' (the best modifier) as thanks for taking the fortress in your Order's name. Pick the horse from your inventory and it is upgraded for free. Adds two dialog states and three dialog lines; toggle off to fully restore vanilla.",
+        "uk": "Додає одноразовий дар від квартирмейстера захопленої тобою фортеці Ордену: коли вперше завершуєш із ним розмову, він пропонує навчити одного з твоїх коней до рівня «Чемпіон» (найкращий модифікатор) на знак подяки за взяття фортеці в ім'я Ордену. Обираєш коня з інвентарю — і його безкоштовно покращують. Додає два діалогові стани й три репліки; вимкни — і ваніль повністю повертається.",
+        "ru": "Добавляет одноразовый дар от квартирмейстера захваченной тобой крепости Ордена: когда впервые завершаешь с ним разговор, он предлагает обучить одного из твоих коней до уровня «Чемпион» (лучший модификатор) в благодарность за взятие крепости во имя Ордена. Выбираешь коня из инвентаря — и его бесплатно улучшают. Добавляет два диалоговых состояния и три реплики; выключи — и ваниль полностью возвращается."
+      },
+      "category": "orders",
+      "wikiRef": "Tweak 2 e",
+      "recommendation": {
+        "en": "Enable for a nice one-time perk after conquering an Order stronghold: a free 'Champion' upgrade on a horse of your choice. You must have at least one horse in your inventory when you talk to the quartermaster. Note: PoP Helper's older Windows version shipped a buggy variant of this that could soft-lock the quartermaster dialog — this version is the fixed one.",
+        "uk": "Увімкни заради приємного одноразового бонусу після захоплення фортеці Ордену: безкоштовне покращення обраного коня до «Чемпіона». Май хоча б одного коня в інвентарі, коли говориш із квартирмейстером. Зауваж: стара Windows-версія PoP Helper мала зламаний варіант цього тві́ка, що міг «вішати» діалог квартирмейстера — це виправлена версія.",
+        "ru": "Включи ради приятного одноразового бонуса после захвата крепости Ордена: бесплатное улучшение выбранного коня до «Чемпиона». Имей хотя бы одного коня в инвентаре, когда говоришь с квартирмейстером. Примечание: старая Windows-версия PoP Helper содержала сломанный вариант этого твика, который мог «вешать» диалог квартирмейстера — это исправленная версия."
+      },
+      "params": [],
+      "operations": [
+        {
+          "file": "dialog_states.txt",
+          "original": "mayor_wealth_comparison_4\r\nmayor_wealth_comparison_5\r\n",
+          "replacement": "mayor_wealth_comparison_4\r\nmayor_wealth_comparison_5\r\ncastle_horse_training_free\r\ncastle_horse_training_free1\r\n",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dialogsfile version 2\r\n4152\r\n",
+          "replacement": "dialogsfile version 2\r\n4155\r\n",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        },
+        {
+          "file": "conversation.txt",
+          "original": "dlga_order_quartermaster_player_response:order_quartermaster_1 66733 1853  0 Show_me_your_supplies.  1854  1 2042 0 NO_VOICEOVER \r\ndlga_order_quartermaster_player_response:close_window 66733 1853  0 That_would_be_all,_Quartermaster.  6  0 NO_VOICEOVER ",
+          "replacement": "dlga_order_quartermaster_player_response:order_quartermaster_1 66733 1853  0 Show_me_your_supplies.  1854  1 2042 0 NO_VOICEOVER \r\ndlga_order_quartermaster_player_response:castle_horse_training_free 66733 1853  1 540 3 144115188075855892 80 1 That_would_be_all,_Quartermaster.  1874  0 NO_VOICEOVER \r\ndlga_castle_horse_training_free:castle_horse_training_free1 1197 1874  0 Wait,_Grandmaster!_Please_accept_this_gift_as_a_token_of_my_gratitude_for_conquering_this_stronghold_in_the_name_of_our_Order!^_I_can_train_one_of_your_horses_to_an_unmatched_level.  1875  0 NO_VOICEOVER \r\ndlga_castle_horse_training_free1:close_window 83117 1875  13 50 1 1224979098644774912 2105 2 1224979098644774912 0 1541 3 1224979098644774913 360287970189639680 1224979098644774912 2147483679 2 1224979098644774913 -1 33 3 1224979098644774913 288230376151711902 288230376151711982 4 0 1570 2 1224979098644774915 1224979098644774913 1542 3 1224979098644774916 360287970189639680 1224979098644774912 31 2 1224979098644774915 0 31 2 1224979098644774916 0 3 0 2319 1 12 2325 2 12 1224979098644774913 {s12}  6  3 50 1 144115188075855961 500 3 144115188075855892 80 2 1544 3 360287970189639680 144115188075855961 36 NO_VOICEOVER \r\ndlga_order_quartermaster_player_response:close_window 66733 1853  1 2147484188 3 144115188075855892 80 1 That_would_be_all,_Quartermaster.  6  0 NO_VOICEOVER ",
+          "occurrence": "all",
+          "expectedCount": 1,
+          "structural": true
+        }
+      ]
     }
   ]
 }

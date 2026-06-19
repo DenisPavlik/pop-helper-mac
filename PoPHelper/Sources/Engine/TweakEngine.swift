@@ -406,11 +406,19 @@ enum TweakEngine {
         var touched: Set<String> = []
         for op in tweak.operations {
             guard var content = files[op.file] else { throw TweakEngineError.fileMissing(op.file) }
-            // Knob already at its vanilla value → nothing to revert for this op.
-            if count(of: op.original, in: content) == op.expectedCount {
-                continue
-            }
             let matches = try appliedMatches(of: op, declaredKeys: keys, in: content)
+            // No applied form present → nothing to revert for this op. Covers a knob left at its
+            // vanilla value (its applied form == original, filtered out of `matches`).
+            // IMPORTANT: this must be checked BEFORE any `count(original) == expectedCount` gate.
+            // A structural *append* op's `original` is a prefix of its `replacement`, so the
+            // original string is still present after apply — a count gate alone would wrongly
+            // conclude "already vanilla" and skip the revert, leaving the appended lines behind.
+            if matches.isEmpty {
+                if count(of: op.original, in: content) == op.expectedCount { continue }
+                throw TweakEngineError.notInExpectedState(
+                    tweakID: tweak.id,
+                    detail: "\(op.file): nothing to revert and not at pristine")
+            }
             guard matches.count == selectedCount(of: op) else {
                 throw TweakEngineError.notInExpectedState(
                     tweakID: tweak.id,
